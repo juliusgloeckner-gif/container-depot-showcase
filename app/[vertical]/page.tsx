@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { InventorySection } from "../InventorySection";
 import { QuoteForm } from "../QuoteForm";
 import { Footer, Header, MobileBar } from "../SiteShell";
 import { TestimonialCarousel } from "../TestimonialCarousel";
@@ -64,6 +65,8 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
           <div className="vertical-use-copy"><span className="eyebrow dark">What fits inside</span><h2>Room for the things that keep your operation moving.</h2>{data.visualTags ? <p className="visual-list-note">Flexible overflow capacity for the stock, fixtures and supplies that crowd your daily operation.</p> : <div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div>}<a className="button primary" href="#quote">Check local inventory</a></div>
         </div>
       </section>
+
+      <InventorySection images={data.inventoryImages} context={data.context.toLowerCase()} />
 
       <section className="section dark-section">
         <div className="wrap process-grid">

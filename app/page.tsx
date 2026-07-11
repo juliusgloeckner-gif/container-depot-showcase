@@ -1,14 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { InventorySection } from "./InventorySection";
 import { QuoteForm } from "./QuoteForm";
 import { Footer, Header, MobileBar } from "./SiteShell";
 
-const inventory = [
-  { name: "20FT Standard", price: "$1,950", image: "/container-20ft.jpg", detail: "160 sq ft. Easy to place. The all-around storage workhorse." },
-  { name: "40FT Standard", price: "$4,490", image: "/container-40ft-standard.jpg", detail: "320 sq ft. More capacity and the best value per square foot." },
-  { name: "40FT High Cube", price: "$4,890", image: "/container-40ft-hc.jpg", detail: "Extra 12 inches of height for bulky equipment and stacked inventory." },
-  { name: "Custom Modified", price: "Built to spec", image: "/container-custom.jpg", detail: "Add shelving, lighting, insulation, personnel doors and windows." },
-];
+const homepageInventoryImages = ["/hero-depot-inventory.png", "/container-40ft-standard.jpg", "/hero-depot-inventory.png", "/container-custom.jpg"] as [string, string, string, string];
 
 const uses = [
   { title: "Construction", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Job site storage" },
@@ -59,8 +55,8 @@ export default function Home() {
       <section className="section dark-section industry-first" id="industries">
         <div className="wrap">
           <div className="section-heading split-heading light-heading">
-            <div><span className="eyebrow">Find your use</span><h2>One container specialist. Eight buyer-specific pages.</h2></div>
-            <p>The homepage stays simple: we sell containers. These pages go deeper into the storage problems, buying priorities and delivery realities of each buyer.</p>
+            <div><span className="eyebrow">Find your use</span><h2>Storage that fits where and how you work.</h2></div>
+            <p>Choose the setting that looks like yours. Each page shows what fits, where the container belongs and what to expect on delivery day.</p>
           </div>
           <div className="use-grid">
             {uses.map((use, index) => (
@@ -75,29 +71,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section inventory-section" id="inventory">
-        <div className="wrap">
-          <div className="section-heading split-heading">
-            <div><span className="eyebrow dark">Ready to deliver</span><h2>The container you need. Nothing you do not.</h2></div>
-            <p>Choose by size and condition. We will confirm local inventory and give you the complete delivered price for your ZIP.</p>
-          </div>
-          <div className="inventory-grid">
-            {inventory.map((item) => (
-              <article className="inventory-card" key={item.name}>
-                <div className="image-wrap"><Image src={item.image} alt={`${item.name} shipping container`} fill sizes="(max-width: 760px) 100vw, 25vw" /></div>
-                <div className="inventory-body">
-                  <span className="stock">In stock</span>
-                  <h3>{item.name}</h3>
-                  <strong className="card-price">{item.price}</strong>
-                  <p>{item.detail}</p>
-                  <a href="#quote">Get delivered price <span>→</span></a>
-                </div>
-              </article>
-            ))}
-          </div>
-          <p className="price-note">Starting prices shown. Final price depends on container condition, local availability and delivery ZIP.</p>
-        </div>
-      </section>
+      <InventorySection images={homepageInventoryImages} context="general storage" homepage />
 
       <section className="section applications">
         <div className="wrap application-grid">
