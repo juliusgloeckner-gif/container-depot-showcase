@@ -172,9 +172,16 @@ blockquote { margin:0; }
 .process-grid li>b { color:var(--orange); font-family:var(--font-heading); font-size:1.25rem; }
 .process-grid li>span { color:#bdc9d3; }
 .process-grid strong { display:block; color:#fff; font-family:var(--font-heading); text-transform:uppercase; font-size:1.1rem; }
-.testimonial-feature { text-align:center; background:#fff; }
-.testimonial-feature blockquote { max-width:900px; margin:15px auto 20px; font-family:var(--font-heading); font-weight:700; font-size:clamp(2rem,4vw,3.4rem); line-height:1.15; text-transform:uppercase; }
-.testimonial-feature p { color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+.testimonial-section { background:#fff; }
+.testimonial-shell { display:grid; grid-template-columns:.62fr 1.38fr; gap:54px; align-items:center; max-width:1000px; }
+.testimonial-label { display:flex; flex-direction:column; align-items:flex-start; }
+.testimonial-label strong { font-family:var(--font-heading); font-size:1.45rem; line-height:1.15; text-transform:uppercase; }
+.testimonial-card { position:relative; background:var(--cream); border-left:6px solid var(--orange); padding:34px 38px 28px; min-height:260px; display:flex; flex-direction:column; justify-content:center; }
+.testimonial-card blockquote { margin:12px 0 18px; font-family:var(--font-heading); font-weight:700; font-size:clamp(1.55rem,2.4vw,2.15rem); line-height:1.18; text-transform:none; }
+.testimonial-card>p { color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.06em; margin:0; font-size:.83rem; }
+.testimonial-controls { display:flex; gap:8px; margin-top:24px; }
+.testimonial-controls button { width:28px; height:5px; padding:0; border:0; background:#b9c1c8; cursor:pointer; }
+.testimonial-controls button.active { background:var(--orange); }
 .legal-page { padding:100px 0; max-width:840px; min-height:55vh; }
 .legal-page h1 { font-size:4rem; }
 .legal-page a { color:var(--orange-dark); font-weight:800; }
@@ -224,6 +231,8 @@ blockquote { margin:0; }
   .vertical-use-copy { padding:40px 24px; }
   .process-grid ol { grid-template-columns:1fr; }
   .application-list { grid-template-columns:1fr; }
+  .testimonial-shell { grid-template-columns:1fr; gap:24px; }
+  .testimonial-card { min-height:230px; padding:28px 24px; }
   .footer { padding-bottom:60px; }
 }
 @media (max-width:480px) {

@@ -10,8 +10,7 @@ export type Vertical = {
   benefitsTitle: string;
   benefits: { title: string; text: string }[];
   applications: string[];
-  testimonial: string;
-  person: string;
+  testimonials: { quote: string; person: string }[];
   faq: { q: string; a: string }[];
 };
 
@@ -25,7 +24,11 @@ const construction: Vertical = {
     { title: "Store it where you use it", text: "Place the container near the active work zone and cut repeat trips to off-site storage." },
   ],
   applications: ["Power tools", "Copper and fittings", "Safety equipment", "Small machinery", "Plans and site supplies", "Finish materials"],
-  testimonial: "We had a new site starting and needed secure storage fast. The container arrived that week and the driver placed it right where the superintendent marked it.", person: "Mike R., General Contractor",
+  testimonials: [
+    { quote: "Secure tool storage was on site within a week. The driver placed it exactly where we marked.", person: "Mike R., General Contractor" },
+    { quote: "The 40-footer holds the crew's tools and materials. Nothing leaves the site overnight.", person: "Darren P., Site Superintendent" },
+    { quote: "One delivered price and no surprise fees. Straightforward from quote to placement.", person: "Chris T., Project Manager" },
+  ],
   faq: [
     { q: "How quickly can it reach the job site?", a: "Most deliveries are scheduled within 5 to 10 days after availability and access are confirmed." },
     { q: "Can the driver place it inside our site?", a: "Yes, when the surface is firm, level and accessible to a tilt-bed delivery truck. We review access before delivery." },
@@ -35,7 +38,7 @@ const construction: Vertical = {
 
 const farm: Vertical = {
   key: "farm", nav: "Farm", eyebrow: "Storage built for working land", title: "Protect your equipment.", emphasis: "Secure your feed.",
-  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/ag-gallery1.jpg", context: "Farm and ranch storage",
+  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", context: "Farm and ranch storage",
   benefitsTitle: "Dry, lockable storage where the work happens.",
   benefits: [
     { title: "Keep pests out", text: "Solid steel walls and sealed cargo doors protect feed, seed and supplies from rodents." },
@@ -43,7 +46,11 @@ const farm: Vertical = {
     { title: "Reach remote acreage", text: "Place storage near the barn, equipment yard or field where you need it most." },
   ],
   applications: ["Feed and seed", "Tractor attachments", "Fencing supplies", "Animal health products", "Hand tools", "Seasonal equipment"],
-  testimonial: "Keeps our feed dry and the rodents out. The driver put it on the back field exactly where we wanted it.", person: "Wade H., Cattle Rancher",
+  testimonials: [
+    { quote: "Feed stays dry, mice stay out, and everything is right beside the barn.", person: "Wade H., Cattle Rancher" },
+    { quote: "Our fencing supplies and irrigation gear are finally organized and close to the field.", person: "Alan B., Farm Owner" },
+    { quote: "The driver placed it beside the equipment shed on our prepared gravel pad.", person: "Jake M., Livestock Farmer" },
+  ],
   faq: [
     { q: "Can you deliver beyond the main barn?", a: "Often, yes. The route needs firm ground, enough turning room and a clear straight approach. We confirm access first." },
     { q: "Will a container keep rodents out?", a: "An intact wind and watertight unit provides solid steel storage with gasketed cargo doors. Keep the doors closed and the base area clear." },
@@ -61,7 +68,11 @@ const business: Vertical = {
     { title: "Scale around busy seasons", text: "Create flexible capacity for holiday stock, events, renovations or growth." },
   ],
   applications: ["Restaurant furniture", "Retail inventory", "Packaging supplies", "Maintenance equipment", "Records and fixtures", "Seasonal stock"],
-  testimonial: "We replaced a storage unit across town with a 40-footer behind the shop. The team saves time every week and the space is ours.", person: "Rachel M., Retail Owner",
+  testimonials: [
+    { quote: "Seasonal stock now sits behind the shop instead of across town.", person: "Rachel M., Retail Owner" },
+    { quote: "We stopped paying monthly storage and gained faster access to inventory.", person: "Carlos D., Restaurant Operator" },
+    { quote: "The container arrived clean, dry, and exactly where our team needed it.", person: "Nina S., Operations Manager" },
+  ],
   faq: [
     { q: "Can a container sit behind my business?", a: "Usually, subject to local zoning, fire access and property rules. Confirm permits and clearance with your local authority or landlord." },
     { q: "How much can a 40FT container hold?", a: "A standard 40FT unit provides about 320 square feet of floor space and roughly 2,350 cubic feet of capacity." },

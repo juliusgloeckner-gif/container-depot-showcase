@@ -12,7 +12,7 @@ const inventory = [
 
 const uses = [
   { title: "Construction sites", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Construction storage" },
-  { title: "Farms and ranches", text: "Keep feed, seed, implements and supplies dry, secure and close at hand.", href: "/farm", image: "/ag-gallery1.jpg", cta: "Farm storage" },
+  { title: "Farms and ranches", text: "Keep feed, seed, fencing supplies and tools dry, organized and beside the barn.", href: "/farm", image: "/farm-storage-real.png", cta: "Farm storage" },
   { title: "Business overflow", text: "Put inventory, furniture, records and seasonal stock beside your premises.", href: "/business", image: "/business-overflow.png", cta: "Business storage" },
 ];
 

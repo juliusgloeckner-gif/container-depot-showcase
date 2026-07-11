@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { QuoteForm } from "../QuoteForm";
 import { Footer, Header, MobileBar } from "../SiteShell";
+import { TestimonialCarousel } from "../TestimonialCarousel";
 import { verticals } from "../verticals";
 
 export function generateStaticParams() {
@@ -58,7 +59,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
         </div>
       </section>
 
-      <section className="section testimonial-feature"><div className="wrap"><span className="stars">★★★★★</span><blockquote>“{data.testimonial}”</blockquote><p>{data.person}</p></div></section>
+      <TestimonialCarousel testimonials={data.testimonials} />
 
       <section className="section faq-section"><div className="wrap faq-grid"><div><span className="eyebrow dark">Questions from buyers</span><h2>Know before delivery.</h2><p>Call a container specialist at <a href="tel:18555250902">(855) 525-0902</a>.</p></div><div className="faq-list">{data.faq.map((item, i) => <details open={i === 0} key={item.q}><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
       <section className="final-cta"><div className="wrap final-inner"><div><span className="eyebrow">Get storage handled</span><h2>A secure container, delivered where you need it.</h2></div><div className="cta-actions"><a className="button primary" href="#quote">Get my free quote</a><a className="button outline-light" href="tel:18555250902">Call (855) 525-0902</a></div></div></section>
