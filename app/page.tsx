@@ -24,9 +24,9 @@ export default function Home() {
         <div className="hero-overlay" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow">Buy direct. Own it outright.</span>
-            <h1>Shipping containers.<br /><em>In stock. Delivered.</em></h1>
-            <p className="hero-lead">New and used steel containers at straightforward prices. Tell us your ZIP. We handle the container and the delivery.</p>
+            <span className="eyebrow">Container specialists. Nationwide inventory.</span>
+            <h1>Shipping containers.<br /><em>Every size. Delivered.</em></h1>
+            <p className="hero-lead">One company focused on one thing: affordable new and used containers. Choose your size, tell us your ZIP, and we handle delivery.</p>
             <div className="price-callout">
               <span>20FT containers from</span>
               <strong>$1,950 delivered</strong>
@@ -47,6 +47,25 @@ export default function Home() {
           <div><strong>5 to 10</strong><span>day delivery</span></div>
           <div><strong>48</strong><span>states served</span></div>
           <div><strong>$0</strong><span>hidden fees</span></div>
+        </div>
+      </section>
+
+      <section className="section dark-section industry-first" id="industries">
+        <div className="wrap">
+          <div className="section-heading split-heading light-heading">
+            <div><span className="eyebrow">Choose your operation</span><h2>A container page built for your exact use.</h2></div>
+            <p>These are dedicated landing pages, not general information pages. Each one speaks directly to the storage problems, buying priorities and delivery realities of that buyer.</p>
+          </div>
+          <div className="use-grid">
+            {uses.map((use, index) => (
+              <Link className="use-card" href={use.href} key={use.title}>
+                <Image src={use.image} alt={`${use.title} shipping container storage`} fill sizes="(max-width: 760px) 100vw, 33vw" />
+                <span className="use-shade" />
+                <span className="use-index">0{index + 1}</span>
+                <span className="use-copy"><strong>{use.title}</strong><span>{use.text}</span><b>Open {use.cta} page →</b></span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -71,24 +90,6 @@ export default function Home() {
             ))}
           </div>
           <p className="price-note">Starting prices shown. Final price depends on container condition, local availability and delivery ZIP.</p>
-        </div>
-      </section>
-
-      <section className="section dark-section">
-        <div className="wrap">
-          <div className="section-heading split-heading light-heading">
-            <div><span className="eyebrow">Storage that works where you work</span><h2>Built for real sites, farms and businesses.</h2></div>
-            <p>Go straight to the page designed around your job. Every route ends with the same thing: a secure container delivered where you need it.</p>
-          </div>
-          <div className="use-grid">
-            {uses.map((use) => (
-              <Link className="use-card" href={use.href} key={use.title}>
-                <Image src={use.image} alt={`${use.title} shipping container storage`} fill sizes="(max-width: 760px) 100vw, 33vw" />
-                <span className="use-shade" />
-                <span className="use-copy"><strong>{use.title}</strong><span>{use.text}</span><b>{use.cta} →</b></span>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 

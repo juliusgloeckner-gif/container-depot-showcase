@@ -30,7 +30,7 @@ nav a:hover { color:var(--orange-dark); }
 .button.primary:hover { background:var(--orange-dark); }
 .button.outline-light { color:#fff; border-color:rgba(255,255,255,.7); }
 .home-hero,.vertical-hero { min-height:720px; position:relative; background-size:cover; background-position:center; color:#fff; display:flex; align-items:center; }
-.home-hero { background-image:url('/hero-depot-inventory.png'); background-position:center; }
+.home-hero { background-image:url('/hero-depot-inventory.png'); background-position:center 46%; }
 .hero-overlay { position:absolute; inset:0; background:rgba(3,12,23,.63); }
 .home-hero .hero-overlay { background:rgba(3,12,23,.60); }
 .hero-grid { position:relative; z-index:2; display:grid; grid-template-columns:minmax(0, 1.08fr) minmax(410px, .72fr); gap:58px; align-items:center; padding-top:56px; padding-bottom:56px; }
@@ -93,6 +93,8 @@ input:focus,select:focus { outline:3px solid rgba(242,106,24,.24); border-color:
 .use-card img { transition:transform .4s ease; }
 .use-card:hover img { transform:scale(1.035); }
 .use-shade { position:absolute; inset:0; background:rgba(4,13,23,.45); border-bottom:7px solid var(--orange); }
+.industry-first { border-top:7px solid var(--orange); }
+.use-index { position:absolute; top:22px; right:24px; z-index:2; color:#fff; font-family:var(--font-heading); font-size:1.4rem; font-weight:800; letter-spacing:.08em; border-bottom:3px solid var(--orange); }
 .use-copy { position:absolute; inset:auto 0 0; padding:30px; display:flex; flex-direction:column; align-items:flex-start; }
 .use-copy strong { font-family:var(--font-heading); text-transform:uppercase; font-size:2rem; line-height:1; }
 .use-copy>span { color:#e4ebf1; margin:10px 0 18px; }
