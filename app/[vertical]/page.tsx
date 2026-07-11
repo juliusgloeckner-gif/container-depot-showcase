@@ -24,7 +24,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
   return (
     <main>
       <Header />
-      <section className="vertical-hero" id="quote">
+      <section className="vertical-hero" id="quote" style={{ backgroundImage: `url(${data.hero})` }}>
         <Image className="hero-background" src={data.hero} alt={`${data.nav} shipping container storage`} fill priority sizes="100vw" />
         <div className="hero-overlay" />
         <div className="wrap hero-grid">

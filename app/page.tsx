@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <main>
       <Header />
-      <section className="home-hero" id="quote">
+      <section className="home-hero" id="quote" style={{ backgroundImage: "url(/hero-depot-inventory.png)" }}>
         <Image className="hero-background" src="/hero-depot-inventory.png" alt="Rows of shipping containers ready for nationwide delivery" fill priority sizes="100vw" />
         <div className="hero-overlay" />
         <div className="wrap hero-grid">
