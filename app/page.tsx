@@ -4,7 +4,7 @@ import { InventorySection } from "./InventorySection";
 import { QuoteForm } from "./QuoteForm";
 import { Footer, Header, MobileBar } from "./SiteShell";
 
-const homepageInventoryImages = ["/hero-depot-inventory.png", "/container-40ft-standard.jpg", "/hero-depot-inventory.png", "/container-custom.jpg"] as [string, string, string, string];
+const homepageInventoryImages = ["/inventory-v2/generic-1.jpg", "/inventory-v2/generic-2.jpg", "/inventory-v2/generic-3.jpg", "/inventory-v2/generic-4.jpg"] as [string, string, string, string];
 
 const uses = [
   { title: "Construction", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Job site storage" },

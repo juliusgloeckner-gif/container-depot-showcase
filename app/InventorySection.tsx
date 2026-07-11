@@ -26,7 +26,11 @@ export function InventorySection({ images, context = "your site", homepage = fal
         <div className="inventory-grid">
           {options.map((item, index) => (
             <article className="inventory-card" key={item.name}>
-              <div className="image-wrap"><Image src={images[index]} alt={`${item.name} for ${context}`} fill sizes="(max-width: 800px) 100vw, 25vw" /></div>
+              <div className="image-wrap">
+                <Image src={images[index]} alt={`${item.name} for ${context}`} fill sizes="(max-width: 800px) 100vw, 25vw" />
+                {index === 2 && <div className="height-comparison" aria-hidden="true"><span>Standard <b>8&apos;6&quot;</b></span><span>High Cube <b>9&apos;6&quot;</b></span></div>}
+                {index === 3 && <span className="modified-badge">Modified access</span>}
+              </div>
               <div className="inventory-body">
                 <span className="stock">Available</span>
                 <h3>{item.name}</h3>

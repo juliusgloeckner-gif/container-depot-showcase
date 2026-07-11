@@ -18,8 +18,8 @@ h3 { font-size:1.45rem; line-height:1.08; text-transform:uppercase; }
 .site-header { background:#fff; border-bottom:4px solid var(--orange); position:relative; z-index:20; }
 .nav-inner { height:82px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
 .wordmark { display:flex; align-items:center; gap:11px; font-size:1.05rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
-.flag-mark { width:52px; height:31px; position:relative; flex:0 0 auto; overflow:hidden; border:1px solid rgba(8,20,33,.22); box-shadow:0 1px 2px rgba(0,0,0,.18); background:repeating-linear-gradient(to bottom,#b22234 0 2.38px,#fff 2.38px 4.76px); }
-.flag-mark>span { position:absolute; inset:0 auto auto 0; width:22px; height:17px; padding:1px 2px; overflow:hidden; background:#3c3b6e; color:#fff; font-family:Arial,sans-serif; font-size:4px; line-height:6px; letter-spacing:1px; text-align:center; }
+.flag-mark { width:52px; height:31px; position:relative; flex:0 0 auto; overflow:hidden; border:1px solid rgba(8,20,33,.22); box-shadow:0 1px 2px rgba(0,0,0,.18); background:#fff; }
+.flag-mark img { object-fit:cover; }
 nav { display:flex; gap:26px; margin-left:auto; }
 nav a { font-weight:700; font-size:.9rem; text-transform:uppercase; letter-spacing:.035em; }
 nav a:hover { color:var(--orange-dark); }
@@ -79,13 +79,15 @@ input:focus,select:focus { outline:3px solid rgba(242,106,24,.24); border-color:
 .centered p { margin-top:16px; }
 .inventory-section { background:var(--cream); }
 .vertical-inventory { border-top:1px solid #d8dee3; }
-.homepage-inventory .inventory-card:nth-child(1) .image-wrap img { object-position:26% 54%; }
-.homepage-inventory .inventory-card:nth-child(3) .image-wrap img { object-position:76% 48%; }
 .inventory-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; }
 .inventory-card { background:#fff; border:1px solid #d9ddd9; }
 .image-wrap { position:relative; aspect-ratio:4 / 3; overflow:hidden; background:#dce2e5; }
 .inventory-card img { transition:transform .35s ease; }
 .inventory-card:hover img { transform:scale(1.035); }
+.height-comparison { position:absolute; inset:auto 10px 10px; display:grid; grid-template-columns:1fr 1fr; gap:6px; pointer-events:none; }
+.height-comparison span,.modified-badge { background:rgba(8,20,33,.92); color:#fff; border-top:3px solid var(--orange); padding:7px 8px 6px; font-family:var(--font-heading); font-size:.64rem; font-weight:800; line-height:1.05; letter-spacing:.045em; text-align:center; text-transform:uppercase; box-shadow:0 3px 12px rgba(0,0,0,.24); }
+.height-comparison b { display:block; margin-top:3px; color:#fff; font-size:.92rem; }
+.modified-badge { position:absolute; left:10px; bottom:10px; }
 .inventory-body { padding:22px; }
 .stock { color:#2f6b43; font-size:.72rem; text-transform:uppercase; letter-spacing:.09em; font-weight:800; }
 .inventory-body h3 { margin:7px 0 9px; }
