@@ -157,6 +157,11 @@ blockquote { margin:0; }
 .legal { border-top:1px solid #26323c; margin-top:45px; padding-top:20px; font-size:.8rem; }
 .mobile-bar { display:none; }
 .vertical-hero { background-position:center; }
+.vertical-construction .hero-background { filter:brightness(1.08) saturate(1.04); }
+.vertical-construction .hero-overlay { background:linear-gradient(90deg,rgba(3,12,23,.42) 0%,rgba(3,12,23,.36) 56%,rgba(3,12,23,.50) 100%); }
+.vertical-business .hero-grid { grid-template-columns:minmax(410px,.72fr) minmax(0,1.08fr); }
+.vertical-business .hero-copy { grid-column:2; grid-row:1; }
+.vertical-business .quote-form { grid-column:1; grid-row:1; }
 .benefit-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 .benefit-grid article { background:var(--cream); border-top:5px solid var(--navy); padding:34px; }
 .benefit-grid b { color:var(--orange); font-family:var(--font-heading); font-size:1.15rem; }
@@ -209,6 +214,12 @@ blockquote { margin:0; }
   .nav-actions .phone,.nav-actions .button { display:none; }
   .home-hero,.vertical-hero { min-height:auto; }
   .home-hero { background-position:58% center; }
+  .vertical-construction { background-position:20% center; }
+  .vertical-construction .hero-background { object-position:20% center; }
+  .vertical-business { background-position:78% center; }
+  .vertical-business .hero-background { object-position:78% center; }
+  .vertical-business .hero-grid { grid-template-columns:1fr; }
+  .vertical-business .hero-copy,.vertical-business .quote-form { grid-column:auto; grid-row:auto; }
   .hero-grid { grid-template-columns:1fr; padding-top:62px; padding-bottom:45px; }
   .hero-copy h1 { font-size:3.35rem; }
   .hero-lead { font-size:1.08rem; }
