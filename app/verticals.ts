@@ -6,6 +6,8 @@ export type Vertical = {
   emphasis: string;
   lead: string;
   hero: string;
+  featureImage: string;
+  gallery: { image: string; alt: string; caption: string }[];
   context: string;
   benefitsTitle: string;
   benefits: { title: string; text: string }[];
@@ -16,7 +18,12 @@ export type Vertical = {
 
 const construction: Vertical = {
   key: "construction", nav: "Construction", eyebrow: "Job site storage that works", title: "Protect your tools.", emphasis: "Keep your crew moving.",
-  lead: "Secure, weatherproof containers delivered directly to your job site in 5 to 10 days. From $1,950 delivered.", hero: "/hero-construction.jpg", context: "Construction site storage",
+  lead: "Secure, weatherproof containers delivered directly to your job site in 5 to 10 days. From $1,950 delivered.", hero: "/hero-construction.jpg", featureImage: "/storage-tools.jpg", context: "Construction site storage",
+  gallery: [
+    { image: "/lock-theft.jpg", alt: "Locked shipping container protecting construction equipment", caption: "Lock tools down after the crew leaves" },
+    { image: "/weather-rain.jpg", alt: "Weatherproof construction storage container in rain", caption: "Keep materials protected from weather" },
+    { image: "/storage-tools2.jpg", alt: "Organized contractor tools inside a shipping container", caption: "Organize equipment where it is used" },
+  ],
   benefitsTitle: "Put theft, weather and wasted trips behind you.",
   benefits: [
     { title: "Stop tools walking off", text: "Steel lockbox doors protect power tools, fittings and equipment after the crew leaves." },
@@ -25,9 +32,9 @@ const construction: Vertical = {
   ],
   applications: ["Power tools", "Copper and fittings", "Safety equipment", "Small machinery", "Plans and site supplies", "Finish materials"],
   testimonials: [
-    { quote: "Secure tool storage was on site within a week. The driver placed it exactly where we marked.", person: "Mike R., General Contractor" },
-    { quote: "The 40-footer holds the crew's tools and materials. Nothing leaves the site overnight.", person: "Darren P., Site Superintendent" },
-    { quote: "One delivered price and no surprise fees. Straightforward from quote to placement.", person: "Chris T., Project Manager" },
+    { quote: "On site within a week and placed exactly where we marked.", person: "Mike R., General Contractor" },
+    { quote: "The crew's tools stay locked on site overnight.", person: "Darren P., Site Superintendent" },
+    { quote: "One delivered price. No surprise fees.", person: "Chris T., Project Manager" },
   ],
   faq: [
     { q: "How quickly can it reach the job site?", a: "Most deliveries are scheduled within 5 to 10 days after availability and access are confirmed." },
@@ -38,7 +45,12 @@ const construction: Vertical = {
 
 const farm: Vertical = {
   key: "farm", nav: "Farm", eyebrow: "Storage built for working land", title: "Protect your equipment.", emphasis: "Secure your feed.",
-  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", context: "Farm and ranch storage",
+  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", featureImage: "/ag-interior.jpg", context: "Farm and ranch storage",
+  gallery: [
+    { image: "/ag-gallery1.jpg", alt: "Shipping container placed beside a barn and cattle pasture", caption: "Placed beside the barn, not in the way" },
+    { image: "/ag-gallery2.jpg", alt: "Farm supplies stored securely inside a shipping container", caption: "Feed, seed and supplies stay organized" },
+    { image: "/ag-gallery3.jpg", alt: "Farm equipment stored in a weatherproof shipping container", caption: "Protect tools and seasonal equipment" },
+  ],
   benefitsTitle: "Dry, lockable storage where the work happens.",
   benefits: [
     { title: "Keep pests out", text: "Solid steel walls and sealed cargo doors protect feed, seed and supplies from rodents." },
@@ -47,9 +59,9 @@ const farm: Vertical = {
   ],
   applications: ["Feed and seed", "Tractor attachments", "Fencing supplies", "Animal health products", "Hand tools", "Seasonal equipment"],
   testimonials: [
-    { quote: "Feed stays dry, mice stay out, and everything is right beside the barn.", person: "Wade H., Cattle Rancher" },
-    { quote: "Our fencing supplies and irrigation gear are finally organized and close to the field.", person: "Alan B., Farm Owner" },
-    { quote: "The driver placed it beside the equipment shed on our prepared gravel pad.", person: "Jake M., Livestock Farmer" },
+    { quote: "Feed stays dry and everything is beside the barn.", person: "Wade H., Cattle Rancher" },
+    { quote: "Fencing supplies are organized and close to the field.", person: "Alan B., Farm Owner" },
+    { quote: "Placed beside the equipment shed on our gravel pad.", person: "Jake M., Livestock Farmer" },
   ],
   faq: [
     { q: "Can you deliver beyond the main barn?", a: "Often, yes. The route needs firm ground, enough turning room and a clear straight approach. We confirm access first." },
@@ -60,7 +72,12 @@ const farm: Vertical = {
 
 const business: Vertical = {
   key: "business", nav: "Business", eyebrow: "Overflow storage on your own lot", title: "Own your storage.", emphasis: "Stop renting units.",
-  lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/business-overflow.png", context: "Business overflow storage",
+  lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/business-overflow.png", featureImage: "/container-40ft-standard.jpg", context: "Business overflow storage",
+  gallery: [
+    { image: "/business-overflow.png", alt: "Shipping container storing restaurant supplies beside a business", caption: "Overflow stock stays beside your premises" },
+    { image: "/container-custom.jpg", alt: "Modified shipping container for organized business storage", caption: "Add shelving, lighting and access options" },
+    { image: "/hero-depot-inventory.png", alt: "Large inventory of shipping containers ready for delivery", caption: "Choose the right size from available inventory" },
+  ],
   benefitsTitle: "More room without another lease.",
   benefits: [
     { title: "Keep inventory close", text: "Access overflow stock, furniture and equipment without a trip across town." },
@@ -69,9 +86,9 @@ const business: Vertical = {
   ],
   applications: ["Restaurant furniture", "Retail inventory", "Packaging supplies", "Maintenance equipment", "Records and fixtures", "Seasonal stock"],
   testimonials: [
-    { quote: "Seasonal stock now sits behind the shop instead of across town.", person: "Rachel M., Retail Owner" },
-    { quote: "We stopped paying monthly storage and gained faster access to inventory.", person: "Carlos D., Restaurant Operator" },
-    { quote: "The container arrived clean, dry, and exactly where our team needed it.", person: "Nina S., Operations Manager" },
+    { quote: "Seasonal stock is behind the shop, not across town.", person: "Rachel M., Retail Owner" },
+    { quote: "We stopped paying monthly storage fees.", person: "Carlos D., Restaurant Operator" },
+    { quote: "Clean, dry and placed exactly where we needed it.", person: "Nina S., Operations Manager" },
   ],
   faq: [
     { q: "Can a container sit behind my business?", a: "Usually, subject to local zoning, fire access and property rules. Confirm permits and clearance with your local authority or landlord." },

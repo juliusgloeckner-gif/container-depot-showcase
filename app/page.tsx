@@ -21,6 +21,7 @@ export default function Home() {
     <main>
       <Header />
       <section className="home-hero" id="quote">
+        <Image className="hero-background" src="/hero-depot-inventory.png" alt="Rows of shipping containers ready for nationwide delivery" fill priority sizes="100vw" />
         <div className="hero-overlay" />
         <div className="wrap hero-grid">
           <div className="hero-copy">

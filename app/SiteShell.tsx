@@ -13,7 +13,7 @@ export function Header() {
       <header className="site-header">
         <div className="wrap nav-inner">
           <Link href="/" className="wordmark" aria-label="United Container Depot home">
-            <span className="mark">UCD</span>
+            <span className="flag-mark" aria-hidden="true"><span>★ ★ ★<br />★ ★</span></span>
             <span>United Container Depot</span>
           </Link>
           <nav aria-label="Main navigation">
@@ -37,7 +37,7 @@ export function Footer() {
     <footer className="footer">
       <div className="wrap footer-grid">
         <div>
-          <div className="wordmark footer-wordmark"><span className="mark">UCD</span><span>United Container Depot</span></div>
+          <div className="wordmark footer-wordmark"><span className="flag-mark" aria-hidden="true"><span>★ ★ ★<br />★ ★</span></span><span>United Container Depot</span></div>
           <p>New and used shipping containers delivered across the continental United States.</p>
           <a className="footer-phone" href="tel:18555250902">(855) 525-0902</a>
         </div>

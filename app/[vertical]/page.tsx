@@ -24,7 +24,8 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
   return (
     <main>
       <Header />
-      <section className="vertical-hero" id="quote" style={{ backgroundImage: `url(${data.hero})` }}>
+      <section className="vertical-hero" id="quote">
+        <Image className="hero-background" src={data.hero} alt={`${data.nav} shipping container storage`} fill priority sizes="100vw" />
         <div className="hero-overlay" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
@@ -45,9 +46,18 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
         </div>
       </section>
 
+      <section className="section vertical-gallery-section">
+        <div className="wrap">
+          <div className="section-heading split-heading"><div><span className="eyebrow dark">Storage in the real world</span><h2>See how the space gets used.</h2></div><p>Secure steel storage placed where the work happens, with the capacity to keep everyday supplies organized and close.</p></div>
+          <div className="vertical-gallery">
+            {data.gallery.map((item) => <figure key={item.image}><div><Image src={item.image} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}
+          </div>
+        </div>
+      </section>
+
       <section className="section vertical-use-section">
         <div className="wrap vertical-use-grid">
-          <div className="vertical-photo"><Image src={data.hero} alt={`${data.nav} shipping container in use`} fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+          <div className="vertical-photo"><Image src={data.featureImage} alt={`${data.nav} supplies organized inside a shipping container`} fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
           <div className="vertical-use-copy"><span className="eyebrow dark">What fits inside</span><h2>Room for the things that keep your operation moving.</h2><div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div><a className="button primary" href="#quote">Check local inventory</a></div>
         </div>
       </section>
