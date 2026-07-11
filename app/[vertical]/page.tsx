@@ -57,8 +57,11 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
 
       <section className="section vertical-use-section">
         <div className="wrap vertical-use-grid">
-          <div className="vertical-photo"><Image src={data.featureImage} alt={`${data.nav} supplies organized inside a shipping container`} fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
-          <div className="vertical-use-copy"><span className="eyebrow dark">What fits inside</span><h2>Room for the things that keep your operation moving.</h2><div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div><a className="button primary" href="#quote">Check local inventory</a></div>
+          <div className="vertical-photo">
+            <Image src={data.featureImage} alt={`${data.nav} supplies organized inside a shipping container`} fill sizes="(max-width: 800px) 100vw, 50vw" />
+            {data.visualTags && <div className="visual-tag-grid" aria-label="Typical business overflow contents">{data.visualTags.map((tag) => <span key={tag.label}><b>{tag.icon}</b>{tag.label}</span>)}</div>}
+          </div>
+          <div className="vertical-use-copy"><span className="eyebrow dark">What fits inside</span><h2>Room for the things that keep your operation moving.</h2>{data.visualTags ? <p className="visual-list-note">Flexible overflow capacity for the stock, fixtures and supplies that crowd your daily operation.</p> : <div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div>}<a className="button primary" href="#quote">Check local inventory</a></div>
         </div>
       </section>
 

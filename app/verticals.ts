@@ -12,6 +12,7 @@ export type Vertical = {
   benefitsTitle: string;
   benefits: { title: string; text: string }[];
   applications: string[];
+  visualTags?: { icon: string; label: string }[];
   testimonials: { quote: string; person: string }[];
   faq: { q: string; a: string }[];
 };
@@ -45,11 +46,11 @@ const construction: Vertical = {
 
 const farm: Vertical = {
   key: "farm", nav: "Farm", eyebrow: "Storage built for working land", title: "Protect your equipment.", emphasis: "Secure your feed.",
-  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", featureImage: "/ag-interior.jpg", context: "Farm and ranch storage",
+  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", featureImage: "/farm-feature-storage-v2.png", context: "Farm and ranch storage",
   gallery: [
     { image: "/ag-gallery1.jpg", alt: "Shipping container placed beside a barn and cattle pasture", caption: "Placed beside the barn, not in the way" },
-    { image: "/ag-gallery2.jpg", alt: "Farm supplies stored securely inside a shipping container", caption: "Feed, seed and supplies stay organized" },
-    { image: "/ag-gallery3.jpg", alt: "Farm equipment stored in a weatherproof shipping container", caption: "Protect tools and seasonal equipment" },
+    { image: "/farm-feed-storage-v2.png", alt: "Feed seed and fencing stored inside a standard 20 foot container beside a barn", caption: "Feed, seed and fencing stay organized" },
+    { image: "/farm-seasonal-equipment-v2.png", alt: "Seasonal farm equipment stored through the short-end cargo doors of a container beside an equipment shed", caption: "Seasonal equipment stays secure and dry" },
   ],
   benefitsTitle: "Dry, lockable storage where the work happens.",
   benefits: [
@@ -72,11 +73,11 @@ const farm: Vertical = {
 
 const business: Vertical = {
   key: "business", nav: "Business", eyebrow: "Overflow storage on your own lot", title: "Own your storage.", emphasis: "Stop renting units.",
-  lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/business-overflow.png", featureImage: "/container-40ft-standard.jpg", context: "Business overflow storage",
+  lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/business-overflow.png", featureImage: "/business-warehouse-overflow-v2.png", context: "Business overflow storage",
   gallery: [
     { image: "/business-overflow.png", alt: "Shipping container storing restaurant supplies beside a business", caption: "Overflow stock stays beside your premises" },
-    { image: "/container-custom.jpg", alt: "Modified shipping container for organized business storage", caption: "Add shelving, lighting and access options" },
-    { image: "/hero-depot-inventory.png", alt: "Large inventory of shipping containers ready for delivery", caption: "Choose the right size from available inventory" },
+    { image: "/business-warehouse-overflow-v2.png", alt: "Packaging supplies and warehouse overflow stored in a 40 foot container beside the loading area", caption: "Warehouse overflow stays organized on site" },
+    { image: "/business-retail-overflow-v2.png", alt: "Restaurant furniture and seasonal retail stock stored in a 20 foot container beside the business", caption: "Seasonal stock stays beside the business" },
   ],
   benefitsTitle: "More room without another lease.",
   benefits: [
@@ -85,6 +86,14 @@ const business: Vertical = {
     { title: "Scale around busy seasons", text: "Create flexible capacity for holiday stock, events, renovations or growth." },
   ],
   applications: ["Restaurant furniture", "Retail inventory", "Packaging supplies", "Maintenance equipment", "Records and fixtures", "Seasonal stock"],
+  visualTags: [
+    { icon: "RF", label: "Restaurant furniture" },
+    { icon: "RI", label: "Retail inventory" },
+    { icon: "PK", label: "Packaging supplies" },
+    { icon: "ME", label: "Maintenance equipment" },
+    { icon: "RC", label: "Records and fixtures" },
+    { icon: "SS", label: "Seasonal stock" },
+  ],
   testimonials: [
     { quote: "Seasonal stock is behind the shop, not across town.", person: "Rachel M., Retail Owner" },
     { quote: "We stopped paying monthly storage fees.", person: "Carlos D., Restaurant Operator" },
