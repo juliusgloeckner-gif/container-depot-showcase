@@ -11,9 +11,14 @@ const inventory = [
 ];
 
 const uses = [
-  { title: "Construction sites", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Construction storage" },
-  { title: "Farms and ranches", text: "Keep feed, seed, fencing supplies and tools dry, organized and beside the barn.", href: "/farm", image: "/farm-storage-real.png", cta: "Farm storage" },
-  { title: "Business overflow", text: "Put inventory, furniture, records and seasonal stock beside your premises.", href: "/business", image: "/business-overflow.png", cta: "Business storage" },
+  { title: "Construction", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Job site storage" },
+  { title: "Farm", text: "Keep feed, fencing, tools and seasonal equipment dry beside the barn.", href: "/farm", image: "/farm-storage-real.png", cta: "Farm storage" },
+  { title: "Business overflow", text: "Put inventory, furniture and seasonal stock beside your premises.", href: "/business", image: "/business-overflow.png", cta: "Business storage" },
+  { title: "Moving & relocation", text: "Pack household belongings at your pace and bridge the gap between homes.", href: "/moving", image: "/moving-hero.png", cta: "Moving storage" },
+  { title: "Renovation storage", text: "Clear the work zone and protect furniture, fixtures and household contents.", href: "/renovation", image: "/renovation-hero.png", cta: "Renovation storage" },
+  { title: "Vehicles & recreation", text: "Secure classic cars, motorcycles, ATVs and four seasons of gear.", href: "/vehicles", image: "/vehicles-hero.png", cta: "Vehicle storage" },
+  { title: "Events & production", text: "Keep cases, staging, tents and production equipment ready for load-in.", href: "/events", image: "/events-hero.png", cta: "Production storage" },
+  { title: "Schools & institutions", text: "Add capacity for furniture, athletics, events, facilities and public operations.", href: "/institutions", image: "/institutions-hero.png", cta: "Institutional storage" },
 ];
 
 export default function Home() {
@@ -54,16 +59,16 @@ export default function Home() {
       <section className="section dark-section industry-first" id="industries">
         <div className="wrap">
           <div className="section-heading split-heading light-heading">
-            <div><span className="eyebrow">Choose your operation</span><h2>A container page built for your exact use.</h2></div>
-            <p>These are dedicated landing pages, not general information pages. Each one speaks directly to the storage problems, buying priorities and delivery realities of that buyer.</p>
+            <div><span className="eyebrow">Find your use</span><h2>One container specialist. Eight buyer-specific pages.</h2></div>
+            <p>The homepage stays simple: we sell containers. These pages go deeper into the storage problems, buying priorities and delivery realities of each buyer.</p>
           </div>
           <div className="use-grid">
             {uses.map((use, index) => (
               <Link className="use-card" href={use.href} key={use.title}>
                 <Image src={use.image} alt={`${use.title} shipping container storage`} fill sizes="(max-width: 760px) 100vw, 33vw" />
                 <span className="use-shade" />
-                <span className="use-index">0{index + 1}</span>
-                <span className="use-copy"><strong>{use.title}</strong><span>{use.text}</span><b>Open {use.cta} page →</b></span>
+                <span className="use-index">{String(index + 1).padStart(2, "0")}</span>
+                <span className="use-copy"><strong>{use.title}</strong><span>{use.text}</span><b>View buyer page →</b></span>
               </Link>
             ))}
           </div>

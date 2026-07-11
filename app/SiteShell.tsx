@@ -18,9 +18,7 @@ export function Header() {
           </Link>
           <nav aria-label="Main navigation">
             <Link href="/#inventory">Containers</Link>
-            <Link href="/construction">Construction</Link>
-            <Link href="/farm">Farm</Link>
-            <Link href="/business">Business</Link>
+            <Link href="/#industries">Storage uses</Link>
           </nav>
           <div className="nav-actions">
             <a className="phone" href="tel:18555250902">(855) 525-0902</a>
@@ -49,10 +47,15 @@ export function Footer() {
           <Link href="/#inventory">Custom Modified</Link>
         </div>
         <div>
-          <h3>Built for</h3>
+          <h3>Storage uses</h3>
           <Link href="/construction">Construction sites</Link>
           <Link href="/farm">Farms and ranches</Link>
           <Link href="/business">Business overflow</Link>
+          <Link href="/moving">Moving and relocation</Link>
+          <Link href="/renovation">Renovation storage</Link>
+          <Link href="/vehicles">Vehicles and recreation</Link>
+          <Link href="/events">Events and production</Link>
+          <Link href="/institutions">Schools and institutions</Link>
         </div>
         <div>
           <h3>Company</h3>
