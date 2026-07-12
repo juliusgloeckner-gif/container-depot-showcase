@@ -1,24 +1,24 @@
-export const VARIANT_COOKIE = "ucd_ab_variant";
+export const CONSTRUCTION_VARIANT_COOKIE = "ucd_construction_variant";
+export const ORIGIN_VARIANT_COOKIE = "ucd_origin_variant";
 export const OLD_ORIGIN = "https://garaged-landing.vercel.app";
 export const NEW_ORIGIN = "https://ucd-redesign-b.vercel.app";
-export const DEFAULT_B_PERCENT = 10;
+export const DEFAULT_CONSTRUCTION_B_PERCENT = 50;
 
 const SEARCH_ENGINE_PATTERN =
   /bot|crawler|spider|slurp|bingpreview|facebookexternalhit|linkedinbot|twitterbot|whatsapp|google-inspectiontool|lighthouse/i;
 
-const SHARED_EXPERIMENT_PATHS = new Set([
+const LEGACY_PATHS = new Set([
   "/",
-  "/construction",
   "/agriculture",
   "/commercial",
-  "/farm",
-  "/business",
   "/privacy",
   "/terms",
 ]);
 
 const REDESIGN_ONLY_PREFIXES = [
+  "/farm",
   "/moving",
+  "/business",
   "/renovation",
   "/vehicles",
   "/events",
@@ -41,9 +41,9 @@ export function normalizeVariant(value) {
   return variant === "A" || variant === "B" ? variant : null;
 }
 
-export function parseBPercent(value) {
+export function parseConstructionBPercent(value) {
   const parsed = Number(value);
-  if (!Number.isFinite(parsed)) return DEFAULT_B_PERCENT;
+  if (!Number.isFinite(parsed)) return DEFAULT_CONSTRUCTION_B_PERCENT;
   return Math.min(100, Math.max(0, Math.round(parsed)));
 }
 
@@ -51,11 +51,20 @@ export function isSearchEngine(userAgent) {
   return SEARCH_ENGINE_PATTERN.test(userAgent || "");
 }
 
+export function isConstructionPath(pathname) {
+  const clean = cleanPathname(pathname);
+  return clean === "/construction" || clean.startsWith("/construction/");
+}
+
 export function isRedesignOnlyPath(pathname) {
   const clean = cleanPathname(pathname);
   return REDESIGN_ONLY_PREFIXES.some(
     (prefix) => clean === prefix || clean.startsWith(`${prefix}/`),
   );
+}
+
+export function isLegacyPath(pathname) {
+  return LEGACY_PATHS.has(cleanPathname(pathname));
 }
 
 export function isOldOnlyPath(pathname) {
@@ -68,10 +77,11 @@ export function isOldOnlyPath(pathname) {
 
 export function chooseVariant({
   forcedVariant,
-  cookieVariant,
+  constructionCookieVariant,
+  originVariant,
   pathname,
   userAgent,
-  bPercent = DEFAULT_B_PERCENT,
+  constructionBPercent = DEFAULT_CONSTRUCTION_B_PERCENT,
   randomValue = Math.random(),
 }) {
   if (isSearchEngine(userAgent) || isOldOnlyPath(pathname)) return "A";
@@ -79,35 +89,27 @@ export function chooseVariant({
   const forced = normalizeVariant(forcedVariant);
   if (forced) return forced;
 
+  if (isConstructionPath(pathname)) {
+    const existing = normalizeVariant(constructionCookieVariant);
+    if (existing) return existing;
+    return randomValue * 100 < parseConstructionBPercent(constructionBPercent)
+      ? "B"
+      : "A";
+  }
+
   if (isRedesignOnlyPath(pathname)) return "B";
+  if (isLegacyPath(pathname)) return "A";
 
-  const existing = normalizeVariant(cookieVariant);
-  if (existing) return existing;
-
-  if (!SHARED_EXPERIMENT_PATHS.has(cleanPathname(pathname))) return "A";
-
-  return randomValue * 100 < parseBPercent(bPercent) ? "B" : "A";
+  return normalizeVariant(originVariant) || "A";
 }
 
 export function destinationPath(variant, pathname) {
   const clean = cleanPathname(pathname);
-  let mapped = clean;
+  if (variant === "B" && clean === "/") return "/index.html";
+  if (clean === "/") return clean;
 
-  if (variant === "B") {
-    if (clean === "/agriculture") mapped = "/farm";
-    if (clean === "/commercial") mapped = "/business";
-  }
-
-  if (variant === "A") {
-    if (clean === "/farm") mapped = "/agriculture";
-    if (clean === "/business") mapped = "/commercial";
-  }
-
-  if (variant === "B" && mapped === "/") return "/index.html";
-  if (mapped === "/") return mapped;
-
-  const finalSegment = mapped.split("/").pop() || "";
+  const finalSegment = clean.split("/").pop() || "";
   const looksLikeFile = finalSegment.includes(".");
-  if (variant === "B" && !looksLikeFile) return `${mapped}/index.html`;
-  return mapped;
+  if (variant === "B" && !looksLikeFile) return `${clean}/index.html`;
+  return clean;
 }

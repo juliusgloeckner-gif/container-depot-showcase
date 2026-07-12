@@ -1,34 +1,48 @@
 import { NextResponse } from "next/server";
 import {
-  DEFAULT_B_PERCENT,
+  CONSTRUCTION_VARIANT_COOKIE,
+  DEFAULT_CONSTRUCTION_B_PERCENT,
   NEW_ORIGIN,
   OLD_ORIGIN,
-  VARIANT_COOKIE,
+  ORIGIN_VARIANT_COOKIE,
   chooseVariant,
   destinationPath,
+  isConstructionPath,
   normalizeVariant,
-  parseBPercent,
+  parseConstructionBPercent,
 } from "./experiment.mjs";
 
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30;
 
-function applyExperimentHeaders(
-  response,
+function setVariantCookie(response, name, variant) {
+  response.cookies.set(name, variant, {
+    path: "/",
+    maxAge: COOKIE_MAX_AGE,
+    sameSite: "lax",
+    secure: true,
+    httpOnly: true,
+  });
+}
+
+function applyExperimentHeaders(response, {
   variant,
+  pathname,
   forcedVariant,
-  cookieVariant,
-) {
+  constructionCookieVariant,
+  originVariant,
+}) {
   response.headers.set("x-ucd-variant", variant);
   response.headers.set("vary", "Cookie");
 
-  if (forcedVariant || !normalizeVariant(cookieVariant)) {
-    response.cookies.set(VARIANT_COOKIE, variant, {
-      path: "/",
-      maxAge: COOKIE_MAX_AGE,
-      sameSite: "lax",
-      secure: true,
-      httpOnly: true,
-    });
+  if (normalizeVariant(originVariant) !== variant) {
+    setVariantCookie(response, ORIGIN_VARIANT_COOKIE, variant);
+  }
+
+  if (
+    isConstructionPath(pathname) &&
+    (forcedVariant || !normalizeVariant(constructionCookieVariant))
+  ) {
+    setVariantCookie(response, CONSTRUCTION_VARIANT_COOKIE, variant);
   }
 
   return response;
@@ -68,26 +82,37 @@ export async function proxy(request) {
   const requestUrl = request.nextUrl.clone();
 
   if (requestUrl.pathname === "/__router/status") {
+    const redesignPercent = parseConstructionBPercent(
+      process.env.UCD_CONSTRUCTION_B_PERCENT,
+    );
     return NextResponse.json({
       status: "ok",
-      experiment: "ucd-redesign-2026",
-      defaultSplit: {
-        currentSite: 100 - parseBPercent(process.env.UCD_B_PERCENT),
-        redesign: parseBPercent(process.env.UCD_B_PERCENT),
+      experiment: "ucd-construction-redesign-2026",
+      constructionSplit: {
+        currentSite: 100 - redesignPercent,
+        redesign: redesignPercent,
       },
+      redesignOnly: ["/moving", "/institutions", "/farm"],
+      legacyTraffic: "current-site",
     });
   }
 
   const forcedVariant = normalizeVariant(
     requestUrl.searchParams.get("__ucd_variant"),
   );
-  const cookieVariant = request.cookies.get(VARIANT_COOKIE)?.value;
+  const constructionCookieVariant = request.cookies.get(
+    CONSTRUCTION_VARIANT_COOKIE,
+  )?.value;
+  const originVariant = request.cookies.get(ORIGIN_VARIANT_COOKIE)?.value;
   const variant = chooseVariant({
     forcedVariant,
-    cookieVariant,
+    constructionCookieVariant,
+    originVariant,
     pathname: requestUrl.pathname,
     userAgent: request.headers.get("user-agent") || "",
-    bPercent: process.env.UCD_B_PERCENT || DEFAULT_B_PERCENT,
+    constructionBPercent:
+      process.env.UCD_CONSTRUCTION_B_PERCENT ||
+      DEFAULT_CONSTRUCTION_B_PERCENT,
   });
 
   const destination = new URL(
@@ -108,12 +133,13 @@ export async function proxy(request) {
     response.headers.set("x-ucd-router-mode", "rewrite");
   }
 
-  return applyExperimentHeaders(
-    response,
+  return applyExperimentHeaders(response, {
     variant,
+    pathname: requestUrl.pathname,
     forcedVariant,
-    cookieVariant,
-  );
+    constructionCookieVariant,
+    originVariant,
+  });
 }
 
 export const config = {
