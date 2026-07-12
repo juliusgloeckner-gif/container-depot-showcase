@@ -21,7 +21,7 @@ export type Vertical = {
 const construction: Vertical = {
   key: "construction", nav: "Construction", eyebrow: "Job site storage that works", title: "Protect your tools.", emphasis: "Keep your crew moving.",
   lead: "Secure, weatherproof containers delivered directly to your job site in 5 to 10 days. From $1,950 delivered.", hero: "/hero-construction.jpg", featureImage: "/storage-tools.jpg", context: "Construction site storage",
-  inventoryImages: ["/container-20ft.jpg", "/hero-construction.jpg", "/container-40ft-hc.jpg", "/container-custom.jpg"],
+  inventoryImages: ["/container-20ft.jpg", "/inventory-v3/construction-40.jpg", "/container-40ft-hc.jpg", "/container-custom.jpg"],
   gallery: [
     { image: "/lock-theft.jpg", alt: "Locked shipping container protecting construction equipment", caption: "Lock tools down after the crew leaves" },
     { image: "/weather-rain.jpg", alt: "Weatherproof construction storage container in rain", caption: "Keep materials protected from weather" },
