@@ -23,7 +23,7 @@ export function Header() {
           </nav>
           <div className="nav-actions">
             <a className="phone" href="tel:18555250902">(855) 525-0902</a>
-            <Link className="button small primary" href="#quote">Get a quote</Link>
+            <Link className="button small primary" href="#quote-form">Get a quote</Link>
           </div>
         </div>
       </header>
@@ -74,7 +74,7 @@ export function MobileBar() {
   return (
     <div className="mobile-bar">
       <a href="tel:18555250902">Call now</a>
-      <a href="#quote">Get free quote</a>
+      <a href="#quote-form">Get free quote</a>
     </div>
   );
 }

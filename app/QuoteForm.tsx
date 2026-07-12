@@ -26,7 +26,7 @@ export function QuoteForm({ compact = false, context = "General container" }: Qu
   }
 
   return (
-    <form className={`quote-form ${compact ? "quote-form-compact" : ""}`} onSubmit={submitQuote}>
+    <form id="quote-form" className={`quote-form ${compact ? "quote-form-compact" : ""}`} onSubmit={submitQuote}>
       <div className="form-heading">
         <span className="eyebrow dark">Fast delivered price</span>
         <h2>Get your free quote</h2>

@@ -36,7 +36,7 @@ export function InventorySection({ images, context = "your site", homepage = fal
                 <h3>{item.name}</h3>
                 <strong className="card-price">{item.price}</strong>
                 <p>{item.detail}</p>
-                <a href="#quote">Get delivered price <span>→</span></a>
+                <a href="#quote-form">Get delivered price <span>→</span></a>
               </div>
             </article>
           ))}

@@ -49,7 +49,7 @@ const construction: Vertical = {
 const farm: Vertical = {
   key: "farm", nav: "Farm", eyebrow: "Storage built for working land", title: "Protect your equipment.", emphasis: "Secure your feed.",
   lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", featureImage: "/farm-feature-storage-v2.png", context: "Farm and ranch storage",
-  inventoryImages: ["/inventory-v2/farm-1.jpg", "/inventory-v2/farm-2.jpg", "/inventory-v2/farm-3.jpg", "/inventory-v2/farm-4.jpg"],
+  inventoryImages: ["/inventory-v3/farm-20.jpg", "/inventory-v3/farm-40.jpg", "/inventory-v2/farm-3.jpg", "/inventory-v3/farm-custom.jpg"],
   gallery: [
     { image: "/ag-gallery1.jpg", alt: "Shipping container placed beside a barn and cattle pasture", caption: "Placed beside the barn, not in the way" },
     { image: "/farm-feed-storage-v2.png", alt: "Feed seed and fencing stored inside a standard 20 foot container beside a barn", caption: "Feed, seed and fencing stay organized" },
@@ -77,7 +77,7 @@ const farm: Vertical = {
 const business: Vertical = {
   key: "business", nav: "Business", eyebrow: "Overflow storage on your own lot", title: "Own your storage.", emphasis: "Stop renting units.",
   lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/business-overflow.png", featureImage: "/business-warehouse-overflow-v2.png", context: "Business overflow storage",
-  inventoryImages: ["/inventory-v2/business-1.jpg", "/inventory-v2/business-2.jpg", "/inventory-v2/business-3.jpg", "/inventory-v2/business-4.jpg"],
+  inventoryImages: ["/inventory-v3/business-20.jpg", "/inventory-v2/business-2.jpg", "/inventory-v2/business-3.jpg", "/inventory-v2/business-4.jpg"],
   gallery: [
     { image: "/business-overflow.png", alt: "Shipping container storing restaurant supplies beside a business", caption: "Overflow stock stays beside your premises" },
     { image: "/business-warehouse-overflow-v2.png", alt: "Packaging supplies and warehouse overflow stored in a 40 foot container beside the loading area", caption: "Warehouse overflow stays organized on site" },
@@ -113,10 +113,10 @@ const business: Vertical = {
 const moving: Vertical = {
   key: "moving", nav: "Moving & Relocation", eyebrow: "Storage that moves at your pace", title: "Pack once.", emphasis: "Move without the rush.",
   lead: "Own secure space for the weeks between packing, closing and settling in. Load household belongings on your schedule and keep them close until the next step is ready.", hero: "/moving-hero.png", featureImage: "/moving-feature.png", context: "Residential moving and relocation storage",
-  inventoryImages: ["/inventory-v2/home-1.jpg", "/inventory-v2/home-2.jpg", "/inventory-v2/home-3.jpg", "/inventory-v2/home-4.jpg"],
+  inventoryImages: ["/inventory-v2/home-1.jpg", "/inventory-v2/home-2.jpg", "/inventory-v2/home-3.jpg", "/inventory-v3/home-custom.jpg"],
   gallery: [
     { image: "/moving-hero.png", alt: "Twenty foot shipping container holding household furniture and boxes beside a suburban home", caption: "Pack beside the house on your schedule" },
-    { image: "/moving-gallery-1.png", alt: "Household belongings being unloaded through the short-end doors of a shipping container", caption: "Unload at the new home without the rush" },
+    { image: "/gallery-v3/moving-people.jpg", alt: "Two homeowners unloading furniture and boxes through both short-end cargo doors of a twenty foot container", caption: "Unload at the new home without the rush" },
     { image: "/moving-gallery-2.png", alt: "Boxes furniture and moving blankets secured inside a standard shipping container", caption: "Keep one organized load between closings" },
   ],
   benefitsTitle: "More control between one front door and the next.",
@@ -141,7 +141,7 @@ const moving: Vertical = {
 const renovation: Vertical = {
   key: "renovation", nav: "Renovation", eyebrow: "Clear the rooms without losing the space", title: "Move it out.", emphasis: "Keep the project moving.",
   lead: "Protect furniture, fixtures and household contents from dust, traffic and accidental damage while renovation or restoration work happens inside your home.", hero: "/renovation-hero.png", featureImage: "/renovation-feature.png", context: "Home renovation and restoration storage",
-  inventoryImages: ["/inventory-v2/home-1.jpg", "/inventory-v2/home-2.jpg", "/inventory-v2/home-3.jpg", "/inventory-v2/home-4.jpg"],
+  inventoryImages: ["/inventory-v2/home-1.jpg", "/inventory-v2/home-2.jpg", "/inventory-v2/home-3.jpg", "/inventory-v3/home-custom.jpg"],
   gallery: [
     { image: "/renovation-hero.png", alt: "Standard shipping container beside a home renovation with wrapped household furniture nearby", caption: "Create working room before the crew starts" },
     { image: "/renovation-gallery-1.png", alt: "Wrapped furniture cabinets rugs and boxes stored inside a container beside a renovated home", caption: "Keep household contents away from dust" },
@@ -169,10 +169,10 @@ const renovation: Vertical = {
 const vehicles: Vertical = {
   key: "vehicles", nav: "Vehicles & Recreation", eyebrow: "Secure space for the machines you keep", title: "Free your garage.", emphasis: "Protect the good stuff.",
   lead: "Create lockable storage for classic cars, motorcycles, ATVs and recreational equipment beside your home, workshop or acreage.", hero: "/vehicles-hero.png", featureImage: "/vehicles-feature.png", context: "Vehicle and recreational equipment storage",
-  inventoryImages: ["/inventory-v2/vehicles-1.jpg", "/inventory-v2/vehicles-40ft-recreation.jpg", "/inventory-v2/vehicles-3.jpg", "/inventory-v2/vehicles-4.jpg"],
+  inventoryImages: ["/gallery-v3/vehicle-car.jpg", "/inventory-v2/vehicles-40ft-recreation.jpg", "/inventory-v2/vehicles-3.jpg", "/inventory-v3/vehicle-custom.jpg"],
   gallery: [
-    { image: "/inventory-v2/vehicles-1.jpg", alt: "Classic car stored through the short-end doors of a twenty foot container beside a workshop", caption: "A 20FT unit can protect one compact classic" },
-    { image: "/vehicles-gallery-1.png", alt: "Motorcycles ATV helmets and riding gear inside a twenty foot shipping container", caption: "Lock up motorcycles, ATVs and riding gear" },
+    { image: "/gallery-v3/vehicle-car.jpg", alt: "Realistic enthusiast coupe stored through both short-end doors of a twenty foot container beside a workshop", caption: "A 20FT unit can protect one compact classic" },
+    { image: "/gallery-v3/vehicle-motorcycles.jpg", alt: "Motorcycles ATV helmets and riding gear stored through both short-end doors of a twenty foot container", caption: "Lock up motorcycles, ATVs and riding gear" },
     { image: "/inventory-v2/vehicles-40ft-recreation.jpg", alt: "Kayaks bicycles an ATV and camping gear organized through the short-end doors of a forty foot container beside a workshop", caption: "Use 40FT for four seasons of recreation" },
   ],
   benefitsTitle: "A steel garage for the equipment you would rather keep.",
@@ -197,7 +197,7 @@ const vehicles: Vertical = {
 const events: Vertical = {
   key: "events", nav: "Events & Production", eyebrow: "Storage ready for the next load-in", title: "Store the show.", emphasis: "Be ready to roll.",
   lead: "Keep road cases, staging, tents, barriers and production equipment organized beside the venue, studio or temporary project site.", hero: "/events-hero.png", featureImage: "/events-feature.png", context: "Event media and temporary project storage",
-  inventoryImages: ["/inventory-v2/events-1.jpg", "/inventory-v2/events-2.jpg", "/inventory-v2/events-3.jpg", "/inventory-v2/events-4.jpg"],
+  inventoryImages: ["/inventory-v3/events-20.jpg", "/inventory-v3/events-40.jpg", "/inventory-v2/events-3.jpg", "/inventory-v2/events-4.jpg"],
   gallery: [
     { image: "/events-hero.png", alt: "Road cases lighting stands and barriers stored in a twenty foot container behind a concert venue", caption: "Keep production gear behind the venue" },
     { image: "/events-gallery-1.png", alt: "Camera cases lighting stands and production equipment inside a container on a film studio backlot", caption: "Stage media equipment near the next call" },
@@ -225,7 +225,7 @@ const events: Vertical = {
 const institutions: Vertical = {
   key: "institutions", nav: "Schools & Institutions", eyebrow: "Flexible capacity for public operations", title: "Space on site.", emphasis: "Programs stay moving.",
   lead: "Add secure storage for furniture, athletics, events, facilities and emergency supplies at schools, universities, municipalities and public organizations.", hero: "/institutions-hero.png", featureImage: "/institutions-feature.png", context: "Institutional and public sector storage",
-  inventoryImages: ["/inventory-v2/institutions-1.jpg", "/inventory-v2/institutions-2.jpg", "/inventory-v2/institutions-3.jpg", "/inventory-v2/institutions-4.jpg"],
+  inventoryImages: ["/inventory-v3/schools-20.jpg", "/inventory-v2/institutions-2.jpg", "/inventory-v2/institutions-3.jpg", "/inventory-v3/schools-custom.jpg"],
   gallery: [
     { image: "/institutions-hero.png", alt: "Athletic equipment tables and event supplies inside a forty foot container beside a school facilities building", caption: "Place capacity beside campus operations" },
     { image: "/institutions-gallery-1.png", alt: "Dorm furniture and move bins stored in a forty foot container at a university residence hall", caption: "Handle turnover without crowding buildings" },

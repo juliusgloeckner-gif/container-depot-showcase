@@ -4,7 +4,7 @@ import { InventorySection } from "./InventorySection";
 import { QuoteForm } from "./QuoteForm";
 import { Footer, Header, MobileBar } from "./SiteShell";
 
-const homepageInventoryImages = ["/inventory-v2/generic-1.jpg", "/inventory-v2/generic-2.jpg", "/inventory-v2/generic-3.jpg", "/inventory-v2/generic-4.jpg"] as [string, string, string, string];
+const homepageInventoryImages = ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/inventory-v3/generic-custom.jpg"] as [string, string, string, string];
 
 const uses = [
   { title: "Construction", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Job site storage" },
@@ -80,7 +80,7 @@ export default function Home() {
             <h2>If it needs to stay secure and dry, a container can store it.</h2>
             <p>Home moves, classic cars, contractor tools, farm supplies, restaurant furniture, retail inventory and more. We specialize in containers, so you get a straight answer about size, condition and delivery.</p>
             <div className="tag-list"><span>Moving</span><span>Vehicle storage</span><span>Equipment</span><span>Seasonal stock</span><span>Records</span><span>Home renovation</span></div>
-            <a className="button primary" href="#quote">Tell us what you are storing</a>
+            <a className="button primary" href="#quote-form">Tell us what you are storing</a>
           </div>
           <div className="delivery-panel">
             <span className="panel-label">Simple delivery</span>
@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
       <section className="final-cta">
-        <div className="wrap final-inner"><div><span className="eyebrow">Ready when you are</span><h2>Get the right container at the right delivered price.</h2></div><div className="cta-actions"><a className="button primary" href="#quote">Get my free quote</a><a className="button outline-light" href="tel:18555250902">Call (855) 525-0902</a></div></div>
+        <div className="wrap final-inner"><div><span className="eyebrow">Ready when you are</span><h2>Get the right container at the right delivered price.</h2></div><div className="cta-actions"><a className="button primary" href="#quote-form">Get my free quote</a><a className="button outline-light" href="tel:18555250902">Call (855) 525-0902</a></div></div>
       </section>
       <Footer />
       <MobileBar />

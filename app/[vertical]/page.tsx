@@ -62,7 +62,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
             <Image src={data.featureImage} alt={`${data.nav} supplies organized inside a shipping container`} fill sizes="(max-width: 800px) 100vw, 50vw" />
             {data.visualTags && <div className="visual-tag-grid" aria-label="Typical business overflow contents">{data.visualTags.map((tag) => <span key={tag.label}><b>{tag.icon}</b>{tag.label}</span>)}</div>}
           </div>
-          <div className="vertical-use-copy"><span className="eyebrow dark">What fits inside</span><h2>Room for the things that keep your operation moving.</h2>{data.visualTags ? <p className="visual-list-note">Flexible overflow capacity for the stock, fixtures and supplies that crowd your daily operation.</p> : <div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div>}<a className="button primary" href="#quote">Check local inventory</a></div>
+          <div className="vertical-use-copy"><span className="eyebrow dark">What fits inside</span><h2>Room for the things that keep your operation moving.</h2>{data.visualTags ? <p className="visual-list-note">Flexible overflow capacity for the stock, fixtures and supplies that crowd your daily operation.</p> : <div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div>}<a className="button primary" href="#quote-form">Check local inventory</a></div>
         </div>
       </section>
 
@@ -78,7 +78,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
       <TestimonialCarousel testimonials={data.testimonials} />
 
       <section className="section faq-section"><div className="wrap faq-grid"><div><span className="eyebrow dark">Questions from buyers</span><h2>Know before delivery.</h2><p>Call a container specialist at <a href="tel:18555250902">(855) 525-0902</a>.</p></div><div className="faq-list">{data.faq.map((item, i) => <details open={i === 0} key={item.q}><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
-      <section className="final-cta"><div className="wrap final-inner"><div><span className="eyebrow">Get storage handled</span><h2>A secure container, delivered where you need it.</h2></div><div className="cta-actions"><a className="button primary" href="#quote">Get my free quote</a><a className="button outline-light" href="tel:18555250902">Call (855) 525-0902</a></div></div></section>
+      <section className="final-cta"><div className="wrap final-inner"><div><span className="eyebrow">Get storage handled</span><h2>A secure container, delivered where you need it.</h2></div><div className="cta-actions"><a className="button primary" href="#quote-form">Get my free quote</a><a className="button outline-light" href="tel:18555250902">Call (855) 525-0902</a></div></div></section>
       <Footer /><MobileBar />
     </main>
   );
