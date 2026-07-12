@@ -49,6 +49,7 @@ foreach ($entry in $routes) {
   $html = [regex]::Replace($html, '(href|src)="/(?!container-depot-showcase/)', "`$1=`"$BasePath/")
   $html = $html.Replace('url(/', "url($BasePath/")
   $html = $html.Replace("$BasePath$BasePath/", "$BasePath/")
+  $html = $html.Replace('</body>', "<script src=`"$BasePath/quote-form.js`" defer></script></body>")
 
   $target = Join-Path $resolvedOutput $entry.File
   $targetDir = Split-Path -Parent $target

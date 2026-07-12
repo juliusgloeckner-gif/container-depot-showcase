@@ -93,6 +93,13 @@ nav a:hover { color:var(--orange-dark); }
 input,select { width:100%; min-height:49px; background:#fff; border:1px solid #b8c2cb; border-radius:2px; padding:0 13px; color:var(--ink); font:inherit; font-size:.97rem; text-transform:none; }
 .quote-form input,.quote-form select { padding-left:11px; padding-right:11px; font-size:.86rem; letter-spacing:-.01em; }
 .quote-form input[name="email"] { font-size:.8rem; }
+.form-honeypot { position:absolute !important; left:-10000px !important; width:1px !important; height:1px !important; opacity:0 !important; pointer-events:none !important; }
+.form-button:disabled { cursor:wait; opacity:.72; }
+.form-error { margin:12px 0 0; padding:10px 12px; background:#fff0ed; border-left:4px solid #b93822; color:#872412; font-size:.86rem; font-weight:700; }
+.quote-success { min-height:390px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; }
+.quote-success h2 { margin:8px 0 12px; }
+.quote-success>p:not(.form-note) { color:var(--muted); font-size:1rem; }
+.success-mark { width:52px; height:52px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; border-radius:50%; background:#e3f1e7; color:#155a2d; font-size:1.8rem; font-weight:800; }
 input:focus,select:focus { outline:3px solid rgba(242,106,24,.24); border-color:var(--orange); }
 .form-button { width:100%; margin-top:15px; border:0; }
 .form-note { text-align:center; font-size:.8rem; color:var(--muted); margin:12px 0 0; }
