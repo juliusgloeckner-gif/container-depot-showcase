@@ -17,6 +17,28 @@ export function Header() {
             <span className="flag-mark" aria-hidden="true"><Image src="/us-flag.png" alt="" fill sizes="52px" /></span>
             <span>United Container Depot</span>
           </Link>
+          <details className="mobile-menu">
+            <summary><span className="menu-icon" aria-hidden="true"></span><span>Menu</span></summary>
+            <div className="mobile-menu-panel">
+              <div className="mobile-menu-main">
+                <Link href="/#inventory">Containers</Link>
+                <Link href="/#industries">Storage uses</Link>
+                <a href="tel:18555250902">Call (855) 525-0902</a>
+                <Link className="mobile-menu-quote" href="?quote=1#quote-form">Get a quote</Link>
+              </div>
+              <span className="mobile-menu-label">Storage by use</span>
+              <div className="mobile-menu-links">
+                <Link href="/construction">Construction sites</Link>
+                <Link href="/farm">Farms and ranches</Link>
+                <Link href="/business">Business overflow</Link>
+                <Link href="/moving">Moving and relocation</Link>
+                <Link href="/renovation">Renovation storage</Link>
+                <Link href="/vehicles">Vehicles and recreation</Link>
+                <Link href="/events">Events and production</Link>
+                <Link href="/institutions">Schools and institutions</Link>
+              </div>
+            </div>
+          </details>
           <nav aria-label="Main navigation">
             <Link href="/#inventory">Containers</Link>
             <Link href="/#industries">Storage uses</Link>
