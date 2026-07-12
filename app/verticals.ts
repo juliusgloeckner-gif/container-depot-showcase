@@ -169,7 +169,7 @@ const renovation: Vertical = {
 const vehicles: Vertical = {
   key: "vehicles", nav: "Vehicles & Recreation", eyebrow: "Secure space for the machines you keep", title: "Free your garage.", emphasis: "Protect the good stuff.",
   lead: "Create lockable storage for classic cars, motorcycles, ATVs and recreational equipment beside your home, workshop or acreage.", hero: "/vehicles-hero.png", featureImage: "/vehicles-feature.png", context: "Vehicle and recreational equipment storage",
-  inventoryImages: ["/gallery-v3/vehicle-car.jpg", "/inventory-v2/vehicles-40ft-recreation.jpg", "/inventory-v2/vehicles-3.jpg", "/inventory-v3/vehicle-custom.jpg"],
+  inventoryImages: ["/gallery-v3/vehicle-car.jpg", "/inventory-v2/vehicles-40ft-recreation.jpg", "/inventory-v2/vehicles-3.jpg", "/inventory-v3/vehicle-custom-v2.png"],
   gallery: [
     { image: "/gallery-v3/vehicle-car.jpg", alt: "Realistic enthusiast coupe stored through both short-end doors of a twenty foot container beside a workshop", caption: "A 20FT unit can protect one compact classic" },
     { image: "/gallery-v3/vehicle-motorcycles.jpg", alt: "Motorcycles ATV helmets and riding gear stored through both short-end doors of a twenty foot container", caption: "Lock up motorcycles, ATVs and riding gear" },

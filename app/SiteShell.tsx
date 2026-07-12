@@ -44,6 +44,7 @@ export function Header() {
             <details className="desktop-use-menu">
               <summary>Storage uses</summary>
               <div className="desktop-use-dropdown">
+                <span className="desktop-menu-heading">Choose your storage use</span>
                 <Link href="/construction">Construction sites</Link>
                 <Link href="/farm">Farms and ranches</Link>
                 <Link href="/business">Business overflow</Link>
