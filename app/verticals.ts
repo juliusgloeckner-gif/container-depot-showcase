@@ -49,7 +49,7 @@ const construction: Vertical = {
 const farm: Vertical = {
   key: "farm", nav: "Farm", eyebrow: "Storage built for working land", title: "Protect your equipment.", emphasis: "Secure your feed.",
   lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", featureImage: "/farm-feature-storage-v2.png", context: "Farm and ranch storage",
-  inventoryImages: ["/inventory-v3/farm-20.jpg", "/inventory-v3/farm-40.jpg", "/inventory-v2/farm-3.jpg", "/inventory-v3/farm-custom.jpg"],
+  inventoryImages: ["/inventory-v4/farm-20-v2.png", "/inventory-v3/farm-40.jpg", "/inventory-v2/farm-3.jpg", "/inventory-v3/farm-custom.jpg"],
   gallery: [
     { image: "/ag-gallery1.jpg", alt: "Shipping container placed beside a barn and cattle pasture", caption: "Placed beside the barn, not in the way" },
     { image: "/farm-feed-storage-v2.png", alt: "Feed seed and fencing stored inside a standard 20 foot container beside a barn", caption: "Feed, seed and fencing stay organized" },
@@ -77,7 +77,7 @@ const farm: Vertical = {
 const business: Vertical = {
   key: "business", nav: "Business", eyebrow: "Overflow storage on your own lot", title: "Own your storage.", emphasis: "Stop renting units.",
   lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/business-overflow.png", featureImage: "/business-warehouse-overflow-v2.png", context: "Business overflow storage",
-  inventoryImages: ["/inventory-v3/business-20.jpg", "/inventory-v2/business-2.jpg", "/inventory-v2/business-3.jpg", "/inventory-v2/business-4.jpg"],
+  inventoryImages: ["/inventory-v4/business-20-v2.png", "/inventory-v2/business-2.jpg", "/inventory-v2/business-3.jpg", "/inventory-v2/business-4.jpg"],
   gallery: [
     { image: "/business-overflow.png", alt: "Shipping container storing restaurant supplies beside a business", caption: "Overflow stock stays beside your premises" },
     { image: "/business-warehouse-overflow-v2.png", alt: "Packaging supplies and warehouse overflow stored in a 40 foot container beside the loading area", caption: "Warehouse overflow stays organized on site" },
@@ -169,9 +169,9 @@ const renovation: Vertical = {
 const vehicles: Vertical = {
   key: "vehicles", nav: "Vehicles & Recreation", eyebrow: "Secure space for the machines you keep", title: "Free your garage.", emphasis: "Protect the good stuff.",
   lead: "Create lockable storage for classic cars, motorcycles, ATVs and recreational equipment beside your home, workshop or acreage.", hero: "/vehicles-hero.png", featureImage: "/vehicles-feature.png", context: "Vehicle and recreational equipment storage",
-  inventoryImages: ["/gallery-v3/vehicle-car.jpg", "/inventory-v2/vehicles-40ft-recreation.jpg", "/inventory-v2/vehicles-3.jpg", "/inventory-v3/vehicle-custom-v2.png"],
+  inventoryImages: ["/gallery-v4/vehicle-car-v2.png", "/inventory-v2/vehicles-40ft-recreation.jpg", "/inventory-v2/vehicles-3.jpg", "/inventory-v3/vehicle-custom-v2.png"],
   gallery: [
-    { image: "/gallery-v3/vehicle-car.jpg", alt: "Realistic enthusiast coupe stored through both short-end doors of a twenty foot container beside a workshop", caption: "A 20FT unit can protect one compact classic" },
+    { image: "/gallery-v4/vehicle-car-v2.png", alt: "Classic American pony coupe stored through both short-end doors of a twenty foot container beside a workshop", caption: "A 20FT unit can protect one compact classic" },
     { image: "/gallery-v3/vehicle-motorcycles.jpg", alt: "Motorcycles ATV helmets and riding gear stored through both short-end doors of a twenty foot container", caption: "Lock up motorcycles, ATVs and riding gear" },
     { image: "/inventory-v2/vehicles-40ft-recreation.jpg", alt: "Kayaks bicycles an ATV and camping gear organized through the short-end doors of a forty foot container beside a workshop", caption: "Use 40FT for four seasons of recreation" },
   ],
