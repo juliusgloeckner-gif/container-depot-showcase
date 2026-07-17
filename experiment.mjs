@@ -23,6 +23,14 @@ const REDESIGN_ONLY_PREFIXES = [
   "/vehicles",
   "/events",
   "/institutions",
+  "/international-shipping-containers",
+  "/disaster-relief-containers",
+  "/refrigerated-containers",
+  "/open-side-containers",
+  "/double-door-containers",
+  "/insulated-containers",
+  "/office-containers",
+  "/hazardous-material-storage",
 ];
 
 const CONSTRUCTION_KNOWLEDGE_PREFIXES = [
@@ -34,9 +42,15 @@ const CONSTRUCTION_KNOWLEDGE_PREFIXES = [
 
 const REDESIGN_ASSET_PREFIXES = [
   "/assets",
+  "/authentic",
   "/downloads",
+  "/gallery-v3",
+  "/gallery-v4",
+  "/inventory-v2",
   "/social",
   "/inventory-v3",
+  "/inventory-v4",
+  "/specialty",
 ];
 
 const REDESIGN_ASSET_PATHS = new Set([

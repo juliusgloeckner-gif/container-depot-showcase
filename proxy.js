@@ -95,7 +95,27 @@ export async function proxy(request) {
         currentSite: 100 - redesignPercent,
         redesign: redesignPercent,
       },
-      redesignOnly: ["/moving", "/institutions", "/farm"],
+      redesignOnly: {
+        useCases: [
+          "/farm",
+          "/business",
+          "/moving",
+          "/renovation",
+          "/vehicles",
+          "/events",
+          "/institutions",
+          "/international-shipping-containers",
+          "/disaster-relief-containers",
+        ],
+        specialtyContainers: [
+          "/refrigerated-containers",
+          "/open-side-containers",
+          "/double-door-containers",
+          "/insulated-containers",
+          "/office-containers",
+          "/hazardous-material-storage",
+        ],
+      },
       constructionKnowledge: "redesign-only and indexable",
       legacyTraffic: "current-site",
     });

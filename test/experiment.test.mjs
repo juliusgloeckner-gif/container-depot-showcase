@@ -61,8 +61,24 @@ test("routes every construction knowledge page to the redesign", () => {
   assert.equal(isConstructionKnowledgePath("/construction"), false);
 });
 
-test("new keyword verticals always use the redesign", () => {
-  for (const pathname of ["/moving", "/institutions", "/farm"]) {
+test("all non-construction use cases and specialty pages use the redesign", () => {
+  for (const pathname of [
+    "/farm",
+    "/business",
+    "/moving",
+    "/renovation",
+    "/vehicles",
+    "/events",
+    "/institutions",
+    "/international-shipping-containers",
+    "/disaster-relief-containers",
+    "/refrigerated-containers",
+    "/open-side-containers",
+    "/double-door-containers",
+    "/insulated-containers",
+    "/office-containers",
+    "/hazardous-material-storage",
+  ]) {
     assert.equal(
       chooseVariant({
         pathname,
@@ -79,6 +95,11 @@ test("serves redesign assets to crawlers without relying on cookies", () => {
     "/assets/index.css",
     "/downloads/ucd-construction-container-data-brief.pdf",
     "/social/construction-container-footprint.png",
+    "/authentic/farm-hero-v2.webp",
+    "/specialty/reefer-hero.webp",
+    "/inventory-v2/generic-3.jpg",
+    "/inventory-v4/farm-20-v2.png",
+    "/gallery-v4/vehicle-car-v2.png",
     "/inventory-v3/construction-40.jpg",
     "/hero-construction.jpg",
     "/quote-form.js",
