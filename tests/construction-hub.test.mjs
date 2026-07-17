@@ -137,6 +137,27 @@ test("keeps quote reminders at key landing-page decision points", async () => {
   assert.ok((html.match(/href="#quote-form"/g) ?? []).length >= 8);
 });
 
+test("keeps all eight storage-use links beside the construction guide navigation", async () => {
+  const response = await render("/construction");
+  const html = await response.text();
+  const expectedUses = [
+    ["/construction", "Construction sites"],
+    ["/farm", "Farms and ranches"],
+    ["/business", "Business overflow"],
+    ["/moving", "Moving and relocation"],
+    ["/renovation", "Renovation storage"],
+    ["/vehicles", "Vehicles and recreation"],
+    ["/events", "Events and production"],
+    ["/institutions", "Schools and institutions"],
+  ];
+
+  assert.match(html, /Storage uses/i);
+  assert.match(html, /Construction guides/i);
+  for (const [href, label] of expectedUses) {
+    assert.match(html, new RegExp(`href="${href}"[^>]*>${label}<`, "i"));
+  }
+});
+
 test("ships a complete evergreen guide library", async () => {
   const source = await readFile(new URL("../app/construction/guide-data.ts", import.meta.url), "utf8");
   const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;

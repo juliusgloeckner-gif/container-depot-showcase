@@ -11,7 +11,7 @@ export function Header() {
           <span>48 states served</span>
         </div>
       </div>
-      <header className="site-header">
+      <header className="site-header construction-site-header">
         <div className="wrap nav-inner">
           <Link href="/construction" className="wordmark" aria-label="United Container Depot construction containers">
             <span className="flag-mark" aria-hidden="true"><Image src="/us-flag.png" alt="" fill sizes="52px" /></span>
@@ -25,6 +25,17 @@ export function Header() {
                 <Link href="/construction/resources">Resource center</Link>
                 <a href="tel:18555250902">Call (855) 525-0902</a>
                 <Link className="mobile-menu-quote" href="/construction?quote=1#quote-form">Get a quote</Link>
+              </div>
+              <span className="mobile-menu-label">Storage by use</span>
+              <div className="mobile-menu-links">
+                <Link href="/construction">Construction sites</Link>
+                <Link href="/farm">Farms and ranches</Link>
+                <Link href="/business">Business overflow</Link>
+                <Link href="/moving">Moving and relocation</Link>
+                <Link href="/renovation">Renovation storage</Link>
+                <Link href="/vehicles">Vehicles and recreation</Link>
+                <Link href="/events">Events and production</Link>
+                <Link href="/institutions">Schools and institutions</Link>
               </div>
               <span className="mobile-menu-label">Construction guides</span>
               <div className="mobile-menu-links">
@@ -40,7 +51,21 @@ export function Header() {
           </details>
           <nav aria-label="Main navigation">
             <Link href="/construction#inventory">Container options</Link>
-            <details className="desktop-use-menu">
+            <details className="desktop-use-menu" name="construction-header-menu">
+              <summary>Storage uses</summary>
+              <div className="desktop-use-dropdown">
+                <span className="desktop-menu-heading">Choose your storage use</span>
+                <Link href="/construction">Construction sites</Link>
+                <Link href="/farm">Farms and ranches</Link>
+                <Link href="/business">Business overflow</Link>
+                <Link href="/moving">Moving and relocation</Link>
+                <Link href="/renovation">Renovation storage</Link>
+                <Link href="/vehicles">Vehicles and recreation</Link>
+                <Link href="/events">Events and production</Link>
+                <Link href="/institutions">Schools and institutions</Link>
+              </div>
+            </details>
+            <details className="desktop-use-menu" name="construction-header-menu">
               <summary>Construction guides</summary>
               <div className="desktop-use-dropdown">
                 <span className="desktop-menu-heading">Plan and run jobsite storage</span>
