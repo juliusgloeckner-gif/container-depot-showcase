@@ -63,6 +63,25 @@ foreach ($route in $constructionRoutes) {
   $routes += @{ Route = $route; File = "$($route.Replace('/', '\'))\index.html"; Interactive = $true }
 }
 
+$knowledgeDataPath = Join-Path $project "app\knowledge\knowledge-data.json"
+$knowledgeData = Get-Content -Raw -LiteralPath $knowledgeDataPath | ConvertFrom-Json
+foreach ($verticalProperty in $knowledgeData.verticals.PSObject.Properties) {
+  $vertical = $verticalProperty.Name
+  $config = $verticalProperty.Value
+  if ($config.guides.Count -ne 32) { throw "Expected 32 $vertical guides, found $($config.guides.Count)." }
+  if ($config.questions.Count -ne 100) { throw "Expected 100 $vertical questions, found $($config.questions.Count)." }
+  $knowledgeRoutes = @(
+    "$vertical/resources",
+    "$vertical/resources/planning-brief",
+    "$vertical/questions",
+    "$vertical/planner"
+  )
+  $knowledgeRoutes += $config.guides | ForEach-Object { "$vertical/guides/$($_.slug)" }
+  foreach ($route in $knowledgeRoutes) {
+    $routes += @{ Route = $route; File = "$($route.Replace('/', '\'))\index.html"; Interactive = $true }
+  }
+}
+
 foreach ($entry in $routes) {
   $url = if ($entry.Route) { "$Origin/$($entry.Route)" } else { "$Origin/" }
   $html = (Invoke-WebRequest -UseBasicParsing $url).Content
@@ -91,4 +110,13 @@ foreach ($entry in $routes) {
 }
 
 New-Item -ItemType File -Path (Join-Path $resolvedOutput ".nojekyll") -Force | Out-Null
+$vercelConfig = @{
+  cleanUrls = $true
+  trailingSlash = $true
+  headers = @(@{
+    source = "/(.*)"
+    headers = @(@{ key = "X-Robots-Tag"; value = "noindex, nofollow, noarchive" })
+  })
+} | ConvertTo-Json -Depth 6
+[System.IO.File]::WriteAllText((Join-Path $resolvedOutput "vercel.json"), $vercelConfig, [System.Text.UTF8Encoding]::new($false))
 Write-Output "Exported static site to $resolvedOutput"

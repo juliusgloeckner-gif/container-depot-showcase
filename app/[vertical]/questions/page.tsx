@@ -1,0 +1,21 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { knowledgeConfig, knowledgeKeys } from "../../knowledge/data";
+import { KnowledgeQuestionsExplorer } from "../../knowledge/KnowledgeQuestionsExplorer";
+import { KnowledgeFooter, KnowledgeHeader, KnowledgeMobileBar } from "../../knowledge/KnowledgeSiteShell";
+
+export function generateStaticParams() { return knowledgeKeys.map((vertical) => ({ vertical })); }
+export async function generateMetadata({ params }: { params: Promise<{ vertical: string }> }): Promise<Metadata> { const { vertical } = await params; const config = knowledgeConfig(vertical); if (!config) return {}; return { title: `100 ${config.name} Container Questions Answered`, description: `Direct answers about buying, sizing, delivery, site planning, security and operation for ${config.context}.`, alternates: { canonical: `https://unitedcontainerdepot.com/${config.key}/questions` } }; }
+
+export default async function KnowledgeQuestionsPage({ params }: { params: Promise<{ vertical: string }> }) {
+  const { vertical } = await params; const config = knowledgeConfig(vertical); if (!config) notFound();
+  const schema = { "@context":"https://schema.org", "@type":"FAQPage", mainEntity: config.questions.map((item) => ({ "@type":"Question", name:item.question, acceptedAnswer:{ "@type":"Answer", text:item.answer } })) };
+  return <main className="questions-page"><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/><KnowledgeHeader config={config}/><div className="guide-topbar"><div className="wrap"><Link href={`/${config.key}`}>{config.name} containers</Link><span>/</span><Link href={`/${config.key}/resources`}>Resource center</Link><span>/</span><b>100 questions</b></div></div>
+    <header className="questions-hero"><div className="wrap questions-hero-grid"><div><span className="eyebrow">{config.name} question library</span><h1>100 {config.shortName.toLowerCase()} container questions. Direct answers first.</h1><p>Search the decision in front of you. Every answer links to a deeper guide and marks the point where the exact unit, contents, site or authority must take over.</p><div className="resource-hero-actions"><a className="button primary" href="#question-library">Search the answers</a><a className="button outline-light" href={config.downloads[3].href} download>Download handbook</a></div></div><figure><Image src={config.heroImage} alt={config.heroAlt} fill priority sizes="(max-width:800px) 100vw,42vw"/><figcaption><strong>8</strong><span>practical topics</span><strong>100</strong><span>direct answers</span></figcaption></figure></div></header>
+    <section className="faq-safety-gate"><div className="wrap"><div className="faq-safety-intro"><span className="eyebrow dark">Before you act on an answer</span><h2>Five decisions still require exact-plan verification.</h2><p>This library is a screening resource. It is not a site authorization, engineering design, product approval or substitute for a label, safety data sheet or owner manual.</p></div><ol className="faq-safety-grid">{config.safetyGates.map(([title,text]) => <li key={title}><strong>{title}</strong><span>{text}</span></li>)}</ol><div className="faq-source-row"><span>Primary references:</span>{config.sources.map((source) => <a href={source.href} target="_blank" rel="noreferrer" key={source.href}>{source.label}</a>)}</div></div></section>
+    <section className="section question-library-section" id="question-library"><div className="wrap"><KnowledgeQuestionsExplorer vertical={config.key} items={config.questions}/></div></section>
+    <section className="resource-conversion-cta"><div className="wrap"><div><span className="eyebrow">Have the answer?</span><h2>Now get the delivered price.</h2><p>Send the ZIP, likely size and intended use. A specialist will confirm nearby inventory and access requirements.</p></div><div><Link className="button primary" href={`/${config.key}?quote=1#quote-form`}>Get my delivered price</Link><a href="tel:18555250902">Call (855) 525-0902</a></div></div></section><KnowledgeFooter config={config}/><KnowledgeMobileBar config={config}/>
+  </main>;
+}
