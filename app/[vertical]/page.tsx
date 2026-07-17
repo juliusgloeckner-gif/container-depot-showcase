@@ -81,7 +81,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
         <div className="wrap">
           <div className="section-heading split-heading">
             <div><span className="eyebrow dark">Made for {data.nav.toLowerCase()}</span><h2>{data.benefitsTitle}</h2></div>
-            <p>{data.specialtyType ? "The right specialty container starts with the workflow, site and exact configuration, not only the nominal size." : "Own secure storage exactly where you need it, without monthly bills, return dates or surprise delivery charges."}</p>
+            <p>{data.benefitsLead ?? (data.specialtyType ? "The right specialty container starts with the workflow, site and exact configuration, not only the nominal size." : "Own secure storage exactly where you need it, without monthly bills, return dates or surprise delivery charges.")}</p>
           </div>
           <div className="benefit-grid">{data.benefits.map((benefit, index) => <article key={benefit.title}><b>0{index + 1}</b><h3>{benefit.title}</h3><p>{benefit.text}</p></article>)}</div>
         </div>

@@ -37,11 +37,12 @@ export function Header() {
                 <Link href="/events">Events and production</Link>
                 <Link href="/institutions">Schools and institutions</Link>
               </div>
-              <span className="mobile-menu-label">Specialty container types</span>
+              <span className="mobile-menu-label">Specialty containers and export</span>
               <div className="mobile-menu-links">
                 <Link href="/refrigerated-containers">Refrigerated / reefers</Link>
                 <Link href="/open-side-containers">Open side / roll-up</Link>
                 <Link href="/double-door-containers">Double door / tunnel</Link>
+                <Link href="/international-shipping-containers">International shipping / export</Link>
               </div>
               <span className="mobile-menu-label">Construction guides</span>
               <div className="mobile-menu-links">
@@ -69,10 +70,11 @@ export function Header() {
                 <Link href="/vehicles">Vehicles and recreation</Link>
                 <Link href="/events">Events and production</Link>
                 <Link href="/institutions">Schools and institutions</Link>
-                <span className="desktop-menu-heading desktop-menu-subheading">Specialty container types</span>
+                <span className="desktop-menu-heading desktop-menu-subheading">Specialty containers and export</span>
                 <Link href="/refrigerated-containers">Refrigerated / reefers</Link>
                 <Link href="/open-side-containers">Open side / roll-up</Link>
                 <Link href="/double-door-containers">Double door / tunnel</Link>
+                <Link href="/international-shipping-containers">International shipping / export</Link>
               </div>
             </details>
             <details className="desktop-use-menu" name="construction-header-menu">
@@ -118,6 +120,7 @@ export function Footer() {
           <Link href="/refrigerated-containers">Refrigerated / Reefers</Link>
           <Link href="/open-side-containers">Open Side / Roll-Up</Link>
           <Link href="/double-door-containers">Double Door / Tunnel</Link>
+          <Link href="/international-shipping-containers">International Shipping / Export</Link>
         </div>
         <div>
           <h3>Resource center</h3>

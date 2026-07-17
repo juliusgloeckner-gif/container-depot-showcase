@@ -11,6 +11,7 @@ export type Vertical = {
   gallery: { image: string; alt: string; caption: string }[];
   context: string;
   benefitsTitle: string;
+  benefitsLead?: string;
   benefits: { title: string; text: string }[];
   applications: string[];
   visualTags?: { icon: string; label: string }[];
@@ -18,7 +19,7 @@ export type Vertical = {
   faq: { q: string; a: string }[];
   seoTitle?: string;
   seoDescription?: string;
-  specialtyType?: "reefer" | "rollup" | "tunnel";
+  specialtyType?: "reefer" | "rollup" | "tunnel" | "export";
   heroChecks?: string[];
   quoteOptions?: string[];
   quoteCopy?: { eyebrow: string; heading: string; intro: string; buttonText: string; note: string };
@@ -509,6 +510,102 @@ const doubleDoor: Vertical = {
   ],
 };
 
+const internationalShipping: Vertical = {
+  key: "international-shipping-containers",
+  nav: "International Shipping",
+  eyebrow: "Buy here. Pack at your pace. Ship with your forwarder.",
+  title: "Pack without the rush.",
+  emphasis: "Ship when you are ready.",
+  lead: "Buy your container, have its export-readiness and CSC status checked, then fill it on your schedule. United Container Depot sells the container and arranges the depot inspection. We are not a freight forwarder and do not book ocean freight, customs clearance or international transport.",
+  hero: "/specialty/export-retirement-relocation-v1.webp",
+  featureImage: "/specialty/export-humanitarian-v1.webp",
+  inventoryImages: ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/reefer-hero.webp"],
+  context: "International shipping and export-ready container purchase",
+  seoTitle: "Shipping Containers for International Moves and Export",
+  seoDescription: "Buy a shipping container, arrange CSC export-readiness inspection, pack without a rental deadline, and have your freight forwarder handle ocean transport and customs.",
+  specialtyType: "export",
+  heroChecks: ["Purchase the container with no rental packing deadline", "Depot export-readiness inspection and CSC status arranged", "Your freight forwarder handles booking, customs and international transport"],
+  quoteOptions: ["20FT Dry Container for Export", "40FT Dry Container for Export", "40FT High Cube for Export", "Reefer Container for Export", "Not sure yet"],
+  quoteCopy: {
+    eyebrow: "Container plus export-readiness",
+    heading: "Get your export-container quote",
+    intro: "Tell us the size, delivery ZIP and intended destination. We quote the container, domestic delivery and applicable depot inspection, not ocean freight.",
+    buttonText: "Get my container purchase price",
+    note: "Container sale and inspection only. Freight forwarding, customs and international transport are separate.",
+  },
+  proofItem: { value: "CSC", label: "status checked before release" },
+  inventoryOptions: [
+    { name: "20FT Export-Ready Dry", price: "Request local price", detail: "A compact purchase for household moves, personal effects, program supplies and destinations where placement or cargo volume is limited.", badge: "Inspection arranged" },
+    { name: "40FT Export-Ready Dry", price: "Request local price", detail: "Full-size capacity for larger household relocations, nonprofit programs, commercial equipment and consolidated overseas loads.", badge: "40FT capacity" },
+    { name: "40FT High Cube Export", price: "Request local price", detail: "Additional interior height for bulky household goods, project equipment and high-volume loads, subject to carrier and destination limits.", badge: "Extra height" },
+    { name: "Export Reefer", price: "Request local price", detail: "A tested refrigerated container for approved cold-chain or international project use. Every UCD reefer purchase includes the separate 10-day depot electrical test and report.", badge: "CSC plus reefer test" },
+  ],
+  inventoryHeading: "Choose the container. Confirm export readiness before you load.",
+  inventoryLead: "We match the size and condition, arrange the applicable depot inspection and document the unit's CSC status. Your freight forwarder must confirm its own carrier, cargo, weight, customs and destination requirements before transport.",
+  inventoryStockLabel: "Inspection scope confirmed",
+  benefitsTitle: "Own the box. Keep the shipping roles clear.",
+  benefitsLead: "UCD handles the container purchase and applicable depot inspection. The buyer and licensed freight forwarder remain responsible for the cargo, carrier booking, customs and international movement.",
+  benefits: [
+    { title: "Pack without a rental clock", text: "Keep the purchased container beside your property while you sort, wrap and load over the timeline that works for you, subject to local placement rules." },
+    { title: "Prepare the container for export", text: "We arrange depot inspection of the container and confirmation of valid CSC safety status or required recertification before release." },
+    { title: "Let a freight forwarder move it", text: "A licensed freight forwarder handles ocean booking, carrier acceptance, export documents, customs coordination, port movement and destination logistics." },
+  ],
+  scrollQuote: {
+    eyebrow: "Start with the container",
+    strong: "Buy and inspect the box before the international move begins.",
+    text: "Your freight forwarder can then confirm the route, cargo and carrier requirements for the inspected unit.",
+    button: "Price my export container",
+  },
+  galleryTitle: "One purchase. Very different journeys.",
+  galleryLead: "International buyers include retirees, younger movers, nonprofits and project operators. The common sequence is to buy the container, confirm its export readiness, pack carefully and hand the transport to a qualified freight forwarder.",
+  gallery: [
+    { image: "/specialty/export-retirement-relocation-v1.webp", alt: "Retired couple gradually loading household furniture into the short-end cargo doors of a standard forty foot container beside their home", caption: "Retire overseas and pack the household without a rental deadline" },
+    { image: "/specialty/export-young-relocation-v1.webp", alt: "Young adults loading a bicycle books and household belongings through both short-end doors of a twenty foot container beside a townhouse", caption: "Start a new chapter abroad with one owned load" },
+    { image: "/specialty/export-humanitarian-v1.webp", alt: "Nonprofit volunteers loading medical supplies clothing and sports equipment through the short-end doors of a forty foot container", caption: "Consolidate approved aid and program supplies for overseas work" },
+  ],
+  featureEyebrow: "Relocation, aid and project cargo",
+  featureTitle: "Load deliberately. Document every shipment.",
+  featureLead: "Household goods, medical supplies, donated clothing, sports equipment and project materials can all face different packing, customs and destination rules. Your freight forwarder must confirm what may be shipped and how it must be declared before pickup.",
+  applications: ["Retirement relocation", "Personal overseas moves", "Medical and clinic supplies", "Clothing and sports donations", "Education and nonprofit programs", "Reefer and agriculture projects"],
+  technicalNotes: [
+    { title: "Confirm CSC safety status", text: "Internationally transported containers generally require a valid CSC Safety Approval Plate and current examination status. We arrange the applicable depot inspection or recertification for the selected unit." },
+    { title: "Understand what CSC does not cover", text: "CSC status concerns the container's structural safety. It does not approve the cargo, clear customs, certify packing, guarantee carrier acceptance or authorize entry at the destination." },
+    { title: "Choose a licensed freight forwarder", text: "United Container Depot is not a freight forwarder. Your forwarder books the international movement and coordinates carrier forms, port delivery, customs documents and destination handling." },
+    { title: "Get carrier approval before pickup", text: "Shipper-owned-container requirements vary. The carrier may request its own application, unit photos, CSC plate photo, survey report, tare weight and additional documentation." },
+  ],
+  ownershipEyebrow: "Why buyers own before they ship",
+  ownershipTitle: "Take time pressure out of a complicated move.",
+  ownershipLead: "International timing can change while you sell a home, wait for visas, sort donations or coordinate a project. Buying keeps the container available while the rest of the shipment comes together.",
+  ownershipReasons: [
+    { title: "Pack over weeks or months", text: "A retired couple relocating to Thailand, for example, can sort the household gradually while their forwarder confirms Thai import and carrier requirements." },
+    { title: "Bridge uncertain dates", text: "Keep one secured load together through changing departure dates, property handovers, visa timing or a delayed destination site." },
+    { title: "Consolidate program supplies", text: "Nonprofits can collect approved medical, clothing, education and sports supplies before the forwarder schedules the international movement." },
+    { title: "Own the project asset", text: "An export-ready dry container or tested reefer may continue serving the overseas property or program after arrival, subject to local import and placement rules." },
+  ],
+  processTitle: "From UCD purchase to freight-forwarder handoff.",
+  processLead: "We handle the container sale and arrange depot export-readiness work. Your licensed freight forwarder handles the international shipment.",
+  processSteps: [
+    { title: "Tell us the load and destination", text: "Share the delivery ZIP, intended destination, cargo category and preferred size so we can identify the right container and inspection path." },
+    { title: "Inspect and document the container", text: "We arrange the applicable depot inspection, confirm CSC status and provide the available unit documentation before release." },
+    { title: "Take delivery and pack at your pace", text: "You own the container, so you can organize and secure the load without a container-rental return deadline, subject to site rules." },
+    { title: "Your forwarder books and ships it", text: "The forwarder confirms carrier acceptance, packing and weight rules, customs paperwork, port handoff and destination delivery." },
+  ],
+  testimonials: [],
+  faq: [
+    { q: "What does export-ready or export certified mean?", a: "For the container itself, it means the unit is inspected for international transport and has valid CSC safety status or the required recertification and documentation for the selected unit. It is not a blanket approval of the cargo, customs entry, destination import or ocean booking." },
+    { q: "Is United Container Depot a freight forwarding company?", a: "No. We sell the container and arrange applicable depot export-readiness inspection. A licensed freight forwarder must arrange ocean or international transport, carrier booking, export documentation, customs coordination, port movement and destination handling." },
+    { q: "Does CSC status guarantee that a shipping line will accept my container?", a: "No. CSC status addresses container structural safety, but each carrier applies its own shipper-owned-container acceptance process. Your carrier or forwarder may also require an application, photos, CSC plate details, a survey or seaworthy report, tare weight and other records." },
+    { q: "Can I buy the container and pack it slowly?", a: "Yes. This is a container purchase, not a rental. You may load it over the time you need, subject to local zoning, property and safe-placement rules. Coordinate the inspection status, loaded pickup, weight and carrier cutoff with your freight forwarder before the final shipping date." },
+    { q: "Can I use one for an international household move?", a: "Yes, when the container, cargo and route meet the carrier and destination requirements. Retirees, families and younger movers often value the ability to pack gradually. Your freight forwarder should confirm prohibited items, inventory requirements, customs forms, packing rules, weight limits and final delivery before you load." },
+    { q: "Can a nonprofit ship medical supplies, clothing or sports gear?", a: "Potentially, but donated and medical goods can have strict origin, condition, labeling, licensing, customs and recipient requirements. The nonprofit and its freight forwarder must verify every item with the carrier and destination authorities before loading. United Container Depot does not approve cargo or imply affiliation with any charity." },
+    { q: "Can a reefer container be prepared for export?", a: "Yes, subject to unit, carrier and route requirements. In addition to CSC export-readiness, every UCD reefer purchase includes a separate 10-day depot electrical test and detailed report supporting the warranty. That electrical report does not replace any carrier-required pre-trip inspection or shipping documentation." },
+    { q: "Who decides how much I can load?", a: "The CSC plate, container payload, cargo distribution, road limits, verified gross mass rules, carrier limits and route requirements all matter. Your freight forwarder and carrier must confirm the allowable load and documentation for the exact container and movement." },
+  ],
+  finalEyebrow: "Buy the container. Use a forwarder to ship it.",
+  finalTitle: "Start with an inspected container you can pack on your schedule.",
+  finalCta: "Get my export-container quote",
+};
+
 export const verticals: Record<string, Vertical> = {
   construction,
   farm,
@@ -528,4 +625,6 @@ export const verticals: Record<string, Vertical> = {
   "refrigerated-containers": refrigerated,
   "open-side-containers": openSide,
   "double-door-containers": doubleDoor,
+  "international-shipping-containers": internationalShipping,
+  "export-containers": internationalShipping,
 };

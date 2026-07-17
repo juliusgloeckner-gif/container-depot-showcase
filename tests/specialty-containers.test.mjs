@@ -11,11 +11,12 @@ async function render(pathname) {
   }, { waitUntil() {}, passThroughOnException() {} });
 }
 
-test("renders all three specialty container landing pages", async () => {
+test("renders all four specialty container and export landing pages", async () => {
   const pages = [
     ["/refrigerated-containers", /Ten days of testing/i, /Every refrigerated-container purchase includes a 10-day depot electrical testing period/i, /Get my tested-reefer quote/i],
     ["/open-side-containers", /Open the right bay/i, /two roll-up doors along the long side of a 20FT unit or four along a 40FT unit/i, /Get my configuration quote/i],
     ["/double-door-containers", /Load from either end/i, /paired ISO cargo doors at both short ends/i, /Get my configuration quote/i],
+    ["/international-shipping-containers", /Pack without the rush/i, /We are not a freight forwarder/i, /Get my container purchase price/i],
   ];
   for (const [pathname, heading, technicalCopy, quoteCopy] of pages) {
     const response = await render(pathname);
@@ -29,14 +30,33 @@ test("renders all three specialty container landing pages", async () => {
   }
 });
 
-test("separates eight use cases from three specialty container types in navigation", async () => {
+test("separates eight use cases from four specialty container and export solutions", async () => {
   const response = await render("/");
   const html = await response.text();
   const useLinks = ["/construction", "/farm", "/business", "/moving", "/renovation", "/vehicles", "/events", "/institutions"];
-  const specialtyLinks = ["/refrigerated-containers", "/open-side-containers", "/double-door-containers"];
+  const specialtyLinks = ["/refrigerated-containers", "/open-side-containers", "/double-door-containers", "/international-shipping-containers"];
   assert.match(html, /Shop by use/i);
-  assert.match(html, /Specialty container types/i);
+  assert.match(html, /Specialty containers and export/i);
   for (const href of [...useLinks, ...specialtyLinks]) assert.match(html, new RegExp(`href="${href}"`, "i"));
+  assert.equal(new Set([...useLinks, ...specialtyLinks]).size, 12);
+});
+
+test("keeps international shipping scope on the container and hands freight to a forwarder", async () => {
+  const response = await render("/international-shipping-containers");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Purchase the container with no rental packing deadline/i);
+  assert.match(html, /CSC Safety Approval Plate and current examination status/i);
+  assert.match(html, /United Container Depot is not a freight forwarder/i);
+  assert.match(html, /Does CSC status guarantee that a shipping line will accept my container/i);
+  assert.match(html, /No\. CSC status addresses container structural safety/i);
+  assert.match(html, /A licensed freight forwarder must arrange ocean or international transport/i);
+  assert.match(html, /10-day depot electrical test/i);
+  assert.match(html, /does not replace any carrier-required pre-trip inspection/i);
+  assert.match(html, /United Container Depot does not approve cargo or imply affiliation with any charity/i);
+  assert.match(html, /ONE CONTAINER\. TWO CLEAR RESPONSIBILITIES/i);
+  assert.match(html, /UCD: CONTAINER \+ DEPOT INSPECTION/i);
+  assert.doesNotMatch(html, /PAIRED CARGO DOORS AT BOTH SHORT ENDS/i);
 });
 
 test("makes moving and relocation purchase-only instead of rental-led", async () => {
@@ -88,12 +108,13 @@ test("ships compressed project-bound visuals for every specialty page", async ()
     "reefer-hero.webp", "reefer-restaurant.webp", "reefer-farm.webp", "reefer-interior.webp",
     "open-side-hero.webp", "open-side-landscape.webp", "open-side-school.webp", "open-side-interior.webp",
     "tunnel-hero.webp", "tunnel-construction.webp", "tunnel-warehouse.webp", "tunnel-interior.webp",
+    "export-retirement-relocation-v1.webp", "export-young-relocation-v1.webp", "export-humanitarian-v1.webp",
   ];
   await Promise.all(names.map((name) => access(new URL(`../public/specialty/${name}`, import.meta.url))));
 });
 
 test("does not add invented specialty testimonials", async () => {
-  for (const pathname of ["/refrigerated-containers", "/open-side-containers", "/double-door-containers"]) {
+  for (const pathname of ["/refrigerated-containers", "/open-side-containers", "/double-door-containers", "/international-shipping-containers"]) {
     const response = await render(pathname);
     const html = await response.text();
     assert.doesNotMatch(html, /Buyer feedback/i);

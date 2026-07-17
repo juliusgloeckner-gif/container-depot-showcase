@@ -160,7 +160,7 @@ input:focus,select:focus { outline:3px solid rgba(242,106,24,.24); border-color:
 .use-copy>span { color:#e4ebf1; margin:10px 0 18px; }
 .use-copy b { color:#fff; background:var(--orange); padding:8px 10px 6px; font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; }
 .specialty-home-section { background:#eef1f3; border-top:1px solid var(--line); }
-.specialty-home-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.specialty-home-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
 .specialty-home-card { display:flex; flex-direction:column; background:#fff; border:1px solid #d4dbe0; transition:transform .2s ease,box-shadow .2s ease; }
 .specialty-home-card:hover { transform:translateY(-3px); box-shadow:0 18px 40px rgba(8,20,33,.13); }
 .specialty-home-image { position:relative; aspect-ratio:3 / 2; overflow:hidden; }
@@ -244,7 +244,8 @@ blockquote { margin:0; }
 .vertical-vehicles .hero-background { object-position:center; }
 .vertical-events .hero-background { object-position:center; }
 .vertical-institutions .hero-background { object-position:center; }
-.vertical-refrigerated-containers .hero-overlay,.vertical-open-side-containers .hero-overlay,.vertical-double-door-containers .hero-overlay { background:linear-gradient(90deg,rgba(3,12,23,.67) 0%,rgba(3,12,23,.38) 56%,rgba(3,12,23,.57) 100%); }
+.vertical-refrigerated-containers .hero-overlay,.vertical-open-side-containers .hero-overlay,.vertical-double-door-containers .hero-overlay,.vertical-international-shipping-containers .hero-overlay { background:linear-gradient(90deg,rgba(3,12,23,.67) 0%,rgba(3,12,23,.38) 56%,rgba(3,12,23,.57) 100%); }
+.vertical-international-shipping-containers .hero-background { transform:scaleX(-1); }
 .benefit-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 .benefit-grid article { background:var(--cream); border-top:5px solid var(--navy); padding:34px; }
 .benefit-grid b { color:var(--orange); font-family:var(--font-heading); font-size:1.15rem; }
@@ -380,6 +381,7 @@ blockquote { margin:0; }
   .vertical-refrigerated-containers .hero-background { object-position:62% center; }
   .vertical-open-side-containers .hero-background { object-position:58% center; }
   .vertical-double-door-containers .hero-background { object-position:58% center; }
+  .vertical-international-shipping-containers .hero-background { object-position:64% center; }
   .vertical-business .hero-grid { grid-template-columns:1fr; }
   .vertical-business .hero-copy,.vertical-business .quote-form { grid-column:auto; grid-row:auto; }
   .hero-grid { grid-template-columns:1fr; gap:30px; padding-top:30px; padding-bottom:40px; }

@@ -1,4 +1,4 @@
-type SpecialtyType = "reefer" | "rollup" | "tunnel";
+type SpecialtyType = "reefer" | "rollup" | "tunnel" | "export";
 
 type SpecialtyDiagramProps = {
   type: SpecialtyType;
@@ -82,15 +82,51 @@ function TunnelDiagram() {
   );
 }
 
+function ExportDiagram() {
+  const steps = [
+    { x: 35, number: "01", title: "BUY", detail: "UCD CONTAINER" },
+    { x: 250, number: "02", title: "INSPECT", detail: "CSC STATUS" },
+    { x: 465, number: "03", title: "PACK", detail: "YOUR SCHEDULE" },
+    { x: 680, number: "04", title: "SHIP", detail: "YOUR FORWARDER" },
+  ];
+  return (
+    <svg viewBox="0 0 900 390" role="img" aria-labelledby="export-title export-desc">
+      <title id="export-title">International container purchase and freight-forwarder handoff</title>
+      <desc id="export-desc">Four steps show the buyer purchasing a container from United Container Depot, the depot arranging CSC export-readiness inspection, the owner packing on their schedule, and a licensed freight forwarder arranging international shipment.</desc>
+      <text className="diagram-label" x="450" y="42" textAnchor="middle">ONE CONTAINER. TWO CLEAR RESPONSIBILITIES.</text>
+      <rect className="diagram-shell" x="24" y="68" width="415" height="248" rx="4" />
+      <rect className="diagram-machine" x="461" y="68" width="415" height="248" rx="4" />
+      <text className="diagram-small light" x="231" y="94" textAnchor="middle">UCD: CONTAINER + DEPOT INSPECTION</text>
+      <text className="diagram-small light" x="668" y="94" textAnchor="middle">FORWARDER: BOOKING + MOVEMENT</text>
+      {steps.map((step, index) => <g key={step.number}>
+        <rect className="diagram-cargo" x={step.x} y="128" width="185" height="135" rx="2" />
+        <text className="diagram-small orange" x={step.x + 20} y="157">{step.number}</text>
+        <text className="diagram-label" x={step.x + 92.5} y="199" textAnchor="middle">{step.title}</text>
+        <text className="diagram-small" x={step.x + 92.5} y="229" textAnchor="middle">{step.detail}</text>
+        {index < steps.length - 1 && <>
+          <path className="diagram-flow" d={`M${step.x + 185} 196 H${step.x + 213}`} />
+          <polygon className="diagram-arrow supply" points={`${step.x + 202},184 ${step.x + 218},196 ${step.x + 202},208`} />
+        </>}
+      </g>)}
+      <line className="diagram-dimension" x1="35" y1="292" x2="425" y2="292" />
+      <line className="diagram-dimension" x1="475" y1="292" x2="865" y2="292" />
+      <text className="diagram-small orange" x="231" y="343" textAnchor="middle">WE DO NOT BOOK OCEAN FREIGHT</text>
+      <text className="diagram-small green" x="668" y="343" textAnchor="middle">FORWARDER CONFIRMS CARRIER + CUSTOMS</text>
+    </svg>
+  );
+}
+
 export function SpecialtyDiagram({ type, notes }: SpecialtyDiagramProps) {
-  const eyebrow = type === "reefer" ? "Cold-chain setup" : type === "rollup" ? "Access layout" : "Two-way access";
-  const title = type === "reefer" ? "Airflow and power are part of the purchase." : type === "rollup" ? "The door count matches the container length." : "Cargo doors belong at both short ends.";
-  const visual = type === "reefer" ? <ReeferDiagram /> : type === "rollup" ? <RollupDiagram /> : <TunnelDiagram />;
+  const eyebrow = type === "reefer" ? "Cold-chain setup" : type === "rollup" ? "Access layout" : type === "tunnel" ? "Two-way access" : "Export handoff";
+  const title = type === "reefer" ? "Airflow and power are part of the purchase." : type === "rollup" ? "The door count matches the container length." : type === "tunnel" ? "Cargo doors belong at both short ends." : "We prepare the container. Your forwarder moves it.";
+  const visual = type === "reefer" ? <ReeferDiagram /> : type === "rollup" ? <RollupDiagram /> : type === "tunnel" ? <TunnelDiagram /> : <ExportDiagram />;
   const caption = type === "reefer"
     ? "Planning diagram. The exact unit, airflow limits, loading plan and electrical requirements are confirmed before delivery."
     : type === "rollup"
       ? "Planning diagram. Final door widths, reinforcement, locks and partitions are confirmed on the approved fabrication drawing."
-      : "Planning diagram. Door condition, two-end clearance, locks and internal layout are confirmed before delivery.";
+      : type === "tunnel"
+        ? "Planning diagram. Door condition, two-end clearance, locks and internal layout are confirmed before delivery."
+        : "Scope diagram. UCD sells and prepares the container. A licensed freight forwarder must confirm carrier acceptance, cargo, customs, port handling and international transport.";
 
   return (
     <section className={`section specialty-diagram-section specialty-diagram-${type}`} id="specialty-configuration">

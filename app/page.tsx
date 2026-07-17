@@ -21,6 +21,7 @@ const specialtyTypes = [
   { title: "Refrigerated / Reefers", text: "Powered cold storage with a standard 10-day depot electrical test and detailed report before delivery.", href: "/refrigerated-containers", image: "/specialty/reefer-hero.webp", label: "Tested cold storage" },
   { title: "Open Side / Roll-Up", text: "Two long-side access bays on 20FT units or four on 40FT units for faster retrieval.", href: "/open-side-containers", image: "/specialty/open-side-hero.webp", label: "Multi-door access" },
   { title: "Double Door / Tunnel", text: "Paired cargo doors at both short ends for two-way staging, long materials and FIFO flow.", href: "/double-door-containers", image: "/specialty/tunnel-hero.webp", label: "Access both ends" },
+  { title: "International Shipping / Export", text: "Buy the container, arrange CSC export-readiness inspection, pack at your pace, then ship through your freight forwarder.", href: "/international-shipping-containers", image: "/specialty/export-retirement-relocation-v1.webp", label: "Export-ready purchase" },
 ];
 
 export default function Home() {
@@ -80,8 +81,8 @@ export default function Home() {
       <section className="section specialty-home-section" id="specialty-containers">
         <div className="wrap">
           <div className="section-heading split-heading">
-            <div><span className="eyebrow dark">Shop by container type</span><h2>Specialty access and temperature control.</h2></div>
-            <p>The eight pages above start with how the buyer will use the space. These three start with a specific container configuration. Choose the product type when the hardware itself is the requirement.</p>
+            <div><span className="eyebrow dark">Specialty containers and export</span><h2>Special configurations. Export-ready inspection.</h2></div>
+            <p>The eight pages above start with how the buyer will use the space. Three options below start with specific container hardware. International shipping starts with a purchased container, CSC export-readiness and a clear handoff to the buyer&apos;s freight forwarder.</p>
           </div>
           <div className="specialty-home-grid">
             {specialtyTypes.map((item) => <Link className="specialty-home-card" href={item.href} key={item.title}>
