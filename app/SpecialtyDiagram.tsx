@@ -1,0 +1,110 @@
+type SpecialtyType = "reefer" | "rollup" | "tunnel";
+
+type SpecialtyDiagramProps = {
+  type: SpecialtyType;
+  notes: { title: string; text: string }[];
+};
+
+function ReeferDiagram() {
+  return (
+    <svg viewBox="0 0 900 390" role="img" aria-labelledby="reefer-title reefer-desc">
+      <title id="reefer-title">Refrigerated container airflow and power planning diagram</title>
+      <desc id="reefer-desc">A cutaway reefer container showing the refrigeration machinery at one short end, supply air moving below the cargo through the T-floor, return air moving above it, and a clear load line.</desc>
+      <rect className="diagram-shell" x="70" y="72" width="700" height="245" rx="3" />
+      <rect className="diagram-machine" x="70" y="72" width="128" height="245" />
+      <text className="diagram-label light" x="134" y="184" textAnchor="middle">REEFER</text>
+      <text className="diagram-small light" x="134" y="207" textAnchor="middle">MACHINERY</text>
+      <path className="diagram-floor" d="M205 286 H748" />
+      <path className="diagram-supply" d="M212 272 C350 330 605 330 738 272" />
+      <path className="diagram-return" d="M738 110 C590 62 350 62 212 110" />
+      <polygon className="diagram-arrow supply" points="722,264 748,270 728,288" />
+      <polygon className="diagram-arrow return" points="230,102 204,110 226,124" />
+      <rect className="diagram-cargo" x="245" y="145" width="88" height="128" />
+      <rect className="diagram-cargo" x="348" y="130" width="88" height="143" />
+      <rect className="diagram-cargo" x="451" y="154" width="88" height="119" />
+      <rect className="diagram-cargo" x="554" y="139" width="88" height="134" />
+      <rect className="diagram-cargo" x="657" y="161" width="62" height="112" />
+      <line className="diagram-load-line" x1="215" y1="120" x2="738" y2="120" />
+      <text className="diagram-small orange" x="485" y="111" textAnchor="middle">DO NOT LOAD ABOVE MARKED LOAD LINE</text>
+      <text className="diagram-small green" x="482" y="358" textAnchor="middle">SUPPLY AIR THROUGH T-FLOOR</text>
+      <text className="diagram-small blue" x="482" y="42" textAnchor="middle">UNOBSTRUCTED RETURN AIR</text>
+      <path className="diagram-power" d="M35 172 H70" />
+      <rect className="diagram-pedestal" x="10" y="140" width="28" height="64" />
+      <text className="diagram-small" x="25" y="226" textAnchor="middle">SITE POWER</text>
+    </svg>
+  );
+}
+
+function RollupDiagram() {
+  return (
+    <svg viewBox="0 0 900 390" role="img" aria-labelledby="rollup-title rollup-desc">
+      <title id="rollup-title">Twenty and forty foot multi-door open-side container diagram</title>
+      <desc id="rollup-desc">A 20-foot container with two roll-up doors and a 40-foot container with four roll-up doors along the long side, with reinforced vertical posts between openings.</desc>
+      <text className="diagram-label" x="180" y="55" textAnchor="middle">20FT: 2 ACCESS BAYS</text>
+      <rect className="diagram-shell rollup-shell" x="50" y="85" width="260" height="205" />
+      {[72, 183].map((x) => <rect className="diagram-rollup" x={x} y="112" width="103" height="153" key={x} />)}
+      {[63, 174, 286].map((x) => <rect className="diagram-post" x={x} y="92" width="12" height="190" key={x} />)}
+      <line className="diagram-dimension" x1="50" y1="326" x2="310" y2="326" />
+      <text className="diagram-small orange" x="180" y="353" textAnchor="middle">TWO LONG-SIDE ROLL-UP DOORS</text>
+
+      <text className="diagram-label" x="600" y="55" textAnchor="middle">40FT: 4 ACCESS BAYS</text>
+      <rect className="diagram-shell rollup-shell" x="340" y="85" width="520" height="205" />
+      {[362, 480, 598, 716].map((x) => <rect className="diagram-rollup" x={x} y="112" width="110" height="153" key={x} />)}
+      {[353, 471, 589, 707, 834].map((x) => <rect className="diagram-post" x={x} y="92" width="12" height="190" key={x} />)}
+      <line className="diagram-dimension" x1="340" y1="326" x2="860" y2="326" />
+      <text className="diagram-small orange" x="600" y="353" textAnchor="middle">FOUR LONG-SIDE ROLL-UP DOORS</text>
+    </svg>
+  );
+}
+
+function TunnelDiagram() {
+  return (
+    <svg viewBox="0 0 900 390" role="img" aria-labelledby="tunnel-title tunnel-desc">
+      <title id="tunnel-title">Double-door tunnel container access diagram</title>
+      <desc id="tunnel-desc">A plan view of a long container with paired cargo doors at both short ends, solid long sides, a clear center aisle and arrows showing loading from either end.</desc>
+      <text className="diagram-label" x="450" y="45" textAnchor="middle">PAIRED CARGO DOORS AT BOTH SHORT ENDS</text>
+      <rect className="diagram-shell tunnel-shell" x="190" y="92" width="520" height="208" />
+      <line className="diagram-wall" x1="190" y1="92" x2="710" y2="92" />
+      <line className="diagram-wall" x1="190" y1="300" x2="710" y2="300" />
+      <path className="diagram-door" d="M190 92 L125 40 M190 196 L125 145 M190 196 L125 247 M190 300 L125 352" />
+      <path className="diagram-door" d="M710 92 L775 40 M710 196 L775 145 M710 196 L775 247 M710 300 L775 352" />
+      <rect className="diagram-cargo" x="225" y="112" width="110" height="56" />
+      <rect className="diagram-cargo" x="225" y="224" width="110" height="56" />
+      <rect className="diagram-cargo" x="565" y="112" width="110" height="56" />
+      <rect className="diagram-cargo" x="565" y="224" width="110" height="56" />
+      <path className="diagram-flow" d="M80 196 H390" />
+      <polygon className="diagram-arrow supply" points="378,184 405,196 378,208" />
+      <path className="diagram-flow" d="M820 196 H510" />
+      <polygon className="diagram-arrow supply" points="522,184 495,196 522,208" />
+      <text className="diagram-small green" x="450" y="189" textAnchor="middle">CLEAR THROUGH-AISLE</text>
+      <text className="diagram-small orange" x="450" y="340" textAnchor="middle">LONG CORRUGATED SIDES REMAIN SOLID</text>
+    </svg>
+  );
+}
+
+export function SpecialtyDiagram({ type, notes }: SpecialtyDiagramProps) {
+  const eyebrow = type === "reefer" ? "Cold-chain setup" : type === "rollup" ? "Access layout" : "Two-way access";
+  const title = type === "reefer" ? "Airflow and power are part of the purchase." : type === "rollup" ? "The door count matches the container length." : "Cargo doors belong at both short ends.";
+  const visual = type === "reefer" ? <ReeferDiagram /> : type === "rollup" ? <RollupDiagram /> : <TunnelDiagram />;
+  const caption = type === "reefer"
+    ? "Planning diagram. The exact unit, airflow limits, loading plan and electrical requirements are confirmed before delivery."
+    : type === "rollup"
+      ? "Planning diagram. Final door widths, reinforcement, locks and partitions are confirmed on the approved fabrication drawing."
+      : "Planning diagram. Door condition, two-end clearance, locks and internal layout are confirmed before delivery.";
+
+  return (
+    <section className={`section specialty-diagram-section specialty-diagram-${type}`} id="specialty-configuration">
+      <div className="wrap specialty-diagram-grid">
+        <div className="specialty-diagram-copy">
+          <span className="eyebrow dark">{eyebrow}</span>
+          <h2>{title}</h2>
+          <div className="specialty-note-list">
+            {notes.map((note, index) => <article key={note.title}><b>0{index + 1}</b><div><h3>{note.title}</h3><p>{note.text}</p></div></article>)}
+          </div>
+          <a className="button primary" href="#quote-form">Confirm my configuration</a>
+        </div>
+        <div className="specialty-diagram-visual">{visual}<p>{caption}</p></div>
+      </div>
+    </section>
+  );
+}

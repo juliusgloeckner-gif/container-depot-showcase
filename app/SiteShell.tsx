@@ -22,9 +22,9 @@ export function Header() {
             <div className="mobile-menu-panel">
               <div className="mobile-menu-main">
                 <Link href="/#inventory">Containers</Link>
-                <Link href="/#industries">Storage uses</Link>
+                <Link href="/#industries">Storage solutions</Link>
                 <a href="tel:18555250902">Call (855) 525-0902</a>
-                <Link className="mobile-menu-quote" href="?quote=1#quote-form">Get a quote</Link>
+                <a className="mobile-menu-quote" href="#quote-form">Get a quote</a>
               </div>
               <span className="mobile-menu-label">Storage by use</span>
               <div className="mobile-menu-links">
@@ -37,14 +37,20 @@ export function Header() {
                 <Link href="/events">Events and production</Link>
                 <Link href="/institutions">Schools and institutions</Link>
               </div>
+              <span className="mobile-menu-label">Specialty container types</span>
+              <div className="mobile-menu-links">
+                <Link href="/refrigerated-containers">Refrigerated / reefers</Link>
+                <Link href="/open-side-containers">Open side / roll-up</Link>
+                <Link href="/double-door-containers">Double door / tunnel</Link>
+              </div>
             </div>
           </details>
           <nav aria-label="Main navigation">
             <Link href="/#inventory">Containers</Link>
             <details className="desktop-use-menu">
-              <summary>Storage uses</summary>
+              <summary>Storage solutions</summary>
               <div className="desktop-use-dropdown">
-                <span className="desktop-menu-heading">Choose your storage use</span>
+                <span className="desktop-menu-heading">Shop by use</span>
                 <Link href="/construction">Construction sites</Link>
                 <Link href="/farm">Farms and ranches</Link>
                 <Link href="/business">Business overflow</Link>
@@ -53,6 +59,10 @@ export function Header() {
                 <Link href="/vehicles">Vehicles and recreation</Link>
                 <Link href="/events">Events and production</Link>
                 <Link href="/institutions">Schools and institutions</Link>
+                <span className="desktop-menu-heading desktop-menu-subheading">Specialty container types</span>
+                <Link href="/refrigerated-containers">Refrigerated / reefers</Link>
+                <Link href="/open-side-containers">Open side / roll-up</Link>
+                <Link href="/double-door-containers">Double door / tunnel</Link>
               </div>
             </details>
           </nav>
@@ -81,6 +91,9 @@ export function Footer() {
           <Link href="/#inventory">40FT Standard</Link>
           <Link href="/#inventory">40FT High Cube</Link>
           <Link href="/#inventory">Custom Modified</Link>
+          <Link href="/refrigerated-containers">Refrigerated / Reefers</Link>
+          <Link href="/open-side-containers">Open Side / Roll-Up</Link>
+          <Link href="/double-door-containers">Double Door / Tunnel</Link>
         </div>
         <div>
           <h3>Storage uses</h3>

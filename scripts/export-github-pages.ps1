@@ -32,6 +32,9 @@ $routes = @(
   @{ Route = "vehicles"; File = "vehicles\index.html" },
   @{ Route = "events"; File = "events\index.html" },
   @{ Route = "institutions"; File = "institutions\index.html" },
+  @{ Route = "refrigerated-containers"; File = "refrigerated-containers\index.html" },
+  @{ Route = "open-side-containers"; File = "open-side-containers\index.html" },
+  @{ Route = "double-door-containers"; File = "double-door-containers\index.html" },
   @{ Route = "privacy"; File = "privacy\index.html" },
   @{ Route = "terms"; File = "terms\index.html" }
 )

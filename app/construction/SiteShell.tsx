@@ -24,7 +24,7 @@ export function Header() {
                 <Link href="/construction#inventory">Container options</Link>
                 <Link href="/construction/resources">Resource center</Link>
                 <a href="tel:18555250902">Call (855) 525-0902</a>
-                <Link className="mobile-menu-quote" href="/construction?quote=1#quote-form">Get a quote</Link>
+                <a className="mobile-menu-quote" href="#quote-form">Get a quote</a>
               </div>
               <span className="mobile-menu-label">Storage by use</span>
               <div className="mobile-menu-links">
@@ -36,6 +36,12 @@ export function Header() {
                 <Link href="/vehicles">Vehicles and recreation</Link>
                 <Link href="/events">Events and production</Link>
                 <Link href="/institutions">Schools and institutions</Link>
+              </div>
+              <span className="mobile-menu-label">Specialty container types</span>
+              <div className="mobile-menu-links">
+                <Link href="/refrigerated-containers">Refrigerated / reefers</Link>
+                <Link href="/open-side-containers">Open side / roll-up</Link>
+                <Link href="/double-door-containers">Double door / tunnel</Link>
               </div>
               <span className="mobile-menu-label">Construction guides</span>
               <div className="mobile-menu-links">
@@ -52,9 +58,9 @@ export function Header() {
           <nav aria-label="Main navigation">
             <Link href="/construction#inventory">Container options</Link>
             <details className="desktop-use-menu" name="construction-header-menu">
-              <summary>Storage uses</summary>
+              <summary>Storage solutions</summary>
               <div className="desktop-use-dropdown">
-                <span className="desktop-menu-heading">Choose your storage use</span>
+                <span className="desktop-menu-heading">Shop by use</span>
                 <Link href="/construction">Construction sites</Link>
                 <Link href="/farm">Farms and ranches</Link>
                 <Link href="/business">Business overflow</Link>
@@ -63,6 +69,10 @@ export function Header() {
                 <Link href="/vehicles">Vehicles and recreation</Link>
                 <Link href="/events">Events and production</Link>
                 <Link href="/institutions">Schools and institutions</Link>
+                <span className="desktop-menu-heading desktop-menu-subheading">Specialty container types</span>
+                <Link href="/refrigerated-containers">Refrigerated / reefers</Link>
+                <Link href="/open-side-containers">Open side / roll-up</Link>
+                <Link href="/double-door-containers">Double door / tunnel</Link>
               </div>
             </details>
             <details className="desktop-use-menu" name="construction-header-menu">
@@ -82,7 +92,7 @@ export function Header() {
           </nav>
           <div className="nav-actions">
             <a className="phone" href="tel:18555250902">(855) 525-0902</a>
-            <Link className="button small primary" href="/construction?quote=1#quote-form">Get a quote</Link>
+            <a className="button small primary" href="#quote-form">Get a quote</a>
           </div>
         </div>
       </header>
@@ -105,6 +115,9 @@ export function Footer() {
           <Link href="/construction#inventory">40FT Standard</Link>
           <Link href="/construction#inventory">40FT High Cube</Link>
           <Link href="/construction#inventory">Custom Modified</Link>
+          <Link href="/refrigerated-containers">Refrigerated / Reefers</Link>
+          <Link href="/open-side-containers">Open Side / Roll-Up</Link>
+          <Link href="/double-door-containers">Double Door / Tunnel</Link>
         </div>
         <div>
           <h3>Resource center</h3>
@@ -131,7 +144,7 @@ export function MobileBar() {
   return (
     <div className="mobile-bar">
       <a href="tel:18555250902">Call now</a>
-      <Link href="/construction?quote=1#quote-form">Get free quote</Link>
+      <a href="#quote-form">Get free quote</a>
     </div>
   );
 }

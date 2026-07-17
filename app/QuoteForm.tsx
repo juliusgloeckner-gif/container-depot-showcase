@@ -7,9 +7,12 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzepnvd";
 type QuoteFormProps = {
   compact?: boolean;
   context?: string;
+  containerOptions?: string[];
 };
 
-export function QuoteForm({ compact = false, context = "General container" }: QuoteFormProps) {
+const defaultContainerOptions = ["20FT Standard", "40FT Standard", "40FT High Cube", "Custom Modified", "Not sure yet"];
+
+export function QuoteForm({ compact = false, context = "General container", containerOptions = defaultContainerOptions }: QuoteFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   async function submitQuote(event: FormEvent<HTMLFormElement>) {
@@ -95,11 +98,7 @@ export function QuoteForm({ compact = false, context = "General container" }: Qu
         <label className="span-2">
           Container size
           <select name="size" defaultValue="Not sure yet">
-            <option>20FT Standard</option>
-            <option>40FT Standard</option>
-            <option>40FT High Cube</option>
-            <option>Custom Modified</option>
-            <option>Not sure yet</option>
+            {containerOptions.map((option) => <option key={option}>{option}</option>)}
           </select>
         </label>
       </div>

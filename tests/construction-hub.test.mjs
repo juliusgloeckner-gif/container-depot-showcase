@@ -151,7 +151,7 @@ test("keeps all eight storage-use links beside the construction guide navigation
     ["/institutions", "Schools and institutions"],
   ];
 
-  assert.match(html, /Storage uses/i);
+  assert.match(html, /Storage solutions/i);
   assert.match(html, /Construction guides/i);
   for (const [href, label] of expectedUses) {
     assert.match(html, new RegExp(`href="${href}"[^>]*>${label}<`, "i"));

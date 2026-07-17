@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { InventorySection } from "../InventorySection";
 import { QuoteForm } from "../QuoteForm";
 import { Footer, Header, MobileBar } from "../SiteShell";
+import { SpecialtyDiagram } from "../SpecialtyDiagram";
 import { TestimonialCarousel } from "../TestimonialCarousel";
 import { verticals } from "../verticals";
 
@@ -15,15 +16,44 @@ export async function generateMetadata({ params }: { params: Promise<{ vertical:
   const { vertical } = await params;
   const data = verticals[vertical];
   if (!data) return {};
-  return { title: `${data.nav} Storage Containers for Sale`, description: data.lead };
+  return {
+    title: data.seoTitle ?? `${data.nav} Storage Containers for Sale`,
+    description: data.seoDescription ?? data.lead,
+    alternates: { canonical: `https://unitedcontainerdepot.com/${data.key}` },
+  };
 }
 
 export default async function VerticalPage({ params }: { params: Promise<{ vertical: string }> }) {
   const { vertical } = await params;
   const data = verticals[vertical];
   if (!data) notFound();
+
+  const structuredData = data.specialtyType ? {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        name: data.seoTitle,
+        description: data.seoDescription,
+        category: "Specialty shipping container",
+        brand: { "@type": "Brand", name: "United Container Depot" },
+        url: `https://unitedcontainerdepot.com/${data.key}`,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: data.faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      },
+    ],
+  } : null;
+  const heroChecks = data.heroChecks ?? ["Steel lockbox doors included", "Wind and watertight grades available", "One delivered price with no hidden fees"];
+
   return (
     <main>
+      {structuredData && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />}
       <Header />
       <section className={`vertical-hero vertical-${data.key}`} id="quote" style={{ backgroundImage: `url(${data.hero})` }}>
         <Image className="hero-background" src={data.hero} alt={`${data.nav} shipping container storage`} fill priority sizes="100vw" />
@@ -33,26 +63,29 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
             <span className="eyebrow">{data.eyebrow}</span>
             <h1>{data.title}<br /><em>{data.emphasis}</em></h1>
             <p className="hero-lead">{data.lead}</p>
-            <ul className="check-list light"><li>Steel lockbox doors included</li><li>Wind and watertight grades available</li><li>One delivered price with no hidden fees</li></ul>
+            <ul className="check-list light">{heroChecks.map((item) => <li key={item}>{item}</li>)}</ul>
           </div>
-          <QuoteForm compact context={data.context} />
+          <QuoteForm compact context={data.context} containerOptions={data.quoteOptions} />
         </div>
       </section>
-      <section className="proof-strip"><div className="wrap proof-grid"><div><strong>4,200+</strong><span>containers delivered</span></div><div><strong>5 to 10</strong><span>day delivery</span></div><div><strong>48</strong><span>states served</span></div><div><strong>$0</strong><span>hidden fees</span></div></div></section>
+      <section className="proof-strip"><div className="wrap proof-grid"><div><strong>4,200+</strong><span>containers delivered</span></div>{data.specialtyType ? <div><strong>Site</strong><span>requirements checked</span></div> : <div><strong>5 to 10</strong><span>day delivery</span></div>}<div><strong>48</strong><span>states served</span></div><div><strong>$0</strong><span>hidden fees</span></div></div></section>
 
       <section className="section benefits-section">
         <div className="wrap">
-          <div className="section-heading split-heading"><div><span className="eyebrow dark">Made for {data.nav.toLowerCase()}</span><h2>{data.benefitsTitle}</h2></div><p>Own secure storage exactly where you need it, without monthly bills, return dates or surprise delivery charges.</p></div>
-          <div className="benefit-grid">{data.benefits.map((b, i) => <article key={b.title}><b>0{i + 1}</b><h3>{b.title}</h3><p>{b.text}</p></article>)}</div>
+          <div className="section-heading split-heading">
+            <div><span className="eyebrow dark">Made for {data.nav.toLowerCase()}</span><h2>{data.benefitsTitle}</h2></div>
+            <p>{data.specialtyType ? "The right specialty container starts with the workflow, site and exact configuration, not only the nominal size." : "Own secure storage exactly where you need it, without monthly bills, return dates or surprise delivery charges."}</p>
+          </div>
+          <div className="benefit-grid">{data.benefits.map((benefit, index) => <article key={benefit.title}><b>0{index + 1}</b><h3>{benefit.title}</h3><p>{benefit.text}</p></article>)}</div>
         </div>
       </section>
 
+      {data.specialtyType && <section className="scroll-quote-strip" aria-label="Request a specialty container quote"><div className="wrap scroll-quote-inner"><div><span>Match the complete setup</span><p><strong>Tell us the use, ZIP and required configuration.</strong> We will confirm the nearest suitable inventory or modification path before you commit.</p></div><a className="button primary" href="#quote-form">Get my configuration quote</a></div></section>}
+
       <section className="section vertical-gallery-section">
         <div className="wrap">
-          <div className="section-heading split-heading"><div><span className="eyebrow dark">Storage in the real world</span><h2>See how the space gets used.</h2></div><p>Secure steel storage placed where the work happens, with the capacity to keep everyday supplies organized and close.</p></div>
-          <div className="vertical-gallery">
-            {data.gallery.map((item) => <figure key={item.image}><div><Image src={item.image} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}
-          </div>
+          <div className="section-heading split-heading"><div><span className="eyebrow dark">Storage in the real world</span><h2>{data.galleryTitle ?? "See how the space gets used."}</h2></div><p>{data.galleryLead ?? "Secure steel storage placed where the work happens, with the capacity to keep everyday supplies organized and close."}</p></div>
+          <div className="vertical-gallery">{data.gallery.map((item) => <figure key={item.image}><div><Image src={item.image} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}</div>
         </div>
       </section>
 
@@ -62,23 +95,31 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
             <Image src={data.featureImage} alt={`${data.nav} supplies organized inside a shipping container`} fill sizes="(max-width: 800px) 100vw, 50vw" />
             {data.visualTags && <div className="visual-tag-grid" aria-label="Typical business overflow contents">{data.visualTags.map((tag) => <span key={tag.label}><b>{tag.icon}</b>{tag.label}</span>)}</div>}
           </div>
-          <div className="vertical-use-copy"><span className="eyebrow dark">What fits inside</span><h2>Room for the things that keep your operation moving.</h2>{data.visualTags ? <p className="visual-list-note">Flexible overflow capacity for the stock, fixtures and supplies that crowd your daily operation.</p> : <div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div>}<a className="button primary" href="#quote-form">Check local inventory</a></div>
+          <div className="vertical-use-copy">
+            <span className="eyebrow dark">{data.featureEyebrow ?? "What fits inside"}</span>
+            <h2>{data.featureTitle ?? "Room for the things that keep your operation moving."}</h2>
+            {data.featureLead && <p className="visual-list-note">{data.featureLead}</p>}
+            {data.visualTags ? <p className="visual-list-note">Flexible overflow capacity for the stock, fixtures and supplies that crowd your daily operation.</p> : <div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div>}
+            <a className="button primary" href="#quote-form">Check local inventory</a>
+          </div>
         </div>
       </section>
 
-      <InventorySection images={data.inventoryImages} context={data.context.toLowerCase()} />
+      {data.specialtyType && data.technicalNotes && <SpecialtyDiagram type={data.specialtyType} notes={data.technicalNotes} />}
+
+      <InventorySection images={data.inventoryImages} context={data.context.toLowerCase()} options={data.inventoryOptions} heading={data.inventoryHeading} lead={data.inventoryLead} stockLabel={data.inventoryStockLabel} />
 
       <section className="section dark-section">
         <div className="wrap process-grid">
           <div><span className="eyebrow">Clear process</span><h2>From ZIP code to placed container.</h2><p>One specialist handles the quote, inventory match and delivery details.</p></div>
-          <ol><li><b>01</b><span><strong>Send your ZIP and size</strong>We check the closest available inventory.</span></li><li><b>02</b><span><strong>Approve one delivered price</strong>You see the total before you commit.</span></li><li><b>03</b><span><strong>Confirm access and placement</strong>We make sure the truck can reach your spot.</span></li><li><b>04</b><span><strong>Receive your container</strong>The driver tilts it into place, ready to use.</span></li></ol>
+          <ol><li><b>01</b><span><strong>{data.specialtyType ? "Send your ZIP and configuration" : "Send your ZIP and size"}</strong>{data.specialtyType ? "We check the closest suitable inventory or modification path." : "We check the closest suitable inventory for your use."}</span></li><li><b>02</b><span><strong>Approve one delivered price</strong>You see the total before you commit.</span></li><li><b>03</b><span><strong>Confirm access and placement</strong>{data.specialtyType ? "We make sure the truck and specialty setup can work at your site." : "We make sure the delivery truck can reach the approved placement area."}</span></li><li><b>04</b><span><strong>Receive your container</strong>The driver places it in the approved position, ready for setup.</span></li></ol>
         </div>
       </section>
 
-      <TestimonialCarousel testimonials={data.testimonials} />
+      {data.testimonials.length > 0 && <TestimonialCarousel testimonials={data.testimonials} />}
 
-      <section className="section faq-section"><div className="wrap faq-grid"><div><span className="eyebrow dark">Questions from buyers</span><h2>Know before delivery.</h2><p>Call a container specialist at <a href="tel:18555250902">(855) 525-0902</a>.</p></div><div className="faq-list">{data.faq.map((item, i) => <details open={i === 0} key={item.q}><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
-      <section className="final-cta"><div className="wrap final-inner"><div><span className="eyebrow">Get storage handled</span><h2>A secure container, delivered where you need it.</h2></div><div className="cta-actions"><a className="button primary" href="#quote-form">Get my free quote</a><a className="button outline-light" href="tel:18555250902">Call (855) 525-0902</a></div></div></section>
+      <section className="section faq-section"><div className="wrap faq-grid"><div><span className="eyebrow dark">Questions from buyers</span><h2>Know before delivery.</h2><p>Call a container specialist at <a href="tel:18555250902">(855) 525-0902</a>.</p></div><div className="faq-list">{data.faq.map((item, index) => <details open={index === 0} key={item.q}><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
+      <section className="final-cta"><div className="wrap final-inner"><div><span className="eyebrow">{data.specialtyType ? "Get the configuration right" : "Get storage handled"}</span><h2>{data.specialtyType ? "A specialty container matched to the way you work." : "A secure container, delivered where you need it."}</h2></div><div className="cta-actions"><a className="button primary" href="#quote-form">Get my free quote</a><a className="button outline-light" href="tel:18555250902">Call (855) 525-0902</a></div></div></section>
       <Footer /><MobileBar />
     </main>
   );

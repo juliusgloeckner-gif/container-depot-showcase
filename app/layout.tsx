@@ -29,13 +29,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: "Shipping Containers. Every Size. Delivered.",
-    description: "Affordable new and used containers for eight real-world storage needs, delivered across 48 states.",
+    description: "Affordable new, used and specialty containers for real-world storage needs, delivered across 48 states.",
     images: [{ url: "https://juliusgloeckner-gif.github.io/container-depot-showcase/og.png", width: 1200, height: 630, alt: "United Container Depot shipping containers in every size and delivered" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Shipping Containers. Every Size. Delivered.",
-    description: "Affordable new and used containers for eight real-world storage needs, delivered across 48 states.",
+    description: "Affordable new, used and specialty containers for real-world storage needs, delivered across 48 states.",
     images: ["https://juliusgloeckner-gif.github.io/container-depot-showcase/og.png"],
   },
 };

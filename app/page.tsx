@@ -17,6 +17,12 @@ const uses = [
   { title: "Schools & institutions", text: "Add capacity for furniture, athletics, events, facilities and public operations.", href: "/institutions", image: "/institutions-hero.png", cta: "Institutional storage" },
 ];
 
+const specialtyTypes = [
+  { title: "Refrigerated / Reefers", text: "Powered temperature-controlled capacity for food, floral, farm, event and warehouse operations.", href: "/refrigerated-containers", image: "/specialty/reefer-hero.webp", label: "Cold storage" },
+  { title: "Open Side / Roll-Up", text: "Two long-side access bays on 20FT units or four on 40FT units for faster retrieval.", href: "/open-side-containers", image: "/specialty/open-side-hero.webp", label: "Multi-door access" },
+  { title: "Double Door / Tunnel", text: "Paired cargo doors at both short ends for two-way staging, long materials and FIFO flow.", href: "/double-door-containers", image: "/specialty/tunnel-hero.webp", label: "Access both ends" },
+];
+
 export default function Home() {
   return (
     <main>
@@ -67,6 +73,21 @@ export default function Home() {
                 <span className="use-copy"><strong>{use.title}</strong><span>{use.text}</span><b>View buyer page →</b></span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section specialty-home-section" id="specialty-containers">
+        <div className="wrap">
+          <div className="section-heading split-heading">
+            <div><span className="eyebrow dark">Shop by container type</span><h2>Specialty access and temperature control.</h2></div>
+            <p>The eight pages above start with how the buyer will use the space. These three start with a specific container configuration. Choose the product type when the hardware itself is the requirement.</p>
+          </div>
+          <div className="specialty-home-grid">
+            {specialtyTypes.map((item) => <Link className="specialty-home-card" href={item.href} key={item.title}>
+              <div className="specialty-home-image"><Image src={item.image} alt={`${item.title} specialty shipping container`} fill sizes="(max-width: 800px) 100vw, 33vw" /><span>{item.label}</span></div>
+              <div><h3>{item.title}</h3><p>{item.text}</p><b>Explore this container type →</b></div>
+            </Link>)}
           </div>
         </div>
       </section>

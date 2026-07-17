@@ -16,6 +16,21 @@ export type Vertical = {
   visualTags?: { icon: string; label: string }[];
   testimonials: { quote: string; person: string }[];
   faq: { q: string; a: string }[];
+  seoTitle?: string;
+  seoDescription?: string;
+  specialtyType?: "reefer" | "rollup" | "tunnel";
+  heroChecks?: string[];
+  quoteOptions?: string[];
+  inventoryOptions?: { name: string; price: string; detail: string; badge?: string }[];
+  inventoryHeading?: string;
+  inventoryLead?: string;
+  inventoryStockLabel?: string;
+  galleryTitle?: string;
+  galleryLead?: string;
+  featureEyebrow?: string;
+  featureTitle?: string;
+  featureLead?: string;
+  technicalNotes?: { title: string; text: string }[];
 };
 
 const construction: Vertical = {
@@ -250,6 +265,174 @@ const institutions: Vertical = {
   ],
 };
 
+const refrigerated: Vertical = {
+  key: "refrigerated-containers",
+  nav: "Refrigerated / Reefer",
+  eyebrow: "Powered cold storage delivered to your site",
+  title: "Keep it cold.",
+  emphasis: "Keep orders moving.",
+  lead: "Refrigerated shipping containers, commonly called reefers, add powered temperature-controlled capacity beside your restaurant, warehouse, farm or event site. We match the unit, required setpoint, site power and delivery plan before you buy.",
+  hero: "/specialty/reefer-hero.webp",
+  featureImage: "/specialty/reefer-interior.webp",
+  inventoryImages: ["/specialty/reefer-restaurant.webp", "/specialty/reefer-farm.webp", "/specialty/reefer-hero.webp", "/specialty/reefer-interior.webp"],
+  context: "Refrigerated and reefer container",
+  seoTitle: "Refrigerated Containers and Reefers for Sale",
+  seoDescription: "Buy refrigerated shipping containers, also called reefers, for on-site cold storage. Match size, setpoint, site power and delivery before purchase.",
+  specialtyType: "reefer",
+  heroChecks: ["20FT and 40FT refrigerated container options", "Cooling range and controller matched to the product", "Site power verified before delivery"],
+  quoteOptions: ["20FT Refrigerated / Reefer", "40FT Refrigerated / Reefer", "40FT High Cube Reefer", "Need help matching power and setpoint", "Not sure yet"],
+  inventoryOptions: [
+    { name: "20FT Reefer", price: "Request local price", detail: "Compact powered cold storage for restaurants, caterers, florists and sites where space is limited.", badge: "20FT cold storage" },
+    { name: "40FT Reefer", price: "Request local price", detail: "Higher-volume refrigerated capacity for farms, food distributors, beverage operations and warehouse overflow.", badge: "40FT capacity" },
+    { name: "40FT High Cube Reefer", price: "Request local price", detail: "Additional interior height for palletized or bulky temperature-controlled inventory, subject to local availability.", badge: "High cube" },
+    { name: "Power-Matched Package", price: "Built to site", detail: "Confirm voltage, phase, amperage, plug, setpoint and placement before the reefer is scheduled for delivery.", badge: "Power verified" },
+  ],
+  inventoryHeading: "Choose the reefer. Confirm the power. Protect the product.",
+  inventoryLead: "Tell us what you are storing, the required temperature, your ZIP and the power available at the site. We match the complete setup, not only the steel box.",
+  inventoryStockLabel: "Confirm local inventory",
+  benefitsTitle: "Cold capacity without building another walk-in.",
+  benefits: [
+    { title: "Add cold capacity on site", text: "Create refrigerated overflow beside the operation, close to receiving, prep, packing or service." },
+    { title: "Match the unit to the product", text: "Required setpoint, ventilation, humidity needs and loading pattern determine the right reefer configuration." },
+    { title: "Plan power before delivery", text: "Voltage, phase, amperage, plug type and disconnect requirements are confirmed with your electrician before placement." },
+  ],
+  galleryTitle: "See reefers supporting real operations.",
+  galleryLead: "Refrigerated containers work best when the unit, product, loading pattern, site power and daily workflow are planned together.",
+  gallery: [
+    { image: "/specialty/reefer-restaurant.webp", alt: "Twenty foot refrigerated reefer container powered beside a restaurant service area", caption: "Restaurant and catering cold-storage overflow" },
+    { image: "/specialty/reefer-farm.webp", alt: "Forty foot refrigerated reefer container powered beside a produce packing shed", caption: "Produce cooling beside the packing operation" },
+    { image: "/specialty/reefer-hero.webp", alt: "Forty foot refrigerated reefer container with machinery at the short end beside a warehouse", caption: "Warehouse and food-distribution cold capacity" },
+  ],
+  featureEyebrow: "Load for airflow",
+  featureTitle: "Cold air only works when it can move.",
+  featureLead: "Keep the T-floor channels and overhead return-air path open, respect the unit's load line and load product at the correct starting temperature.",
+  applications: ["Produce and dairy", "Seafood and proteins", "Beverages", "Catering and event food", "Flowers and floral stock", "Cold-chain overflow"],
+  technicalNotes: [
+    { title: "Confirm site power", text: "Reefer electrical requirements vary. Verify the exact unit's voltage, phase, amperage, plug and disconnect with a qualified electrician." },
+    { title: "Protect airflow", text: "Do not block the T-floor or load above the marked load line. Cold supply air and warm return air both need a clear path." },
+    { title: "Define the product requirement", text: "State the product, target setpoint, expected ambient conditions and loading pattern. Cooling and freezing capability varies by unit." },
+  ],
+  testimonials: [],
+  faq: [
+    { q: "What power does a refrigerated container need?", a: "It depends on the specific refrigeration unit. Many marine reefers use high-voltage three-phase power, while some installations use compatible transformers or converter packages. A qualified electrician should confirm voltage, phase, amperage, plug, disconnect and cable routing for the exact unit before delivery." },
+    { q: "Can the same reefer work as a cooler or freezer?", a: "Some units can operate across chilled and frozen setpoints, but range and performance vary by model, refrigerant, condition and ambient temperature. Tell us the product and required setpoint so the available unit can be checked before purchase." },
+    { q: "How should product be loaded?", a: "Load product at the correct starting temperature, keep the T-floor airflow channels open, leave the overhead return-air path clear and never stack above the unit's load line. Your food-safety or cold-chain plan remains the governing procedure." },
+    { q: "Can a reefer sit beside a restaurant, farm or warehouse?", a: "Often, yes, when the site has approved placement, firm level support, delivery access, ventilation around the machinery end and a safe electrical connection. Confirm zoning, fire access, food-safety and electrical requirements before delivery." },
+  ],
+};
+
+const openSide: Vertical = {
+  key: "open-side-containers",
+  nav: "Open Side / Roll-Up",
+  eyebrow: "Two access bays on 20FT. Four on 40FT.",
+  title: "Open the right bay.",
+  emphasis: "Reach what you need.",
+  lead: "Multi-door open-side containers add two roll-up doors along the long side of a 20FT unit or four along a 40FT unit. Crews can reach the right section without unloading a long center aisle, while framed steel posts reinforce every opening.",
+  hero: "/specialty/open-side-hero.webp",
+  featureImage: "/specialty/open-side-interior.webp",
+  inventoryImages: ["/specialty/open-side-landscape.webp", "/specialty/open-side-hero.webp", "/specialty/open-side-school.webp", "/specialty/open-side-interior.webp"],
+  context: "Open-side roll-up door container",
+  seoTitle: "Open-Side Containers with Roll-Up Doors for Sale",
+  seoDescription: "Buy modified open-side shipping containers with two roll-up doors on a 20FT unit or four roll-up doors on a 40FT unit for fast compartment access.",
+  specialtyType: "rollup",
+  heroChecks: ["Two long-side roll-up doors on 20FT units", "Four long-side roll-up doors on 40FT units", "Framed and reinforced openings built to plan"],
+  quoteOptions: ["20FT with 2 roll-up doors", "40FT with 4 roll-up doors", "Partitioned multi-bay container", "Custom roll-up door layout", "Not sure yet"],
+  inventoryOptions: [
+    { name: "20FT / 2 Roll-Ups", price: "Built to spec", detail: "Two long-side access bays for landscaping gear, shop inventory, athletics or compact multi-user storage.", badge: "2 access bays" },
+    { name: "40FT / 4 Roll-Ups", price: "Built to spec", detail: "Four long-side access bays create fast reach across a full 40FT container without a long unload sequence.", badge: "4 access bays" },
+    { name: "Partitioned Multi-Bay", price: "Built to spec", detail: "Add internal partitions so departments, crews, tenants or inventory categories can use separate lockable bays.", badge: "Separate zones" },
+    { name: "Custom Door Layout", price: "Built to spec", detail: "Door width, clear opening, reinforcement, locks, shelving and electrical packages are finalized in the fabrication drawing.", badge: "Drawing approved" },
+  ],
+  inventoryHeading: "Choose the length. Confirm every access bay.",
+  inventoryLead: "The long-side openings are a structural modification. We confirm door count, clear opening, reinforcement, partitions, locks and internal layout before fabrication.",
+  inventoryStockLabel: "Fabricated to order",
+  benefitsTitle: "Stop walking past everything to reach one item.",
+  benefits: [
+    { title: "Reach the right section", text: "Open one bay beside the item instead of unloading inventory from a single short-end doorway." },
+    { title: "Organize by crew or category", text: "Use shelving and optional partitions to create dedicated zones for tools, supplies, sports gear or rental equipment." },
+    { title: "Keep normal end access", text: "Standard paired cargo doors remain on the short end while roll-up doors add access along the long side." },
+  ],
+  galleryTitle: "Put access beside the work.",
+  galleryLead: "Multi-door side access is most valuable where people retrieve different categories throughout the day and need to see the right bay quickly.",
+  gallery: [
+    { image: "/specialty/open-side-landscape.webp", alt: "Twenty foot green container with exactly two roll-up doors beside landscaping equipment", caption: "Two bays for grounds and landscaping equipment" },
+    { image: "/specialty/open-side-school.webp", alt: "Forty foot container with exactly four blue roll-up doors beside a school athletics building", caption: "Four bays for athletics and facilities inventory" },
+    { image: "/specialty/open-side-hero.webp", alt: "Forty foot navy container with exactly four long-side roll-up doors at an equipment yard", caption: "Fast access across an equipment-rental inventory" },
+  ],
+  featureEyebrow: "Four clear zones",
+  featureTitle: "Turn one 40FT container into four reachable bays.",
+  featureLead: "Align racks, partitions and labels with the door openings so each bay supports a specific crew, inventory category or retrieval sequence.",
+  applications: ["Tool and equipment cribs", "Equipment rental inventory", "Grounds and landscaping gear", "School and sports equipment", "Event production cases", "Multi-user storage bays"],
+  technicalNotes: [
+    { title: "Confirm the exact door count", text: "The target layouts are two long-side roll-up doors on 20FT units and four on 40FT units. Final clear openings are shown on the approved drawing." },
+    { title: "Engineer every opening", text: "Cutting a corrugated long wall changes the structure. Framed posts and headers must be designed and fabricated for the final layout." },
+    { title: "Plan drainage and security", text: "Specify weather seals, thresholds, locks, site slope and door operation so each opening remains practical in daily use." },
+  ],
+  testimonials: [],
+  faq: [
+    { q: "How many roll-up doors are included?", a: "The featured configuration uses two roll-up doors along the long side of a 20FT container and four along the long side of a 40FT container. Door width and clear opening are confirmed on the fabrication drawing." },
+    { q: "Are these factory open-side containers?", a: "These are modified multi-door side-access containers with roll-up doors, not factory full-side bi-fold open-side containers. The standard short-end cargo doors remain, and every new long-side opening is framed and reinforced." },
+    { q: "Can the bays be separated?", a: "Yes. Internal partitions, separate locks, shelving, lighting and electrical packages can create dedicated crew, department or inventory zones. Egress and electrical requirements must be reviewed for the intended use." },
+    { q: "Are roll-up doors weatherproof and secure?", a: "Commercial roll-up assemblies can be fitted with seals and locks, but performance depends on the selected door, threshold, installation and maintenance. Confirm the required weather resistance and security level before fabrication." },
+  ],
+};
+
+const doubleDoor: Vertical = {
+  key: "double-door-containers",
+  nav: "Double Door / Tunnel",
+  eyebrow: "Full cargo-door access at both short ends",
+  title: "Load from either end.",
+  emphasis: "Nothing gets buried.",
+  lead: "Double-door shipping containers, also called tunnel containers, have paired ISO cargo doors at both short ends. The straight through-route makes first-in-first-out inventory, long materials, two-way staging and faster retrieval easier to manage.",
+  hero: "/specialty/tunnel-hero.webp",
+  featureImage: "/specialty/tunnel-interior.webp",
+  inventoryImages: ["/specialty/tunnel-construction.webp", "/specialty/tunnel-warehouse.webp", "/specialty/tunnel-hero.webp", "/specialty/tunnel-interior.webp"],
+  context: "Double-door tunnel container",
+  seoTitle: "Double-Door and Tunnel Containers for Sale",
+  seoDescription: "Buy double-door shipping containers, also called tunnel containers, with paired cargo doors at both short ends for two-way loading and access.",
+  specialtyType: "tunnel",
+  heroChecks: ["Paired cargo doors at both short ends", "Solid corrugated walls along both long sides", "20FT, 40FT and High Cube options"],
+  quoteOptions: ["20FT Double-Door / Tunnel", "40FT Double-Door / Tunnel", "40FT High Cube Tunnel", "Divided-access tunnel container", "Not sure yet"],
+  inventoryOptions: [
+    { name: "20FT Tunnel", price: "Request local price", detail: "Compact two-end access for tight sites, long materials, equipment staging and smaller first-in-first-out inventory.", badge: "Doors both ends" },
+    { name: "40FT Tunnel", price: "Request local price", detail: "A full 40FT through-route for palletized stock, construction materials and operations that load from either direction.", badge: "40FT through-route" },
+    { name: "40FT High Cube Tunnel", price: "Request local price", detail: "Two-end access plus additional height for bulky or stacked inventory, subject to nearby availability.", badge: "High cube" },
+    { name: "Divided-Access Tunnel", price: "Built to spec", detail: "Optional internal separation can create two independently accessed zones while keeping cargo doors at both short ends.", badge: "Two zones" },
+  ],
+  inventoryHeading: "Choose the length. Keep both ends working.",
+  inventoryLead: "We confirm size, condition, end-door operation, lock boxes, interior layout and the truck approach needed to keep both short ends useful after delivery.",
+  inventoryStockLabel: "Confirm local inventory",
+  benefitsTitle: "Two ends turn one container into a better workflow.",
+  benefits: [
+    { title: "Load from either direction", text: "Approach the nearest end instead of reversing the entire load through one doorway." },
+    { title: "Support first-in-first-out flow", text: "Receive at one end and retrieve at the other so older inventory is easier to rotate and reach." },
+    { title: "Handle long materials", text: "Open both ends for straight-through staging of pipe, lumber, conduit, equipment and long packaged goods." },
+  ],
+  galleryTitle: "See two-way access in real workflows.",
+  galleryLead: "Tunnel containers are most useful when both short ends stay accessible and the internal aisle, staging zones and inventory sequence are planned together.",
+  gallery: [
+    { image: "/specialty/tunnel-construction.webp", alt: "Twenty foot double-door tunnel container with paired cargo doors open at both short ends in a construction material yard", caption: "Straight-through access for pipe and long materials" },
+    { image: "/specialty/tunnel-warehouse.webp", alt: "Forty foot green tunnel container with paired cargo doors at both short ends beside a distribution warehouse", caption: "First-in-first-out inventory beside the warehouse" },
+    { image: "/specialty/tunnel-hero.webp", alt: "Forty foot blue double-door tunnel container with daylight visible through both short-end cargo door sets", caption: "Load and retrieve from the closest end" },
+  ],
+  featureEyebrow: "A clear through-route",
+  featureTitle: "Keep the center aisle open and both ends useful.",
+  featureLead: "Stage shelves and pallets along the solid long walls, preserve a safe center route and leave room outside for both pairs of cargo doors to swing fully.",
+  applications: ["Construction materials", "Warehouse FIFO inventory", "Pipe and lumber", "Equipment rental staging", "Retail and event stock", "Two-zone storage"],
+  technicalNotes: [
+    { title: "Doors stay on the short ends", text: "A tunnel container has one pair of standard cargo doors at each 8FT short end. The two long corrugated walls remain solid." },
+    { title: "Protect both approaches", text: "Leave firm ground, vehicle access, door-swing clearance and safe working space at both ends if both entrances will be used." },
+    { title: "Plan locks and internal flow", text: "Confirm door condition, lock boxes, shelving, partitions and the clear aisle before assigning receiving and retrieval directions." },
+  ],
+  testimonials: [],
+  faq: [
+    { q: "What is a double-door or tunnel container?", a: "It is a shipping container with one pair of standard cargo doors at each short end. Both long corrugated sides remain solid. Opening both end sets creates a straight sightline and loading route through the container." },
+    { q: "How is it different from a standard container?", a: "A standard container normally has cargo doors at one short end. A tunnel container adds a second pair at the opposite short end, which supports two-way loading, first-in-first-out rotation and access to long materials." },
+    { q: "Can I divide it into two storage zones?", a: "Yes, an internal partition can create two independently accessed zones, one from each end. The final layout should preserve safe access and account for ventilation, lighting, electrical work and the items being stored." },
+    { q: "What site clearance is needed?", a: "Plan delivery access plus firm, level placement and enough working room for the paired cargo doors to swing at both short ends. If only one end will remain accessible, tell the specialist before placement." },
+  ],
+};
+
 export const verticals: Record<string, Vertical> = {
   construction,
   farm,
@@ -266,4 +449,7 @@ export const verticals: Record<string, Vertical> = {
   production: events,
   institutions,
   schools: institutions,
+  "refrigerated-containers": refrigerated,
+  "open-side-containers": openSide,
+  "double-door-containers": doubleDoor,
 };
