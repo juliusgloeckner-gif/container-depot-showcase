@@ -7,6 +7,7 @@ import {
   ORIGIN_VARIANT_COOKIE,
   chooseVariant,
   destinationPath,
+  isConstructionKnowledgePath,
   isConstructionPath,
   normalizeVariant,
   parseConstructionBPercent,
@@ -40,6 +41,7 @@ function applyExperimentHeaders(response, {
 
   if (
     isConstructionPath(pathname) &&
+    !isConstructionKnowledgePath(pathname) &&
     (forcedVariant || !normalizeVariant(constructionCookieVariant))
   ) {
     setVariantCookie(response, CONSTRUCTION_VARIANT_COOKIE, variant);
@@ -93,6 +95,7 @@ export async function proxy(request) {
         redesign: redesignPercent,
       },
       redesignOnly: ["/moving", "/institutions", "/farm"],
+      constructionKnowledge: "redesign-only and indexable",
       legacyTraffic: "current-site",
     });
   }
@@ -127,6 +130,9 @@ export async function proxy(request) {
   let response;
   if (variant === "B" && destination.pathname.endsWith("/index.html")) {
     response = await fetchRedesignPage(destination, request);
+    if (isConstructionKnowledgePath(requestUrl.pathname)) {
+      response.headers.delete("x-robots-tag");
+    }
     response.headers.set("x-ucd-router-mode", "fetch");
   } else {
     response = NextResponse.rewrite(destination);

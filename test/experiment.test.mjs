@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   chooseVariant,
   destinationPath,
+  isConstructionKnowledgePath,
   isOldOnlyPath,
   parseConstructionBPercent,
 } from "../experiment.mjs";
@@ -35,6 +36,29 @@ test("keeps a construction visitor on their construction assignment", () => {
     }),
     "A",
   );
+});
+
+test("routes every construction knowledge page to the redesign", () => {
+  for (const pathname of [
+    "/construction/resources",
+    "/construction/resources/construction-container-statistics",
+    "/construction/questions",
+    "/construction/calculators/container-size",
+    "/construction/guides/container-site-preparation",
+  ]) {
+    assert.equal(isConstructionKnowledgePath(pathname), true);
+    assert.equal(
+      chooseVariant({
+        pathname,
+        constructionCookieVariant: "A",
+        originVariant: "A",
+        forcedVariant: "A",
+        userAgent: "Googlebot",
+      }),
+      "B",
+    );
+  }
+  assert.equal(isConstructionKnowledgePath("/construction"), false);
 });
 
 test("new keyword verticals always use the redesign", () => {

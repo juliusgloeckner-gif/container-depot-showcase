@@ -25,6 +25,13 @@ const REDESIGN_ONLY_PREFIXES = [
   "/institutions",
 ];
 
+const CONSTRUCTION_KNOWLEDGE_PREFIXES = [
+  "/construction/resources",
+  "/construction/guides",
+  "/construction/questions",
+  "/construction/calculators",
+];
+
 const OLD_ONLY_EXACT_PATHS = new Set([
   "/robots.txt",
   "/sitemap.xml",
@@ -56,6 +63,13 @@ export function isConstructionPath(pathname) {
   return clean === "/construction" || clean.startsWith("/construction/");
 }
 
+export function isConstructionKnowledgePath(pathname) {
+  const clean = cleanPathname(pathname);
+  return CONSTRUCTION_KNOWLEDGE_PREFIXES.some(
+    (prefix) => clean === prefix || clean.startsWith(`${prefix}/`),
+  );
+}
+
 export function isRedesignOnlyPath(pathname) {
   const clean = cleanPathname(pathname);
   return REDESIGN_ONLY_PREFIXES.some(
@@ -84,7 +98,9 @@ export function chooseVariant({
   constructionBPercent = DEFAULT_CONSTRUCTION_B_PERCENT,
   randomValue = Math.random(),
 }) {
-  if (isSearchEngine(userAgent) || isOldOnlyPath(pathname)) return "A";
+  if (isOldOnlyPath(pathname)) return "A";
+  if (isConstructionKnowledgePath(pathname)) return "B";
+  if (isSearchEngine(userAgent)) return "A";
 
   const forced = normalizeVariant(forcedVariant);
   if (forced) return forced;
