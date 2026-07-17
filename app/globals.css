@@ -172,6 +172,12 @@ input:focus,select:focus { outline:3px solid rgba(242,106,24,.24); border-color:
 .specialty-home-card h3 { margin-bottom:11px; }
 .specialty-home-card p { color:var(--muted); }
 .specialty-home-card b { margin-top:auto; color:var(--orange-dark); font-family:var(--font-heading); font-size:.78rem; letter-spacing:.055em; text-transform:uppercase; }
+.ownership-reasons-section { background:#eef1f3; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.ownership-reason-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#cfd7dd; border:1px solid #cfd7dd; }
+.ownership-reason-grid article { min-height:270px; padding:30px 26px; background:#fff; }
+.ownership-reason-grid article>b { display:block; margin-bottom:38px; color:var(--orange-dark); font-family:var(--font-heading); font-size:1.1rem; }
+.ownership-reason-grid h3 { margin-bottom:13px; font-size:1.35rem; }
+.ownership-reason-grid p { color:var(--muted); }
 .application-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:80px; align-items:center; }
 .application-copy>p { font-size:1.08rem; color:var(--muted); max-width:620px; }
 .tag-list { display:flex; flex-wrap:wrap; gap:9px; margin:26px 0 30px; }
@@ -332,7 +338,7 @@ blockquote { margin:0; }
   .hero-grid { grid-template-columns:1fr 400px; gap:30px; }
   .inventory-grid { grid-template-columns:1fr 1fr; }
   .use-grid { grid-template-columns:1fr 1fr; }
-  .specialty-home-grid { grid-template-columns:1fr 1fr; }
+  .specialty-home-grid,.ownership-reason-grid { grid-template-columns:1fr 1fr; }
   .inventory-body p { min-height:auto; }
   .footer-grid { grid-template-columns:1.5fr 1fr 1fr; }
   .footer-grid>div:last-child { grid-column:1 / -1; }
@@ -388,7 +394,8 @@ blockquote { margin:0; }
   .section { padding:70px 0; }
   .split-heading,.application-grid,.faq-grid,.vertical-use-grid,.process-grid,.specialty-diagram-grid { grid-template-columns:1fr; gap:30px; }
   .section-heading h2 { font-size:2.55rem; }
-  .inventory-grid,.condition-grid,.review-grid,.benefit-grid,.use-grid,.vertical-gallery,.testimonial-grid,.specialty-home-grid { grid-template-columns:1fr; }
+  .inventory-grid,.condition-grid,.review-grid,.benefit-grid,.use-grid,.vertical-gallery,.testimonial-grid,.specialty-home-grid,.ownership-reason-grid { grid-template-columns:1fr; }
+  .ownership-reason-grid article { min-height:0; }
   .use-card { height:390px; }
   .condition-grid article { border-right:0; border-bottom:1px solid #cbd3da; }
   .faq-grid>div:first-child { position:static; }

@@ -21,6 +21,7 @@ export type Vertical = {
   specialtyType?: "reefer" | "rollup" | "tunnel";
   heroChecks?: string[];
   quoteOptions?: string[];
+  quoteCopy?: { eyebrow: string; heading: string; intro: string; buttonText: string; note: string };
   inventoryOptions?: { name: string; price: string; detail: string; badge?: string }[];
   inventoryHeading?: string;
   inventoryLead?: string;
@@ -31,6 +32,13 @@ export type Vertical = {
   featureTitle?: string;
   featureLead?: string;
   technicalNotes?: { title: string; text: string }[];
+  ownershipEyebrow?: string;
+  ownershipTitle?: string;
+  ownershipLead?: string;
+  ownershipReasons?: { title: string; text: string }[];
+  finalEyebrow?: string;
+  finalTitle?: string;
+  finalCta?: string;
 };
 
 const construction: Vertical = {
@@ -126,20 +134,47 @@ const business: Vertical = {
 };
 
 const moving: Vertical = {
-  key: "moving", nav: "Moving & Relocation", eyebrow: "Storage that moves at your pace", title: "Pack once.", emphasis: "Move without the rush.",
-  lead: "Own secure space for the weeks between packing, closing and settling in. Load household belongings on your schedule and keep them close until the next step is ready.", hero: "/moving-hero.png", featureImage: "/moving-feature.png", context: "Residential moving and relocation storage",
+  key: "moving", nav: "Moving & Relocation", eyebrow: "For sale. Own it for the entire move.", title: "Buy it once.", emphasis: "Pack without a deadline.",
+  lead: "This is a container purchase, not a rental or lease. Keep it beside your current home while you pack, arrange qualified transport when you are ready, then leave it beside the new property or continue storing for as long as you need.", hero: "/moving-hero.png", featureImage: "/moving-feature.png", context: "Residential moving and relocation container purchase",
+  seoTitle: "Moving Containers for Sale | Buy, Pack and Keep",
+  seoDescription: "Buy a shipping container for moving and relocation. Pack beside your home without a rental deadline, move it with a qualified carrier, and keep it for storage afterward.",
+  heroChecks: ["For sale only, not rented or leased", "No monthly container-rental clock", "Keep it at the new property after the move"],
+  quoteOptions: ["Buy a 20FT moving container", "Buy a 40FT moving container", "Buy a 40FT High Cube", "Buy a custom moving setup", "Not sure yet"],
+  quoteCopy: {
+    eyebrow: "Purchase price, delivered",
+    heading: "Get your purchase quote",
+    intro: "This container is for sale, not rental or lease. Tell us your ZIP and preferred size.",
+    buttonText: "Get my purchase price",
+    note: "You own the container after purchase. No monthly container rent.",
+  },
+  inventoryHeading: "Choose the container you want to own.",
+  inventoryLead: "Every option below is sold, not rented. We confirm size, condition, nearby inventory and one delivered purchase price for your ZIP.",
   inventoryImages: ["/inventory-v2/home-1.jpg", "/inventory-v2/home-2.jpg", "/inventory-v2/home-3.jpg", "/inventory-v3/home-custom.jpg"],
   gallery: [
     { image: "/moving-hero.png", alt: "Twenty foot shipping container holding household furniture and boxes beside a suburban home", caption: "Pack beside the house on your schedule" },
     { image: "/gallery-v3/moving-people.jpg", alt: "Two homeowners unloading furniture and boxes through both short-end cargo doors of a twenty foot container", caption: "Unload at the new home without the rush" },
     { image: "/moving-gallery-2.png", alt: "Boxes furniture and moving blankets secured inside a standard shipping container", caption: "Keep one organized load between closings" },
   ],
-  benefitsTitle: "More control between one front door and the next.",
+  benefitsTitle: "Buy once. Keep control before, during and after the move.",
   benefits: [
-    { title: "Pack at your pace", text: "Stage boxes and furniture over days instead of forcing the whole move into one exhausting weekend." },
-    { title: "Cut double handling", text: "Keep belongings in one secure steel space instead of moving everything through an off-site storage unit." },
-    { title: "Bridge the timing gap", text: "Create useful capacity when the old home, new home and closing dates do not line up cleanly." },
+    { title: "Pack without a rental clock", text: "Stage boxes and furniture over weeks or months without racing a return date or adding another month of container rent." },
+    { title: "Bridge an uncertain timeline", text: "Keep the same container through delayed closings, a long-distance relocation, temporary housing or a slow unpacking schedule." },
+    { title: "Keep useful storage afterward", text: "Leave the container at the new property for garage overflow, seasonal belongings, tools or the next renovation, subject to local placement rules." },
   ],
+  ownershipEyebrow: "Purchase-only moving storage",
+  ownershipTitle: "When buying makes more sense than renting.",
+  ownershipLead: "Buying is designed for people who value time, long-term control and useful storage after the move. Compare the delivered purchase price with the complete rental cost for your actual timeline.",
+  ownershipReasons: [
+    { title: "Your move may take months", text: "A delayed closing, renovation or long relocation can turn a short rental into repeated monthly charges. Ownership removes the container return deadline." },
+    { title: "You want to pack gradually", text: "Keep the container beside the house and load room by room without compressing the move into a weekend or a fixed pickup window." },
+    { title: "You need storage at the destination", text: "After transport, keep the container beside the new property while you unpack or use it as ongoing storage, where local rules permit." },
+    { title: "You expect another project", text: "Reuse the owned container for another relocation, renovation, property cleanup, tools or household overflow instead of starting another rental agreement." },
+  ],
+  galleryTitle: "One owned container can cover every stage of the move.",
+  galleryLead: "Pack beside the current home, arrange transport with a qualified container carrier, then keep the container at the destination without a rental return date.",
+  featureEyebrow: "Keep it after the move",
+  featureTitle: "Your storage does not expire when the boxes are unpacked.",
+  featureLead: "Use the same owned container through packing, the timing gap, transport and long-term storage at the new property, subject to carrier approval and local placement rules.",
   applications: ["Household furniture", "Moving boxes and books", "Garage tools", "Bicycles and outdoor gear", "Seasonal belongings", "Appliances and fixtures"],
   testimonials: [
     { quote: "We packed room by room instead of doing everything in one weekend.", person: "Laura M., Homeowner" },
@@ -147,10 +182,16 @@ const moving: Vertical = {
     { quote: "One container gave us breathing room between both houses.", person: "Erin S., Relocating Family" },
   ],
   faq: [
+    { q: "Do you rent or lease moving containers?", a: "No. United Container Depot sells containers for moving and relocation. You purchase the container and own it outright instead of paying ongoing container rent or working toward a rental pickup date." },
+    { q: "Why buy instead of renting for a move?", a: "Buying can make sense when the schedule is uncertain, packing will take weeks or months, there is a gap between properties, or you want storage at the destination afterward. Compare the complete delivered purchase price with rental delivery, monthly charges, relocation fees, pickup charges and the likely duration of your move before deciding." },
+    { q: "How long can I keep the container?", a: "Because you buy it, there is no rental return date. You may keep using it as long as you own it, but zoning, permits, homeowners-association rules, setbacks and property restrictions still control where it may remain." },
     { q: "Can it be placed in my driveway?", a: "Often, yes. The driveway must be firm, level and accessible to a tilt-bed delivery truck. We review clearance, slope and turning room before scheduling." },
     { q: "Will you move the loaded container to my new home?", a: "We sell and deliver the container. Transporting it after loading requires a qualified container carrier and suitable access at both properties. Ask your specialist about the options available in your area before purchase." },
     { q: "Which size works for a household move?", a: "A 20FT unit is easier to place and suits many smaller homes. A 40FT unit provides more capacity for larger households, furniture and garage contents." },
   ],
+  finalEyebrow: "Buy once. Move on your schedule.",
+  finalTitle: "Own the container before, during and after the move.",
+  finalCta: "Get my purchase quote",
 };
 
 const renovation: Vertical = {

@@ -8,11 +8,25 @@ type QuoteFormProps = {
   compact?: boolean;
   context?: string;
   containerOptions?: string[];
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  buttonText?: string;
+  note?: string;
 };
 
 const defaultContainerOptions = ["20FT Standard", "40FT Standard", "40FT High Cube", "Custom Modified", "Not sure yet"];
 
-export function QuoteForm({ compact = false, context = "General container", containerOptions = defaultContainerOptions }: QuoteFormProps) {
+export function QuoteForm({
+  compact = false,
+  context = "General container",
+  containerOptions = defaultContainerOptions,
+  eyebrow = "Fast delivered price",
+  heading = "Get your free quote",
+  intro = "Takes under a minute. We respond the same business day.",
+  buttonText = "Get my delivered price",
+  note,
+}: QuoteFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   async function submitQuote(event: FormEvent<HTMLFormElement>) {
@@ -74,9 +88,9 @@ export function QuoteForm({ compact = false, context = "General container", cont
       <input type="hidden" name="source" value="ucd_redesign" />
       <input className="form-honeypot" type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <div className="form-heading">
-        <span className="eyebrow dark">Fast delivered price</span>
-        <h2>Get your free quote</h2>
-        <p>Takes under a minute. We respond the same business day.</p>
+        <span className="eyebrow dark">{eyebrow}</span>
+        <h2>{heading}</h2>
+        <p>{intro}</p>
       </div>
       <div className="form-grid">
         <label>
@@ -103,10 +117,10 @@ export function QuoteForm({ compact = false, context = "General container", cont
         </label>
       </div>
       <button className="button primary form-button" type="submit" disabled={status === "submitting"}>
-        {status === "submitting" ? "Sending request..." : "Get my delivered price"}
+        {status === "submitting" ? "Sending request..." : buttonText}
       </button>
       {status === "error" && <p className="form-error" role="alert">We could not send your request. Please try again or call (855) 525-0902.</p>}
-      <p className="form-note">No spam. No pressure. Prefer to talk? <a href="tel:18555250902">Call (855) 525-0902</a></p>
+      <p className="form-note">{note ?? "No spam. No pressure."} Prefer to talk? <a href="tel:18555250902">Call (855) 525-0902</a></p>
     </form>
   );
 }

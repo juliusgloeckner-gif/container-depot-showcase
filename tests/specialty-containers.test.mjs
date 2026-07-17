@@ -39,6 +39,20 @@ test("separates eight use cases from three specialty container types in navigati
   for (const href of [...useLinks, ...specialtyLinks]) assert.match(html, new RegExp(`href="${href}"`, "i"));
 });
 
+test("makes moving and relocation purchase-only instead of rental-led", async () => {
+  for (const pathname of ["/moving", "/relocation"]) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200, pathname);
+    const html = await response.text();
+    assert.match(html, /This is a container purchase, not a rental or lease/i);
+    assert.match(html, /For sale only, not rented or leased/i);
+    assert.match(html, /When buying makes more sense than renting/i);
+    assert.match(html, /Do you rent or lease moving containers/i);
+    assert.match(html, /Buy a 20FT moving container/i);
+    assert.match(html, /No monthly container rent/i);
+  }
+});
+
 test("keeps specialty technical claims qualified and product geometry explicit", async () => {
   const source = await readFile(new URL("../app/verticals.ts", import.meta.url), "utf8");
   const diagram = await readFile(new URL("../app/SpecialtyDiagram.tsx", import.meta.url), "utf8");
