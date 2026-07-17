@@ -18,7 +18,7 @@ const uses = [
 ];
 
 const specialtyTypes = [
-  { title: "Refrigerated / Reefers", text: "Powered temperature-controlled capacity for food, floral, farm, event and warehouse operations.", href: "/refrigerated-containers", image: "/specialty/reefer-hero.webp", label: "Cold storage" },
+  { title: "Refrigerated / Reefers", text: "Powered cold storage with a standard 10-day depot electrical test and detailed report before delivery.", href: "/refrigerated-containers", image: "/specialty/reefer-hero.webp", label: "Tested cold storage" },
   { title: "Open Side / Roll-Up", text: "Two long-side access bays on 20FT units or four on 40FT units for faster retrieval.", href: "/open-side-containers", image: "/specialty/open-side-hero.webp", label: "Multi-door access" },
   { title: "Double Door / Tunnel", text: "Paired cargo doors at both short ends for two-way staging, long materials and FIFO flow.", href: "/double-door-containers", image: "/specialty/tunnel-hero.webp", label: "Access both ends" },
 ];

@@ -39,6 +39,11 @@ export type Vertical = {
   finalEyebrow?: string;
   finalTitle?: string;
   finalCta?: string;
+  proofItem?: { value: string; label: string };
+  processTitle?: string;
+  processLead?: string;
+  processSteps?: { title: string; text: string }[];
+  scrollQuote?: { eyebrow: string; strong: string; text: string; button: string };
 };
 
 const construction: Vertical = {
@@ -309,36 +314,50 @@ const institutions: Vertical = {
 const refrigerated: Vertical = {
   key: "refrigerated-containers",
   nav: "Refrigerated / Reefer",
-  eyebrow: "Powered cold storage delivered to your site",
-  title: "Keep it cold.",
-  emphasis: "Keep orders moving.",
-  lead: "Refrigerated shipping containers, commonly called reefers, add powered temperature-controlled capacity beside your restaurant, warehouse, farm or event site. We match the unit, required setpoint, site power and delivery plan before you buy.",
+  eyebrow: "Every reefer is tested before release",
+  title: "Ten days of testing.",
+  emphasis: "Report before delivery.",
+  lead: "Every refrigerated-container purchase includes a 10-day depot electrical testing period before release. This standard testing extends delivery beyond normal dry-container timelines, and you receive a detailed electrical report to support the warranty.",
   hero: "/specialty/reefer-hero.webp",
   featureImage: "/specialty/reefer-interior.webp",
   inventoryImages: ["/specialty/reefer-restaurant.webp", "/specialty/reefer-farm.webp", "/specialty/reefer-hero.webp", "/specialty/reefer-interior.webp"],
   context: "Refrigerated and reefer container",
   seoTitle: "Refrigerated Containers and Reefers for Sale",
-  seoDescription: "Buy refrigerated shipping containers, also called reefers, for on-site cold storage. Match size, setpoint, site power and delivery before purchase.",
+  seoDescription: "Buy a refrigerated shipping container, also called a reefer, with a standard 10-day depot electrical testing period and detailed warranty-supporting electrical report before delivery.",
   specialtyType: "reefer",
-  heroChecks: ["20FT and 40FT refrigerated container options", "Cooling range and controller matched to the product", "Site power verified before delivery"],
+  heroChecks: ["10-day depot electrical testing with every purchase", "Detailed electrical report provided for warranty support", "Delivery scheduled only after testing is complete"],
   quoteOptions: ["20FT Refrigerated / Reefer", "40FT Refrigerated / Reefer", "40FT High Cube Reefer", "Need help matching power and setpoint", "Not sure yet"],
+  quoteCopy: {
+    eyebrow: "Tested reefer purchase",
+    heading: "Get your tested-reefer quote",
+    intro: "Every purchase includes 10 days of depot electrical testing and a detailed report before delivery.",
+    buttonText: "Get my reefer purchase price",
+    note: "Testing is standard and cannot be skipped. Delivery follows the completed test period.",
+  },
+  proofItem: { value: "10 days", label: "depot electrical testing" },
   inventoryOptions: [
     { name: "20FT Reefer", price: "Request local price", detail: "Compact powered cold storage for restaurants, caterers, florists and sites where space is limited.", badge: "20FT cold storage" },
     { name: "40FT Reefer", price: "Request local price", detail: "Higher-volume refrigerated capacity for farms, food distributors, beverage operations and warehouse overflow.", badge: "40FT capacity" },
     { name: "40FT High Cube Reefer", price: "Request local price", detail: "Additional interior height for palletized or bulky temperature-controlled inventory, subject to local availability.", badge: "High cube" },
     { name: "Power-Matched Package", price: "Built to site", detail: "Confirm voltage, phase, amperage, plug, setpoint and placement before the reefer is scheduled for delivery.", badge: "Power verified" },
   ],
-  inventoryHeading: "Choose the reefer. Confirm the power. Protect the product.",
-  inventoryLead: "Tell us what you are storing, the required temperature, your ZIP and the power available at the site. We match the complete setup, not only the steel box.",
-  inventoryStockLabel: "Confirm local inventory",
-  benefitsTitle: "Cold capacity without building another walk-in.",
+  inventoryHeading: "Choose the reefer. Then allow ten days for testing.",
+  inventoryLead: "Every available reefer completes the same 10-day depot electrical testing period before delivery. Tell us the product, required temperature, ZIP and site power so we can match the unit and document the electrical test.",
+  inventoryStockLabel: "10-day test before delivery",
+  benefitsTitle: "Testing comes before delivery.",
   benefits: [
-    { title: "Add cold capacity on site", text: "Create refrigerated overflow beside the operation, close to receiving, prep, packing or service." },
-    { title: "Match the unit to the product", text: "Required setpoint, ventilation, humidity needs and loading pattern determine the right reefer configuration." },
-    { title: "Plan power before delivery", text: "Voltage, phase, amperage, plug type and disconnect requirements are confirmed with your electrician before placement." },
+    { title: "Ten days at the depot", text: "Every reefer remains at the depot for a full 10-day electrical testing period before it is released for delivery." },
+    { title: "Electrical report included", text: "You receive the detailed depot electrical report as documentation supporting the warranty for the purchased unit." },
+    { title: "Delivery follows testing", text: "The delivery schedule begins after the test period is complete, the report is ready and the reefer has been cleared for release." },
   ],
+  scrollQuote: {
+    eyebrow: "Plan for the 10-day depot test",
+    strong: "Testing is standard with every reefer purchase.",
+    text: "Delivery is scheduled only after the electrical test and detailed report are complete.",
+    button: "Get my tested-reefer quote",
+  },
   galleryTitle: "See reefers supporting real operations.",
-  galleryLead: "Refrigerated containers work best when the unit, product, loading pattern, site power and daily workflow are planned together.",
+  galleryLead: "After the standard 10-day depot electrical test and report, refrigerated containers support food, farm, event and warehouse operations when site power and airflow are planned correctly.",
   gallery: [
     { image: "/specialty/reefer-restaurant.webp", alt: "Twenty foot refrigerated reefer container powered beside a restaurant service area", caption: "Restaurant and catering cold-storage overflow" },
     { image: "/specialty/reefer-farm.webp", alt: "Forty foot refrigerated reefer container powered beside a produce packing shed", caption: "Produce cooling beside the packing operation" },
@@ -349,17 +368,33 @@ const refrigerated: Vertical = {
   featureLead: "Keep the T-floor channels and overhead return-air path open, respect the unit's load line and load product at the correct starting temperature.",
   applications: ["Produce and dairy", "Seafood and proteins", "Beverages", "Catering and event food", "Flowers and floral stock", "Cold-chain overflow"],
   technicalNotes: [
+    { title: "Complete the 10-day depot test", text: "Testing is standard with every reefer purchase and takes place before the unit is released for delivery." },
+    { title: "Keep the electrical report", text: "The detailed depot electrical report is provided with the purchase as documentation supporting the unit's warranty." },
     { title: "Confirm site power", text: "Reefer electrical requirements vary. Verify the exact unit's voltage, phase, amperage, plug and disconnect with a qualified electrician." },
     { title: "Protect airflow", text: "Do not block the T-floor or load above the marked load line. Cold supply air and warm return air both need a clear path." },
-    { title: "Define the product requirement", text: "State the product, target setpoint, expected ambient conditions and loading pattern. Cooling and freezing capability varies by unit." },
+  ],
+  processTitle: "From purchase quote to tested reefer.",
+  processLead: "The 10-day depot test is required with every reefer purchase, and delivery follows the completed test and report.",
+  processSteps: [
+    { title: "Confirm the reefer requirement", text: "Send the ZIP, product, target setpoint and available site power so we can match the right unit." },
+    { title: "Approve the purchase quote", text: "Review the reefer, delivered price and expected schedule before testing begins." },
+    { title: "Allow ten days for depot testing", text: "The reefer completes the standard 10-day electrical testing period at the depot before release." },
+    { title: "Receive the report, then schedule delivery", text: "We provide the detailed electrical report for warranty support and arrange delivery after the unit clears testing." },
   ],
   testimonials: [],
   faq: [
+    { q: "What is the 10-day reefer testing period?", a: "Every refrigerated-container purchase includes a 10-day electrical testing period at the depot before release. This is standard with all reefer purchases and is not an optional service." },
+    { q: "Does a reefer deliver in the standard 5 to 10 days?", a: "No. The standard dry-container delivery window does not apply to reefers. Allow the full 10-day depot electrical testing period first, followed by delivery scheduling and transit. Your specialist will confirm the expected schedule for the selected unit and ZIP." },
+    { q: "What electrical report will I receive?", a: "You receive the detailed report from the depot electrical testing completed on the purchased reefer. Keep it with the unit records because it is provided as documentation supporting the warranty." },
+    { q: "Can the testing period be skipped to receive the reefer faster?", a: "No. Depot electrical testing is standard with every reefer purchase and must be completed before the unit is cleared for delivery." },
     { q: "What power does a refrigerated container need?", a: "It depends on the specific refrigeration unit. Many marine reefers use high-voltage three-phase power, while some installations use compatible transformers or converter packages. A qualified electrician should confirm voltage, phase, amperage, plug, disconnect and cable routing for the exact unit before delivery." },
     { q: "Can the same reefer work as a cooler or freezer?", a: "Some units can operate across chilled and frozen setpoints, but range and performance vary by model, refrigerant, condition and ambient temperature. Tell us the product and required setpoint so the available unit can be checked before purchase." },
     { q: "How should product be loaded?", a: "Load product at the correct starting temperature, keep the T-floor airflow channels open, leave the overhead return-air path clear and never stack above the unit's load line. Your food-safety or cold-chain plan remains the governing procedure." },
     { q: "Can a reefer sit beside a restaurant, farm or warehouse?", a: "Often, yes, when the site has approved placement, firm level support, delivery access, ventilation around the machinery end and a safe electrical connection. Confirm zoning, fire access, food-safety and electrical requirements before delivery." },
   ],
+  finalEyebrow: "Testing protects the purchase.",
+  finalTitle: "Get a tested reefer with the electrical report to support its warranty.",
+  finalCta: "Get my tested-reefer quote",
 };
 
 const openSide: Vertical = {

@@ -13,17 +13,17 @@ async function render(pathname) {
 
 test("renders all three specialty container landing pages", async () => {
   const pages = [
-    ["/refrigerated-containers", /Keep it cold/i, /Refrigerated shipping containers, commonly called reefers/i],
-    ["/open-side-containers", /Open the right bay/i, /two roll-up doors along the long side of a 20FT unit or four along a 40FT unit/i],
-    ["/double-door-containers", /Load from either end/i, /paired ISO cargo doors at both short ends/i],
+    ["/refrigerated-containers", /Ten days of testing/i, /Every refrigerated-container purchase includes a 10-day depot electrical testing period/i, /Get my tested-reefer quote/i],
+    ["/open-side-containers", /Open the right bay/i, /two roll-up doors along the long side of a 20FT unit or four along a 40FT unit/i, /Get my configuration quote/i],
+    ["/double-door-containers", /Load from either end/i, /paired ISO cargo doors at both short ends/i, /Get my configuration quote/i],
   ];
-  for (const [pathname, heading, technicalCopy] of pages) {
+  for (const [pathname, heading, technicalCopy, quoteCopy] of pages) {
     const response = await render(pathname);
     assert.equal(response.status, 200, pathname);
     const html = await response.text();
     assert.match(html, heading);
     assert.match(html, technicalCopy);
-    assert.match(html, /Get my configuration quote/i);
+    assert.match(html, quoteCopy);
     assert.match(html, /application\/ld\+json/i);
     assert.ok((html.match(/href="#quote-form"/g) ?? []).length >= 5);
   }
@@ -51,6 +51,21 @@ test("makes moving and relocation purchase-only instead of rental-led", async ()
     assert.match(html, /Buy a 20FT moving container/i);
     assert.match(html, /No monthly container rent/i);
   }
+});
+
+test("keeps reefer delivery behind the standard ten-day electrical test", async () => {
+  const response = await render("/refrigerated-containers");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /10-day depot electrical testing with every purchase/i);
+  assert.match(html, /detailed electrical report provided for warranty support/i);
+  assert.match(html, /Testing is standard and cannot be skipped/i);
+  assert.match(html, /Does a reefer deliver in the standard 5 to 10 days/i);
+  assert.match(html, /Receive the report, then schedule delivery/i);
+  const proof = html.match(/<section class="proof-strip">([\s\S]*?)<\/section>/i)?.[1] ?? "";
+  assert.match(proof, /10 days/i);
+  assert.match(proof, /depot electrical testing/i);
+  assert.doesNotMatch(proof, />5 to 10</i);
 });
 
 test("keeps specialty technical claims qualified and product geometry explicit", async () => {

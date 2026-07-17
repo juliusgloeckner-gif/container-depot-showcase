@@ -50,6 +50,12 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
     ],
   } : null;
   const heroChecks = data.heroChecks ?? ["Steel lockbox doors included", "Wind and watertight grades available", "One delivered price with no hidden fees"];
+  const processSteps = data.processSteps ?? [
+    { title: data.specialtyType ? "Send your ZIP and configuration" : "Send your ZIP and size", text: data.specialtyType ? "We check the closest suitable inventory or modification path." : "We check the closest suitable inventory for your use." },
+    { title: "Approve one delivered price", text: "You see the total before you commit." },
+    { title: "Confirm access and placement", text: data.specialtyType ? "We make sure the truck and specialty setup can work at your site." : "We make sure the delivery truck can reach the approved placement area." },
+    { title: "Receive your container", text: "The driver places it in the approved position, ready for setup." },
+  ];
 
   return (
     <main>
@@ -69,7 +75,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
         </div>
       </section>
 
-      <section className="proof-strip"><div className="wrap proof-grid"><div><strong>4,200+</strong><span>containers delivered</span></div>{data.specialtyType ? <div><strong>Site</strong><span>requirements checked</span></div> : <div><strong>5 to 10</strong><span>day delivery</span></div>}<div><strong>48</strong><span>states served</span></div><div><strong>$0</strong><span>hidden fees</span></div></div></section>
+      <section className="proof-strip"><div className="wrap proof-grid"><div><strong>4,200+</strong><span>containers delivered</span></div>{data.proofItem ? <div><strong>{data.proofItem.value}</strong><span>{data.proofItem.label}</span></div> : data.specialtyType ? <div><strong>Site</strong><span>requirements checked</span></div> : <div><strong>5 to 10</strong><span>day delivery</span></div>}<div><strong>48</strong><span>states served</span></div><div><strong>$0</strong><span>hidden fees</span></div></div></section>
 
       <section className="section benefits-section">
         <div className="wrap">
@@ -91,7 +97,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
         </div>
       </section>}
 
-      {data.specialtyType && <section className="scroll-quote-strip" aria-label="Request a specialty container quote"><div className="wrap scroll-quote-inner"><div><span>Match the complete setup</span><p><strong>Tell us the use, ZIP and required configuration.</strong> We will confirm the nearest suitable inventory or modification path before you commit.</p></div><a className="button primary" href="#quote-form">Get my configuration quote</a></div></section>}
+      {data.specialtyType && <section className="scroll-quote-strip" aria-label="Request a specialty container quote"><div className="wrap scroll-quote-inner"><div><span>{data.scrollQuote?.eyebrow ?? "Match the complete setup"}</span><p><strong>{data.scrollQuote?.strong ?? "Tell us the use, ZIP and required configuration."}</strong> {data.scrollQuote?.text ?? "We will confirm the nearest suitable inventory or modification path before you commit."}</p></div><a className="button primary" href="#quote-form">{data.scrollQuote?.button ?? "Get my configuration quote"}</a></div></section>}
 
       <section className="section vertical-gallery-section">
         <div className="wrap">
@@ -122,8 +128,8 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
 
       <section className="section dark-section">
         <div className="wrap process-grid">
-          <div><span className="eyebrow">Clear process</span><h2>From ZIP code to placed container.</h2><p>One specialist handles the quote, inventory match and delivery details.</p></div>
-          <ol><li><b>01</b><span><strong>{data.specialtyType ? "Send your ZIP and configuration" : "Send your ZIP and size"}</strong>{data.specialtyType ? "We check the closest suitable inventory or modification path." : "We check the closest suitable inventory for your use."}</span></li><li><b>02</b><span><strong>Approve one delivered price</strong>You see the total before you commit.</span></li><li><b>03</b><span><strong>Confirm access and placement</strong>{data.specialtyType ? "We make sure the truck and specialty setup can work at your site." : "We make sure the delivery truck can reach the approved placement area."}</span></li><li><b>04</b><span><strong>Receive your container</strong>The driver places it in the approved position, ready for setup.</span></li></ol>
+          <div><span className="eyebrow">Clear process</span><h2>{data.processTitle ?? "From ZIP code to placed container."}</h2><p>{data.processLead ?? "One specialist handles the quote, inventory match and delivery details."}</p></div>
+          <ol>{processSteps.map((step, index) => <li key={step.title}><b>0{index + 1}</b><span><strong>{step.title}</strong>{step.text}</span></li>)}</ol>
         </div>
       </section>
 
