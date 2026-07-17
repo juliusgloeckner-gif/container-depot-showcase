@@ -1,6 +1,7 @@
 param(
   [string]$Origin = "http://127.0.0.1:3105",
-  [string]$BasePath = "/container-depot-showcase"
+  [string]$BasePath = "/container-depot-showcase",
+  [bool]$NoIndex = $true
 )
 
 $ErrorActionPreference = "Stop"
@@ -110,13 +111,16 @@ foreach ($entry in $routes) {
 }
 
 New-Item -ItemType File -Path (Join-Path $resolvedOutput ".nojekyll") -Force | Out-Null
-$vercelConfig = @{
+$vercelConfigObject = @{
   cleanUrls = $true
   trailingSlash = $true
-  headers = @(@{
+}
+if ($NoIndex) {
+  $vercelConfigObject.headers = @(@{
     source = "/(.*)"
     headers = @(@{ key = "X-Robots-Tag"; value = "noindex, nofollow, noarchive" })
   })
-} | ConvertTo-Json -Depth 6
+}
+$vercelConfig = $vercelConfigObject | ConvertTo-Json -Depth 6
 [System.IO.File]::WriteAllText((Join-Path $resolvedOutput "vercel.json"), $vercelConfig, [System.Text.UTF8Encoding]::new($false))
 Write-Output "Exported static site to $resolvedOutput"

@@ -97,8 +97,24 @@ test("keeps reefer delivery behind the standard ten-day electrical test", async 
   assert.match(proof, /depot electrical testing/i);
   assert.doesNotMatch(proof, />5 to 10</i);
   assert.match(html, /Fresh produce/i);
-  assert.match(html, /Life-science products/i);
-  assert.match(html, /validated equipment, continuous monitoring/i);
+  assert.match(html, /Pharmaceuticals and biologics/i);
+  assert.match(html, /exact-unit qualification, temperature mapping and monitoring/i);
+});
+
+test("shows a diversified reefer use mosaic without implying product validation", async () => {
+  const response = await render("/refrigerated-containers");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const use of [
+    "Pharmaceuticals and biologics",
+    "Laboratory reagents and diagnostics",
+    "Sensitive electronic components",
+    "Art and archival materials",
+    "Approved temperature-sensitive industrial materials",
+  ]) assert.match(html, new RegExp(use, "i"));
+  assert.match(html, /does not by itself validate storage for a particular product/i);
+  assert.match(html, /exact-unit qualification, temperature mapping and monitoring/i);
+  assert.match(html, /reefer-use-mosaic-v2\.webp/i);
 });
 
 test("shows all eight business-overflow audiences with visual tiles", async () => {
@@ -154,7 +170,7 @@ test("ships project-bound visuals for every new page and use-case mosaic", async
     "open-side-hero.webp", "open-side-landscape.webp", "open-side-school.webp", "open-side-interior.webp",
     "tunnel-hero.webp", "tunnel-construction.webp", "tunnel-warehouse.webp", "tunnel-interior.webp",
     "export-retirement-relocation-v1.webp", "export-young-relocation-v1.webp", "export-humanitarian-v1.webp",
-    "reefer-use-mosaic-v1.webp", "business-overflow-mosaic-v1.webp", "disaster-relief-hero-v1.webp",
+    "reefer-use-mosaic-v1.webp", "reefer-use-mosaic-v2.webp", "business-overflow-mosaic-v1.webp", "disaster-relief-hero-v1.webp",
     "insulated-container-hero-v1.webp", "office-container-hero-v1.webp", "hazmat-container-hero-v1.webp",
   ];
   await Promise.all(names.map((name) => access(new URL(`../public/specialty/${name}`, import.meta.url))));
