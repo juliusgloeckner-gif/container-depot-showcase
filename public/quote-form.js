@@ -45,7 +45,7 @@
       form.classList.add("quote-success");
       form.innerHTML = successMarkup();
       window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { variant: "new_site" } }));
-    } catch (error) {
+    } catch {
       button.disabled = false;
       button.textContent = "Get my delivered price";
       var message = document.createElement("p");

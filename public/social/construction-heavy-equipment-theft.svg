@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+<title id="title">EQUIPMENT THEFT REQUIRES LAYERED CONTROL</title><desc id="desc">NER estimated annual heavy equipment theft range. This is not a shipping-container theft count.</desc>
+<rect width="1200" height="1200" fill="#f4f1ea"/><rect width="1200" height="34" fill="#f26a18"/><rect y="1092" width="1200" height="108" fill="#081421"/>
+<rect x="76" y="70" width="81" height="81" rx="6" fill="#f26a18"/><text x="116" y="122" text-anchor="middle" fill="white" font-family="Arial" font-size="24" font-weight="700">UCD</text>
+<text x="185" y="122" fill="#081421" font-family="Arial" font-size="24" font-weight="700">UNITED CONTAINER DEPOT</text>
+<text x="82" y="210" fill="#d85109" font-family="Arial" font-size="24" font-weight="700">SECURITY EXPOSURE</text>
+<text x="82" y="290" fill="#081421" font-family="Arial" font-size="62" font-weight="700"><tspan x="82" dy="0">EQUIPMENT THEFT REQUIRES</tspan><tspan x="82" dy="72">LAYERED CONTROL</tspan></text>
+<text x="82" y="520" fill="#d85109" font-family="Arial" font-size="76" font-weight="700">$300M TO $1B</text>
+<rect x="82" y="570" width="1036" height="335" rx="22" fill="#e8edf0"/><line x1="170" y1="750" x2="1020" y2="750" stroke="#c0cbd2" stroke-width="30"/><line x1="425" y1="750" x2="1020" y2="750" stroke="#f26a18" stroke-width="30"/><circle cx="425" cy="750" r="22" fill="#081421"/><circle cx="1020" cy="750" r="22" fill="#081421"/><text x="170" y="830" text-anchor="middle">$0</text><text x="425" y="830" text-anchor="middle">$300M</text><text x="1020" y="830" text-anchor="middle">$1B</text>
+<text x="82" y="976" fill="#34495b" font-family="Arial" font-size="30"><tspan x="82" dy="0">NER estimated annual heavy equipment theft range. This is not a</tspan><tspan x="82" dy="40">shipping-container theft count.</tspan></text>
+<text x="82" y="1070" fill="#5b6b79" font-family="Arial" font-size="21">Source: National Equipment Register</text>
+<text x="82" y="1155" fill="white" font-family="Arial" font-size="23" font-weight="700">UNITEDCONTAINERDEPOT.COM/CONSTRUCTION</text>
+</svg>
