@@ -107,7 +107,7 @@ test("shows all eight business-overflow audiences with visual tiles", async () =
   for (const label of ["Retail stores", "Restaurants", "Manufacturers", "Warehouses", "Distributors", "Service businesses", "Offices", "Auto dealerships"]) {
     assert.match(html, new RegExp(label, "i"));
   }
-  assert.match(html, /business-overflow-mosaic-v1\.png/i);
+  assert.match(html, /business-overflow-mosaic-v1\.webp/i);
 });
 
 test("keeps safety-sensitive specialty pages qualified", async () => {
@@ -158,6 +158,46 @@ test("ships project-bound visuals for every new page and use-case mosaic", async
     "insulated-container-hero-v1.webp", "office-container-hero-v1.webp", "hazmat-container-hero-v1.webp",
   ];
   await Promise.all(names.map((name) => access(new URL(`../public/specialty/${name}`, import.meta.url))));
+});
+
+test("ships the mobile-first authentic hero set and references every file", async () => {
+  const names = [
+    "construction-hero-v2.webp", "farm-hero-v2.webp", "business-hero-v2.webp",
+    "moving-hero-v2.webp", "vehicles-hero-v2.webp", "events-hero-v2.webp",
+    "export-hero-v2.webp", "open-side-hero-v2.webp", "office-hero-v2.webp",
+    "disaster-relief-hero-v2.webp", "hazmat-hero-v2.webp",
+  ];
+  const source = await readFile(new URL("../app/verticals.ts", import.meta.url), "utf8");
+  await Promise.all(names.map((name) => access(new URL(`../public/authentic/${name}`, import.meta.url))));
+  for (const name of names) assert.match(source, new RegExp(`/authentic/${name.replaceAll(".", "\\.")}`));
+});
+
+test("shows a contextual quote reminder on every standard use-case page", async () => {
+  const pages = [
+    ["/construction", /Already know your ZIP and preferred size/i],
+    ["/farm", /Tell us your ZIP and what you need to protect/i],
+    ["/business", /Tell us your ZIP and what you need to protect/i],
+    ["/moving", /Tell us your ZIP and what you need to protect/i],
+    ["/renovation", /Tell us your ZIP and what you need to protect/i],
+    ["/vehicles", /Tell us your ZIP and what you need to protect/i],
+    ["/events", /Tell us your ZIP and what you need to protect/i],
+    ["/institutions", /Tell us your ZIP and what you need to protect/i],
+  ];
+  for (const [pathname, reminder] of pages) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200, pathname);
+    const html = await response.text();
+    assert.match(html, /class="scroll-quote-strip"/i, pathname);
+    assert.match(html, reminder, pathname);
+    assert.match(html, /href="#quote-form"/i, pathname);
+  }
+});
+
+test("keeps the quote form low-friction and connected to Formspree", async () => {
+  const response = await render("/farm");
+  const html = await response.text();
+  assert.match(html, /action="https:\/\/formspree\.io\/f\/mvzepnvd"/i);
+  assert.match(html, /No payment\. No obligation\. No spam\./i);
 });
 
 test("does not add invented specialty testimonials", async () => {

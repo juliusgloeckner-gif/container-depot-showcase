@@ -120,7 +120,7 @@ export function QuoteForm({
         {status === "submitting" ? "Sending request..." : buttonText}
       </button>
       {status === "error" && <p className="form-error" role="alert">We could not send your request. Please try again or call (855) 525-0902.</p>}
-      <p className="form-note">{note ?? "No spam. No pressure."} Prefer to talk? <a href="tel:18555250902">Call (855) 525-0902</a></p>
+      <p className="form-note">{note ?? "No payment. No obligation. No spam."} Prefer to talk? <a href="tel:18555250902">Call (855) 525-0902</a></p>
     </form>
   );
 }

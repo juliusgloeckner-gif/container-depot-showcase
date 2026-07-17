@@ -59,7 +59,7 @@ export type Vertical = {
 
 const construction: Vertical = {
   key: "construction", nav: "Construction", eyebrow: "Job site storage that works", title: "Protect your tools.", emphasis: "Keep your crew moving.",
-  lead: "Secure, weatherproof containers delivered directly to your job site in 5 to 10 days. From $1,950 delivered.", hero: "/hero-construction.jpg", featureImage: "/storage-tools.jpg", context: "Construction site storage",
+  lead: "Secure, weatherproof containers delivered directly to your job site in 5 to 10 days. From $1,950 delivered.", hero: "/authentic/construction-hero-v2.webp", featureImage: "/storage-tools.jpg", context: "Construction site storage",
   inventoryImages: ["/container-20ft.jpg", "/inventory-v3/construction-40.jpg", "/container-40ft-hc.jpg", "/container-custom.jpg"],
   gallery: [
     { image: "/lock-theft.jpg", alt: "Locked shipping container protecting construction equipment", caption: "Lock tools down after the crew leaves" },
@@ -87,7 +87,7 @@ const construction: Vertical = {
 
 const farm: Vertical = {
   key: "farm", nav: "Farm", eyebrow: "Storage built for working land", title: "Protect your equipment.", emphasis: "Secure your feed.",
-  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", featureImage: "/farm-feature-storage-v2.png", context: "Farm and ranch storage",
+  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/authentic/farm-hero-v2.webp", featureImage: "/farm-feature-storage-v2.png", context: "Farm and ranch storage",
   inventoryImages: ["/inventory-v4/farm-20-v2.png", "/inventory-v3/farm-40.jpg", "/inventory-v2/farm-3.jpg", "/inventory-v3/farm-custom.jpg"],
   gallery: [
     { image: "/ag-gallery1.jpg", alt: "Shipping container placed beside a barn and cattle pasture", caption: "Placed beside the barn, not in the way" },
@@ -115,7 +115,7 @@ const farm: Vertical = {
 
 const business: Vertical = {
   key: "business", nav: "Business Overflow", eyebrow: "Overflow storage on your own lot", title: "Own your storage.", emphasis: "Stop renting units.",
-  lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/business-overflow.png", featureImage: "/business-warehouse-overflow-v2.png", context: "Business overflow storage",
+  lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/authentic/business-hero-v2.webp", featureImage: "/business-warehouse-overflow-v2.png", context: "Business overflow storage",
   inventoryImages: ["/inventory-v4/business-20-v3.png", "/inventory-v2/business-2.jpg", "/inventory-v2/business-3.jpg", "/inventory-v2/business-4.jpg"],
   gallery: [
     { image: "/business-overflow.png", alt: "Shipping container storing restaurant supplies beside a business", caption: "Overflow stock stays beside your premises" },
@@ -159,7 +159,7 @@ const business: Vertical = {
 
 const moving: Vertical = {
   key: "moving", nav: "Moving & Relocation", eyebrow: "For sale. Own it for the entire move.", title: "Buy it once.", emphasis: "Pack without a deadline.",
-  lead: "This is a container purchase, not a rental or lease. Keep it beside your current home while you pack, arrange qualified transport when you are ready, then leave it beside the new property or continue storing for as long as you need.", hero: "/moving-hero.png", featureImage: "/moving-feature.png", context: "Residential moving and relocation container purchase",
+  lead: "This is a container purchase, not a rental or lease. Keep it beside your current home while you pack, arrange qualified transport when you are ready, then leave it beside the new property or continue storing for as long as you need.", hero: "/authentic/moving-hero-v2.webp", featureImage: "/moving-feature.png", context: "Residential moving and relocation container purchase",
   seoTitle: "Moving Containers for Sale | Buy, Pack and Keep",
   seoDescription: "Buy a shipping container for moving and relocation. Pack beside your home without a rental deadline, move it with a qualified carrier, and keep it for storage afterward.",
   heroChecks: ["For sale only, not rented or leased", "No monthly container-rental clock", "Keep it at the new property after the move"],
@@ -248,7 +248,7 @@ const renovation: Vertical = {
 
 const vehicles: Vertical = {
   key: "vehicles", nav: "Vehicles & Recreation", eyebrow: "Secure space for the machines you keep", title: "Free your garage.", emphasis: "Protect the good stuff.",
-  lead: "Create lockable storage for classic cars, motorcycles, ATVs and recreational equipment beside your home, workshop or acreage.", hero: "/vehicles-hero.png", featureImage: "/vehicles-feature.png", context: "Vehicle and recreational equipment storage",
+  lead: "Create lockable storage for classic cars, motorcycles, ATVs and recreational equipment beside your home, workshop or acreage.", hero: "/authentic/vehicles-hero-v2.webp", featureImage: "/vehicles-feature.png", context: "Vehicle and recreational equipment storage",
   inventoryImages: ["/gallery-v4/vehicle-car-v2.png", "/inventory-v2/vehicles-40ft-recreation.jpg", "/inventory-v2/vehicles-3.jpg", "/inventory-v3/vehicle-custom-v2.png"],
   gallery: [
     { image: "/gallery-v4/vehicle-car-v2.png", alt: "Classic American pony coupe stored through both short-end doors of a twenty foot container beside a workshop", caption: "A 20FT unit can protect one compact classic" },
@@ -276,7 +276,7 @@ const vehicles: Vertical = {
 
 const events: Vertical = {
   key: "events", nav: "Events & Production", eyebrow: "Storage ready for the next load-in", title: "Store the show.", emphasis: "Be ready to roll.",
-  lead: "Keep road cases, staging, tents, barriers and production equipment organized beside the venue, studio or temporary project site.", hero: "/events-hero.png", featureImage: "/events-feature.png", context: "Event media and temporary project storage",
+  lead: "Keep road cases, staging, tents, barriers and production equipment organized beside the venue, studio or temporary project site.", hero: "/authentic/events-hero-v2.webp", featureImage: "/events-feature.png", context: "Event media and temporary project storage",
   inventoryImages: ["/inventory-v3/events-20.jpg", "/inventory-v3/events-40.jpg", "/inventory-v2/events-3.jpg", "/inventory-v2/events-4.jpg"],
   gallery: [
     { image: "/events-hero.png", alt: "Road cases lighting stands and barriers stored in a twenty foot container behind a concert venue", caption: "Keep production gear behind the venue" },
@@ -433,7 +433,7 @@ const openSide: Vertical = {
   title: "Open the right bay.",
   emphasis: "Reach what you need.",
   lead: "Multi-door open-side containers add two roll-up doors along the long side of a 20FT unit or four along a 40FT unit. Crews can reach the right section without unloading a long center aisle, while framed steel posts reinforce every opening.",
-  hero: "/specialty/open-side-hero.webp",
+  hero: "/authentic/open-side-hero-v2.webp",
   featureImage: "/specialty/open-side-interior.webp",
   inventoryImages: ["/specialty/open-side-landscape.webp", "/specialty/open-side-hero.webp", "/specialty/open-side-school.webp", "/specialty/open-side-interior.webp"],
   context: "Open-side roll-up door container",
@@ -608,7 +608,7 @@ const officeContainers: Vertical = {
   title: "Put the office on site.",
   emphasis: "Keep decisions close.",
   lead: "Buy a modified container office with personnel access, windows, power, lighting and HVAC planned around the people, site and local approval requirements.",
-  hero: "/specialty/office-container-hero-v1.webp",
+  hero: "/authentic/office-hero-v2.webp",
   featureImage: "/specialty/office-container-hero-v1.webp",
   inventoryImages: ["/specialty/office-container-hero-v1.webp", "/specialty/office-container-hero-v1.webp", "/inventory-v3/schools-custom.jpg", "/container-custom.jpg"],
   context: "Modified office container",
@@ -669,7 +669,7 @@ const hazardousMaterial: Vertical = {
   title: "Design to the hazard.",
   emphasis: "Verify before storage.",
   lead: "An ordinary shipping container is not automatically suitable or compliant for hazardous materials. The exact substance, quantity, containers, incompatibilities, site and governing authority determine the required engineered configuration.",
-  hero: "/specialty/hazmat-container-hero-v1.webp",
+  hero: "/authentic/hazmat-hero-v2.webp",
   featureImage: "/specialty/hazmat-container-hero-v1.webp",
   inventoryImages: ["/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp"],
   context: "Purpose-built hazardous-material storage container",
@@ -739,7 +739,7 @@ const disasterRelief: Vertical = {
   title: "Stage it securely.",
   emphasis: "Deploy when every hour matters.",
   lead: "Buy secure container capacity for emergency supply caches, response equipment, recovery tools and field operations. Match the container and interior plan to the agency, nonprofit or facility responsible for the inventory.",
-  hero: "/specialty/disaster-relief-hero-v1.webp",
+  hero: "/authentic/disaster-relief-hero-v2.webp",
   featureImage: "/specialty/disaster-relief-hero-v1.webp",
   inventoryImages: ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/office-container-hero-v1.webp"],
   context: "Disaster relief and emergency response storage",
@@ -794,7 +794,7 @@ const internationalShipping: Vertical = {
   title: "Pack without the rush.",
   emphasis: "Ship when you are ready.",
   lead: "Buy your container, have its export-readiness and CSC status checked, then fill it on your schedule. United Container Depot sells the container and arranges the depot inspection. We are not a freight forwarder and do not book ocean freight, customs clearance or international transport.",
-  hero: "/specialty/export-retirement-relocation-v1.webp",
+  hero: "/authentic/export-hero-v2.webp",
   featureImage: "/specialty/export-humanitarian-v1.webp",
   inventoryImages: ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/reefer-hero.webp"],
   context: "International shipping and export-ready container purchase",

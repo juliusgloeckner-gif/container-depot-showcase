@@ -57,6 +57,17 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
     { title: "Confirm access and placement", text: data.specialtyType ? "We make sure the truck and specialty setup can work at your site." : "We make sure the delivery truck can reach the approved placement area." },
     { title: "Receive your container", text: "The driver places it in the approved position, ready for setup." },
   ];
+  const scrollQuote = data.specialtyType ? {
+    eyebrow: data.scrollQuote?.eyebrow ?? "Match the complete setup",
+    strong: data.scrollQuote?.strong ?? "Tell us the use, ZIP and required configuration.",
+    text: data.scrollQuote?.text ?? "We will confirm the nearest suitable inventory or modification path before you commit.",
+    button: data.scrollQuote?.button ?? "Get my configuration quote",
+  } : {
+    eyebrow: `Storage for ${data.nav.toLowerCase()}`,
+    strong: "Tell us your ZIP and what you need to protect.",
+    text: "We will match the right size, condition and delivery plan before you commit.",
+    button: "Get my delivered price",
+  };
 
   return (
     <main>
@@ -98,7 +109,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
         </div>
       </section>}
 
-      {data.specialtyType && <section className="scroll-quote-strip" aria-label="Request a specialty container quote"><div className="wrap scroll-quote-inner"><div><span>{data.scrollQuote?.eyebrow ?? "Match the complete setup"}</span><p><strong>{data.scrollQuote?.strong ?? "Tell us the use, ZIP and required configuration."}</strong> {data.scrollQuote?.text ?? "We will confirm the nearest suitable inventory or modification path before you commit."}</p></div><a className="button primary" href="#quote-form">{data.scrollQuote?.button ?? "Get my configuration quote"}</a></div></section>}
+      <section className="scroll-quote-strip" aria-label={`Request a ${data.nav.toLowerCase()} container quote`}><div className="wrap scroll-quote-inner"><div><span>{scrollQuote.eyebrow}</span><p><strong>{scrollQuote.strong}</strong> {scrollQuote.text}</p></div><a className="button primary" href="#quote-form">{scrollQuote.button}</a></div></section>
 
       <section className="section vertical-gallery-section">
         <div className="wrap">
