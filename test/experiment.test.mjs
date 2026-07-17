@@ -74,6 +74,23 @@ test("new keyword verticals always use the redesign", () => {
   }
 });
 
+test("serves redesign assets to crawlers without relying on cookies", () => {
+  for (const pathname of [
+    "/assets/index.css",
+    "/downloads/ucd-construction-container-data-brief.pdf",
+    "/social/construction-container-footprint.png",
+    "/inventory-v3/construction-40.jpg",
+    "/hero-construction.jpg",
+    "/quote-form.js",
+  ]) {
+    assert.equal(
+      chooseVariant({ pathname, userAgent: "Googlebot" }),
+      "B",
+      pathname,
+    );
+  }
+});
+
 test("legacy campaign and homepage routes always use the current site", () => {
   for (const pathname of ["/", "/agriculture", "/commercial"]) {
     assert.equal(

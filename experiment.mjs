@@ -32,6 +32,27 @@ const CONSTRUCTION_KNOWLEDGE_PREFIXES = [
   "/construction/calculators",
 ];
 
+const REDESIGN_ASSET_PREFIXES = [
+  "/assets",
+  "/downloads",
+  "/social",
+  "/inventory-v3",
+];
+
+const REDESIGN_ASSET_PATHS = new Set([
+  "/container-20ft.jpg",
+  "/container-40ft-hc.jpg",
+  "/container-custom.jpg",
+  "/hero-construction.jpg",
+  "/lock-theft.jpg",
+  "/quote-form.js",
+  "/static-navigation.js",
+  "/storage-tools.jpg",
+  "/storage-tools2.jpg",
+  "/us-flag.png",
+  "/weather-rain.jpg",
+]);
+
 const OLD_ONLY_EXACT_PATHS = new Set([
   "/robots.txt",
   "/sitemap.xml",
@@ -70,9 +91,16 @@ export function isConstructionKnowledgePath(pathname) {
   );
 }
 
+export function isConstructionKnowledgeAssetPath(pathname) {
+  const clean = cleanPathname(pathname);
+  return clean === "/downloads" || clean.startsWith("/downloads/") ||
+    clean === "/social" || clean.startsWith("/social/");
+}
+
 export function isRedesignOnlyPath(pathname) {
   const clean = cleanPathname(pathname);
-  return REDESIGN_ONLY_PREFIXES.some(
+  return REDESIGN_ASSET_PATHS.has(clean) ||
+    [...REDESIGN_ONLY_PREFIXES, ...REDESIGN_ASSET_PREFIXES].some(
     (prefix) => clean === prefix || clean.startsWith(`${prefix}/`),
   );
 }
@@ -97,13 +125,15 @@ export function chooseVariant({
   userAgent,
   constructionBPercent = DEFAULT_CONSTRUCTION_B_PERCENT,
   randomValue = Math.random(),
-}) {
-  if (isOldOnlyPath(pathname)) return "A";
-  if (isConstructionKnowledgePath(pathname)) return "B";
-  if (isSearchEngine(userAgent)) return "A";
+  }) {
+    if (isOldOnlyPath(pathname)) return "A";
+    if (isConstructionKnowledgePath(pathname)) return "B";
 
-  const forced = normalizeVariant(forcedVariant);
-  if (forced) return forced;
+    const forced = normalizeVariant(forcedVariant);
+    if (forced && !isSearchEngine(userAgent)) return forced;
+
+    if (isRedesignOnlyPath(pathname)) return "B";
+    if (isSearchEngine(userAgent)) return "A";
 
   if (isConstructionPath(pathname)) {
     const existing = normalizeVariant(constructionCookieVariant);
@@ -113,7 +143,6 @@ export function chooseVariant({
       : "A";
   }
 
-  if (isRedesignOnlyPath(pathname)) return "B";
   if (isLegacyPath(pathname)) return "A";
 
   return normalizeVariant(originVariant) || "A";

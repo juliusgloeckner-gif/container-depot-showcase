@@ -7,6 +7,7 @@ import {
   ORIGIN_VARIANT_COOKIE,
   chooseVariant,
   destinationPath,
+  isConstructionKnowledgeAssetPath,
   isConstructionKnowledgePath,
   isConstructionPath,
   normalizeVariant,
@@ -130,7 +131,10 @@ export async function proxy(request) {
   let response;
   if (variant === "B" && destination.pathname.endsWith("/index.html")) {
     response = await fetchRedesignPage(destination, request);
-    if (isConstructionKnowledgePath(requestUrl.pathname)) {
+    if (
+      isConstructionKnowledgePath(requestUrl.pathname) ||
+      isConstructionKnowledgeAssetPath(requestUrl.pathname)
+    ) {
       response.headers.delete("x-robots-tag");
     }
     response.headers.set("x-ucd-router-mode", "fetch");
