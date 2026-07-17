@@ -129,7 +129,13 @@ export async function proxy(request) {
   }
 
   let response;
-  if (variant === "B" && destination.pathname.endsWith("/index.html")) {
+  if (
+    variant === "B" &&
+    (
+      destination.pathname.endsWith("/index.html") ||
+      isConstructionKnowledgeAssetPath(requestUrl.pathname)
+    )
+  ) {
     response = await fetchRedesignPage(destination, request);
     if (
       isConstructionKnowledgePath(requestUrl.pathname) ||
