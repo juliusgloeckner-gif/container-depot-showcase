@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { AutoClosingDetails } from "../AutoClosingDetails";
+import { popularUses, specialtyContainers } from "../navigation";
 
 export function Header() {
   return (
@@ -17,8 +19,7 @@ export function Header() {
             <span className="flag-mark" aria-hidden="true"><Image src="/us-flag.png" alt="" fill sizes="52px" /></span>
             <span>United Container Depot</span>
           </Link>
-          <details className="mobile-menu">
-            <summary><span className="menu-icon" aria-hidden="true"></span><span>Menu</span></summary>
+          <AutoClosingDetails className="mobile-menu" summary={<><span className="menu-icon" aria-hidden="true"></span><span>Menu</span></>}>
             <div className="mobile-menu-panel">
               <div className="mobile-menu-main">
                 <Link href="/construction#inventory">Container options</Link>
@@ -26,23 +27,13 @@ export function Header() {
                 <a href="tel:18555250902">Call (855) 525-0902</a>
                 <a className="mobile-menu-quote" href="#quote-form">Get a quote</a>
               </div>
-              <span className="mobile-menu-label">Storage by use</span>
+              <span className="mobile-menu-label">Popular uses</span>
               <div className="mobile-menu-links">
-                <Link href="/construction">Construction sites</Link>
-                <Link href="/farm">Farms and ranches</Link>
-                <Link href="/business">Business overflow</Link>
-                <Link href="/moving">Moving and relocation</Link>
-                <Link href="/renovation">Renovation storage</Link>
-                <Link href="/vehicles">Vehicles and recreation</Link>
-                <Link href="/events">Events and production</Link>
-                <Link href="/institutions">Schools and institutions</Link>
+                {popularUses.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
               </div>
-              <span className="mobile-menu-label">Specialty containers and export</span>
+              <span className="mobile-menu-label">Specialty containers</span>
               <div className="mobile-menu-links">
-                <Link href="/refrigerated-containers">Refrigerated / reefers</Link>
-                <Link href="/open-side-containers">Open side / roll-up</Link>
-                <Link href="/double-door-containers">Double door / tunnel</Link>
-                <Link href="/international-shipping-containers">International shipping / export</Link>
+                {specialtyContainers.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
               </div>
               <span className="mobile-menu-label">Construction guides</span>
               <div className="mobile-menu-links">
@@ -55,30 +46,18 @@ export function Header() {
                 <Link href="/construction/questions">100 questions</Link>
               </div>
             </div>
-          </details>
+          </AutoClosingDetails>
           <nav aria-label="Main navigation">
             <Link href="/construction#inventory">Container options</Link>
-            <details className="desktop-use-menu" name="construction-header-menu">
-              <summary>Storage solutions</summary>
+            <AutoClosingDetails className="desktop-use-menu" name="construction-header-menu" summary="Popular uses">
               <div className="desktop-use-dropdown">
-                <span className="desktop-menu-heading">Shop by use</span>
-                <Link href="/construction">Construction sites</Link>
-                <Link href="/farm">Farms and ranches</Link>
-                <Link href="/business">Business overflow</Link>
-                <Link href="/moving">Moving and relocation</Link>
-                <Link href="/renovation">Renovation storage</Link>
-                <Link href="/vehicles">Vehicles and recreation</Link>
-                <Link href="/events">Events and production</Link>
-                <Link href="/institutions">Schools and institutions</Link>
-                <span className="desktop-menu-heading desktop-menu-subheading">Specialty containers and export</span>
-                <Link href="/refrigerated-containers">Refrigerated / reefers</Link>
-                <Link href="/open-side-containers">Open side / roll-up</Link>
-                <Link href="/double-door-containers">Double door / tunnel</Link>
-                <Link href="/international-shipping-containers">International shipping / export</Link>
+                <span className="desktop-menu-heading">Choose a use</span>
+                {popularUses.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+                <span className="desktop-menu-heading desktop-menu-subheading">Specialty containers</span>
+                {specialtyContainers.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
               </div>
-            </details>
-            <details className="desktop-use-menu" name="construction-header-menu">
-              <summary>Construction guides</summary>
+            </AutoClosingDetails>
+            <AutoClosingDetails className="desktop-use-menu" name="construction-header-menu" summary="Construction guides">
               <div className="desktop-use-dropdown">
                 <span className="desktop-menu-heading">Plan and run jobsite storage</span>
                 <Link href="/construction/guides/construction-site-theft-prevention">Security</Link>
@@ -90,7 +69,7 @@ export function Header() {
                 <Link href="/construction/resources">All 32 guides</Link>
                 <Link href="/construction/questions">100 questions</Link>
               </div>
-            </details>
+            </AutoClosingDetails>
           </nav>
           <div className="nav-actions">
             <a className="phone" href="tel:18555250902">(855) 525-0902</a>
@@ -117,10 +96,7 @@ export function Footer() {
           <Link href="/construction#inventory">40FT Standard</Link>
           <Link href="/construction#inventory">40FT High Cube</Link>
           <Link href="/construction#inventory">Custom Modified</Link>
-          <Link href="/refrigerated-containers">Refrigerated / Reefers</Link>
-          <Link href="/open-side-containers">Open Side / Roll-Up</Link>
-          <Link href="/double-door-containers">Double Door / Tunnel</Link>
-          <Link href="/international-shipping-containers">International Shipping / Export</Link>
+          {specialtyContainers.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
         </div>
         <div>
           <h3>Resource center</h3>

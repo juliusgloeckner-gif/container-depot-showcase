@@ -6,6 +6,7 @@ import { QuoteForm } from "../QuoteForm";
 import { Footer, Header, MobileBar } from "../SiteShell";
 import { SpecialtyDiagram } from "../SpecialtyDiagram";
 import { TestimonialCarousel } from "../TestimonialCarousel";
+import { UseCaseMosaic } from "../UseCaseMosaic";
 import { verticals } from "../verticals";
 
 export function generateStaticParams() {
@@ -35,7 +36,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
         "@type": "Product",
         name: data.seoTitle,
         description: data.seoDescription,
-        category: "Specialty shipping container",
+        category: data.navGroup === "use" ? "Shipping container use case" : "Specialty shipping container",
         brand: { "@type": "Brand", name: "United Container Depot" },
         url: `https://unitedcontainerdepot.com/${data.key}`,
       },
@@ -102,9 +103,11 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
       <section className="section vertical-gallery-section">
         <div className="wrap">
           <div className="section-heading split-heading"><div><span className="eyebrow dark">Storage in the real world</span><h2>{data.galleryTitle ?? "See how the space gets used."}</h2></div><p>{data.galleryLead ?? "Secure steel storage placed where the work happens, with the capacity to keep everyday supplies organized and close."}</p></div>
-          <div className="vertical-gallery">{data.gallery.map((item) => <figure key={item.image}><div><Image src={item.image} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}</div>
+          <div className="vertical-gallery">{data.gallery.map((item, index) => <figure key={`${item.image}-${index}`}><div><Image src={item.image} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}</div>
         </div>
       </section>
+
+      {data.useCaseMosaic && <UseCaseMosaic {...data.useCaseMosaic} />}
 
       <section className="section vertical-use-section">
         <div className="wrap vertical-use-grid">

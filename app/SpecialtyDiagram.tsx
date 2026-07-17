@@ -1,4 +1,4 @@
-type SpecialtyType = "reefer" | "rollup" | "tunnel" | "export";
+type SpecialtyType = "reefer" | "rollup" | "tunnel" | "export" | "insulated" | "office" | "hazmat";
 
 type SpecialtyDiagramProps = {
   type: SpecialtyType;
@@ -28,9 +28,9 @@ function ReeferDiagram() {
       <text className="diagram-small orange" x="485" y="111" textAnchor="middle">DO NOT LOAD ABOVE MARKED LOAD LINE</text>
       <text className="diagram-small green" x="482" y="358" textAnchor="middle">SUPPLY AIR THROUGH T-FLOOR</text>
       <text className="diagram-small blue" x="482" y="42" textAnchor="middle">UNOBSTRUCTED RETURN AIR</text>
-      <path className="diagram-power" d="M35 172 H70" />
-      <rect className="diagram-pedestal" x="10" y="140" width="28" height="64" />
-      <text className="diagram-small" x="25" y="226" textAnchor="middle">SITE POWER</text>
+      <path className="diagram-power" d="M62 172 H90" />
+      <rect className="diagram-pedestal" x="38" y="140" width="28" height="64" />
+      <text className="diagram-small" x="52" y="226" textAnchor="middle">POWER</text>
     </svg>
   );
 }
@@ -82,6 +82,87 @@ function TunnelDiagram() {
   );
 }
 
+function InsulatedDiagram() {
+  return (
+    <svg viewBox="0 0 900 390" role="img" aria-labelledby="insulated-title insulated-desc">
+      <title id="insulated-title">Insulated container wall and dry-storage planning diagram</title>
+      <desc id="insulated-desc">A cutaway wall shows the outer steel shell, insulation, vapor-control layer and durable interior liner, with monitoring and ventilation inside the dry-storage area.</desc>
+      <text className="diagram-label" x="450" y="44" textAnchor="middle">A COMPLETE ENVELOPE, NOT ACTIVE REFRIGERATION</text>
+      <rect className="diagram-shell" x="80" y="82" width="740" height="230" rx="3" />
+      <rect className="diagram-machine" x="100" y="102" width="42" height="190" />
+      <rect className="diagram-cargo" x="142" y="102" width="55" height="190" />
+      <rect className="diagram-rollup" x="197" y="102" width="36" height="190" />
+      <rect className="diagram-shell" x="233" y="102" width="565" height="190" />
+      <text className="diagram-small light" x="121" y="205" textAnchor="middle" transform="rotate(-90 121 205)">OUTER STEEL</text>
+      <text className="diagram-small" x="169" y="205" textAnchor="middle" transform="rotate(-90 169 205)">INSULATION</text>
+      <text className="diagram-small" x="215" y="205" textAnchor="middle" transform="rotate(-90 215 205)">VAPOR LAYER</text>
+      <text className="diagram-small light" x="260" y="205" textAnchor="middle" transform="rotate(-90 260 205)">LINER</text>
+      <rect className="diagram-cargo" x="330" y="180" width="120" height="83" />
+      <rect className="diagram-cargo" x="474" y="150" width="120" height="113" />
+      <rect className="diagram-cargo" x="618" y="192" width="105" height="71" />
+      <circle className="diagram-pedestal" cx="742" cy="134" r="20" />
+      <text className="diagram-small light" x="742" y="139" textAnchor="middle">RH</text>
+      <path className="diagram-return" d="M30 130 H86" />
+      <path className="diagram-return" d="M30 210 H86" />
+      <path className="diagram-return" d="M30 290 H86" />
+      <text className="diagram-small blue" x="74" y="350">REDUCED HEAT FLOW</text>
+      <text className="diagram-small green" x="540" y="350">VENTILATE + MONITOR TO THE USE</text>
+    </svg>
+  );
+}
+
+function OfficeDiagram() {
+  return (
+    <svg viewBox="0 0 900 390" role="img" aria-labelledby="office-title office-desc">
+      <title id="office-title">Office container occupied-space planning diagram</title>
+      <desc id="office-desc">A floor plan shows a framed personnel door, two windows, desks, HVAC, electrical service and a clear unobstructed exit route.</desc>
+      <text className="diagram-label" x="450" y="44" textAnchor="middle">PLAN THE PEOPLE, UTILITIES AND EXIT ROUTE TOGETHER</text>
+      <rect className="diagram-shell tunnel-shell" x="90" y="80" width="720" height="230" />
+      <rect className="diagram-cargo" x="150" y="112" width="180" height="64" />
+      <rect className="diagram-cargo" x="150" y="214" width="180" height="64" />
+      <rect className="diagram-cargo" x="560" y="112" width="180" height="64" />
+      <rect className="diagram-cargo" x="560" y="214" width="180" height="64" />
+      <rect className="diagram-rollup" x="372" y="80" width="90" height="18" />
+      <rect className="diagram-rollup" x="500" y="80" width="90" height="18" />
+      <path className="diagram-door" d="M90 224 H150 M90 224 L150 282" />
+      <path className="diagram-flow" d="M430 196 H155" />
+      <polygon className="diagram-arrow supply" points="170,184 143,196 170,208" />
+      <rect className="diagram-machine" x="758" y="145" width="52" height="100" />
+      <text className="diagram-small light" x="784" y="200" textAnchor="middle" transform="rotate(-90 784 200)">HVAC</text>
+      <text className="diagram-small orange" x="135" y="350">PERSONNEL DOOR + LANDING</text>
+      <text className="diagram-small blue" x="417" y="350">FRAMED WINDOWS</text>
+      <text className="diagram-small green" x="655" y="350">CLEAR EXIT ROUTE</text>
+    </svg>
+  );
+}
+
+function HazmatDiagram() {
+  return (
+    <svg viewBox="0 0 900 390" role="img" aria-labelledby="hazmat-title hazmat-desc">
+      <title id="hazmat-title">Hazardous-material storage review diagram</title>
+      <desc id="hazmat-desc">A purpose-built enclosure diagram shows separated compatible packages, secondary containment, low and high ventilation, controlled electrical fixtures and authority review.</desc>
+      <text className="diagram-label" x="450" y="44" textAnchor="middle">THE MATERIAL AND QUANTITY DEFINE THE CONTROLS</text>
+      <rect className="diagram-shell" x="75" y="78" width="750" height="235" rx="3" />
+      <path className="diagram-floor" d="M105 282 H795 V300 H105 Z" />
+      <rect className="diagram-cargo" x="135" y="175" width="94" height="105" />
+      <rect className="diagram-cargo" x="250" y="158" width="94" height="122" />
+      <line className="diagram-load-line" x1="382" y1="112" x2="382" y2="280" />
+      <rect className="diagram-cargo" x="420" y="188" width="94" height="92" />
+      <rect className="diagram-cargo" x="535" y="170" width="94" height="110" />
+      <rect className="diagram-cargo" x="650" y="195" width="94" height="85" />
+      <rect className="diagram-rollup" x="86" y="232" width="32" height="40" />
+      <rect className="diagram-rollup" x="782" y="105" width="32" height="40" />
+      <path className="diagram-supply" d="M102 250 C250 330 630 330 798 124" />
+      <polygon className="diagram-arrow supply" points="784,128 808,116 802,144" />
+      <circle className="diagram-pedestal" cx="706" cy="122" r="20" />
+      <text className="diagram-small light" x="706" y="127" textAnchor="middle">EX</text>
+      <text className="diagram-small orange" x="105" y="350">SECONDARY CONTAINMENT</text>
+      <text className="diagram-small blue" x="386" y="350">COMPATIBILITY SEPARATION</text>
+      <text className="diagram-small green" x="690" y="350">AHJ REVIEW</text>
+    </svg>
+  );
+}
+
 function ExportDiagram() {
   const steps = [
     { x: 35, number: "01", title: "BUY", detail: "UCD CONTAINER" },
@@ -117,29 +198,63 @@ function ExportDiagram() {
 }
 
 export function SpecialtyDiagram({ type, notes }: SpecialtyDiagramProps) {
-  const eyebrow = type === "reefer" ? "Cold-chain setup" : type === "rollup" ? "Access layout" : type === "tunnel" ? "Two-way access" : "Export handoff";
-  const title = type === "reefer" ? "Airflow and power are part of the purchase." : type === "rollup" ? "The door count matches the container length." : type === "tunnel" ? "Cargo doors belong at both short ends." : "We prepare the container. Your forwarder moves it.";
-  const visual = type === "reefer" ? <ReeferDiagram /> : type === "rollup" ? <RollupDiagram /> : type === "tunnel" ? <TunnelDiagram /> : <ExportDiagram />;
-  const caption = type === "reefer"
-    ? "Planning diagram. The exact unit, airflow limits, loading plan and electrical requirements are confirmed before delivery."
-    : type === "rollup"
-      ? "Planning diagram. Final door widths, reinforcement, locks and partitions are confirmed on the approved fabrication drawing."
-      : type === "tunnel"
-        ? "Planning diagram. Door condition, two-end clearance, locks and internal layout are confirmed before delivery."
-        : "Scope diagram. UCD sells and prepares the container. A licensed freight forwarder must confirm carrier acceptance, cargo, customs, port handling and international transport.";
+  const content = {
+    reefer: {
+      eyebrow: "Cold-chain setup",
+      title: "Airflow and power are part of the purchase.",
+      visual: <ReeferDiagram />,
+      caption: "Planning diagram. The exact unit, airflow limits, loading plan and electrical requirements are confirmed before delivery.",
+    },
+    rollup: {
+      eyebrow: "Access layout",
+      title: "The door count matches the container length.",
+      visual: <RollupDiagram />,
+      caption: "Planning diagram. Final door widths, reinforcement, locks and partitions are confirmed on the approved fabrication drawing.",
+    },
+    tunnel: {
+      eyebrow: "Two-way access",
+      title: "Cargo doors belong at both short ends.",
+      visual: <TunnelDiagram />,
+      caption: "Planning diagram. Door condition, two-end clearance, locks and internal layout are confirmed before delivery.",
+    },
+    insulated: {
+      eyebrow: "Envelope planning",
+      title: "The insulation, liner and moisture plan work as one assembly.",
+      visual: <InsulatedDiagram />,
+      caption: "Planning diagram. The final insulation, vapor-control, liner, floor, ventilation and monitoring scope is matched to the contents and climate.",
+    },
+    office: {
+      eyebrow: "Occupied-space planning",
+      title: "Access, comfort and egress belong in one approved plan.",
+      visual: <OfficeDiagram />,
+      caption: "Planning diagram. The final occupancy, door, windows, HVAC, electrical, accessibility and site requirements must be approved before use.",
+    },
+    hazmat: {
+      eyebrow: "Hazard-specific review",
+      title: "Containment, compatibility and ventilation start with the material.",
+      visual: <HazmatDiagram />,
+      caption: "Concept diagram only. The exact material, quantity, activity, site and governing requirements determine the engineered configuration and approvals.",
+    },
+    export: {
+      eyebrow: "Export handoff",
+      title: "We prepare the container. Your forwarder moves it.",
+      visual: <ExportDiagram />,
+      caption: "Scope diagram. UCD sells and prepares the container. A licensed freight forwarder must confirm carrier acceptance, cargo, customs, port handling and international transport.",
+    },
+  }[type];
 
   return (
     <section className={`section specialty-diagram-section specialty-diagram-${type}`} id="specialty-configuration">
       <div className="wrap specialty-diagram-grid">
         <div className="specialty-diagram-copy">
-          <span className="eyebrow dark">{eyebrow}</span>
-          <h2>{title}</h2>
+          <span className="eyebrow dark">{content.eyebrow}</span>
+          <h2>{content.title}</h2>
           <div className="specialty-note-list">
             {notes.map((note, index) => <article key={note.title}><b>0{index + 1}</b><div><h3>{note.title}</h3><p>{note.text}</p></div></article>)}
           </div>
           <a className="button primary" href="#quote-form">Confirm my configuration</a>
         </div>
-        <div className="specialty-diagram-visual">{visual}<p>{caption}</p></div>
+        <div className="specialty-diagram-visual">{content.visual}<p>{content.caption}</p></div>
       </div>
     </section>
   );

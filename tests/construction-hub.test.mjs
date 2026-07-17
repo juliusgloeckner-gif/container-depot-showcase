@@ -137,24 +137,27 @@ test("keeps quote reminders at key landing-page decision points", async () => {
   assert.ok((html.match(/href="#quote-form"/g) ?? []).length >= 8);
 });
 
-test("keeps all eight storage-use links beside the construction guide navigation", async () => {
+test("keeps all ten popular-use links beside the construction guide navigation", async () => {
   const response = await render("/construction");
   const html = await response.text();
+  const decodedHtml = html.replaceAll("&amp;", "&");
   const expectedUses = [
     ["/construction", "Construction sites"],
-    ["/farm", "Farms and ranches"],
+    ["/farm", "Farms & Ranches"],
     ["/business", "Business overflow"],
-    ["/moving", "Moving and relocation"],
+    ["/moving", "Moving & Relocation"],
     ["/renovation", "Renovation storage"],
-    ["/vehicles", "Vehicles and recreation"],
-    ["/events", "Events and production"],
-    ["/institutions", "Schools and institutions"],
+    ["/vehicles", "Vehicles & Recreation"],
+    ["/events", "Events & Production"],
+    ["/institutions", "Government, Schools & Institutions"],
+    ["/international-shipping-containers", "International Shipping & Export"],
+    ["/disaster-relief-containers", "Disaster Relief & Emergency Response"],
   ];
 
-  assert.match(html, /Storage solutions/i);
+  assert.match(html, /Popular uses/i);
   assert.match(html, /Construction guides/i);
   for (const [href, label] of expectedUses) {
-    assert.match(html, new RegExp(`href="${href}"[^>]*>${label}<`, "i"));
+    assert.match(decodedHtml, new RegExp(`href="${href}"[^>]*>${label}<`, "i"));
   }
 });
 

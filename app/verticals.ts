@@ -19,7 +19,17 @@ export type Vertical = {
   faq: { q: string; a: string }[];
   seoTitle?: string;
   seoDescription?: string;
-  specialtyType?: "reefer" | "rollup" | "tunnel" | "export";
+  specialtyType?: "reefer" | "rollup" | "tunnel" | "export" | "insulated" | "office" | "hazmat";
+  navGroup?: "use" | "specialty";
+  useCaseMosaic?: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    image: string;
+    columns: 3 | 4;
+    items: string[];
+    note?: string;
+  };
   heroChecks?: string[];
   quoteOptions?: string[];
   quoteCopy?: { eyebrow: string; heading: string; intro: string; buttonText: string; note: string };
@@ -104,7 +114,7 @@ const farm: Vertical = {
 };
 
 const business: Vertical = {
-  key: "business", nav: "Business", eyebrow: "Overflow storage on your own lot", title: "Own your storage.", emphasis: "Stop renting units.",
+  key: "business", nav: "Business Overflow", eyebrow: "Overflow storage on your own lot", title: "Own your storage.", emphasis: "Stop renting units.",
   lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/business-overflow.png", featureImage: "/business-warehouse-overflow-v2.png", context: "Business overflow storage",
   inventoryImages: ["/inventory-v4/business-20-v3.png", "/inventory-v2/business-2.jpg", "/inventory-v2/business-3.jpg", "/inventory-v2/business-4.jpg"],
   gallery: [
@@ -119,6 +129,14 @@ const business: Vertical = {
     { title: "Scale around busy seasons", text: "Create flexible capacity for holiday stock, events, renovations or growth." },
   ],
   applications: ["Restaurant furniture", "Retail inventory", "Packaging supplies", "Maintenance equipment", "Records and fixtures", "Seasonal stock"],
+  useCaseMosaic: {
+    eyebrow: "Eight businesses. One familiar problem.",
+    title: "See your overflow before it takes over the operation.",
+    lead: "A container belongs beside the premises, close to the people who use the inventory, equipment or records every day.",
+    image: "/specialty/business-overflow-mosaic-v1.webp",
+    columns: 4,
+    items: ["Retail stores", "Restaurants", "Manufacturers", "Warehouses", "Distributors", "Service businesses", "Offices", "Auto dealerships"],
+  },
   visualTags: [
     { icon: "RF", label: "Restaurant furniture" },
     { icon: "RI", label: "Retail inventory" },
@@ -285,7 +303,7 @@ const events: Vertical = {
 };
 
 const institutions: Vertical = {
-  key: "institutions", nav: "Schools & Institutions", eyebrow: "Flexible capacity for public operations", title: "Space on site.", emphasis: "Programs stay moving.",
+  key: "institutions", nav: "Government, Schools & Institutions", eyebrow: "Flexible capacity for public operations", title: "Space on site.", emphasis: "Programs stay moving.",
   lead: "Add secure storage for furniture, athletics, events, facilities and emergency supplies at schools, universities, municipalities and public organizations.", hero: "/institutions-hero.png", featureImage: "/institutions-feature.png", context: "Institutional and public sector storage",
   inventoryImages: ["/inventory-v3/schools-20.jpg", "/inventory-v2/institutions-2.jpg", "/inventory-v2/institutions-3.jpg", "/inventory-v3/schools-custom.jpg"],
   gallery: [
@@ -326,6 +344,7 @@ const refrigerated: Vertical = {
   seoTitle: "Refrigerated Containers and Reefers for Sale",
   seoDescription: "Buy a refrigerated shipping container, also called a reefer, with a standard 10-day depot electrical testing period and detailed warranty-supporting electrical report before delivery.",
   specialtyType: "reefer",
+  navGroup: "specialty",
   heroChecks: ["10-day depot electrical testing with every purchase", "Detailed electrical report provided for warranty support", "Delivery scheduled only after testing is complete"],
   quoteOptions: ["20FT Refrigerated / Reefer", "40FT Refrigerated / Reefer", "40FT High Cube Reefer", "Need help matching power and setpoint", "Not sure yet"],
   quoteCopy: {
@@ -368,6 +387,15 @@ const refrigerated: Vertical = {
   featureTitle: "Cold air only works when it can move.",
   featureLead: "Keep the T-floor channels and overhead return-air path open, respect the unit's load line and load product at the correct starting temperature.",
   applications: ["Produce and dairy", "Seafood and proteins", "Beverages", "Catering and event food", "Flowers and floral stock", "Cold-chain overflow"],
+  useCaseMosaic: {
+    eyebrow: "What operations keep cold",
+    title: "Nine common reefer loads. Nine different control plans.",
+    lead: "Reefers support many cold-storage workflows, but the product owner must define the required setpoint, monitoring, packaging, sanitation and handling procedure for the exact load.",
+    image: "/specialty/reefer-use-mosaic-v1.webp",
+    columns: 3,
+    items: ["Fresh produce", "Dairy products", "Meat and poultry", "Seafood", "Frozen prepared food", "Beverages and kegs", "Flowers and floral stock", "Prepared catering food", "Life-science products"],
+    note: "Food, floral and life-science products do not share one universal setting. Vaccines, biologics and regulated products require validated equipment, continuous monitoring and the applicable manufacturer and regulatory procedures.",
+  },
   technicalNotes: [
     { title: "Complete the 10-day depot test", text: "Testing is standard with every reefer purchase and takes place before the unit is released for delivery." },
     { title: "Keep the electrical report", text: "The detailed depot electrical report is provided with the purchase as documentation supporting the unit's warranty." },
@@ -412,6 +440,7 @@ const openSide: Vertical = {
   seoTitle: "Open-Side Containers with Roll-Up Doors for Sale",
   seoDescription: "Buy modified open-side shipping containers with two roll-up doors on a 20FT unit or four roll-up doors on a 40FT unit for fast compartment access.",
   specialtyType: "rollup",
+  navGroup: "specialty",
   heroChecks: ["Two long-side roll-up doors on 20FT units", "Four long-side roll-up doors on 40FT units", "Framed and reinforced openings built to plan"],
   quoteOptions: ["20FT with 2 roll-up doors", "40FT with 4 roll-up doors", "Partitioned multi-bay container", "Custom roll-up door layout", "Not sure yet"],
   inventoryOptions: [
@@ -468,6 +497,7 @@ const doubleDoor: Vertical = {
   seoTitle: "Double-Door and Tunnel Containers for Sale",
   seoDescription: "Buy double-door shipping containers, also called tunnel containers, with paired cargo doors at both short ends for two-way loading and access.",
   specialtyType: "tunnel",
+  navGroup: "specialty",
   heroChecks: ["Paired cargo doors at both short ends", "Solid corrugated walls along both long sides", "20FT, 40FT and High Cube options"],
   quoteOptions: ["20FT Double-Door / Tunnel", "40FT Double-Door / Tunnel", "40FT High Cube Tunnel", "Divided-access tunnel container", "Not sure yet"],
   inventoryOptions: [
@@ -510,6 +540,253 @@ const doubleDoor: Vertical = {
   ],
 };
 
+const insulated: Vertical = {
+  key: "insulated-containers",
+  nav: "Insulated Containers",
+  eyebrow: "Lined dry storage for changing conditions",
+  title: "Slow the temperature swing.",
+  emphasis: "Protect sensitive dry goods.",
+  lead: "An insulated container reduces heat transfer through the steel shell and can help manage condensation risk. It is not a reefer and does not create or guarantee a fixed temperature.",
+  hero: "/specialty/insulated-container-hero-v1.webp",
+  featureImage: "/specialty/insulated-container-hero-v1.webp",
+  inventoryImages: ["/specialty/insulated-container-hero-v1.webp", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/insulated-container-hero-v1.webp"],
+  context: "Insulated dry-storage container",
+  seoTitle: "Insulated Shipping Containers for Sale",
+  seoDescription: "Buy an insulated shipping container for sensitive dry storage with liner, vapor-control, ventilation and monitoring options matched to the contents and site.",
+  specialtyType: "insulated",
+  navGroup: "specialty",
+  heroChecks: ["Insulated wall and ceiling package", "Ventilation and vapor-control plan", "Not sold as active refrigeration"],
+  quoteOptions: ["20FT Insulated Container", "40FT Insulated Container", "40FT High Cube Insulated", "Insulated with humidity monitoring", "Not sure yet"],
+  proofItem: { value: "Dry", label: "storage plan confirmed" },
+  inventoryOptions: [
+    { name: "20FT Insulated", price: "Request local price", detail: "Compact lined dry storage for records, instruments, electronics, furniture and packaged goods where placement is limited.", badge: "Compact insulated" },
+    { name: "40FT Insulated", price: "Request local price", detail: "More protected dry capacity for manufacturing supplies, commercial records, packaged inventory and project materials.", badge: "40FT capacity" },
+    { name: "40FT High Cube Insulated", price: "Request local price", detail: "Additional interior height for stacked or bulky dry goods, subject to the liner thickness and local availability.", badge: "Extra height" },
+    { name: "Monitored Insulated Setup", price: "Built to spec", detail: "Add ventilation, humidity monitoring, lighting and shelving around the contents and local climate.", badge: "Configured to use" },
+  ],
+  inventoryHeading: "Choose the size. Then design the envelope around the contents.",
+  inventoryLead: "We confirm insulation, interior liner, floor, ventilation, vapor-control, monitoring and access requirements before the configuration is approved.",
+  inventoryStockLabel: "Configuration confirmed",
+  benefitsTitle: "More protection than bare steel, without pretending it is a reefer.",
+  benefits: [
+    { title: "Reduce heat transfer", text: "Insulation slows heat moving through the roof and walls, which can moderate rapid interior temperature swings." },
+    { title: "Plan for moisture", text: "A coordinated liner, vapor-control and ventilation approach helps reduce condensation risk for sensitive dry contents." },
+    { title: "Protect the interior", text: "A durable liner and organized shelving keep cartons, records and equipment away from bare corrugated steel." },
+  ],
+  galleryTitle: "Use insulation where dry goods need another layer of protection.",
+  galleryLead: "The correct assembly depends on climate, storage duration, contents, access frequency and whether active conditioning is also required.",
+  gallery: [
+    { image: "/specialty/insulated-container-hero-v1.webp", alt: "Twenty foot blue insulated shipping container with lined interior and sensitive dry goods beside a light industrial building", caption: "Protect records, instruments and packaged dry goods" },
+    { image: "/inventory-v3/generic-40.jpg", alt: "Forty foot shipping container on a firm commercial service pad", caption: "Add lined capacity for larger commercial loads" },
+    { image: "/inventory-v2/generic-3.jpg", alt: "Standard and high cube shipping containers in a depot comparison", caption: "Confirm height after the interior liner is specified" },
+  ],
+  featureEyebrow: "Insulation is not refrigeration",
+  featureTitle: "Slow heat flow. Do not promise a setpoint.",
+  featureLead: "Use monitoring data to verify the actual interior conditions. Contents that require a fixed temperature, active cooling or regulated cold-chain controls need a different solution.",
+  applications: ["Records and archives", "Electronics and instruments", "Furniture and fixtures", "Packaged dry inventory", "Manufacturing supplies", "Project materials"],
+  technicalNotes: [
+    { title: "Define the contents first", text: "Share the material, acceptable temperature and humidity range, storage duration and access frequency before choosing the assembly." },
+    { title: "Coordinate the full envelope", text: "Insulation, vapor retarder, liner, floor transitions, penetrations and ventilation must work together. Gaps can reduce performance and increase condensation risk." },
+    { title: "Monitor real conditions", text: "Use suitable temperature and humidity monitoring when the contents are sensitive. Insulation alone does not control or certify the interior environment." },
+  ],
+  testimonials: [],
+  faq: [
+    { q: "Is an insulated container the same as a reefer?", a: "No. Insulation slows heat transfer, but it does not actively cool the space or guarantee a temperature. A reefer uses refrigeration machinery, site power, airflow and monitoring to maintain an approved operating range." },
+    { q: "Will insulation stop condensation?", a: "It can reduce surface-temperature differences, but it cannot guarantee a condensation-free interior. Climate, wet cargo, air leakage, ventilation, vapor control and door opening all matter. The final assembly must be matched to the contents and site." },
+    { q: "What should not be stored without further review?", a: "Do not assume an insulated container is suitable for food, medicines, vaccines, chemicals or any item requiring a validated temperature or humidity range. Those uses require the applicable product, regulatory and monitoring plan." },
+    { q: "Can lighting and shelving be added?", a: "Yes. Shelving, lighting, electrical service, monitoring and access options can be coordinated with the insulation package. Penetrations should be sealed as part of the approved assembly." },
+  ],
+  finalEyebrow: "Match the envelope to the contents.",
+  finalTitle: "Get an insulated container configured for the dry goods you need to protect.",
+  finalCta: "Get my insulated-container quote",
+};
+
+const officeContainers: Vertical = {
+  key: "office-containers",
+  nav: "Office Containers",
+  eyebrow: "Purpose-built workspace where the work happens",
+  title: "Put the office on site.",
+  emphasis: "Keep decisions close.",
+  lead: "Buy a modified container office with personnel access, windows, power, lighting and HVAC planned around the people, site and local approval requirements.",
+  hero: "/specialty/office-container-hero-v1.webp",
+  featureImage: "/specialty/office-container-hero-v1.webp",
+  inventoryImages: ["/specialty/office-container-hero-v1.webp", "/specialty/office-container-hero-v1.webp", "/inventory-v3/schools-custom.jpg", "/container-custom.jpg"],
+  context: "Modified office container",
+  seoTitle: "Office Containers and Modified Site Offices for Sale",
+  seoDescription: "Buy an office container configured with personnel door, windows, electrical service, lighting and HVAC for jobsites, facilities and field operations.",
+  specialtyType: "office",
+  navGroup: "specialty",
+  heroChecks: ["Personnel door and framed windows", "Electrical, lighting and HVAC options", "Site, occupancy and egress reviewed"],
+  quoteOptions: ["20FT Office Container", "40FT Office Container", "Office plus storage combo", "Security or gate office", "Not sure yet"],
+  proofItem: { value: "Site", label: "occupancy requirements reviewed" },
+  inventoryOptions: [
+    { name: "20FT Office", price: "Built to spec", detail: "Compact field office for one or a small team with personnel access, windows, power, lighting and HVAC.", badge: "Compact workspace" },
+    { name: "40FT Office", price: "Built to spec", detail: "More room for multiple desks, meetings, storage and a site-specific internal layout.", badge: "Team workspace" },
+    { name: "Office + Storage Combo", price: "Built to spec", detail: "Separate occupied workspace from lockable tool, record or supply storage within one approved container layout.", badge: "Two functions" },
+    { name: "Specialty Field Office", price: "Built to spec", detail: "Configure a security post, event office, farm administration room, campus support office or emergency command workspace.", badge: "Use-specific" },
+  ],
+  inventoryHeading: "Start with the people, workflow and site.",
+  inventoryLead: "We scope length, occupancy, personnel doors, windows, HVAC, power, data, finishes, accessibility, egress and delivery before fabrication.",
+  inventoryStockLabel: "Built to approved scope",
+  benefitsTitle: "A real workspace, not just a steel box with a desk.",
+  benefits: [
+    { title: "Separate people from cargo access", text: "A framed personnel door creates daily entry without relying on heavy cargo doors as the workplace entrance." },
+    { title: "Plan comfort and power", text: "Coordinate HVAC, ventilation, lighting, outlets and data with the team size, climate and equipment load." },
+    { title: "Keep the office accountable", text: "Define desks, storage, meeting space, equipment and the clear exit route before the interior is built." },
+  ],
+  galleryTitle: "Put a practical office beside the operation it supports.",
+  galleryLead: "Common roles include jobsite management, security, facilities coordination, farm administration, event operations and emergency command.",
+  gallery: [
+    { image: "/specialty/office-container-hero-v1.webp", alt: "Twenty foot office container with personnel door windows HVAC and desks at a commercial jobsite", caption: "Jobsite project office beside the work" },
+    { image: "/inventory-v3/schools-custom.jpg", alt: "Modified container workspace beside a school facilities area", caption: "Campus and facilities coordination" },
+    { image: "/container-custom.jpg", alt: "Modified shipping container with lighting shelving and work area", caption: "Field office and secure equipment support" },
+  ],
+  featureEyebrow: "Occupied space needs a complete plan",
+  featureTitle: "Design around safe access, comfort and daily work.",
+  featureLead: "Local building, zoning, fire, electrical, accessibility and workplace requirements determine the final office. The site authority must approve placement and occupancy before use.",
+  applications: ["Jobsite management", "Security and gate office", "Farm administration", "Campus facilities", "Event operations", "Emergency command"],
+  technicalNotes: [
+    { title: "Confirm occupancy and egress", text: "Plan the number of occupants, clear exit route, door hardware, steps or ramp, landing and emergency access with the applicable authorities." },
+    { title: "Engineer every opening", text: "Personnel doors, windows, HVAC and service penetrations need correctly framed openings and a coordinated weatherproofing plan." },
+    { title: "Use qualified trades", text: "Electrical, HVAC, fire and accessibility work must follow the approved scope and the requirements that apply at the placement site." },
+  ],
+  testimonials: [],
+  faq: [
+    { q: "Does an office container arrive ready to occupy?", a: "Only after the approved configuration, site utilities, access, permits and inspections are complete. The exact requirements vary by jurisdiction, occupancy and duration of use." },
+    { q: "Why add a personnel door?", a: "It is designed for routine entry and can be coordinated with egress hardware, steps or a ramp and the interior layout. Standard cargo doors are not a substitute for an approved occupied-space entrance." },
+    { q: "Can you add HVAC, lights and outlets?", a: "Yes. The package should be sized around climate, occupancy and equipment, then installed and connected by qualified trades under the applicable local requirements." },
+    { q: "Can it combine office and storage?", a: "Yes. A partitioned office and storage layout can work well when separation, egress, ventilation, electrical service and access to both zones are planned before fabrication." },
+  ],
+  finalEyebrow: "Build around the people using it.",
+  finalTitle: "Get an office container scoped for your team, site and workflow.",
+  finalCta: "Get my office-container quote",
+};
+
+const hazardousMaterial: Vertical = {
+  key: "hazardous-material-storage",
+  nav: "Hazardous Material Storage",
+  eyebrow: "The material defines the container",
+  title: "Design to the hazard.",
+  emphasis: "Verify before storage.",
+  lead: "An ordinary shipping container is not automatically suitable or compliant for hazardous materials. The exact substance, quantity, containers, incompatibilities, site and governing authority determine the required engineered configuration.",
+  hero: "/specialty/hazmat-container-hero-v1.webp",
+  featureImage: "/specialty/hazmat-container-hero-v1.webp",
+  inventoryImages: ["/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp"],
+  context: "Purpose-built hazardous-material storage container",
+  seoTitle: "Hazardous Material Storage Containers Built to Spec",
+  seoDescription: "Scope a purpose-built hazardous-material storage container around the exact material, quantity, compatibility, containment, ventilation and site requirements.",
+  specialtyType: "hazmat",
+  navGroup: "specialty",
+  heroChecks: ["Material and quantity reviewed first", "Containment, ventilation and separation scoped", "Local fire and environmental approval required"],
+  quoteOptions: ["Flammable-liquid storage", "Corrosive-material storage", "Paint, aerosol or maintenance chemicals", "Battery or specialty material storage", "Need a hazard review"],
+  quoteCopy: {
+    eyebrow: "Start with the material",
+    heading: "Request a hazard-specific review",
+    intro: "Tell us the material, quantity, package type, ZIP and intended site. We will identify what must be engineered and approved before a quote is finalized.",
+    buttonText: "Request configuration review",
+    note: "No standard container is represented as universally compliant. Final suitability depends on the exact use and governing requirements.",
+  },
+  proofItem: { value: "AHJ", label: "review required before use" },
+  inventoryOptions: [
+    { name: "Flammable-Liquid Storage", price: "Engineered quote", detail: "Scope ventilation, containment, separation, electrical classification, grounding and fire-code requirements around the exact liquids and quantities.", badge: "Hazard-specific" },
+    { name: "Corrosive-Material Storage", price: "Engineered quote", detail: "Match compatible surfaces, shelving, containment, ventilation and segregation to the actual acids, bases or corrosive products.", badge: "Compatibility first" },
+    { name: "Maintenance Chemical Storage", price: "Engineered quote", detail: "Organize approved paints, aerosols, lubricants and shop chemicals with quantity limits, separation and spill-control measures.", badge: "Controlled access" },
+    { name: "Specialty Hazard Storage", price: "Engineered quote", detail: "Battery, oxidizer, reactive or other special hazards require a separate material-specific engineering and authority review.", badge: "Separate assessment" },
+  ],
+  inventoryHeading: "There is no universal hazardous-material container.",
+  inventoryLead: "Provide current safety data sheets, container sizes, maximum quantities, storage duration, dispensing activity and site information so the correct requirements can be identified.",
+  inventoryStockLabel: "Engineering review required",
+  benefitsTitle: "Start with facts, not a generic modification package.",
+  benefitsLead: "The goal is a documented configuration that addresses the actual hazard and local rules. No website image or checklist replaces professional engineering or authority approval.",
+  benefits: [
+    { title: "Identify the material and incompatibilities", text: "Current safety data sheets and inventory quantities establish what may need separation, ventilation, temperature control or special construction." },
+    { title: "Plan for a release", text: "Secondary containment, compatible surfaces and inspection access are evaluated around the package type and applicable spill-control requirements." },
+    { title: "Coordinate site approval", text: "Fire, environmental, zoning, building and workplace authorities may each apply different requirements before placement or use." },
+  ],
+  galleryTitle: "Purpose-built means visible controls and a documented scope.",
+  galleryLead: "Containment, ventilation, compatible storage, controlled access and electrical design are selected for the actual material, not copied from a generic container photo.",
+  gallery: [
+    { image: "/specialty/hazmat-container-hero-v1.webp", alt: "Purpose-built hazardous-material storage container with sealed drums on spill-containment sumps in a controlled industrial area", caption: "Containment and ventilation designed into the enclosure" },
+    { image: "/specialty/hazmat-container-hero-v1.webp", alt: "Compatible sealed chemical containers separated on galvanized containment platforms", caption: "Separate incompatible materials and preserve inspection access" },
+    { image: "/specialty/hazmat-container-hero-v1.webp", alt: "Grounded modified storage container with ventilation and controlled industrial placement", caption: "Coordinate electrical, grounding and site controls" },
+  ],
+  featureEyebrow: "Before a container is selected",
+  featureTitle: "Send the SDS, quantity and operating plan.",
+  featureLead: "Storage only, dispensing, charging, waste accumulation and occupied work are different activities. Each can change the required ventilation, fire protection, containment, electrical and permitting approach.",
+  applications: ["Flammable liquids", "Corrosive products", "Paints and aerosols", "Maintenance chemicals", "Battery-related materials", "Hazardous-waste containers"],
+  technicalNotes: [
+    { title: "Classify the exact hazard", text: "Use current safety data sheets, package types, maximum quantities and incompatibilities. Product names alone are not enough." },
+    { title: "Engineer the controls", text: "Evaluate secondary containment, compatible construction, low and high ventilation, electrical classification, grounding, spill response, security and inspection access." },
+    { title: "Obtain governing approval", text: "The applicable fire code official, environmental authority, building department, insurer and workplace-safety requirements must be addressed before use." },
+  ],
+  testimonials: [],
+  faq: [
+    { q: "Can I store hazardous materials in a standard shipping container?", a: "Do not assume so. A standard container may lack the required ventilation, containment, electrical design, separation, fire protection and approval. Suitability depends on the exact material, quantity, activity and local requirements." },
+    { q: "What information is needed before quoting?", a: "Provide current safety data sheets, package type and size, maximum quantity, storage duration, whether materials will be transferred or dispensed, required temperature range, site plan and delivery ZIP." },
+    { q: "Is secondary containment always required?", a: "Requirements depend on the material, quantity, activity and governing regulation. Some regulated liquid storage and hazardous-waste applications require secondary containment. The design must be confirmed for the exact use rather than assumed from a general rule." },
+    { q: "Does adding vents make a container compliant?", a: "No. Ventilation is only one possible control. Airflow rate and location, vapor density, ignition sources, electrical classification, containment, incompatibilities, fire protection, egress and site separation may also apply." },
+    { q: "Who approves the final installation?", a: "The applicable authority or authorities depend on the site and material. They may include the fire code official, environmental regulator, building department, workplace-safety authority and insurer. Approval must be confirmed before use." },
+  ],
+  finalEyebrow: "No shortcuts on hazardous storage.",
+  finalTitle: "Start the review with the material, quantity and site.",
+  finalCta: "Request my hazard review",
+};
+
+const disasterRelief: Vertical = {
+  key: "disaster-relief-containers",
+  nav: "Disaster Relief & Emergency Response",
+  eyebrow: "Pre-position supplies before the call comes",
+  title: "Stage it securely.",
+  emphasis: "Deploy when every hour matters.",
+  lead: "Buy secure container capacity for emergency supply caches, response equipment, recovery tools and field operations. Match the container and interior plan to the agency, nonprofit or facility responsible for the inventory.",
+  hero: "/specialty/disaster-relief-hero-v1.webp",
+  featureImage: "/specialty/disaster-relief-hero-v1.webp",
+  inventoryImages: ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/office-container-hero-v1.webp"],
+  context: "Disaster relief and emergency response storage",
+  seoTitle: "Disaster Relief and Emergency Response Storage Containers",
+  seoDescription: "Buy secure storage containers for emergency supply caches, recovery tools, response equipment, field logistics and mobile command support.",
+  navGroup: "use",
+  heroChecks: ["Secure pre-positioned supply storage", "Dry, office and reefer options", "One delivered purchase price"],
+  quoteOptions: ["20FT Emergency Supply Cache", "40FT Response Equipment Storage", "40FT High Cube Relief Inventory", "Mobile command or office container", "Reefer for validated cold storage", "Not sure yet"],
+  proofItem: { value: "Ready", label: "supply cache on your site" },
+  benefitsTitle: "Prepared capacity for response and recovery.",
+  benefits: [
+    { title: "Keep supplies accountable", text: "Shelving, zones and inventory controls make water, blankets, tarps, PPE and recovery tools easier to count and retrieve." },
+    { title: "Place capacity near the mission", text: "Pre-position storage at an emergency operations facility, public works yard, nonprofit hub or approved staging location." },
+    { title: "Match the configuration to the load", text: "Use dry storage for suitable supplies, an approved office conversion for command work or a tested reefer only when the cold-chain plan requires it." },
+  ],
+  galleryTitle: "Support the logistics behind the response.",
+  galleryLead: "Containers can support receiving, warehousing, distribution and field coordination when access, inventory rotation and responsible ownership are clear.",
+  gallery: [
+    { image: "/specialty/disaster-relief-hero-v1.webp", alt: "Twenty foot orange container holding water blankets tarps PPE work lights and recovery tools at an emergency operations yard", caption: "Pre-position a secure emergency supply cache" },
+    { image: "/institutions-gallery-2.png", alt: "Emergency barriers pumps and maintenance equipment organized beside a municipal operations building", caption: "Keep response and recovery equipment ready" },
+    { image: "/specialty/office-container-hero-v1.webp", alt: "Modified office container with personnel door windows HVAC and planning space", caption: "Configure approved field coordination workspace" },
+  ],
+  featureEyebrow: "Stock what the plan calls for",
+  featureTitle: "Organize for receiving, rotation and rapid issue.",
+  featureLead: "The responsible organization must define shelf life, storage conditions, inspection frequency, inventory rotation and who may access the cache. Manufacturer requirements still govern PPE, medical and temperature-sensitive products.",
+  applications: ["Bottled water and distribution supplies", "Tarps, blankets and cots", "PPE and response consumables", "Generators and work lights", "Recovery tools and pumps", "Field records and communications"],
+  processTitle: "From preparedness plan to placed container.",
+  processLead: "Choose the mission, inventory and responsible site before selecting the size and interior configuration.",
+  processSteps: [
+    { title: "Define the cache or field function", text: "List the supplies, equipment, expected users, storage duration and environmental requirements." },
+    { title: "Match size and configuration", text: "Confirm dry, insulated, reefer, office or combined requirements plus shelving, power, lighting and access." },
+    { title: "Approve placement and delivery", text: "Preserve emergency lanes, firm truck access, drainage, door clearance, security and responsible site ownership." },
+    { title: "Load, label and inspect", text: "Use the organization’s inventory, shelf-life, inspection and replenishment procedure after delivery." },
+  ],
+  testimonials: [],
+  faq: [
+    { q: "What emergency supplies can go in a dry container?", a: "Suitable examples may include tarps, blankets, cots, bottled-water cases, sealed shelf-stable distribution supplies, recovery tools, work lights and approved PPE. The responsible organization must follow manufacturer storage conditions, shelf life and inspection requirements." },
+    { q: "Can medical supplies or vaccines be stored inside?", a: "Only under the validated storage and monitoring procedure for the exact product. A dry or insulated container is not a medical cold-chain unit. Vaccines and biologics require their manufacturer instructions and applicable public-health requirements." },
+    { q: "Can a container become a mobile command office?", a: "A purpose-built office conversion can support field coordination when occupancy, personnel access, egress, HVAC, electrical service, communications, accessibility and local approvals are addressed." },
+    { q: "Where should an emergency container be placed?", a: "Use an approved firm, level location that preserves fire and emergency lanes, drainage, security, delivery access and enough door clearance for safe receiving and distribution." },
+    { q: "Do you provide disaster-response services?", a: "No. United Container Depot sells and delivers container capacity. The purchasing agency, facility or nonprofit owns the preparedness plan, inventory, staffing, distribution and operational response." },
+  ],
+  finalEyebrow: "Preparedness needs owned capacity.",
+  finalTitle: "Put the right container behind your emergency logistics plan.",
+  finalCta: "Get my response-storage quote",
+};
+
 const internationalShipping: Vertical = {
   key: "international-shipping-containers",
   nav: "International Shipping",
@@ -524,6 +801,7 @@ const internationalShipping: Vertical = {
   seoTitle: "Shipping Containers for International Moves and Export",
   seoDescription: "Buy a shipping container, arrange CSC export-readiness inspection, pack without a rental deadline, and have your freight forwarder handle ocean transport and customs.",
   specialtyType: "export",
+  navGroup: "use",
   heroChecks: ["Purchase the container with no rental packing deadline", "Depot export-readiness inspection and CSC status arranged", "Your freight forwarder handles booking, customs and international transport"],
   quoteOptions: ["20FT Dry Container for Export", "40FT Dry Container for Export", "40FT High Cube for Export", "Reefer Container for Export", "Not sure yet"],
   quoteCopy: {
@@ -622,9 +900,15 @@ export const verticals: Record<string, Vertical> = {
   production: events,
   institutions,
   schools: institutions,
+  "disaster-relief-containers": disasterRelief,
+  "emergency-response-containers": disasterRelief,
   "refrigerated-containers": refrigerated,
   "open-side-containers": openSide,
   "double-door-containers": doubleDoor,
+  "insulated-containers": insulated,
+  "office-containers": officeContainers,
+  "hazardous-material-storage": hazardousMaterial,
+  "hazmat-containers": hazardousMaterial,
   "international-shipping-containers": internationalShipping,
   "export-containers": internationalShipping,
 };

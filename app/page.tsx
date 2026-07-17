@@ -7,21 +7,25 @@ import { Footer, Header, MobileBar } from "./SiteShell";
 const homepageInventoryImages = ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/inventory-v3/generic-custom.jpg"] as [string, string, string, string];
 
 const uses = [
-  { title: "Construction", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Job site storage" },
-  { title: "Farm", text: "Keep feed, fencing, tools and seasonal equipment dry beside the barn.", href: "/farm", image: "/farm-storage-real.png", cta: "Farm storage" },
+  { title: "Construction Sites", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Job site storage" },
+  { title: "Farms & Ranches", text: "Keep feed, fencing, tools and seasonal equipment dry beside the barn.", href: "/farm", image: "/farm-storage-real.png", cta: "Farm storage" },
   { title: "Business overflow", text: "Put inventory, furniture and seasonal stock beside your premises.", href: "/business", image: "/business-overflow.png", cta: "Business storage" },
   { title: "Moving & relocation", text: "Buy one container, pack at your pace and keep it through the move and beyond.", href: "/moving", image: "/moving-hero.png", cta: "Moving storage for sale" },
   { title: "Renovation storage", text: "Clear the work zone and protect furniture, fixtures and household contents.", href: "/renovation", image: "/renovation-hero.png", cta: "Renovation storage" },
   { title: "Vehicles & recreation", text: "Secure classic cars, motorcycles, ATVs and four seasons of gear.", href: "/vehicles", image: "/vehicles-hero.png", cta: "Vehicle storage" },
   { title: "Events & production", text: "Keep cases, staging, tents and production equipment ready for load-in.", href: "/events", image: "/events-hero.png", cta: "Production storage" },
-  { title: "Schools & institutions", text: "Add capacity for furniture, athletics, events, facilities and public operations.", href: "/institutions", image: "/institutions-hero.png", cta: "Institutional storage" },
+  { title: "Government, Schools & Institutions", text: "Add capacity for furniture, athletics, facilities and public operations.", href: "/institutions", image: "/institutions-hero.png", cta: "Institutional storage" },
+  { title: "International Shipping & Export", text: "Buy the container, pack at your pace, then ship it through your freight forwarder.", href: "/international-shipping-containers", image: "/specialty/export-retirement-relocation-v1.webp", cta: "Export-ready purchase" },
+  { title: "Disaster Relief & Emergency Response", text: "Stage secure supplies, recovery tools and response equipment before they are needed.", href: "/disaster-relief-containers", image: "/specialty/disaster-relief-hero-v1.webp", cta: "Emergency readiness" },
 ];
 
 const specialtyTypes = [
-  { title: "Refrigerated / Reefers", text: "Powered cold storage with a standard 10-day depot electrical test and detailed report before delivery.", href: "/refrigerated-containers", image: "/specialty/reefer-hero.webp", label: "Tested cold storage" },
-  { title: "Open Side / Roll-Up", text: "Two long-side access bays on 20FT units or four on 40FT units for faster retrieval.", href: "/open-side-containers", image: "/specialty/open-side-hero.webp", label: "Multi-door access" },
-  { title: "Double Door / Tunnel", text: "Paired cargo doors at both short ends for two-way staging, long materials and FIFO flow.", href: "/double-door-containers", image: "/specialty/tunnel-hero.webp", label: "Access both ends" },
-  { title: "International Shipping / Export", text: "Buy the container, arrange CSC export-readiness inspection, pack at your pace, then ship through your freight forwarder.", href: "/international-shipping-containers", image: "/specialty/export-retirement-relocation-v1.webp", label: "Export-ready purchase" },
+  { title: "Refrigerated Containers (Reefers)", text: "Powered cold storage with a standard 10-day depot electrical test and detailed report before delivery.", href: "/refrigerated-containers", image: "/specialty/reefer-hero.webp", label: "Tested cold storage" },
+  { title: "Open Side Containers", text: "Two long-side access bays on 20FT units or four on 40FT units for faster retrieval.", href: "/open-side-containers", image: "/specialty/open-side-hero.webp", label: "Multi-door access" },
+  { title: "Double Door Containers (Tunnel)", text: "Paired cargo doors at both short ends for two-way staging, long materials and FIFO flow.", href: "/double-door-containers", image: "/specialty/tunnel-hero.webp", label: "Access both ends" },
+  { title: "Insulated Containers", text: "Lined dry storage that slows temperature swings and helps manage condensation-sensitive contents.", href: "/insulated-containers", image: "/specialty/insulated-container-hero-v1.webp", label: "Reduced heat transfer" },
+  { title: "Office Containers", text: "Purpose-built workspace with personnel access, windows, power, HVAC and a site-approved layout.", href: "/office-containers", image: "/specialty/office-container-hero-v1.webp", label: "Work where the work is" },
+  { title: "Hazardous Material Storage", text: "Engineered storage configured around the exact material, quantity, containment and local requirements.", href: "/hazardous-material-storage", image: "/specialty/hazmat-container-hero-v1.webp", label: "Designed to the hazard" },
 ];
 
 export default function Home() {
@@ -62,7 +66,7 @@ export default function Home() {
       <section className="section dark-section industry-first" id="industries">
         <div className="wrap">
           <div className="section-heading split-heading light-heading">
-            <div><span className="eyebrow">Find your use</span><h2>Storage that fits where and how you work.</h2></div>
+            <div><span className="eyebrow">Popular uses</span><h2>Start with the reason you need more space.</h2></div>
             <p>Choose the setting that looks like yours. Each page shows what fits, where the container belongs and what to expect on delivery day.</p>
           </div>
           <div className="use-grid">
@@ -81,8 +85,8 @@ export default function Home() {
       <section className="section specialty-home-section" id="specialty-containers">
         <div className="wrap">
           <div className="section-heading split-heading">
-            <div><span className="eyebrow dark">Specialty containers and export</span><h2>Special configurations. Export-ready inspection.</h2></div>
-            <p>The eight pages above start with how the buyer will use the space. Three options below start with specific container hardware. International shipping starts with a purchased container, CSC export-readiness and a clear handoff to the buyer&apos;s freight forwarder.</p>
+            <div><span className="eyebrow dark">Specialty containers</span><h2>Start with the configuration when the hardware matters.</h2></div>
+            <p>These pages begin with a specific container type, then show where it fits, what the configuration requires and what must be confirmed before delivery.</p>
           </div>
           <div className="specialty-home-grid">
             {specialtyTypes.map((item) => <Link className="specialty-home-card" href={item.href} key={item.title}>
