@@ -41,6 +41,8 @@ test("separates ten popular uses from six specialty container types", async () =
   assert.match(html, /Specialty containers/i);
   for (const href of [...useLinks, ...specialtyLinks]) assert.match(html, new RegExp(`href="${href}"`, "i"));
   assert.equal(new Set([...useLinks, ...specialtyLinks]).size, 16);
+  assert.match(html, /<link rel="canonical" href="https:\/\/unitedcontainerdepot\.com\/"/i);
+  assert.doesNotMatch(html, /juliusgloeckner-gif\.github\.io/i);
 });
 
 test("classifies international shipping as a popular use and keeps freight scope explicit", async () => {

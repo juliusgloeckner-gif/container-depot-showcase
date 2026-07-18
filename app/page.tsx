@@ -1,10 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { InventorySection } from "./InventorySection";
 import { QuoteForm } from "./QuoteForm";
 import { Footer, Header, MobileBar } from "./SiteShell";
 
 const homepageInventoryImages = ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/inventory-v3/generic-custom.jpg"] as [string, string, string, string];
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://unitedcontainerdepot.com/" },
+};
 
 const uses = [
   { title: "Construction Sites", text: "Lock up tools, materials and equipment directly on the job site.", href: "/construction", image: "/hero-construction.jpg", cta: "Job site storage" },

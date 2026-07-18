@@ -15,7 +15,7 @@ const body = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://juliusgloeckner-gif.github.io/container-depot-showcase/"),
+  metadataBase: new URL("https://unitedcontainerdepot.com/"),
   title: {
     default: "Shipping Containers for Sale | United Container Depot",
     template: "%s | United Container Depot",
@@ -23,20 +23,20 @@ export const metadata: Metadata = {
   description:
     "Affordable new and used shipping containers delivered across the continental United States. Get a clear delivered price with no hidden fees.",
   icons: {
-    icon: "https://juliusgloeckner-gif.github.io/container-depot-showcase/favicon.svg",
-    shortcut: "https://juliusgloeckner-gif.github.io/container-depot-showcase/favicon.svg",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
   },
   openGraph: {
     type: "website",
     title: "Shipping Containers. Every Size. Delivered.",
     description: "Affordable new, used and specialty containers for real-world storage needs, delivered across 48 states.",
-    images: [{ url: "https://juliusgloeckner-gif.github.io/container-depot-showcase/og.png", width: 1200, height: 630, alt: "United Container Depot shipping containers in every size and delivered" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "United Container Depot shipping containers in every size and delivered" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Shipping Containers. Every Size. Delivered.",
     description: "Affordable new, used and specialty containers for real-world storage needs, delivered across 48 states.",
-    images: ["https://juliusgloeckner-gif.github.io/container-depot-showcase/og.png"],
+    images: ["/og.png"],
   },
 };
 
