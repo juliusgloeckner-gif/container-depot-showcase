@@ -195,10 +195,9 @@ test("routes unclassified assets with the current page origin", () => {
   assert.equal(chooseVariant({ pathname: "/unknown.css" }), "A");
 });
 
-test("removes the protected-origin noindex header from every fetched redesign page", () => {
+test("rewrites redesign pages without a server-side fetch challenge", () => {
   const proxySource = fs.readFileSync(new URL("../proxy.js", import.meta.url), "utf8");
-  assert.match(
-    proxySource,
-    /response = await fetchRedesignPage\(destination, request\);\s*response\.headers\.delete\("x-robots-tag"\);/,
-  );
+  assert.match(proxySource, /const response = NextResponse\.rewrite\(destination\);/);
+  assert.doesNotMatch(proxySource, /fetchRedesignPage|await fetch\(destination/);
+  assert.match(proxySource, /x-ucd-router-mode", "rewrite"/);
 });
