@@ -209,7 +209,7 @@ export function SpecialtyDiagram({ type, notes }: SpecialtyDiagramProps) {
       eyebrow: "Access layout",
       title: "The door count matches the container length.",
       visual: <RollupDiagram />,
-      caption: "Planning diagram. Final door widths, reinforcement, locks and partitions are confirmed on the approved fabrication drawing.",
+      caption: "Proportion check: the 40FT body is drawn at exactly twice the length of the 20FT body. This remains a planning diagram, and final door widths, reinforcement, locks and partitions are confirmed on the approved fabrication drawing.",
     },
     tunnel: {
       eyebrow: "Two-way access",

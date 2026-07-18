@@ -125,7 +125,9 @@ test("shows all eight business-overflow audiences with visual tiles", async () =
   for (const label of ["Retail stores", "Restaurants", "Manufacturers", "Warehouses", "Distributors", "Service businesses", "Offices", "Auto dealerships"]) {
     assert.match(html, new RegExp(label, "i"));
   }
-  assert.match(html, /business-overflow-mosaic-v1\.webp/i);
+  for (const image of ["business-manufacturer-v2.webp", "business-distributor-v2.webp", "business-auto-v2.webp", "office-20ft-v2.webp"]) {
+    assert.match(html, new RegExp(image.replaceAll(".", "\\."), "i"));
+  }
 });
 
 test("keeps safety-sensitive specialty pages qualified", async () => {
@@ -180,12 +182,12 @@ test("ships project-bound visuals for every new page and use-case mosaic", async
 
 test("ships the mobile-first authentic hero set and references every file", async () => {
   const names = [
-    "construction-hero-v2.webp", "farm-hero-v2.webp", "business-hero-v2.webp",
+    "construction-hero-v2.webp", "farm-hero-v3.webp", "business-hero-v2.webp",
     "moving-hero-v2.webp", "vehicles-hero-v2.webp", "events-hero-v2.webp",
     "export-hero-v2.webp", "open-side-hero-v2.webp", "office-hero-v2.webp",
     "disaster-relief-hero-v2.webp", "hazmat-hero-v2.webp",
   ];
-  const source = await readFile(new URL("../app/verticals.ts", import.meta.url), "utf8");
+  const source = `${await readFile(new URL("../app/verticals.ts", import.meta.url), "utf8")}\n${await readFile(new URL("../app/knowledge/knowledge-data.json", import.meta.url), "utf8")}`;
   await Promise.all(names.map((name) => access(new URL(`../public/authentic/${name}`, import.meta.url))));
   for (const name of names) assert.match(source, new RegExp(`/authentic/${name.replaceAll(".", "\\.")}`));
 });
@@ -216,6 +218,16 @@ test("keeps the quote form low-friction and connected to Formspree", async () =>
   const html = await response.text();
   assert.match(html, /action="https:\/\/formspree\.io\/f\/mvzepnvd"/i);
   assert.match(html, /No payment\. No obligation\. No spam\./i);
+});
+
+test("uses distinct, accurate specialty inventory images without encoding artifacts", async () => {
+  const tunnelHtml = await (await render("/double-door-containers")).text();
+  assert.match(tunnelHtml, /tunnel-high-cube-v3\.webp/i);
+  assert.doesNotMatch(tunnelHtml, /â†’/i);
+
+  const insulatedHtml = await (await render("/insulated-containers")).text();
+  assert.match(insulatedHtml, /insulated-monitored-interior-v2\.webp/i);
+  assert.doesNotMatch(insulatedHtml, /â†’/i);
 });
 
 test("does not add invented specialty testimonials", async () => {

@@ -55,7 +55,7 @@ export function InventorySection({
                 <h3>{item.name}</h3>
                 <strong className="card-price">{item.price}</strong>
                 <p>{item.detail}</p>
-                <a href="#quote-form">Get delivered price <span>→</span></a>
+                <a href="#quote-form">Get delivered price</a>
               </div>
             </article>
           ))}

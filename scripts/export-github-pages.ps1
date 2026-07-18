@@ -22,6 +22,13 @@ if (Test-Path -LiteralPath $resolvedOutput) {
 
 Copy-Item -Path (Join-Path $project "public\*") -Destination $resolvedOutput -Recurse -Force
 Copy-Item -Path (Join-Path $project "dist\client\assets") -Destination $resolvedOutput -Recurse -Force
+$productionCss = Get-ChildItem -LiteralPath (Join-Path $project "dist\client\assets") -Filter "index-*.css" -File |
+  Sort-Object LastWriteTime -Descending |
+  Select-Object -First 1
+if (-not $productionCss) {
+  throw "Could not find the bundled production stylesheet in dist/client/assets."
+}
+$productionCssHref = "$BasePath/assets/$($productionCss.Name)"
 
 $routes = @(
   @{ Route = ""; File = "index.html" },
@@ -85,7 +92,8 @@ foreach ($verticalProperty in $knowledgeData.verticals.PSObject.Properties) {
 
 foreach ($entry in $routes) {
   $url = if ($entry.Route) { "$Origin/$($entry.Route)" } else { "$Origin/" }
-  $html = (Invoke-WebRequest -UseBasicParsing $url).Content
+  $response = Invoke-WebRequest -UseBasicParsing $url
+  $html = [System.Text.Encoding]::UTF8.GetString($response.RawContentStream.ToArray())
   if (-not $entry.Interactive) {
     $html = [regex]::Replace($html, '(?is)<script\b[^>]*>.*?</script>', '')
     $html = [regex]::Replace($html, '(?is)<link\b[^>]*rel="modulepreload"[^>]*>', '')
@@ -95,6 +103,7 @@ foreach ($entry in $routes) {
     $asset = [System.Uri]::UnescapeDataString($match.Groups[1].Value)
     return "$BasePath$asset"
   })
+  $html = $html.Replace('/app/globals.css', $productionCssHref)
   $html = [regex]::Replace($html, '(href|src)="/(?!container-depot-showcase/)', "`$1=`"$BasePath/")
   $html = $html.Replace('url(/', "url($BasePath/")
   $html = $html.Replace("$BasePath$BasePath/", "$BasePath/")

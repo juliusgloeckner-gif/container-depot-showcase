@@ -2,7 +2,7 @@ type UseCaseMosaicProps = {
   eyebrow: string;
   title: string;
   lead: string;
-  image: string;
+  image: string | string[];
   columns: 3 | 4;
   items: string[];
   note?: string;
@@ -19,19 +19,21 @@ export function UseCaseMosaic({ eyebrow, title, lead, image, columns, items, not
         </div>
         <div className={`use-case-mosaic mosaic-${columns}`}>
           {items.map((item, index) => {
+            const imageSet = Array.isArray(image) ? image : null;
             const column = index % columns;
             const row = Math.floor(index / columns);
             const x = columns === 1 ? 0 : (column / (columns - 1)) * 100;
             const y = rows === 1 ? 0 : (row / (rows - 1)) * 100;
+            const imageUrl = imageSet?.[index] ?? (typeof image === "string" ? image : image[0]);
             return (
               <figure key={item}>
                 <div
                   role="img"
                   aria-label={item}
                   style={{
-                    backgroundImage: `url(${image})`,
-                    backgroundSize: `${columns * 100}% ${rows * 100}%`,
-                    backgroundPosition: `${x}% ${y}%`,
+                    backgroundImage: `url(${imageUrl})`,
+                    backgroundSize: imageSet ? "cover" : `${columns * 100}% ${rows * 100}%`,
+                    backgroundPosition: imageSet ? "center" : `${x}% ${y}%`,
                   }}
                 />
                 <figcaption>{item}</figcaption>

@@ -25,7 +25,7 @@ export type Vertical = {
     eyebrow: string;
     title: string;
     lead: string;
-    image: string;
+    image: string | string[];
     columns: 3 | 4;
     items: string[];
     note?: string;
@@ -64,7 +64,7 @@ const construction: Vertical = {
   gallery: [
     { image: "/lock-theft.jpg", alt: "Locked shipping container protecting construction equipment", caption: "Lock tools down after the crew leaves" },
     { image: "/weather-rain.jpg", alt: "Weatherproof construction storage container in rain", caption: "Keep materials protected from weather" },
-    { image: "/storage-tools2.jpg", alt: "Organized contractor tools inside a shipping container", caption: "Organize equipment where it is used" },
+    { image: "/gallery-v5/construction-open-side-tools-v1.webp", alt: "Twenty foot open-side construction tool container with two raised roll-up doors and organized equipment bays", caption: "Open the right tool bay where the crew works" },
   ],
   benefitsTitle: "Put theft, weather and wasted trips behind you.",
   benefits: [
@@ -87,7 +87,7 @@ const construction: Vertical = {
 
 const farm: Vertical = {
   key: "farm", nav: "Farm", eyebrow: "Storage built for working land", title: "Protect your equipment.", emphasis: "Secure your feed.",
-  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/authentic/farm-hero-v2.webp", featureImage: "/farm-feature-storage-v2.png", context: "Farm and ranch storage",
+  lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", featureImage: "/farm-feature-storage-v2.png", context: "Farm and ranch storage",
   inventoryImages: ["/inventory-v4/farm-20-v2.png", "/inventory-v3/farm-40.jpg", "/inventory-v2/farm-3.jpg", "/inventory-v3/farm-custom.jpg"],
   gallery: [
     { image: "/ag-gallery1.jpg", alt: "Shipping container placed beside a barn and cattle pasture", caption: "Placed beside the barn, not in the way" },
@@ -133,7 +133,16 @@ const business: Vertical = {
     eyebrow: "Eight businesses. One familiar problem.",
     title: "See your overflow before it takes over the operation.",
     lead: "A container belongs beside the premises, close to the people who use the inventory, equipment or records every day.",
-    image: "/specialty/business-overflow-mosaic-v1.webp",
+    image: [
+      "/inventory-v4/business-20-v3.png",
+      "/business-overflow.png",
+      "/specialty/business-manufacturer-v2.webp",
+      "/inventory-v2/business-2.jpg",
+      "/specialty/business-distributor-v2.webp",
+      "/inventory-v2/business-4.jpg",
+      "/specialty/office-20ft-v2.webp",
+      "/specialty/business-auto-v2.webp",
+    ],
     columns: 4,
     items: ["Retail stores", "Restaurants", "Manufacturers", "Warehouses", "Distributors", "Service businesses", "Offices", "Auto dealerships"],
   },
@@ -163,7 +172,7 @@ const moving: Vertical = {
   seoTitle: "Moving Containers for Sale | Buy, Pack and Keep",
   seoDescription: "Buy a shipping container for moving and relocation. Pack beside your home without a rental deadline, move it with a qualified carrier, and keep it for storage afterward.",
   heroChecks: ["For sale only, not rented or leased", "No monthly container-rental clock", "Keep it at the new property after the move"],
-  quoteOptions: ["Buy a 20FT moving container", "Buy a 40FT moving container", "Buy a 40FT High Cube", "Buy a custom moving setup", "Not sure yet"],
+  quoteOptions: ["Buy a 20FT moving container", "Buy a 40FT moving container", "Buy a 40FT High Cube", "Buy a double-door tunnel moving container", "Not sure yet"],
   quoteCopy: {
     eyebrow: "Purchase price, delivered",
     heading: "Get your purchase quote",
@@ -173,7 +182,13 @@ const moving: Vertical = {
   },
   inventoryHeading: "Choose the container you want to own.",
   inventoryLead: "Every option below is sold, not rented. We confirm size, condition, nearby inventory and one delivered purchase price for your ZIP.",
-  inventoryImages: ["/inventory-v2/home-1.jpg", "/inventory-v2/home-2.jpg", "/inventory-v2/home-3.jpg", "/inventory-v3/home-custom.jpg"],
+  inventoryImages: ["/inventory-v2/home-1.jpg", "/inventory-v2/home-2.jpg", "/inventory-v2/home-3.jpg", "/inventory-v5/moving-tunnel-v1.webp"],
+  inventoryOptions: [
+    { name: "20FT Standard", price: "$1,950", detail: "160 sq ft. Easier to place beside many homes and useful for smaller moves." },
+    { name: "40FT Standard", price: "$4,490", detail: "320 sq ft. More room for a larger household, furniture and garage contents." },
+    { name: "40FT High Cube", price: "$4,890", detail: "An extra 12 inches of height for bulky furniture and stacked household inventory." },
+    { name: "Double-Door Moving Setup", price: "Built to spec", detail: "A tunnel container has paired cargo doors at both short ends so you can load and unload from the closest end while keeping a clear center route.", badge: "Load either end" },
+  ],
   gallery: [
     { image: "/moving-hero.png", alt: "Twenty foot shipping container holding household furniture and boxes beside a suburban home", caption: "Pack beside the house on your schedule" },
     { image: "/gallery-v3/moving-people.jpg", alt: "Two homeowners unloading furniture and boxes through both short-end cargo doors of a twenty foot container", caption: "Unload at the new home without the rush" },
@@ -492,7 +507,7 @@ const doubleDoor: Vertical = {
   lead: "Double-door shipping containers, also called tunnel containers, have paired ISO cargo doors at both short ends. The straight through-route makes first-in-first-out inventory, long materials, two-way staging and faster retrieval easier to manage.",
   hero: "/specialty/tunnel-hero.webp",
   featureImage: "/specialty/tunnel-interior.webp",
-  inventoryImages: ["/specialty/tunnel-construction.webp", "/specialty/tunnel-warehouse.webp", "/specialty/tunnel-hero.webp", "/specialty/tunnel-interior.webp"],
+  inventoryImages: ["/specialty/tunnel-construction.webp", "/specialty/tunnel-warehouse.webp", "/specialty/tunnel-high-cube-v3.webp", "/specialty/tunnel-interior.webp"],
   context: "Double-door tunnel container",
   seoTitle: "Double-Door and Tunnel Containers for Sale",
   seoDescription: "Buy double-door shipping containers, also called tunnel containers, with paired cargo doors at both short ends for two-way loading and access.",
@@ -520,7 +535,7 @@ const doubleDoor: Vertical = {
   gallery: [
     { image: "/specialty/tunnel-construction.webp", alt: "Twenty foot double-door tunnel container with paired cargo doors open at both short ends in a construction material yard", caption: "Straight-through access for pipe and long materials" },
     { image: "/specialty/tunnel-warehouse.webp", alt: "Forty foot green tunnel container with paired cargo doors at both short ends beside a distribution warehouse", caption: "First-in-first-out inventory beside the warehouse" },
-    { image: "/specialty/tunnel-hero.webp", alt: "Forty foot blue double-door tunnel container with daylight visible through both short-end cargo door sets", caption: "Load and retrieve from the closest end" },
+    { image: "/specialty/tunnel-warehouse-v2.webp", alt: "Forty foot blue double-door tunnel container with two outward-opening cargo doors at each short end and a clear warehouse aisle", caption: "Load and retrieve from the closest end" },
   ],
   featureEyebrow: "A clear through-route",
   featureTitle: "Keep the center aisle open and both ends useful.",
@@ -549,7 +564,7 @@ const insulated: Vertical = {
   lead: "An insulated container reduces heat transfer through the steel shell and can help manage condensation risk. It is not a reefer and does not create or guarantee a fixed temperature.",
   hero: "/specialty/insulated-container-hero-v1.webp",
   featureImage: "/specialty/insulated-container-hero-v1.webp",
-  inventoryImages: ["/specialty/insulated-container-hero-v1.webp", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/insulated-container-hero-v1.webp"],
+  inventoryImages: ["/specialty/insulated-container-hero-v1.webp", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/insulated-monitored-interior-v2.webp"],
   context: "Insulated dry-storage container",
   seoTitle: "Insulated Shipping Containers for Sale",
   seoDescription: "Buy an insulated shipping container for sensitive dry storage with liner, vapor-control, ventilation and monitoring options matched to the contents and site.",
@@ -610,7 +625,7 @@ const officeContainers: Vertical = {
   lead: "Buy a modified container office with personnel access, windows, power, lighting and HVAC planned around the people, site and local approval requirements.",
   hero: "/authentic/office-hero-v2.webp",
   featureImage: "/specialty/office-container-hero-v1.webp",
-  inventoryImages: ["/specialty/office-container-hero-v1.webp", "/specialty/office-container-hero-v1.webp", "/inventory-v3/schools-custom.jpg", "/container-custom.jpg"],
+  inventoryImages: ["/specialty/office-20ft-v2.webp", "/specialty/office-40ft-v2.webp", "/inventory-v3/schools-custom.jpg", "/container-custom.jpg"],
   context: "Modified office container",
   seoTitle: "Office Containers and Modified Site Offices for Sale",
   seoDescription: "Buy an office container configured with personnel door, windows, electrical service, lighting and HVAC for jobsites, facilities and field operations.",
@@ -637,7 +652,7 @@ const officeContainers: Vertical = {
   galleryTitle: "Put a practical office beside the operation it supports.",
   galleryLead: "Common roles include jobsite management, security, facilities coordination, farm administration, event operations and emergency command.",
   gallery: [
-    { image: "/specialty/office-container-hero-v1.webp", alt: "Twenty foot office container with personnel door windows HVAC and desks at a commercial jobsite", caption: "Jobsite project office beside the work" },
+    { image: "/specialty/office-20ft-v2.webp", alt: "Twenty foot green office container with personnel door windows HVAC and compact work area", caption: "Compact project office beside the operation" },
     { image: "/inventory-v3/schools-custom.jpg", alt: "Modified container workspace beside a school facilities area", caption: "Campus and facilities coordination" },
     { image: "/container-custom.jpg", alt: "Modified shipping container with lighting shelving and work area", caption: "Field office and secure equipment support" },
   ],
@@ -671,7 +686,7 @@ const hazardousMaterial: Vertical = {
   lead: "An ordinary shipping container is not automatically suitable or compliant for hazardous materials. The exact substance, quantity, containers, incompatibilities, site and governing authority determine the required engineered configuration.",
   hero: "/authentic/hazmat-hero-v2.webp",
   featureImage: "/specialty/hazmat-container-hero-v1.webp",
-  inventoryImages: ["/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp", "/specialty/hazmat-container-hero-v1.webp"],
+  inventoryImages: ["/specialty/hazmat-flammable-v2.webp", "/specialty/hazmat-corrosive-v2.webp", "/specialty/hazmat-maintenance-v2.webp", "/specialty/hazmat-battery-v2.webp"],
   context: "Purpose-built hazardous-material storage container",
   seoTitle: "Hazardous Material Storage Containers Built to Spec",
   seoDescription: "Scope a purpose-built hazardous-material storage container around the exact material, quantity, compatibility, containment, ventilation and site requirements.",
@@ -706,9 +721,9 @@ const hazardousMaterial: Vertical = {
   galleryTitle: "Purpose-built means visible controls and a documented scope.",
   galleryLead: "Containment, ventilation, compatible storage, controlled access and electrical design are selected for the actual material, not copied from a generic container photo.",
   gallery: [
-    { image: "/specialty/hazmat-container-hero-v1.webp", alt: "Purpose-built hazardous-material storage container with sealed drums on spill-containment sumps in a controlled industrial area", caption: "Containment and ventilation designed into the enclosure" },
-    { image: "/specialty/hazmat-container-hero-v1.webp", alt: "Compatible sealed chemical containers separated on galvanized containment platforms", caption: "Separate incompatible materials and preserve inspection access" },
-    { image: "/specialty/hazmat-container-hero-v1.webp", alt: "Grounded modified storage container with ventilation and controlled industrial placement", caption: "Coordinate electrical, grounding and site controls" },
+    { image: "/specialty/hazmat-flammable-v2.webp", alt: "Purpose-built twenty foot flammable-liquid storage enclosure with sealed drums, grated containment floor, ventilation and grounding connection", caption: "Containment and ventilation designed to the reviewed material" },
+    { image: "/specialty/hazmat-corrosive-v2.webp", alt: "Purpose-built twenty foot corrosive-material storage enclosure with compatible liner shelving trays and inspection access", caption: "Separate compatible materials and preserve inspection access" },
+    { image: "/specialty/hazmat-maintenance-v2.webp", alt: "Purpose-built twenty foot maintenance-chemical enclosure with controlled cabinets grated containment floor and ventilation", caption: "Coordinate storage controls with the actual inventory" },
   ],
   featureEyebrow: "Before a container is selected",
   featureTitle: "Send the SDS, quantity and operating plan.",
@@ -741,7 +756,7 @@ const disasterRelief: Vertical = {
   lead: "Buy secure container capacity for emergency supply caches, response equipment, recovery tools and field operations. Match the container and interior plan to the agency, nonprofit or facility responsible for the inventory.",
   hero: "/authentic/disaster-relief-hero-v2.webp",
   featureImage: "/specialty/disaster-relief-hero-v1.webp",
-  inventoryImages: ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/office-container-hero-v1.webp"],
+  inventoryImages: ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/specialty/disaster-relief-reefer-v1.webp"],
   context: "Disaster relief and emergency response storage",
   seoTitle: "Disaster Relief and Emergency Response Storage Containers",
   seoDescription: "Buy secure storage containers for emergency supply caches, recovery tools, response equipment, field logistics and mobile command support.",
@@ -749,6 +764,12 @@ const disasterRelief: Vertical = {
   heroChecks: ["Secure pre-positioned supply storage", "Dry, office and reefer options", "One delivered purchase price"],
   quoteOptions: ["20FT Emergency Supply Cache", "40FT Response Equipment Storage", "40FT High Cube Relief Inventory", "Mobile command or office container", "Reefer for validated cold storage", "Not sure yet"],
   proofItem: { value: "Ready", label: "supply cache on your site" },
+  inventoryOptions: [
+    { name: "20FT Emergency Supply Cache", price: "$1,950", detail: "Compact dry storage for suitable water cases, tarps, blankets, PPE and recovery tools close to the response team." },
+    { name: "40FT Response Equipment Storage", price: "$4,490", detail: "More floor area for pumps, barriers, generators, cots and palletized distribution supplies." },
+    { name: "40FT High Cube Relief Inventory", price: "$4,890", detail: "Additional height for bulky or stacked response inventory, subject to load and access planning." },
+    { name: "Tested Reefer Cold Storage", price: "Request local price", detail: "A reefer option for a validated cold-chain plan, released after the standard 10-day depot electrical test and report.", badge: "10-day depot test" },
+  ],
   benefitsTitle: "Prepared capacity for response and recovery.",
   benefits: [
     { title: "Keep supplies accountable", text: "Shelving, zones and inventory controls make water, blankets, tarps, PPE and recovery tools easier to count and retrieve." },
@@ -760,7 +781,7 @@ const disasterRelief: Vertical = {
   gallery: [
     { image: "/specialty/disaster-relief-hero-v1.webp", alt: "Twenty foot orange container holding water blankets tarps PPE work lights and recovery tools at an emergency operations yard", caption: "Pre-position a secure emergency supply cache" },
     { image: "/institutions-gallery-2.png", alt: "Emergency barriers pumps and maintenance equipment organized beside a municipal operations building", caption: "Keep response and recovery equipment ready" },
-    { image: "/specialty/office-container-hero-v1.webp", alt: "Modified office container with personnel door windows HVAC and planning space", caption: "Configure approved field coordination workspace" },
+    { image: "/specialty/disaster-relief-reefer-v1.webp", alt: "Twenty foot refrigerated container supporting a monitored emergency cold-chain inventory beside an operations warehouse", caption: "Support a validated cold-chain plan with a tested reefer" },
   ],
   featureEyebrow: "Stock what the plan calls for",
   featureTitle: "Organize for receiving, rotation and rapid issue.",
