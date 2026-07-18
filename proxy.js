@@ -149,20 +149,17 @@ export async function proxy(request) {
   }
 
   let response;
+  const requestedSegment = requestUrl.pathname.split("/").filter(Boolean).pop() || "";
+  const isRedesignDocument = variant === "B" && !requestedSegment.includes(".");
   if (
     variant === "B" &&
     (
-      destination.pathname.endsWith("/index.html") ||
+      isRedesignDocument ||
       isConstructionKnowledgeAssetPath(requestUrl.pathname)
     )
   ) {
     response = await fetchRedesignPage(destination, request);
-    if (
-      isConstructionKnowledgePath(requestUrl.pathname) ||
-      isConstructionKnowledgeAssetPath(requestUrl.pathname)
-    ) {
-      response.headers.delete("x-robots-tag");
-    }
+    response.headers.delete("x-robots-tag");
     response.headers.set("x-ucd-router-mode", "fetch");
   } else {
     response = NextResponse.rewrite(destination);

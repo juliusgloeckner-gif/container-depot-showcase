@@ -164,11 +164,11 @@ export function chooseVariant({
 
 export function destinationPath(variant, pathname) {
   const clean = cleanPathname(pathname);
-  if (variant === "B" && clean === "/") return "/index.html";
+  if (variant === "B" && clean === "/") return "/";
   if (clean === "/") return clean;
 
   const finalSegment = clean.split("/").pop() || "";
   const looksLikeFile = finalSegment.includes(".");
-  if (variant === "B" && !looksLikeFile) return `${clean}/index.html`;
+  if (variant === "B" && !looksLikeFile) return `${clean}/`;
   return clean;
 }

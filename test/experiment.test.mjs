@@ -1,4 +1,5 @@
 import test from "node:test";
+import fs from "node:fs";
 import assert from "node:assert/strict";
 import {
   chooseVariant,
@@ -172,10 +173,10 @@ test("forced variants remain available for human QA", () => {
 });
 
 test("normalizes page slashes for each origin without changing assets", () => {
-  assert.equal(destinationPath("B", "/"), "/index.html");
+  assert.equal(destinationPath("B", "/"), "/");
   assert.equal(
     destinationPath("B", "/construction"),
-    "/construction/index.html",
+    "/construction/",
   );
   assert.equal(destinationPath("A", "/construction/"), "/construction");
   assert.equal(destinationPath("B", "/assets/site.css"), "/assets/site.css");
@@ -192,4 +193,12 @@ test("routes unclassified assets with the current page origin", () => {
     "A",
   );
   assert.equal(chooseVariant({ pathname: "/unknown.css" }), "A");
+});
+
+test("removes the protected-origin noindex header from every fetched redesign page", () => {
+  const proxySource = fs.readFileSync(new URL("../proxy.js", import.meta.url), "utf8");
+  assert.match(
+    proxySource,
+    /response = await fetchRedesignPage\(destination, request\);\s*response\.headers\.delete\("x-robots-tag"\);/,
+  );
 });
