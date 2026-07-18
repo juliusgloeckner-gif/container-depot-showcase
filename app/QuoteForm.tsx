@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzepnvd";
 
@@ -28,6 +28,15 @@ export function QuoteForm({
   note,
 }: QuoteFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const fallbackSize = containerOptions.includes("Not sure yet") ? "Not sure yet" : containerOptions[0];
+  const [selectedSize, setSelectedSize] = useState(fallbackSize);
+
+  useEffect(() => {
+    const requestedSize = new URLSearchParams(window.location.search).get("size");
+    if (!requestedSize) return;
+    const match = containerOptions.find((option) => option.toLowerCase() === requestedSize.toLowerCase());
+    if (match) setSelectedSize(match);
+  }, [containerOptions]);
 
   async function submitQuote(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -111,7 +120,7 @@ export function QuoteForm({
         </label>
         <label className="span-2">
           Container size
-          <select name="size" defaultValue="Not sure yet">
+          <select name="size" value={selectedSize} onChange={(event) => setSelectedSize(event.target.value)}>
             {containerOptions.map((option) => <option key={option}>{option}</option>)}
           </select>
         </label>

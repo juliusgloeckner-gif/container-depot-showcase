@@ -54,8 +54,8 @@ function VolumeGraphic() {
           <text x={bar.x + 56} y="284" textAnchor="middle" className="data-svg-kicker">{bar.label}</text>
         </g>
       ))}
-      <rect x="350" y="12" width="174" height="29" rx="4" fill="#081421" />
-      <text x="437" y="32" textAnchor="middle" className="data-svg-pill">HIGH CUBE +12.7%</text>
+      <text x="430" y="153" textAnchor="middle" className="data-svg-value light">+12.7%</text>
+      <text x="430" y="176" textAnchor="middle" className="data-svg-small light">VS 40FT STANDARD</text>
       <text x="49" y="28" className="data-svg-small">REPRESENTATIVE CAPACITY - ACTUAL UNITS VARY</text>
     </svg>
   );
@@ -73,7 +73,7 @@ function LostTimeGraphic() {
       </g>
       <text x="145" y="147" textAnchor="middle" className="data-svg-value light large">32%</text>
       <text x="145" y="174" textAnchor="middle" className="data-svg-kicker light">RECOVERABLE</text>
-      <text x="282" y="33" className="data-svg-small light">SHARE OF ALL ACTIVE-SITE TIME</text>
+      <text x="282" y="33" className="data-svg-small light">TOTAL ACTIVE-SITE TIME = 100%</text>
       <rect x="282" y="49" width="15" height="15" rx="2" fill="#f26a18" />
       <text x="309" y="62" className="data-svg-small light">RECOVERABLE LOST TIME 32%</text>
       <rect x="282" y="75" width="15" height="15" rx="2" fill="#667784" />

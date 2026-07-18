@@ -20,8 +20,8 @@ const featured = [
   },
   {
     label: "Choose with confidence",
-    title: "Match 20FT, 40FT or High Cube to the way the site works.",
-    description: "Use crew count, access, bulky equipment and retrieval needs instead of guessing.",
+    title: "See what 20FT, 40FT and High Cube are built to handle.",
+    description: "Choose one size and see its proportions, capacity, common jobsite uses and delivery checks.",
     image: "/container-40ft-hc.jpg",
     alt: "Standard and high cube construction container comparison",
     href: "/construction/calculators/container-size",
@@ -55,7 +55,7 @@ export function KnowledgeHubSection() {
         <div className="knowledge-proof-row">
           <div><strong>32</strong><span>field guides</span></div>
           <div><strong>100</strong><span>contractor questions</span></div>
-          <div><strong>2</strong><span>planning calculators</span></div>
+          <div><strong>1</strong><span>size education center</span></div>
           <div><strong>11</strong><span>printable resources</span></div>
           <div className="knowledge-proof-actions"><Link className="button primary" href="/construction/resources">Explore resource center</Link><a className="button outline-dark" href="#quote-form">Get a free quote</a></div>
         </div>

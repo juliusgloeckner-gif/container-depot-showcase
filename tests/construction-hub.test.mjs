@@ -24,14 +24,14 @@ async function render(pathname) {
   );
 }
 
-test("renders the construction hub, resource library, question library, a guide and both planning tools", async () => {
+test("renders the construction hub, resource library, question library, a guide and both decision tools", async () => {
   const pages = [
     ["/construction", /Construction Resource Center/i],
     ["/construction/resources", /Field answers you can use before the truck reaches the gate/i],
     ["/construction/resources/construction-container-statistics", /Five numbers that sharpen a jobsite storage decision/i],
     ["/construction/questions", /100 construction container questions/i],
     ["/construction/guides/construction-site-theft-prevention", /Construction Site Theft Prevention/i],
-    ["/construction/calculators/container-size", /Which construction container size/i],
+    ["/construction/calculators/container-size", /Choose a size\. See the space\. Know what it is for/i],
     ["/construction/calculators/ownership", /Compare buying with renting/i],
   ];
 
@@ -99,7 +99,11 @@ test("renders dimension graphics with defensible relative proportions and visibl
   assert.match(visual, /EXAMPLES ARE NOT INDIVIDUAL SHARES/);
   assert.match(lostTimeSocial, /RECOVERABLE LOST TIME 32%/);
   assert.match(lostTimeSocial, /PRIMARY \+ SECONDARY TIME 68%/);
+  assert.match(lostTimeSocial, /32% \+ 68% = 100%/);
   assert.match(lostTimeSocial, /RECOVERABLE EXAMPLES/);
+  assert.match(visual, /TOTAL ACTIVE-SITE TIME = 100%/);
+  assert.doesNotMatch(visual, /x="350" y="12" width="174"/);
+  assert.match(visual, /x="430" y="153"/);
 });
 
 test("uses a topic-specific icon for every field-guide card", async () => {
@@ -113,12 +117,19 @@ test("uses a topic-specific icon for every field-guide card", async () => {
   assert.doesNotMatch(explorer, /<i><\/i>/);
 });
 
-test("keeps planning tools from presenting screening arithmetic as a recommendation", async () => {
-  const sizeCalculator = await readFile(new URL("../app/construction/calculators/ContainerSizeCalculator.tsx", import.meta.url), "utf8");
+test("turns the size selector into a direct education and quote handoff", async () => {
+  const sizeCalculator = await readFile(new URL("../app/SizeEducationTool.tsx", import.meta.url), "utf8");
+  const quoteForm = await readFile(new URL("../app/QuoteForm.tsx", import.meta.url), "utf8");
   const ownershipCalculator = await readFile(new URL("../app/construction/calculators/OwnershipCalculator.tsx", import.meta.url), "utf8");
   const questionPage = await readFile(new URL("../app/construction/questions/page.tsx", import.meta.url), "utf8");
-  assert.match(sizeCalculator, /Screening result only/);
-  assert.match(sizeCalculator, /not a purchase recommendation/i);
+  assert.doesNotMatch(sizeCalculator, /<select/i);
+  assert.match(sizeCalculator, /20FT Standard/);
+  assert.match(sizeCalculator, /40FT Standard/);
+  assert.match(sizeCalculator, /40FT High Cube/);
+  assert.match(sizeCalculator, /What this size is for/);
+  assert.match(sizeCalculator, /\?size=\$\{encodeURIComponent\(selected\.quoteValue\)\}#quote-form/);
+  assert.match(quoteForm, /new URLSearchParams\(window\.location\.search\)\.get\("size"\)/);
+  assert.match(quoteForm, /value=\{selectedSize\}/);
   assert.match(ownershipCalculator, /Example inputs only/);
   assert.match(ownershipCalculator, /not a quote or financial recommendation/i);
   assert.match(questionPage, /screening resource, not a site authorization/i);

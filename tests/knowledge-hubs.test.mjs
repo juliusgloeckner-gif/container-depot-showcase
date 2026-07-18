@@ -54,3 +54,12 @@ test("knowledge routes return to the correct quote form", () => {
   const quote = readFileSync(join(root, "app/QuoteForm.tsx"), "utf8");
   assert.match(quote, /https:\/\/formspree\.io\/f\/mvzepnvd/);
 });
+
+test("shared knowledge hubs use the same direct size education handoff", () => {
+  const planner = readFileSync(join(root, "app/knowledge/KnowledgePlanner.tsx"), "utf8");
+  const educator = readFileSync(join(root, "app/SizeEducationTool.tsx"), "utf8");
+  assert.match(planner, /SizeEducationTool/);
+  assert.doesNotMatch(planner, /Build my starting shortlist/);
+  for (const key of keys) assert.match(educator, new RegExp(`${key}:`));
+  assert.match(educator, /Your size carries into the quote form/);
+});

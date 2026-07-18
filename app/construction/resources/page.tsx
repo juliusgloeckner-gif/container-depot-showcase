@@ -46,7 +46,7 @@ export default function ResourcesPage() {
         <div className="wrap">
           <div className="section-heading split-heading"><div><span className="eyebrow dark">Start with the next decision</span><h2>Three fast ways into the library.</h2></div><p>The resource center supports a purchase decision. If you already know the size and ZIP, go directly to the quote.</p></div>
           <div className="resource-path-grid">
-            <Link href="/construction/calculators/container-size"><span>01</span><h3>Choose a size</h3><p>Use access, crew count, equipment and retrieval needs.</p><b>Open size selector →</b></Link>
+            <Link href="/construction/calculators/container-size"><span>01</span><h3>Compare container sizes</h3><p>See proportional 20FT, 40FT and High Cube visuals, capacity and common jobsite uses.</p><b>Open size education center</b></Link>
             <Link href="/construction/guides/container-site-preparation"><span>02</span><h3>Prepare the site</h3><p>Plan approach, bearing points, drainage and door swing.</p><b>Open delivery guide →</b></Link>
             <Link href="/construction/guides/construction-site-theft-prevention"><span>03</span><h3>Secure the tools</h3><p>Layer placement, hardware, cameras and nightly closeout.</p><b>Open security guide →</b></Link>
             <Link href="/construction/questions"><span>100</span><h3>Ask a direct question</h3><p>Search ten contractor topics and follow the deeper guide.</p><b>Search questions →</b></Link>

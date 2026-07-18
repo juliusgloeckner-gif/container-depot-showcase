@@ -575,6 +575,35 @@ blockquote { margin:0; }
 .calculator-followup { margin-top:65px; }
 .calculator-followup>div { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
 .calculator-followup p { padding:22px; border-top:4px solid var(--orange); background:#f3f0e9; }
+.size-education-tool { display:grid; gap:22px; }
+.size-choice-row { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.size-choice { min-height:88px; display:grid; gap:5px; align-content:center; padding:16px 18px; border:2px solid #bec7ce; background:#fff; color:var(--navy); text-align:left; cursor:pointer; }
+.size-choice span { font-family:var(--font-heading); font-size:1.05rem; font-weight:900; text-transform:uppercase; }
+.size-choice small { color:#647381; }
+.size-choice:hover { border-color:var(--orange); }
+.size-choice.active { border-color:var(--orange); background:var(--navy); color:#fff; box-shadow:inset 0 -5px 0 var(--orange); }
+.size-choice.active small { color:#d6dfe6; }
+.size-education-stage { display:grid; grid-template-columns:1.08fr .92fr; border:1px solid var(--line); background:#fff; box-shadow:0 16px 44px rgba(8,20,33,.09); }
+.size-education-visual { min-width:0; margin:0; padding:34px; background:#eef2f4; }
+.size-education-visual figcaption { display:flex; align-items:baseline; justify-content:space-between; gap:18px; margin-bottom:20px; }
+.size-education-visual figcaption span { color:var(--orange-dark); font-size:.72rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }
+.size-education-visual figcaption strong { color:var(--navy); font-family:var(--font-heading); font-size:1.45rem; text-transform:uppercase; }
+.size-education-visual svg { display:block; width:100%; height:auto; }
+.size-education-visual>small { display:block; margin-top:13px; color:#60707e; line-height:1.45; }
+.size-svg-label { fill:#081421; font-family:Arial,sans-serif; font-size:14px; font-weight:900; letter-spacing:.02em; }
+.size-education-detail { display:flex; flex-direction:column; padding:38px; background:var(--navy); color:#fff; }
+.size-education-detail h2 { margin:9px 0 12px; color:#fff; font-size:2.65rem; }
+.size-education-summary { margin:0 0 20px; color:#d2dbe2; font-size:1.02rem; }
+.size-fact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:0 0 24px; background:#40515e; }
+.size-fact-grid>div { padding:14px 12px; background:#142637; }
+.size-fact-grid dt { color:#9fb0bd; font-size:.66rem; font-weight:900; letter-spacing:.06em; text-transform:uppercase; }
+.size-fact-grid dd { margin:6px 0 0; font-family:var(--font-heading); font-size:1.05rem; font-weight:900; }
+.size-education-detail h3 { margin:0 0 8px; color:#ffae78; font-size:1rem; }
+.size-education-detail ul { display:grid; gap:6px; margin:0 0 18px; padding-left:20px; color:#e0e6eb; }
+.size-verification { margin:0 0 22px; padding:14px 16px; border-left:4px solid var(--orange); background:#142637; color:#cbd5dd; font-size:.86rem; }
+.size-verification b { color:#fff; }
+.size-education-detail>.button { align-self:flex-start; margin-top:auto; }
+.size-education-detail>small { margin-top:10px; color:#9eafbc; }
 .ownership-calculator { border:1px solid var(--line); box-shadow:0 16px 44px rgba(8,20,33,.08); }
 .ownership-inputs { display:grid; grid-template-columns:1.2fr .8fr; }
 .ownership-inputs section { padding:38px; }
@@ -622,6 +651,14 @@ blockquote { margin:0; }
   .guide-commercial-cta { grid-template-columns:1fr; }
   .calculator-questions,.calculator-result,.ownership-inputs section { padding:28px 20px; }
   .calculator-followup>div { grid-template-columns:1fr; }
+  .size-choice-row { grid-template-columns:1fr; }
+  .size-choice { min-height:72px; }
+  .size-education-stage { grid-template-columns:1fr; }
+  .size-education-visual,.size-education-detail { padding:24px 20px; }
+  .size-education-visual figcaption { align-items:flex-start; flex-direction:column; gap:4px; }
+  .size-education-detail h2 { font-size:2.25rem; }
+  .size-fact-grid { grid-template-columns:1fr; }
+  .size-education-detail>.button { width:100%; text-align:center; }
   .ownership-result { grid-template-columns:1fr; }
   .ownership-result p,.ownership-result small { grid-column:1; }
 }

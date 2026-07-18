@@ -102,7 +102,7 @@ export function Footer() {
           <h3>Resource center</h3>
           <Link href="/construction/resources">All field guides</Link>
           <Link href="/construction/questions">100 contractor questions</Link>
-          <Link href="/construction/calculators/container-size">Size selector</Link>
+          <Link href="/construction/calculators/container-size">Size education center</Link>
           <Link href="/construction/calculators/ownership">Ownership calculator</Link>
           <Link href="/construction/resources/construction-container-statistics">Construction data brief</Link>
           <Link href="/construction/resources#downloads">Downloads</Link>
