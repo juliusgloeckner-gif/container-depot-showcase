@@ -1,18 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto_Condensed, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-
-const heading = Roboto_Condensed({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-});
-
-const body = Source_Sans_3({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://unitedcontainerdepot.com/"),
@@ -43,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${heading.variable} ${body.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
-:root { --navy:#081421; --navy-2:#10263a; --orange:#f26a18; --orange-dark:#d85109; --cream:#f4f1ea; --white:#fff; --ink:#142231; --muted:#617080; --line:#d8dee3; }
+@font-face { font-family:"Roboto Condensed"; src:url("/fonts/roboto-condensed-latin.woff2") format("woff2"); font-style:normal; font-weight:600 800; font-display:swap; }
+@font-face { font-family:"Source Sans 3"; src:url("/fonts/source-sans-3-latin.woff2") format("woff2"); font-style:normal; font-weight:400 700; font-display:swap; }
+
+:root { --navy:#081421; --navy-2:#10263a; --orange:#f26a18; --orange-dark:#d85109; --cream:#f4f1ea; --white:#fff; --ink:#142231; --muted:#617080; --line:#d8dee3; --font-heading:"Roboto Condensed",Arial,sans-serif; --font-body:"Source Sans 3",Arial,sans-serif; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { margin:0; background:var(--white); color:var(--ink); font-family:var(--font-body), Arial, sans-serif; font-size:17px; line-height:1.55; }
