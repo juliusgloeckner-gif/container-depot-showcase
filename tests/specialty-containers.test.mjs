@@ -252,3 +252,11 @@ test("menu details close on navigation, outside click and Escape", async () => {
   assert.match(source, /event\.key === "Escape"/);
   assert.match(source, /closest\("a"\)/);
 });
+
+test("uses compact connected chevrons in every desktop dropdown", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /\.desktop-use-dropdown a:after \{ content:"›";/);
+  assert.match(css, /margin-left:7px; color:var\(--navy\)/);
+  assert.match(css, /\.desktop-use-dropdown a:hover:after \{ color:var\(--orange-dark\)/);
+  assert.doesNotMatch(css, /\.desktop-use-dropdown a:after \{ content:"→"; position:absolute/);
+});
