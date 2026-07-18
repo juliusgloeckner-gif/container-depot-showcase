@@ -507,7 +507,7 @@ const doubleDoor: Vertical = {
   lead: "Double-door shipping containers, also called tunnel containers, have paired ISO cargo doors at both short ends. The straight through-route makes first-in-first-out inventory, long materials, two-way staging and faster retrieval easier to manage.",
   hero: "/specialty/tunnel-hero.webp",
   featureImage: "/specialty/tunnel-interior.webp",
-  inventoryImages: ["/specialty/tunnel-construction.webp", "/specialty/tunnel-warehouse.webp", "/specialty/tunnel-high-cube-v3.webp", "/specialty/tunnel-interior.webp"],
+  inventoryImages: ["/specialty/tunnel-construction.webp", "/specialty/tunnel-warehouse.webp", "/specialty/tunnel-high-cube-v4.webp", "/specialty/tunnel-interior.webp"],
   context: "Double-door tunnel container",
   seoTitle: "Double-Door and Tunnel Containers for Sale",
   seoDescription: "Buy double-door shipping containers, also called tunnel containers, with paired cargo doors at both short ends for two-way loading and access.",
