@@ -22,7 +22,7 @@ test("all photos and downloadable reports exist", () => {
     for (const image of [data[key].heroImage, ...data[key].featureImages]) assert.ok(existsSync(join(root, "public", image)), `${key} missing ${image}`);
     for (const item of data[key].downloads) assert.ok(existsSync(join(root, "public", item.href)), `${key} missing ${item.href}`);
   }
-  assert.match(data.farm.featureImages[0], /^\/knowledge\//, "farm site-selection image must ship with the production knowledge assets");
+  assert.match(data.farm.featureImages[0], /^\/specialty\//, "farm site-selection image must use a production-routed asset path");
 });
 
 test("guide content contains explicit verification boundaries", () => {
