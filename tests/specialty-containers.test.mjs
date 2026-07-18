@@ -223,6 +223,9 @@ test("keeps the quote form low-friction and connected to Formspree", async () =>
 test("uses distinct, accurate specialty inventory images without encoding artifacts", async () => {
   const tunnelHtml = await (await render("/double-door-containers")).text();
   assert.match(tunnelHtml, /tunnel-high-cube-v4\.webp/i);
+  assert.match(tunnelHtml, /tunnel-warehouse-v3\.webp/i);
+  assert.match(tunnelHtml, /tunnel-warehouse-blue-v3\.webp/i);
+  assert.doesNotMatch(tunnelHtml, /tunnel-warehouse-v2\.webp/i);
   assert.doesNotMatch(tunnelHtml, /â†’/i);
 
   const institutionsHtml = await (await render("/institutions")).text();
