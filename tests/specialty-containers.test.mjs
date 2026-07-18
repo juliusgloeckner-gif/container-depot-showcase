@@ -225,6 +225,9 @@ test("uses distinct, accurate specialty inventory images without encoding artifa
   assert.match(tunnelHtml, /tunnel-high-cube-v4\.webp/i);
   assert.doesNotMatch(tunnelHtml, /â†’/i);
 
+  const institutionsHtml = await (await render("/institutions")).text();
+  assert.match(institutionsHtml, /institutions-custom-20ft-v1\.webp/i);
+
   const insulatedHtml = await (await render("/insulated-containers")).text();
   assert.match(insulatedHtml, /insulated-monitored-interior-v2\.webp/i);
   assert.doesNotMatch(insulatedHtml, /â†’/i);

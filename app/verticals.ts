@@ -320,7 +320,7 @@ const events: Vertical = {
 const institutions: Vertical = {
   key: "institutions", nav: "Government, Schools & Institutions", eyebrow: "Flexible capacity for public operations", title: "Space on site.", emphasis: "Programs stay moving.",
   lead: "Add secure storage for furniture, athletics, events, facilities and emergency supplies at schools, universities, municipalities and public organizations.", hero: "/institutions-hero.png", featureImage: "/institutions-feature.png", context: "Institutional and public sector storage",
-  inventoryImages: ["/inventory-v3/schools-20.jpg", "/inventory-v2/institutions-2.jpg", "/inventory-v2/institutions-3.jpg", "/inventory-v3/schools-custom.jpg"],
+  inventoryImages: ["/inventory-v3/schools-20.jpg", "/inventory-v2/institutions-2.jpg", "/inventory-v2/institutions-3.jpg", "/specialty/institutions-custom-20ft-v1.webp"],
   gallery: [
     { image: "/institutions-hero.png", alt: "Athletic equipment tables and event supplies inside a forty foot container beside a school facilities building", caption: "Place capacity beside campus operations" },
     { image: "/institutions-gallery-1.png", alt: "Dorm furniture and move bins stored in a forty foot container at a university residence hall", caption: "Handle turnover without crowding buildings" },
