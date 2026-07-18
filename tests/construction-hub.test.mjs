@@ -218,3 +218,9 @@ test("includes six in-depth reports, five printable field checklists and five so
   ];
   await Promise.all(social.flatMap((file) => ["png", "svg"].map((extension) => access(new URL(`../public/social/${file}.${extension}`, import.meta.url)))));
 });
+
+test("guide pages do not fight manual scrolling after anchor navigation", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /html \{ scroll-behavior:auto; \}/);
+  assert.match(css, /\.guide-page \{ overflow-anchor:none; \}/);
+});
