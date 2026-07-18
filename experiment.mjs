@@ -4,9 +4,6 @@ export const OLD_ORIGIN = "https://garaged-landing.vercel.app";
 export const NEW_ORIGIN = "https://ucd-redesign-b.vercel.app";
 export const DEFAULT_CONSTRUCTION_B_PERCENT = 50;
 
-const SEARCH_ENGINE_PATTERN =
-  /bot|crawler|spider|slurp|bingpreview|facebookexternalhit|linkedinbot|twitterbot|whatsapp|google-inspectiontool|lighthouse/i;
-
 const LEGACY_PATHS = new Set([
   "/",
   "/agriculture",
@@ -67,10 +64,11 @@ const REDESIGN_ASSET_PATHS = new Set([
   "/weather-rain.jpg",
 ]);
 
-const OLD_ONLY_EXACT_PATHS = new Set([
+const SEO_CONTROL_EXACT_PATHS = new Set([
   "/robots.txt",
   "/sitemap.xml",
   "/sitemap-index.xml",
+  "/7f64c2d894f9469eaf4d12761a4bcb90.txt",
 ]);
 
 export function cleanPathname(pathname) {
@@ -87,10 +85,6 @@ export function parseConstructionBPercent(value) {
   const parsed = Number(value);
   if (!Number.isFinite(parsed)) return DEFAULT_CONSTRUCTION_B_PERCENT;
   return Math.min(100, Math.max(0, Math.round(parsed)));
-}
-
-export function isSearchEngine(userAgent) {
-  return SEARCH_ENGINE_PATTERN.test(userAgent || "");
 }
 
 export function isConstructionPath(pathname) {
@@ -125,10 +119,14 @@ export function isLegacyPath(pathname) {
 
 export function isOldOnlyPath(pathname) {
   const clean = cleanPathname(pathname);
-  if (OLD_ONLY_EXACT_PATHS.has(clean)) return true;
   if (clean.startsWith("/.well-known/")) return true;
   if (clean.startsWith("/shipping-containers-")) return true;
   return false;
+}
+
+export function isSeoControlPath(pathname) {
+  const clean = cleanPathname(pathname);
+  return SEO_CONTROL_EXACT_PATHS.has(clean) || clean.startsWith("/sitemaps/");
 }
 
 export function chooseVariant({
@@ -144,10 +142,9 @@ export function chooseVariant({
     if (isConstructionKnowledgePath(pathname)) return "B";
 
     const forced = normalizeVariant(forcedVariant);
-    if (forced && !isSearchEngine(userAgent)) return forced;
+    if (forced) return forced;
 
     if (isRedesignOnlyPath(pathname)) return "B";
-    if (isSearchEngine(userAgent)) return "A";
 
   if (isConstructionPath(pathname)) {
     const existing = normalizeVariant(constructionCookieVariant);

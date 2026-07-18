@@ -9,6 +9,7 @@ import {
   destinationPath,
   isConstructionKnowledgePath,
   isConstructionPath,
+  isSeoControlPath,
   normalizeVariant,
   parseConstructionBPercent,
 } from "./experiment.mjs";
@@ -52,6 +53,10 @@ function applyExperimentHeaders(response, {
 
 export async function proxy(request) {
   const requestUrl = request.nextUrl.clone();
+
+  if (isSeoControlPath(requestUrl.pathname)) {
+    return NextResponse.next();
+  }
 
   if (requestUrl.pathname === "/__router/status") {
     const redesignPercent = parseConstructionBPercent(

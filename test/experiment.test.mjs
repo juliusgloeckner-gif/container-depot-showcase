@@ -6,6 +6,7 @@ import {
   destinationPath,
   isConstructionKnowledgePath,
   isOldOnlyPath,
+  isSeoControlPath,
   parseConstructionBPercent,
 } from "../experiment.mjs";
 
@@ -145,14 +146,22 @@ test("visiting a redesign-only page does not change construction assignment", ()
   );
 });
 
-test("pins search engines and SEO pages to the current site", () => {
+test("does not show search crawlers a special construction variant", () => {
   assert.equal(
     chooseVariant({
       pathname: "/construction",
       userAgent: "Googlebot",
       forcedVariant: "B",
     }),
-    "A",
+    "B",
+  );
+  assert.equal(
+    chooseVariant({
+      pathname: "/construction",
+      userAgent: "Googlebot",
+      randomValue: 0.49,
+    }),
+    "B",
   );
   assert.equal(isOldOnlyPath("/shipping-containers-Texas"), true);
   assert.equal(
@@ -162,6 +171,19 @@ test("pins search engines and SEO pages to the current site", () => {
     }),
     "A",
   );
+});
+
+test("serves crawler-control files from the router itself", () => {
+  for (const pathname of [
+    "/robots.txt",
+    "/sitemap.xml",
+    "/sitemap-index.xml",
+    "/sitemaps/core.xml",
+    "/7f64c2d894f9469eaf4d12761a4bcb90.txt",
+  ]) {
+    assert.equal(isSeoControlPath(pathname), true, pathname);
+    assert.equal(isOldOnlyPath(pathname), false, pathname);
+  }
 });
 
 test("forced variants remain available for human QA", () => {
