@@ -1,2 +1,4 @@
+import type { Metadata } from "next";
 import { Footer, Header } from "../SiteShell";
+export const metadata: Metadata = { title: "Privacy Policy", description: "How United Container Depot uses contact and delivery information submitted for container quotes and service coordination.", alternates: { canonical: "https://unitedcontainerdepot.com/privacy" } };
 export default function Privacy() { return <main><Header /><article className="legal-page wrap"><h1>Privacy Policy</h1><p>United Container Depot collects the contact and delivery information you provide to prepare a quote and coordinate service. We do not sell your personal information.</p><p>For privacy questions or data requests, email <a href="mailto:info@unitedcontainerdepot.com">info@unitedcontainerdepot.com</a>.</p></article><Footer /></main>; }

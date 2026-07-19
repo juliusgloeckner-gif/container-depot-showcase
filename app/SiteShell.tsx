@@ -24,6 +24,7 @@ export function Header() {
               <div className="mobile-menu-main">
                 <Link href="/#inventory">Containers</Link>
                 <Link href="/#industries">Storage solutions</Link>
+                <Link href="/tools">Decision tools</Link>
                 <a href="tel:18555250902">Call (855) 525-0902</a>
                 <a className="mobile-menu-quote" href="#quote-form">Get a quote</a>
               </div>
@@ -39,6 +40,7 @@ export function Header() {
           </AutoClosingDetails>
           <nav aria-label="Main navigation">
             <Link href="/#inventory">Containers</Link>
+            <Link href="/tools">Decision tools</Link>
             <AutoClosingDetails className="desktop-use-menu" summary="Popular uses">
               <div className="desktop-use-dropdown">
                 <span className="desktop-menu-heading">Choose a use</span>
@@ -82,6 +84,8 @@ export function Footer() {
         <div>
           <h3>Company</h3>
           <a href="mailto:info@unitedcontainerdepot.com">info@unitedcontainerdepot.com</a>
+          <Link href="/tools">Container decision tools</Link>
+          <Link href="/delivery-locations">Delivery coverage</Link>
           <Link href="/privacy">Privacy policy</Link>
           <Link href="/terms">Terms of service</Link>
         </div>

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var trackingKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"];
+  var trackingKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_id", "utm_content", "utm_term", "gclid", "gbraid", "wbraid", "dclid", "gclsrc", "gad_source", "gad_campaignid"];
 
   function successMarkup() {
     return [
@@ -17,22 +17,29 @@
 
   async function submitQuote(event) {
     event.preventDefault();
+    event.stopImmediatePropagation();
     var form = event.currentTarget;
     var button = form.querySelector('button[type="submit"]');
     var existingError = form.querySelector(".form-error");
     var data = new FormData(form);
     var search = new URLSearchParams(window.location.search);
+    var leadId = window.UCDMarketing ? window.UCDMarketing.newLeadId() : "ucd_lead_" + Date.now();
 
     if (existingError) existingError.remove();
     button.disabled = true;
     button.textContent = "Sending request...";
 
     data.set("landing_page", window.location.href);
+    data.set("lead_id", leadId);
+    data.set("order_id", leadId);
+    data.set("lead_stage", "Submitted lead");
+    data.set("conversion_time", new Date().toISOString());
     data.set("_subject", "New UCD redesign lead | " + data.get("vertical") + " | ZIP " + data.get("zip"));
-    trackingKeys.forEach(function (key) {
-      var value = search.get(key);
-      if (value) data.set(key, value);
-    });
+    if (window.UCDMarketing) window.UCDMarketing.appendAttribution(data);
+    else trackingKeys.forEach(function (key) {
+        var value = search.get(key);
+        if (value) data.set(key, value);
+      });
 
     try {
       var response = await fetch(form.action, {
@@ -42,9 +49,18 @@
       });
 
       if (!response.ok) throw new Error("Formspree rejected the submission");
+      if (window.UCDMarketing) {
+        window.UCDMarketing.trackLead({
+          leadId: leadId,
+          email: String(data.get("email") || ""),
+          phone: String(data.get("phone") || ""),
+          vertical: String(data.get("vertical") || "General container"),
+          size: String(data.get("size") || "")
+        });
+      }
       form.classList.add("quote-success");
       form.innerHTML = successMarkup();
-      window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { variant: "new_site" } }));
+      window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { variant: "new_site", leadId: leadId } }));
     } catch {
       button.disabled = false;
       button.textContent = "Get my delivered price";
@@ -57,6 +73,6 @@
   }
 
   document.querySelectorAll("form[data-formspree-quote]").forEach(function (form) {
-    form.addEventListener("submit", submitQuote);
+    form.addEventListener("submit", submitQuote, true);
   });
 })();

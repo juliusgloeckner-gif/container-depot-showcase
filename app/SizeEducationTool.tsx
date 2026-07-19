@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 type SizeKey = "20ft" | "40ft" | "high-cube";
-type ProfileKey = "construction" | "farm" | "business" | "vehicles";
+type ProfileKey = "general" | "construction" | "farm" | "business" | "vehicles";
 
 type SizeChoice = {
   key: SizeKey;
@@ -25,6 +25,11 @@ const sizes: SizeChoice[] = [
 ];
 
 const fitByProfile: Record<ProfileKey, Record<SizeKey, { summary: string; uses: string[]; verify: string }>> = {
+  general: {
+    "20ft": { summary: "A compact 160-square-foot footprint for focused storage and tighter placement areas.", uses: ["Tools, cartons and household contents", "One compact vehicle after exact measurement", "Sites with limited available ground"], verify: "Measure the largest item, required aisle and door-opening clearance. Confirm the carrier's delivery envelope before purchase." },
+    "40ft": { summary: "Twice the nominal floor area of a 20FT unit and often the strongest value per square foot.", uses: ["Pallets, furniture and business inventory", "Long materials or several storage zones", "Large moves and multi-project ownership"], verify: "Confirm the longer truck approach, final door access, ground support and how frequently items must be retrieved." },
+    "high-cube": { summary: "The 40FT footprint with one additional nominal exterior foot for tall or stacked contents.", uses: ["Tall shelving and bulky equipment", "Stacked dry inventory", "Maximum volume on a 40FT footprint"], verify: "Verify exact interior height and cargo-door opening. Added height does not increase floor area, door width or payload." },
+  },
   construction: {
     "20ft": { summary: "A compact jobsite store when placement is tight and one crew needs fast access.", uses: ["Power tools and consumables", "One crew or trade", "Shorter urban or infill sites"], verify: "Confirm the tool layout, shelving depth and retrieval aisle. The delivery truck still needs more working room than the container footprint." },
     "40ft": { summary: "Twice the nominal floor area for long stock, shared equipment and separate work zones.", uses: ["Several crews or trades", "Long material and pallet zones", "Tools plus controlled inventory"], verify: "Confirm a straight truck approach, the full unload envelope and enough room to keep the cargo doors useful after placement." },

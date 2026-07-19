@@ -48,6 +48,13 @@ $routes = @(
   @{ Route = "insulated-containers"; File = "insulated-containers\index.html" },
   @{ Route = "office-containers"; File = "office-containers\index.html" },
   @{ Route = "hazardous-material-storage"; File = "hazardous-material-storage\index.html" },
+  @{ Route = "delivery-locations"; File = "delivery-locations\index.html" },
+  @{ Route = "tools"; File = "tools\index.html" },
+  @{ Route = "tools/delivered-cost"; File = "tools\delivered-cost\index.html"; Interactive = $true },
+  @{ Route = "tools/container-size"; File = "tools\container-size\index.html"; Interactive = $true },
+  @{ Route = "tools/buy-vs-rent"; File = "tools\buy-vs-rent\index.html"; Interactive = $true },
+  @{ Route = "tools/delivery-clearance"; File = "tools\delivery-clearance\index.html"; Interactive = $true },
+  @{ Route = "tools/condition-grades"; File = "tools\condition-grades\index.html"; Interactive = $true },
   @{ Route = "privacy"; File = "privacy\index.html" },
   @{ Route = "terms"; File = "terms\index.html" }
 )
@@ -95,7 +102,7 @@ foreach ($entry in $routes) {
   $response = Invoke-WebRequest -UseBasicParsing $url
   $html = [System.Text.Encoding]::UTF8.GetString($response.RawContentStream.ToArray())
   if (-not $entry.Interactive) {
-    $html = [regex]::Replace($html, '(?is)<script\b[^>]*>.*?</script>', '')
+    $html = [regex]::Replace($html, '(?is)<script\b(?![^>]*type="application/ld\+json")[^>]*>.*?</script>', '')
     $html = [regex]::Replace($html, '(?is)<link\b[^>]*rel="modulepreload"[^>]*>', '')
   }
   $html = [regex]::Replace($html, '/_vinext/image\?url=([^&"]+)(?:&amp;|&)w=\d+(?:&amp;|&)q=\d+', {
@@ -107,7 +114,11 @@ foreach ($entry in $routes) {
   $html = [regex]::Replace($html, '(href|src)="/(?!container-depot-showcase/)', "`$1=`"$BasePath/")
   $html = $html.Replace('url(/', "url($BasePath/")
   $html = $html.Replace("$BasePath$BasePath/", "$BasePath/")
-  $extraScripts = "<script src=`"$BasePath/quote-form.js`" defer></script>"
+  $extraScripts = ""
+  if ($html -notmatch 'marketing-tracking\.js') {
+    $extraScripts += "<script src=`"$BasePath/marketing-tracking.js`" defer></script>"
+  }
+  $extraScripts += "<script src=`"$BasePath/quote-form.js`" defer></script>"
   if ($entry.Interactive) {
     $extraScripts += "<script src=`"$BasePath/static-navigation.js`" defer></script>"
   }

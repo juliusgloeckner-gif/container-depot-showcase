@@ -1,7 +1,3 @@
-param(
-  [string]$AssetOrigin = "https://ucd-knowledge-hubs-review.vercel.app"
-)
-
 $ErrorActionPreference = "Stop"
 $project = Split-Path -Parent $PSScriptRoot
 $source = [System.IO.Path]::GetFullPath((Join-Path $project "github-pages"))
@@ -29,26 +25,13 @@ foreach ($privateName in @(".vercel", ".env.local")) {
   if (Test-Path -LiteralPath $privatePath) { Remove-Item -LiteralPath $privatePath -Recurse -Force }
 }
 
-$rewrites = @()
-$redirectDirectories = @("authentic", "gallery-v3", "gallery-v4", "inventory-v2", "inventory-v3", "inventory-v4")
-foreach ($directory in $redirectDirectories) {
-  $directoryPath = Join-Path $output $directory
-  if (Test-Path -LiteralPath $directoryPath) { Remove-Item -LiteralPath $directoryPath -Recurse -Force }
-  $rewrites += @{ source = "/$directory/:path*"; destination = "$AssetOrigin/$directory/:path*" }
-}
-
-$rootImages = Get-ChildItem -LiteralPath $output -File | Where-Object {
-  $_.Extension -in @(".jpg", ".jpeg", ".png", ".webp") -and $_.Name -ne "og.png"
-}
-foreach ($image in $rootImages) {
-  Remove-Item -LiteralPath $image.FullName -Force
-  $rewrites += @{ source = "/$($image.Name)"; destination = "$AssetOrigin/$($image.Name)" }
-}
-
 $vercelConfig = @{
   cleanUrls = $true
   trailingSlash = $true
-  rewrites = $rewrites
+  headers = @(@{
+    source = "/responsive/(.*)"
+    headers = @(@{ key = "Cache-Control"; value = "public, max-age=31536000, immutable" })
+  })
 } | ConvertTo-Json -Depth 6
 [System.IO.File]::WriteAllText((Join-Path $output "vercel.json"), $vercelConfig, [System.Text.UTF8Encoding]::new($false))
 

@@ -1,0 +1,3 @@
+import type { Metadata } from "next"; import { SizeEducationTool } from "../../SizeEducationTool"; import { ToolFrame } from "../ToolFrame";
+export const metadata:Metadata={title:"20FT vs 40FT Shipping Container Selector",description:"Compare proportional 20FT, 40FT and 40FT High Cube container footprint, volume and common storage uses.",alternates:{canonical:"https://unitedcontainerdepot.com/tools/container-size"}};
+export default function Page(){return <ToolFrame eyebrow="Container size" title="See the size before you price it." lead="Compare nominal proportions and representative capacity, then verify the exact unit, contents, site and delivery route."><SizeEducationTool profile="general" quotePath="/"/></ToolFrame>}

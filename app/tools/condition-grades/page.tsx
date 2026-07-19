@@ -1,0 +1,3 @@
+import type { Metadata } from "next"; import { ConditionGradeComparison } from "../DecisionTools"; import { ToolFrame } from "../ToolFrame";
+export const metadata:Metadata={title:"Shipping Container Condition Grade Comparison",description:"Compare One Trip, Cargo Worthy, Wind and Watertight, and As Is container grades with clear verification requirements.",alternates:{canonical:"https://unitedcontainerdepot.com/tools/condition-grades"}};
+export default function Page(){return <ToolFrame eyebrow="Condition grades" title="Choose the grade by the job it must do." lead="Condition names describe different things. Separate appearance, stationary weather protection and export certification before comparing price."><ConditionGradeComparison/></ToolFrame>}

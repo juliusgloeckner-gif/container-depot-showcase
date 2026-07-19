@@ -1,0 +1,1137 @@
+{
+  "/ag-interior.jpg": {
+    "width": 1200,
+    "height": 1081,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/ag-interior-640.avif",
+        "webp": "/responsive/ag-interior-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/ag-interior-960.avif",
+        "webp": "/responsive/ag-interior-960.webp"
+      }
+    ]
+  },
+  "/ag-weather.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/ag-weather-640.avif",
+        "webp": "/responsive/ag-weather-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/ag-weather-960.avif",
+        "webp": "/responsive/ag-weather-960.webp"
+      }
+    ]
+  },
+  "/authentic/business-hero-v2.webp": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/authentic/business-hero-v2-640.avif",
+        "webp": "/responsive/authentic/business-hero-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/authentic/business-hero-v2-960.avif",
+        "webp": "/responsive/authentic/business-hero-v2-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/authentic/business-hero-v2-1600.avif",
+        "webp": "/responsive/authentic/business-hero-v2-1600.webp"
+      }
+    ]
+  },
+  "/authentic/construction-hero-v2.webp": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/authentic/construction-hero-v2-640.avif",
+        "webp": "/responsive/authentic/construction-hero-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/authentic/construction-hero-v2-960.avif",
+        "webp": "/responsive/authentic/construction-hero-v2-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/authentic/construction-hero-v2-1600.avif",
+        "webp": "/responsive/authentic/construction-hero-v2-1600.webp"
+      }
+    ]
+  },
+  "/authentic/disaster-relief-hero-v2.webp": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/authentic/disaster-relief-hero-v2-640.avif",
+        "webp": "/responsive/authentic/disaster-relief-hero-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/authentic/disaster-relief-hero-v2-960.avif",
+        "webp": "/responsive/authentic/disaster-relief-hero-v2-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/authentic/disaster-relief-hero-v2-1600.avif",
+        "webp": "/responsive/authentic/disaster-relief-hero-v2-1600.webp"
+      }
+    ]
+  },
+  "/authentic/export-hero-v2.webp": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/authentic/export-hero-v2-640.avif",
+        "webp": "/responsive/authentic/export-hero-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/authentic/export-hero-v2-960.avif",
+        "webp": "/responsive/authentic/export-hero-v2-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/authentic/export-hero-v2-1600.avif",
+        "webp": "/responsive/authentic/export-hero-v2-1600.webp"
+      }
+    ]
+  },
+  "/authentic/farm-hero-v2.webp": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/authentic/farm-hero-v2-640.avif",
+        "webp": "/responsive/authentic/farm-hero-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/authentic/farm-hero-v2-960.avif",
+        "webp": "/responsive/authentic/farm-hero-v2-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/authentic/farm-hero-v2-1600.avif",
+        "webp": "/responsive/authentic/farm-hero-v2-1600.webp"
+      }
+    ]
+  },
+  "/authentic/farm-hero-v3.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/authentic/farm-hero-v3-640.avif",
+        "webp": "/responsive/authentic/farm-hero-v3-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/authentic/farm-hero-v3-960.avif",
+        "webp": "/responsive/authentic/farm-hero-v3-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/authentic/farm-hero-v3-1600.avif",
+        "webp": "/responsive/authentic/farm-hero-v3-1600.webp"
+      }
+    ]
+  },
+  "/authentic/moving-hero-v2.webp": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/authentic/moving-hero-v2-640.avif",
+        "webp": "/responsive/authentic/moving-hero-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/authentic/moving-hero-v2-960.avif",
+        "webp": "/responsive/authentic/moving-hero-v2-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/authentic/moving-hero-v2-1600.avif",
+        "webp": "/responsive/authentic/moving-hero-v2-1600.webp"
+      }
+    ]
+  },
+  "/authentic/vehicles-hero-v2.webp": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/authentic/vehicles-hero-v2-640.avif",
+        "webp": "/responsive/authentic/vehicles-hero-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/authentic/vehicles-hero-v2-960.avif",
+        "webp": "/responsive/authentic/vehicles-hero-v2-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/authentic/vehicles-hero-v2-1600.avif",
+        "webp": "/responsive/authentic/vehicles-hero-v2-1600.webp"
+      }
+    ]
+  },
+  "/business-overflow.png": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/business-overflow-640.avif",
+        "webp": "/responsive/business-overflow-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/business-overflow-960.avif",
+        "webp": "/responsive/business-overflow-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/business-overflow-1600.avif",
+        "webp": "/responsive/business-overflow-1600.webp"
+      }
+    ]
+  },
+  "/business-retail-overflow-v2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/business-retail-overflow-v2-640.avif",
+        "webp": "/responsive/business-retail-overflow-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/business-retail-overflow-v2-960.avif",
+        "webp": "/responsive/business-retail-overflow-v2-960.webp"
+      }
+    ]
+  },
+  "/business-warehouse-overflow-v2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/business-warehouse-overflow-v2-640.avif",
+        "webp": "/responsive/business-warehouse-overflow-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/business-warehouse-overflow-v2-960.avif",
+        "webp": "/responsive/business-warehouse-overflow-v2-960.webp"
+      }
+    ]
+  },
+  "/container-20ft.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/container-20ft-640.avif",
+        "webp": "/responsive/container-20ft-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/container-20ft-960.avif",
+        "webp": "/responsive/container-20ft-960.webp"
+      }
+    ]
+  },
+  "/container-40ft-hc.jpg": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/container-40ft-hc-640.avif",
+        "webp": "/responsive/container-40ft-hc-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/container-40ft-hc-960.avif",
+        "webp": "/responsive/container-40ft-hc-960.webp"
+      }
+    ]
+  },
+  "/container-40ft.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/container-40ft-640.avif",
+        "webp": "/responsive/container-40ft-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/container-40ft-960.avif",
+        "webp": "/responsive/container-40ft-960.webp"
+      }
+    ]
+  },
+  "/container-custom.jpg": {
+    "width": 1400,
+    "height": 1120,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/container-custom-640.avif",
+        "webp": "/responsive/container-custom-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/container-custom-960.avif",
+        "webp": "/responsive/container-custom-960.webp"
+      }
+    ]
+  },
+  "/events-feature.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/events-feature-640.avif",
+        "webp": "/responsive/events-feature-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/events-feature-960.avif",
+        "webp": "/responsive/events-feature-960.webp"
+      }
+    ]
+  },
+  "/events-gallery-1.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/events-gallery-1-640.avif",
+        "webp": "/responsive/events-gallery-1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/events-gallery-1-960.avif",
+        "webp": "/responsive/events-gallery-1-960.webp"
+      }
+    ]
+  },
+  "/events-gallery-2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/events-gallery-2-640.avif",
+        "webp": "/responsive/events-gallery-2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/events-gallery-2-960.avif",
+        "webp": "/responsive/events-gallery-2-960.webp"
+      }
+    ]
+  },
+  "/events-hero.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/events-hero-640.avif",
+        "webp": "/responsive/events-hero-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/events-hero-960.avif",
+        "webp": "/responsive/events-hero-960.webp"
+      }
+    ]
+  },
+  "/farm-feature-storage-v2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/farm-feature-storage-v2-640.avif",
+        "webp": "/responsive/farm-feature-storage-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/farm-feature-storage-v2-960.avif",
+        "webp": "/responsive/farm-feature-storage-v2-960.webp"
+      }
+    ]
+  },
+  "/farm-feed-storage-v2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/farm-feed-storage-v2-640.avif",
+        "webp": "/responsive/farm-feed-storage-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/farm-feed-storage-v2-960.avif",
+        "webp": "/responsive/farm-feed-storage-v2-960.webp"
+      }
+    ]
+  },
+  "/farm-seasonal-equipment-v2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/farm-seasonal-equipment-v2-640.avif",
+        "webp": "/responsive/farm-seasonal-equipment-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/farm-seasonal-equipment-v2-960.avif",
+        "webp": "/responsive/farm-seasonal-equipment-v2-960.webp"
+      }
+    ]
+  },
+  "/farm-storage-real.png": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/farm-storage-real-640.avif",
+        "webp": "/responsive/farm-storage-real-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/farm-storage-real-960.avif",
+        "webp": "/responsive/farm-storage-real-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/farm-storage-real-1600.avif",
+        "webp": "/responsive/farm-storage-real-1600.webp"
+      }
+    ]
+  },
+  "/gallery-v4/vehicle-car-v2.png": {
+    "width": 1421,
+    "height": 1107,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/gallery-v4/vehicle-car-v2-640.avif",
+        "webp": "/responsive/gallery-v4/vehicle-car-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/gallery-v4/vehicle-car-v2-960.avif",
+        "webp": "/responsive/gallery-v4/vehicle-car-v2-960.webp"
+      }
+    ]
+  },
+  "/gallery-v5/construction-open-side-tools-v1.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/gallery-v5/construction-open-side-tools-v1-640.avif",
+        "webp": "/responsive/gallery-v5/construction-open-side-tools-v1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/gallery-v5/construction-open-side-tools-v1-960.avif",
+        "webp": "/responsive/gallery-v5/construction-open-side-tools-v1-960.webp"
+      }
+    ]
+  },
+  "/hero-construction.jpg": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/hero-construction-640.avif",
+        "webp": "/responsive/hero-construction-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/hero-construction-960.avif",
+        "webp": "/responsive/hero-construction-960.webp"
+      }
+    ]
+  },
+  "/hero-container.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/hero-container-640.avif",
+        "webp": "/responsive/hero-container-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/hero-container-960.avif",
+        "webp": "/responsive/hero-container-960.webp"
+      }
+    ]
+  },
+  "/hero-depot-inventory.png": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/hero-depot-inventory-640.avif",
+        "webp": "/responsive/hero-depot-inventory-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/hero-depot-inventory-960.avif",
+        "webp": "/responsive/hero-depot-inventory-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/hero-depot-inventory-1600.avif",
+        "webp": "/responsive/hero-depot-inventory-1600.webp"
+      }
+    ]
+  },
+  "/institutions-feature.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/institutions-feature-640.avif",
+        "webp": "/responsive/institutions-feature-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/institutions-feature-960.avif",
+        "webp": "/responsive/institutions-feature-960.webp"
+      }
+    ]
+  },
+  "/institutions-gallery-1.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/institutions-gallery-1-640.avif",
+        "webp": "/responsive/institutions-gallery-1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/institutions-gallery-1-960.avif",
+        "webp": "/responsive/institutions-gallery-1-960.webp"
+      }
+    ]
+  },
+  "/institutions-gallery-2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/institutions-gallery-2-640.avif",
+        "webp": "/responsive/institutions-gallery-2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/institutions-gallery-2-960.avif",
+        "webp": "/responsive/institutions-gallery-2-960.webp"
+      }
+    ]
+  },
+  "/institutions-hero.png": {
+    "width": 1662,
+    "height": 946,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/institutions-hero-640.avif",
+        "webp": "/responsive/institutions-hero-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/institutions-hero-960.avif",
+        "webp": "/responsive/institutions-hero-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/institutions-hero-1600.avif",
+        "webp": "/responsive/institutions-hero-1600.webp"
+      }
+    ]
+  },
+  "/inventory-v2/vehicles-40ft-recreation.jpg": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/inventory-v2/vehicles-40ft-recreation-640.avif",
+        "webp": "/responsive/inventory-v2/vehicles-40ft-recreation-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/inventory-v2/vehicles-40ft-recreation-960.avif",
+        "webp": "/responsive/inventory-v2/vehicles-40ft-recreation-960.webp"
+      }
+    ]
+  },
+  "/inventory-v3/business-20.jpg": {
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/inventory-v3/business-20-640.avif",
+        "webp": "/responsive/inventory-v3/business-20-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/inventory-v3/business-20-960.avif",
+        "webp": "/responsive/inventory-v3/business-20-960.webp"
+      }
+    ]
+  },
+  "/inventory-v3/construction-40.jpg": {
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/inventory-v3/construction-40-640.avif",
+        "webp": "/responsive/inventory-v3/construction-40-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/inventory-v3/construction-40-960.avif",
+        "webp": "/responsive/inventory-v3/construction-40-960.webp"
+      }
+    ]
+  },
+  "/inventory-v3/vehicle-custom-v2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/inventory-v3/vehicle-custom-v2-640.avif",
+        "webp": "/responsive/inventory-v3/vehicle-custom-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/inventory-v3/vehicle-custom-v2-960.avif",
+        "webp": "/responsive/inventory-v3/vehicle-custom-v2-960.webp"
+      }
+    ]
+  },
+  "/inventory-v4/business-20-v2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/inventory-v4/business-20-v2-640.avif",
+        "webp": "/responsive/inventory-v4/business-20-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/inventory-v4/business-20-v2-960.avif",
+        "webp": "/responsive/inventory-v4/business-20-v2-960.webp"
+      }
+    ]
+  },
+  "/inventory-v4/business-20-v3.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/inventory-v4/business-20-v3-640.avif",
+        "webp": "/responsive/inventory-v4/business-20-v3-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/inventory-v4/business-20-v3-960.avif",
+        "webp": "/responsive/inventory-v4/business-20-v3-960.webp"
+      }
+    ]
+  },
+  "/inventory-v4/farm-20-v2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/inventory-v4/farm-20-v2-640.avif",
+        "webp": "/responsive/inventory-v4/farm-20-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/inventory-v4/farm-20-v2-960.avif",
+        "webp": "/responsive/inventory-v4/farm-20-v2-960.webp"
+      }
+    ]
+  },
+  "/moving-feature.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/moving-feature-640.avif",
+        "webp": "/responsive/moving-feature-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/moving-feature-960.avif",
+        "webp": "/responsive/moving-feature-960.webp"
+      }
+    ]
+  },
+  "/moving-gallery-1.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/moving-gallery-1-640.avif",
+        "webp": "/responsive/moving-gallery-1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/moving-gallery-1-960.avif",
+        "webp": "/responsive/moving-gallery-1-960.webp"
+      }
+    ]
+  },
+  "/moving-gallery-2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/moving-gallery-2-640.avif",
+        "webp": "/responsive/moving-gallery-2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/moving-gallery-2-960.avif",
+        "webp": "/responsive/moving-gallery-2-960.webp"
+      }
+    ]
+  },
+  "/moving-hero.png": {
+    "width": 1717,
+    "height": 916,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/moving-hero-640.avif",
+        "webp": "/responsive/moving-hero-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/moving-hero-960.avif",
+        "webp": "/responsive/moving-hero-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/moving-hero-1600.avif",
+        "webp": "/responsive/moving-hero-1600.webp"
+      }
+    ]
+  },
+  "/og.png": {
+    "width": 1731,
+    "height": 909,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/og-640.avif",
+        "webp": "/responsive/og-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/og-960.avif",
+        "webp": "/responsive/og-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/og-1600.avif",
+        "webp": "/responsive/og-1600.webp"
+      }
+    ]
+  },
+  "/renovation-feature.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/renovation-feature-640.avif",
+        "webp": "/responsive/renovation-feature-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/renovation-feature-960.avif",
+        "webp": "/responsive/renovation-feature-960.webp"
+      }
+    ]
+  },
+  "/renovation-gallery-1.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/renovation-gallery-1-640.avif",
+        "webp": "/responsive/renovation-gallery-1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/renovation-gallery-1-960.avif",
+        "webp": "/responsive/renovation-gallery-1-960.webp"
+      }
+    ]
+  },
+  "/renovation-gallery-2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/renovation-gallery-2-640.avif",
+        "webp": "/responsive/renovation-gallery-2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/renovation-gallery-2-960.avif",
+        "webp": "/responsive/renovation-gallery-2-960.webp"
+      }
+    ]
+  },
+  "/renovation-hero.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/renovation-hero-640.avif",
+        "webp": "/responsive/renovation-hero-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/renovation-hero-960.avif",
+        "webp": "/responsive/renovation-hero-960.webp"
+      }
+    ]
+  },
+  "/specialty/business-overflow-mosaic-v1.webp": {
+    "width": 1774,
+    "height": 887,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/business-overflow-mosaic-v1-640.avif",
+        "webp": "/responsive/specialty/business-overflow-mosaic-v1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/business-overflow-mosaic-v1-960.avif",
+        "webp": "/responsive/specialty/business-overflow-mosaic-v1-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/specialty/business-overflow-mosaic-v1-1600.avif",
+        "webp": "/responsive/specialty/business-overflow-mosaic-v1-1600.webp"
+      }
+    ]
+  },
+  "/specialty/disaster-relief-hero-v1.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/disaster-relief-hero-v1-640.avif",
+        "webp": "/responsive/specialty/disaster-relief-hero-v1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/disaster-relief-hero-v1-960.avif",
+        "webp": "/responsive/specialty/disaster-relief-hero-v1-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/specialty/disaster-relief-hero-v1-1600.avif",
+        "webp": "/responsive/specialty/disaster-relief-hero-v1-1600.webp"
+      }
+    ]
+  },
+  "/specialty/export-retirement-relocation-v1.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/export-retirement-relocation-v1-640.avif",
+        "webp": "/responsive/specialty/export-retirement-relocation-v1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/export-retirement-relocation-v1-960.avif",
+        "webp": "/responsive/specialty/export-retirement-relocation-v1-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/specialty/export-retirement-relocation-v1-1600.avif",
+        "webp": "/responsive/specialty/export-retirement-relocation-v1-1600.webp"
+      }
+    ]
+  },
+  "/specialty/export-young-relocation-v1.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/export-young-relocation-v1-640.avif",
+        "webp": "/responsive/specialty/export-young-relocation-v1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/export-young-relocation-v1-960.avif",
+        "webp": "/responsive/specialty/export-young-relocation-v1-960.webp"
+      }
+    ]
+  },
+  "/specialty/farm-site-selection-v1.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/farm-site-selection-v1-640.avif",
+        "webp": "/responsive/specialty/farm-site-selection-v1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/farm-site-selection-v1-960.avif",
+        "webp": "/responsive/specialty/farm-site-selection-v1-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/specialty/farm-site-selection-v1-1600.avif",
+        "webp": "/responsive/specialty/farm-site-selection-v1-1600.webp"
+      }
+    ]
+  },
+  "/specialty/institutions-custom-20ft-v1.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/institutions-custom-20ft-v1-640.avif",
+        "webp": "/responsive/specialty/institutions-custom-20ft-v1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/institutions-custom-20ft-v1-960.avif",
+        "webp": "/responsive/specialty/institutions-custom-20ft-v1-960.webp"
+      }
+    ]
+  },
+  "/specialty/reefer-use-mosaic-v1.webp": {
+    "width": 1254,
+    "height": 1254,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/reefer-use-mosaic-v1-640.avif",
+        "webp": "/responsive/specialty/reefer-use-mosaic-v1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/reefer-use-mosaic-v1-960.avif",
+        "webp": "/responsive/specialty/reefer-use-mosaic-v1-960.webp"
+      }
+    ]
+  },
+  "/specialty/reefer-use-mosaic-v2.webp": {
+    "width": 1254,
+    "height": 1254,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/reefer-use-mosaic-v2-640.avif",
+        "webp": "/responsive/specialty/reefer-use-mosaic-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/reefer-use-mosaic-v2-960.avif",
+        "webp": "/responsive/specialty/reefer-use-mosaic-v2-960.webp"
+      }
+    ]
+  },
+  "/storage-tools.jpg": {
+    "width": 1400,
+    "height": 700,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/storage-tools-640.avif",
+        "webp": "/responsive/storage-tools-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/storage-tools-960.avif",
+        "webp": "/responsive/storage-tools-960.webp"
+      }
+    ]
+  },
+  "/storage-tools2.jpg": {
+    "width": 1400,
+    "height": 1400,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/storage-tools2-640.avif",
+        "webp": "/responsive/storage-tools2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/storage-tools2-960.avif",
+        "webp": "/responsive/storage-tools2-960.webp"
+      }
+    ]
+  },
+  "/vehicles-feature.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/vehicles-feature-640.avif",
+        "webp": "/responsive/vehicles-feature-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/vehicles-feature-960.avif",
+        "webp": "/responsive/vehicles-feature-960.webp"
+      }
+    ]
+  },
+  "/vehicles-gallery-1.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/vehicles-gallery-1-640.avif",
+        "webp": "/responsive/vehicles-gallery-1-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/vehicles-gallery-1-960.avif",
+        "webp": "/responsive/vehicles-gallery-1-960.webp"
+      }
+    ]
+  },
+  "/vehicles-gallery-2.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/vehicles-gallery-2-640.avif",
+        "webp": "/responsive/vehicles-gallery-2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/vehicles-gallery-2-960.avif",
+        "webp": "/responsive/vehicles-gallery-2-960.webp"
+      }
+    ]
+  },
+  "/vehicles-hero.png": {
+    "width": 1774,
+    "height": 887,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/vehicles-hero-640.avif",
+        "webp": "/responsive/vehicles-hero-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/vehicles-hero-960.avif",
+        "webp": "/responsive/vehicles-hero-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/vehicles-hero-1600.avif",
+        "webp": "/responsive/vehicles-hero-1600.webp"
+      }
+    ]
+  },
+  "/weather-rain.jpg": {
+    "width": 1254,
+    "height": 1254,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/weather-rain-640.avif",
+        "webp": "/responsive/weather-rain-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/weather-rain-960.avif",
+        "webp": "/responsive/weather-rain-960.webp"
+      }
+    ]
+  }
+}

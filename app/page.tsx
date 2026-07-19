@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { InventorySection } from "./InventorySection";
 import { QuoteForm } from "./QuoteForm";
 import { Footer, Header, MobileBar } from "./SiteShell";
+import { OptimizedImage } from "./OptimizedImage";
 
 const homepageInventoryImages = ["/inventory-v3/generic-20.jpg", "/inventory-v3/generic-40.jpg", "/inventory-v2/generic-3.jpg", "/inventory-v3/generic-custom.jpg"] as [string, string, string, string];
 
@@ -37,8 +37,8 @@ export default function Home() {
   return (
     <main>
       <Header />
-      <section className="home-hero" id="quote" style={{ backgroundImage: "url(/hero-depot-inventory.png)" }}>
-        <Image className="hero-background" src="/hero-depot-inventory.png" alt="Rows of shipping containers ready for nationwide delivery" fill priority sizes="100vw" />
+      <section className="home-hero" id="quote">
+        <OptimizedImage className="hero-background" src="/hero-depot-inventory.png" alt="Rows of shipping containers ready for nationwide delivery" priority sizes="100vw" />
         <div className="hero-overlay" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
@@ -77,7 +77,7 @@ export default function Home() {
           <div className="use-grid">
             {uses.map((use, index) => (
               <Link className="use-card" href={use.href} key={use.title}>
-                <Image src={use.image} alt={`${use.title} shipping container storage`} fill sizes="(max-width: 760px) 100vw, 33vw" />
+                <OptimizedImage src={use.image} alt={`${use.title} shipping container storage`} sizes="(max-width: 760px) 100vw, 33vw" />
                 <span className="use-shade" />
                 <span className="use-index">{String(index + 1).padStart(2, "0")}</span>
                 <span className="use-copy"><strong>{use.title}</strong><span>{use.text}</span><b>View buyer page →</b></span>
@@ -95,7 +95,7 @@ export default function Home() {
           </div>
           <div className="specialty-home-grid">
             {specialtyTypes.map((item) => <Link className="specialty-home-card" href={item.href} key={item.title}>
-              <div className="specialty-home-image"><Image src={item.image} alt={`${item.title} specialty shipping container`} fill sizes="(max-width: 800px) 100vw, 33vw" /><span>{item.label}</span></div>
+              <div className="specialty-home-image"><OptimizedImage src={item.image} alt={`${item.title} specialty shipping container`} sizes="(max-width: 800px) 100vw, 33vw" /><span>{item.label}</span></div>
               <div><h3>{item.title}</h3><p>{item.text}</p><b>Explore this container type →</b></div>
             </Link>)}
           </div>

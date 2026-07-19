@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { InventorySection } from "../InventorySection";
 import { QuoteForm } from "../QuoteForm";
@@ -7,6 +6,7 @@ import { Footer, Header, MobileBar } from "./SiteShell";
 import { TestimonialCarousel } from "../TestimonialCarousel";
 import { verticals } from "../verticals";
 import { KnowledgeHubSection } from "./KnowledgeHubSection";
+import { OptimizedImage } from "../OptimizedImage";
 import { ConstructionStatsTeaser } from "./ConstructionDataVisuals";
 import { guides } from "./guide-data";
 
@@ -51,8 +51,8 @@ export default function ConstructionHubPage() {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Header />
-      <section className="vertical-hero vertical-construction construction-hub-hero" id="quote" style={{ backgroundImage: `url(${data.hero})` }}>
-        <Image className="hero-background" src={data.hero} alt="Construction storage container on an active jobsite" fill priority sizes="100vw" />
+      <section className="vertical-hero vertical-construction construction-hub-hero" id="quote">
+        <OptimizedImage className="hero-background" src={data.hero} alt="Construction storage container on an active jobsite" priority sizes="100vw" />
         <div className="hero-overlay" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
@@ -85,7 +85,7 @@ export default function ConstructionHubPage() {
       <section className="section vertical-gallery-section">
         <div className="wrap">
           <div className="section-heading split-heading"><div><span className="eyebrow dark">Storage in the real world</span><h2>See how the space gets used.</h2></div><p>Secure steel storage placed where the work happens, with the capacity to keep everyday supplies organized and close.</p></div>
-          <div className="vertical-gallery">{data.gallery.map((item) => <figure key={item.image}><div><Image src={item.image} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}</div>
+          <div className="vertical-gallery">{data.gallery.map((item) => <figure key={item.image}><div><OptimizedImage src={item.image} alt={item.alt} sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}</div>
         </div>
       </section>
 
@@ -93,7 +93,7 @@ export default function ConstructionHubPage() {
 
       <section className="section vertical-use-section">
         <div className="wrap vertical-use-grid">
-          <div className="vertical-photo"><Image src={data.featureImage} alt="Construction tools organized inside a shipping container" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+          <div className="vertical-photo"><OptimizedImage src={data.featureImage} alt="Construction tools organized inside a shipping container" sizes="(max-width: 800px) 100vw, 50vw" /></div>
           <div className="vertical-use-copy"><span className="eyebrow dark">What fits inside</span><h2>Room for the tools and materials that keep the project moving.</h2><div className="application-list">{data.applications.map((item) => <span key={item}>✓ {item}</span>)}</div><a className="button primary" href="#quote-form">Check local inventory</a></div>
         </div>
       </section>

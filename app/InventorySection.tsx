@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { OptimizedImage } from "./OptimizedImage";
 
 export type InventoryImages = [string, string, string, string];
 
@@ -46,7 +46,7 @@ export function InventorySection({
           {options.map((item, index) => (
             <article className="inventory-card" key={item.name}>
               <div className="image-wrap">
-                <Image src={images[index]} alt={`${item.name} for ${context}`} fill sizes="(max-width: 800px) 100vw, 25vw" />
+                <OptimizedImage src={images[index]} alt={`${item.name} for ${context}`} sizes="(max-width: 800px) 100vw, 25vw" />
                 {item.badge ? <span className="modified-badge">{item.badge}</span> : index === 2 && options === defaultOptions ? <div className="height-comparison" aria-hidden="true"><span>Standard <b>8&apos;6&quot;</b></span><span>High Cube <b>9&apos;6&quot;</b></span></div> : null}
                 {index === 3 && !item.badge && options === defaultOptions && <span className="modified-badge">Modified access</span>}
               </div>

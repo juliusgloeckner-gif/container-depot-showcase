@@ -4,6 +4,18 @@ import { FormEvent, useEffect, useState } from "react";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzepnvd";
 
+type UcdMarketingApi = {
+  appendAttribution: (data: FormData) => unknown;
+  newLeadId: () => string;
+  trackLead: (details: { leadId: string; email: string; phone: string; vertical: string; size: string }) => void;
+};
+
+declare global {
+  interface Window {
+    UCDMarketing?: UcdMarketingApi;
+  }
+}
+
 type QuoteFormProps = {
   compact?: boolean;
   context?: string;
@@ -35,7 +47,9 @@ export function QuoteForm({
     const requestedSize = new URLSearchParams(window.location.search).get("size");
     if (!requestedSize) return;
     const match = containerOptions.find((option) => option.toLowerCase() === requestedSize.toLowerCase());
-    if (match) setSelectedSize(match);
+    if (!match) return;
+    const frame = window.requestAnimationFrame(() => setSelectedSize(match));
+    return () => window.cancelAnimationFrame(frame);
   }, [containerOptions]);
 
   async function submitQuote(event: FormEvent<HTMLFormElement>) {
@@ -45,14 +59,20 @@ export function QuoteForm({
     setStatus("submitting");
     const data = new FormData(event.currentTarget);
     const search = new URLSearchParams(window.location.search);
-    const trackingKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"];
+    const trackingKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_id", "utm_content", "utm_term", "gclid", "gbraid", "wbraid", "dclid", "gclsrc", "gad_source", "gad_campaignid"];
+    const leadId = window.UCDMarketing?.newLeadId() ?? `ucd_lead_${Date.now()}`;
 
     data.set("landing_page", window.location.href);
+    data.set("lead_id", leadId);
+    data.set("order_id", leadId);
+    data.set("lead_stage", "Submitted lead");
+    data.set("conversion_time", new Date().toISOString());
     data.set("_subject", `New UCD redesign lead | ${context} | ZIP ${data.get("zip")}`);
-    trackingKeys.forEach((key) => {
-      const value = search.get(key);
-      if (value) data.set(key, value);
-    });
+    if (window.UCDMarketing) window.UCDMarketing.appendAttribution(data);
+    else trackingKeys.forEach((key) => {
+        const value = search.get(key);
+        if (value) data.set(key, value);
+      });
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -62,8 +82,15 @@ export function QuoteForm({
       });
 
       if (!response.ok) throw new Error("Formspree rejected the submission");
+      window.UCDMarketing?.trackLead({
+        leadId,
+        email: String(data.get("email") || ""),
+        phone: String(data.get("phone") || ""),
+        vertical: context,
+        size: String(data.get("size") || ""),
+      });
       setStatus("success");
-      window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { context, variant: "new_site" } }));
+      window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { context, variant: "new_site", leadId } }));
     } catch {
       setStatus("error");
     }
@@ -104,19 +131,19 @@ export function QuoteForm({
       <div className="form-grid">
         <label>
           Name
-          <input name="name" placeholder="John Smith" autoComplete="name" required />
+          <input id="ucd-name" name="name" placeholder="John Smith" autoComplete="name" required />
         </label>
         <label>
           Phone
-          <input name="phone" placeholder="(555) 123-4567" type="tel" autoComplete="tel" required />
+          <input id="ucd-phone" name="phone" placeholder="(555) 123-4567" type="tel" autoComplete="tel" required />
         </label>
         <label>
           Delivery ZIP
-          <input name="zip" placeholder="75201" inputMode="numeric" pattern="[0-9]{5}" required />
+          <input id="ucd-zip" name="zip" placeholder="75201" inputMode="numeric" pattern="[0-9]{5}" autoComplete="postal-code" required />
         </label>
         <label>
           Email
-          <input name="email" placeholder="you@company.com" type="email" autoComplete="email" required />
+          <input id="ucd-email" name="email" placeholder="you@company.com" type="email" autoComplete="email" required />
         </label>
         <label className="span-2">
           Container size

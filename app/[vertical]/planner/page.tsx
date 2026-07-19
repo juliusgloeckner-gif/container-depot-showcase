@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ vertical:
   const { vertical } = await params;
   const config = knowledgeConfig(vertical);
   if (!config) return {};
-  return { title: `${config.name} Container Size Education Center`, description: `Compare 20FT, 40FT and High Cube capacity, proportions and common uses for ${config.context}.` };
+  return { title: `${config.name} Container Size Education Center`, description: `Compare 20FT, 40FT and High Cube capacity, proportions and common uses for ${config.context}.`, alternates: { canonical: `https://unitedcontainerdepot.com/${config.key}/planner` } };
 }
 
 export default async function PlannerPage({ params }: { params: Promise<{ vertical: string }> }) {

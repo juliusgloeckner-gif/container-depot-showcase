@@ -1,0 +1,4 @@
+Email,Phone Number,Conversion Name,Conversion Time,Conversion Value,Conversion Currency,Google Click ID,GBRAID,WBRAID,Order ID
+lead@example.com,+15555550100,UCD Qualified Lead,2026-07-19 10:00:00+04:00,100,USD,,,EXAMPLE_BRAID,ucd_lead_example
+lead@example.com,+15555550100,UCD Quote Issued,2026-07-19 11:00:00+04:00,500,USD,,,EXAMPLE_BRAID,ucd_lead_example
+lead@example.com,+15555550100,UCD Sold Container,2026-07-20 15:30:00+04:00,4490,USD,,,EXAMPLE_BRAID,ucd_lead_example

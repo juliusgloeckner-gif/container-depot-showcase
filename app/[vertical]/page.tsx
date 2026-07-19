@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { InventorySection } from "../InventorySection";
 import { QuoteForm } from "../QuoteForm";
@@ -9,6 +8,7 @@ import { TestimonialCarousel } from "../TestimonialCarousel";
 import { UseCaseMosaic } from "../UseCaseMosaic";
 import { verticals } from "../verticals";
 import { KnowledgeHubSection } from "../knowledge/KnowledgeHubSection";
+import { OptimizedImage } from "../OptimizedImage";
 
 export function generateStaticParams() {
   return Object.keys(verticals).map((vertical) => ({ vertical }));
@@ -74,8 +74,8 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
     <main>
       {structuredData && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />}
       <Header />
-      <section className={`vertical-hero vertical-${data.key}`} id="quote" style={{ backgroundImage: `url(${data.hero})` }}>
-        <Image className="hero-background" src={data.hero} alt={`${data.nav} shipping container storage`} fill priority sizes="100vw" />
+      <section className={`vertical-hero vertical-${data.key}`} id="quote">
+        <OptimizedImage className="hero-background" src={data.hero} alt={`${data.nav} shipping container storage`} priority sizes="100vw" />
         <div className="hero-overlay" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
@@ -115,7 +115,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
       <section className="section vertical-gallery-section">
         <div className="wrap">
           <div className="section-heading split-heading"><div><span className="eyebrow dark">Storage in the real world</span><h2>{data.galleryTitle ?? "See how the space gets used."}</h2></div><p>{data.galleryLead ?? "Secure steel storage placed where the work happens, with the capacity to keep everyday supplies organized and close."}</p></div>
-          <div className="vertical-gallery">{data.gallery.map((item, index) => <figure key={`${item.image}-${index}`}><div><Image src={item.image} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}</div>
+          <div className="vertical-gallery">{data.gallery.map((item, index) => <figure key={`${item.image}-${index}`}><div><OptimizedImage src={item.image} alt={item.alt} sizes="(max-width: 800px) 100vw, 33vw" /></div><figcaption>{item.caption}</figcaption></figure>)}</div>
         </div>
       </section>
 
@@ -124,7 +124,7 @@ export default async function VerticalPage({ params }: { params: Promise<{ verti
       <section className="section vertical-use-section">
         <div className="wrap vertical-use-grid">
           <div className="vertical-photo">
-            <Image src={data.featureImage} alt={`${data.nav} supplies organized inside a shipping container`} fill sizes="(max-width: 800px) 100vw, 50vw" />
+            <OptimizedImage src={data.featureImage} alt={`${data.nav} supplies organized inside a shipping container`} sizes="(max-width: 800px) 100vw, 50vw" />
             {data.visualTags && <div className="visual-tag-grid" aria-label="Typical business overflow contents">{data.visualTags.map((tag) => <span key={tag.label}><b>{tag.icon}</b>{tag.label}</span>)}</div>}
           </div>
           <div className="vertical-use-copy">

@@ -28,9 +28,23 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://unitedcontainerdepot.com/#organization",
+    name: "United Container Depot",
+    url: "https://unitedcontainerdepot.com",
+    telephone: "+1-855-525-0902",
+    email: "info@unitedcontainerdepot.com",
+    areaServed: { "@type": "Country", name: "United States" },
+  };
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script src="/marketing-tracking.js" defer></script>
+      </body>
     </html>
   );
 }

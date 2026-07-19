@@ -1,0 +1,3 @@
+import type { Metadata } from "next"; import { DeliveredCostCalculator } from "../DecisionTools"; import { ToolFrame } from "../ToolFrame";
+export const metadata:Metadata={title:"Delivered Shipping Container Cost Calculator",description:"Build a complete shipping-container delivered-cost scenario from written unit, delivery, site-preparation, modification, tax and permit inputs.",alternates:{canonical:"https://unitedcontainerdepot.com/tools/delivered-cost"}};
+export default function Page(){return <ToolFrame eyebrow="Delivered cost" title="Build the complete delivered-cost scenario." lead="Add only costs you can verify. The calculator performs transparent arithmetic and keeps estimates separate from the actual delivered quote."><DeliveredCostCalculator/></ToolFrame>}

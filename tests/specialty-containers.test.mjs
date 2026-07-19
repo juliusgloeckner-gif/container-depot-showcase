@@ -220,6 +220,37 @@ test("keeps the quote form low-friction and connected to Formspree", async () =>
   assert.match(html, /No payment\. No obligation\. No spam\./i);
 });
 
+test("persists paid-search attribution and deduplicates successful lead conversions", async () => {
+  const quote = await readFile(new URL("../app/QuoteForm.tsx", import.meta.url), "utf8");
+  const tracking = await readFile(new URL("../public/marketing-tracking.js", import.meta.url), "utf8");
+  const staticQuote = await readFile(new URL("../public/quote-form.js", import.meta.url), "utf8");
+  for (const key of ["gclid", "gbraid", "wbraid", "gad_source", "gad_campaignid"]) {
+    assert.match(quote, new RegExp(key));
+    assert.match(tracking, new RegExp(key));
+  }
+  assert.match(tracking, /ucd_marketing_attribution_v1/);
+  assert.match(tracking, /first_landing_page/);
+  assert.match(tracking, /transaction_id: details\.leadId/);
+  assert.match(tracking, /var ADS_ID = "AW-18200648447"/);
+  assert.match(tracking, /var WEBSITE_CALL_CONVERSION_LABEL = "wVZtCLfD9dIcEP-13-ZD"/);
+  assert.match(tracking, /phone_conversion_number: "\(855\) 525-0902"/);
+  assert.match(tracking, /send_to: ADS_ID \+ "\/" \+ FORM_CONVERSION_LABEL/);
+  assert.match(quote, /data\.set\("lead_id", leadId\)/);
+  assert.match(staticQuote, /data\.set\("order_id", leadId\)/);
+});
+
+test("loads one sitewide Google tag on every rendered landing page", async () => {
+  for (const pathname of ["/", "/construction", "/farm", "/moving", "/vehicles", "/refrigerated-containers"]) {
+    const html = await (await render(pathname)).text();
+    assert.match(html, /src="\/marketing-tracking\.js"/i, pathname);
+  }
+  const tracking = await readFile(new URL("../public/marketing-tracking.js", import.meta.url), "utf8");
+  assert.match(tracking, /G-LZDDGY8RJR/);
+  assert.match(tracking, /AW-18200648447/);
+  assert.match(tracking, /quote_cta_click/);
+  assert.match(tracking, /phone_click/);
+});
+
 test("uses distinct, accurate specialty inventory images without encoding artifacts", async () => {
   const tunnelHtml = await (await render("/double-door-containers")).text();
   assert.match(tunnelHtml, /tunnel-high-cube-v4\.webp/i);
