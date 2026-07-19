@@ -40,6 +40,25 @@ test("keeps a construction visitor on their construction assignment", () => {
   );
 });
 
+test("stops the experiment cleanly when a winner is configured", () => {
+  assert.equal(
+    chooseVariant({
+      pathname: "/construction",
+      constructionCookieVariant: "A",
+      winnerVariant: "B",
+    }),
+    "B",
+  );
+  assert.equal(
+    chooseVariant({
+      pathname: "/construction",
+      constructionCookieVariant: "B",
+      winnerVariant: "A",
+    }),
+    "A",
+  );
+});
+
 test("routes every construction knowledge page to the redesign", () => {
   for (const pathname of [
     "/construction/resources",
@@ -229,9 +248,15 @@ test("routes unclassified assets with the current page origin", () => {
   assert.equal(chooseVariant({ pathname: "/unknown.css" }), "A");
 });
 
-test("rewrites redesign pages without a server-side fetch challenge", () => {
+test("rewrites redesign pages and repairs the legacy construction form", () => {
   const proxySource = fs.readFileSync(new URL("../proxy.js", import.meta.url), "utf8");
-  assert.match(proxySource, /const response = NextResponse\.rewrite\(destination\);/);
-  assert.doesNotMatch(proxySource, /fetchRedesignPage|await fetch\(destination/);
+  assert.match(
+    proxySource,
+    /variant === "A" && isConstructionPath\(requestUrl\.pathname\)[\s\S]{0,220}: NextResponse\.rewrite\(destination\);/,
+  );
+  assert.match(proxySource, /async function serveRepairedLegacyConstruction/);
+  assert.match(proxySource, /legacy-form-fix\.js/);
+  assert.match(proxySource, /legacy-form-repair/);
+  assert.doesNotMatch(proxySource, /fetchRedesignPage/);
   assert.match(proxySource, /x-ucd-router-mode", "rewrite"/);
 });
