@@ -1133,5 +1133,116 @@
         "webp": "/responsive/weather-rain-960.webp"
       }
     ]
+  },
+  "/specialty/tunnel-hero-v2.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/tunnel-hero-v2-640.avif",
+        "webp": "/responsive/specialty/tunnel-hero-v2-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/tunnel-hero-v2-960.avif",
+        "webp": "/responsive/specialty/tunnel-hero-v2-960.webp"
+      }
+    ]
+  },
+  "/specialty/tunnel-warehouse-blue-v4.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/tunnel-warehouse-blue-v4-640.avif",
+        "webp": "/responsive/specialty/tunnel-warehouse-blue-v4-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/tunnel-warehouse-blue-v4-960.avif",
+        "webp": "/responsive/specialty/tunnel-warehouse-blue-v4-960.webp"
+      }
+    ]
+  },
+  "/specialty/insulated-feature-monitoring-v3.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/insulated-feature-monitoring-v3-640.avif",
+        "webp": "/responsive/specialty/insulated-feature-monitoring-v3-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/insulated-feature-monitoring-v3-960.avif",
+        "webp": "/responsive/specialty/insulated-feature-monitoring-v3-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/specialty/insulated-feature-monitoring-v3-1600.avif",
+        "webp": "/responsive/specialty/insulated-feature-monitoring-v3-1600.webp"
+      }
+    ]
+  },
+  "/specialty/insulated-20ft-records-v3.webp": {
+    "width": 1695,
+    "height": 928,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/insulated-20ft-records-v3-640.avif",
+        "webp": "/responsive/specialty/insulated-20ft-records-v3-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/insulated-20ft-records-v3-960.avif",
+        "webp": "/responsive/specialty/insulated-20ft-records-v3-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/specialty/insulated-20ft-records-v3-1600.avif",
+        "webp": "/responsive/specialty/insulated-20ft-records-v3-1600.webp"
+      }
+    ]
+  },
+  "/specialty/insulated-gallery-furniture-v3.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/insulated-gallery-furniture-v3-640.avif",
+        "webp": "/responsive/specialty/insulated-gallery-furniture-v3-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/insulated-gallery-furniture-v3-960.avif",
+        "webp": "/responsive/specialty/insulated-gallery-furniture-v3-960.webp"
+      }
+    ]
+  },
+  "/specialty/hazmat-container-hero-v3.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "avif": "/responsive/specialty/hazmat-container-hero-v3-640.avif",
+        "webp": "/responsive/specialty/hazmat-container-hero-v3-640.webp"
+      },
+      {
+        "width": 960,
+        "avif": "/responsive/specialty/hazmat-container-hero-v3-960.avif",
+        "webp": "/responsive/specialty/hazmat-container-hero-v3-960.webp"
+      },
+      {
+        "width": 1600,
+        "avif": "/responsive/specialty/hazmat-container-hero-v3-1600.avif",
+        "webp": "/responsive/specialty/hazmat-container-hero-v3-1600.webp"
+      }
+    ]
   }
 }

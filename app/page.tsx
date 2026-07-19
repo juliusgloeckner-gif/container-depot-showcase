@@ -27,10 +27,10 @@ const uses = [
 const specialtyTypes = [
   { title: "Refrigerated Containers (Reefers)", text: "Powered cold storage with a standard 10-day depot electrical test and detailed report before delivery.", href: "/refrigerated-containers", image: "/specialty/reefer-hero.webp", label: "Tested cold storage" },
   { title: "Open Side Containers", text: "Two long-side access bays on 20FT units or four on 40FT units for faster retrieval.", href: "/open-side-containers", image: "/specialty/open-side-hero.webp", label: "Multi-door access" },
-  { title: "Double Door Containers (Tunnel)", text: "Paired cargo doors at both short ends for two-way staging, long materials and FIFO flow.", href: "/double-door-containers", image: "/specialty/tunnel-hero.webp", label: "Access both ends" },
+  { title: "Double Door Containers (Tunnel)", text: "Paired cargo doors at both short ends for two-way staging, long materials and FIFO flow.", href: "/double-door-containers", image: "/specialty/tunnel-hero-v2.webp", label: "Access both ends" },
   { title: "Insulated Containers", text: "Lined dry storage that slows temperature swings and helps manage condensation-sensitive contents.", href: "/insulated-containers", image: "/specialty/insulated-container-hero-v1.webp", label: "Reduced heat transfer" },
   { title: "Office Containers", text: "Purpose-built workspace with personnel access, windows, power, HVAC and a site-approved layout.", href: "/office-containers", image: "/specialty/office-container-hero-v1.webp", label: "Work where the work is" },
-  { title: "Hazardous Material Storage", text: "Engineered storage configured around the exact material, quantity, containment and local requirements.", href: "/hazardous-material-storage", image: "/specialty/hazmat-container-hero-v1.webp", label: "Designed to the hazard" },
+  { title: "Hazardous Material Storage", text: "Engineered storage configured around the exact material, quantity, containment and local requirements.", href: "/hazardous-material-storage", image: "/specialty/hazmat-container-hero-v3.webp", label: "Designed to the hazard" },
 ];
 
 export default function Home() {

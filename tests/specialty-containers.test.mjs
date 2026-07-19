@@ -172,10 +172,11 @@ test("ships project-bound visuals for every new page and use-case mosaic", async
   const names = [
     "reefer-hero.webp", "reefer-restaurant.webp", "reefer-farm.webp", "reefer-interior.webp",
     "open-side-hero.webp", "open-side-landscape.webp", "open-side-school.webp", "open-side-interior.webp",
-    "tunnel-hero.webp", "tunnel-construction.webp", "tunnel-warehouse.webp", "tunnel-interior.webp",
+    "tunnel-hero.webp", "tunnel-hero-v2.webp", "tunnel-construction.webp", "tunnel-warehouse.webp", "tunnel-interior.webp", "tunnel-warehouse-blue-v4.webp",
     "export-retirement-relocation-v1.webp", "export-young-relocation-v1.webp", "export-humanitarian-v1.webp",
     "reefer-use-mosaic-v1.webp", "reefer-use-mosaic-v2.webp", "business-overflow-mosaic-v1.webp", "disaster-relief-hero-v1.webp",
-    "insulated-container-hero-v1.webp", "office-container-hero-v1.webp", "hazmat-container-hero-v1.webp",
+    "insulated-container-hero-v1.webp", "insulated-20ft-records-v3.webp", "insulated-feature-monitoring-v3.webp", "insulated-gallery-furniture-v3.webp",
+    "office-container-hero-v1.webp", "hazmat-container-hero-v1.webp", "hazmat-container-hero-v3.webp",
   ];
   await Promise.all(names.map((name) => access(new URL(`../public/specialty/${name}`, import.meta.url))));
 });
@@ -295,7 +296,7 @@ test("uses distinct, accurate specialty inventory images without encoding artifa
   const tunnelHtml = await (await render("/double-door-containers")).text();
   assert.match(tunnelHtml, /tunnel-high-cube-v4\.webp/i);
   assert.match(tunnelHtml, /tunnel-warehouse-v3\.webp/i);
-  assert.match(tunnelHtml, /tunnel-warehouse-blue-v3\.webp/i);
+  assert.match(tunnelHtml, /tunnel-warehouse-blue-v4\.webp/i);
   assert.doesNotMatch(tunnelHtml, /tunnel-warehouse-v2\.webp/i);
   assert.doesNotMatch(tunnelHtml, /â†’/i);
 
@@ -304,6 +305,9 @@ test("uses distinct, accurate specialty inventory images without encoding artifa
 
   const insulatedHtml = await (await render("/insulated-containers")).text();
   assert.match(insulatedHtml, /insulated-monitored-interior-v2\.webp/i);
+  assert.match(insulatedHtml, /insulated-20ft-records-v3\.webp/i);
+  assert.match(insulatedHtml, /insulated-feature-monitoring-v3\.webp/i);
+  assert.match(insulatedHtml, /insulated-gallery-furniture-v3\.webp/i);
   assert.doesNotMatch(insulatedHtml, /â†’/i);
 });
 
