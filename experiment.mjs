@@ -6,7 +6,7 @@ export const BUSINESS_VARIANT_COOKIE = "ucd_business_variant";
 export const PUBLIC_BUSINESS_VARIANT_COOKIE = "ucd_business_variant_public";
 export const ORIGIN_VARIANT_COOKIE = "ucd_origin_variant";
 export const OLD_ORIGIN = "https://garaged-landing.vercel.app";
-export const NEW_ORIGIN = "https://ucd-redesign-kmia23v4p-maxs-projects-de7b3f39.vercel.app";
+export const NEW_ORIGIN = "https://ucd-redesign-b.vercel.app";
 export const DEFAULT_CONSTRUCTION_B_PERCENT = 50;
 
 const REDESIGN_ONLY_PREFIXES = [
