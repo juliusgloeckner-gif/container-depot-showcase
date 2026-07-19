@@ -36,6 +36,15 @@ function applyExperimentHeaders(response, {
   response.headers.set("x-ucd-variant", variant);
   response.headers.set("vary", "Cookie");
 
+  const cleanPath = pathname.replace(/\/+$/, "") || "/";
+  if (cleanPath === "/agriculture") {
+    response.headers.set("Link", '<https://unitedcontainerdepot.com/farm>; rel="canonical"');
+  } else if (cleanPath === "/commercial") {
+    response.headers.set("Link", '<https://unitedcontainerdepot.com/business>; rel="canonical"');
+  } else if (cleanPath.startsWith("/shipping-containers-")) {
+    response.headers.set("Link", '<https://unitedcontainerdepot.com/delivery-locations>; rel="canonical"');
+  }
+
   if (normalizeVariant(originVariant) !== variant) {
     setVariantCookie(response, ORIGIN_VARIANT_COOKIE, variant);
   }

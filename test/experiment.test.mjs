@@ -102,9 +102,15 @@ test("serves redesign assets to crawlers without relying on cookies", () => {
     "/inventory-v2/generic-3.jpg",
     "/inventory-v4/farm-20-v2.png",
     "/gallery-v4/vehicle-car-v2.png",
+    "/gallery-v5/vehicle-car-v3.webp",
+    "/inventory-v5/moving-tunnel-v1.webp",
+    "/responsive/farm-hero-640.avif",
     "/inventory-v3/construction-40.jpg",
     "/hero-construction.jpg",
+    "/marketing-tracking.js",
     "/quote-form.js",
+    "/farm-storage-real.png",
+    "/moving-hero.png",
   ]) {
     assert.equal(
       chooseVariant({ pathname, userAgent: "Googlebot" }),
@@ -124,6 +130,12 @@ test("legacy campaign and homepage routes always use the current site", () => {
       }),
       "A",
     );
+  }
+});
+
+test("privacy, terms, delivery coverage and decision tools use the redesign", () => {
+  for (const pathname of ["/privacy", "/terms", "/delivery-locations", "/tools", "/tools/delivery-clearance"]) {
+    assert.equal(chooseVariant({ pathname, originVariant: "A" }), "B", pathname);
   }
 });
 

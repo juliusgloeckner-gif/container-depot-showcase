@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://unitedcontainerdepot.com";
 export const INDEXNOW_KEY = "7f64c2d894f9469eaf4d12761a4bcb90";
-export const REDESIGN_LASTMOD = "2026-07-18";
+export const REDESIGN_LASTMOD = "2026-07-19";
 
 const constructionGuides = [
   "construction-site-theft-prevention",
@@ -80,6 +80,11 @@ const specialtyContainers = [
   "/office-containers", "/hazardous-material-storage",
 ];
 
+const decisionTools = [
+  "/tools", "/tools/delivered-cost", "/tools/container-size", "/tools/buy-vs-rent",
+  "/tools/delivery-clearance", "/tools/condition-grades", "/delivery-locations",
+];
+
 const stateSlugs = [
   "alabama", "arizona", "arkansas", "california", "colorado", "connecticut", "delaware", "florida", "georgia", "idaho",
   "illinois", "indiana", "iowa", "kansas", "kentucky", "louisiana", "maine", "maryland", "massachusetts", "michigan",
@@ -103,10 +108,11 @@ const withLastmod = (paths) => paths.map((path) => ({ path, lastmod: REDESIGN_LA
 
 export const sitemapSections = {
   core: [
-    { path: "/" }, { path: "/agriculture" }, { path: "/commercial" }, { path: "/privacy" }, { path: "/terms" },
+    { path: "/" }, { path: "/privacy", lastmod: REDESIGN_LASTMOD }, { path: "/terms", lastmod: REDESIGN_LASTMOD },
   ],
   "use-cases": withLastmod(useCases),
   "specialty-containers": withLastmod(specialtyContainers),
+  "decision-tools": withLastmod(decisionTools),
   "construction-knowledge": withLastmod([
     "/construction/resources", "/construction/questions", "/construction/calculators/container-size",
     "/construction/calculators/ownership", "/construction/resources/construction-container-statistics",
@@ -116,10 +122,7 @@ export const sitemapSections = {
     `/${vertical}/resources`, `/${vertical}/questions`, `/${vertical}/planner`, `/${vertical}/resources/planning-brief`,
     ...guides.map((slug) => `/${vertical}/guides/${slug}`),
   ])),
-  "location-pages": [
-    "/shipping-containers-dallas", "/shipping-containers-houston", "/shipping-containers-atlanta",
-    ...stateSlugs.map((slug) => `/shipping-containers-${slug}`),
-  ].map((path) => ({ path })),
+  "location-pages": withLastmod(["/delivery-locations"]),
   downloads: withLastmod(downloads.map((name) => `/downloads/${name}`)),
 };
 

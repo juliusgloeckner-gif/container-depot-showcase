@@ -13,6 +13,7 @@ test("publishes every required sitemap section", () => {
     "core",
     "use-cases",
     "specialty-containers",
+    "decision-tools",
     "construction-knowledge",
     "vertical-knowledge",
     "location-pages",
@@ -20,6 +21,7 @@ test("publishes every required sitemap section", () => {
   ]);
   assert.equal(sitemapSections["use-cases"].length, 10);
   assert.equal(sitemapSections["specialty-containers"].length, 6);
+  assert.equal(sitemapSections["decision-tools"].length, 7);
   assert.equal(sitemapSections["construction-knowledge"].length, 37);
   assert.equal(sitemapSections["vertical-knowledge"].length, 108);
 });
