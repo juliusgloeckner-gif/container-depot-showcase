@@ -151,6 +151,7 @@ export async function proxy(request) {
         business: { status: businessWinner ? "stopped" : "running", winner: businessWinner, commercial: 100 - businessPercent, business: businessPercent },
       },
       redesignOnly: {
+        generalLandingPage: "/",
         useCases: [
           "/moving",
           "/renovation",
@@ -170,7 +171,7 @@ export async function proxy(request) {
         ],
       },
       constructionKnowledge: "redesign-only and indexable",
-      legacyTraffic: "current-site",
+      legacyTraffic: "location pages only",
     });
   }
 

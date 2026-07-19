@@ -23,7 +23,7 @@ test("splits construction, farm and business traffic 50/50 by default", () => {
     chooseVariant({ pathname: "/construction", randomValue: 0.5 }),
     "A",
   );
-  assert.equal(chooseVariant({ pathname: "/", randomValue: 0.01 }), "A");
+  assert.equal(chooseVariant({ pathname: "/", randomValue: 0.01 }), "B");
   for (const pathname of ["/farm", "/agriculture", "/business", "/commercial"]) {
     assert.equal(chooseVariant({ pathname, randomValue: 0.49 }), "B", pathname);
     assert.equal(chooseVariant({ pathname, randomValue: 0.5 }), "A", pathname);
@@ -155,17 +155,11 @@ test("serves redesign assets to crawlers without relying on cookies", () => {
   }
 });
 
-test("the homepage remains on the current site", () => {
-  for (const pathname of ["/"]) {
-    assert.equal(
-      chooseVariant({
-        pathname,
-        constructionCookieVariant: "B",
-        originVariant: "B",
-      }),
-      "A",
-    );
-  }
+test("the homepage always uses the redesigned general landing page", () => {
+  assert.equal(chooseVariant({ pathname: "/" }), "B");
+  assert.equal(chooseVariant({ pathname: "/", originVariant: "A" }), "B");
+  assert.equal(chooseVariant({ pathname: "/", originVariant: "B" }), "B");
+  assert.equal(chooseVariant({ pathname: "/", forcedVariant: "A" }), "B");
 });
 
 test("privacy, terms, delivery coverage and decision tools use the redesign", () => {

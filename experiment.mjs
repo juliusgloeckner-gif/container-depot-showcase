@@ -9,10 +9,6 @@ export const OLD_ORIGIN = "https://garaged-landing.vercel.app";
 export const NEW_ORIGIN = "https://ucd-redesign-b.vercel.app";
 export const DEFAULT_CONSTRUCTION_B_PERCENT = 50;
 
-const LEGACY_PATHS = new Set([
-  "/",
-]);
-
 const REDESIGN_ONLY_PREFIXES = [
   "/privacy",
   "/terms",
@@ -165,10 +161,6 @@ export function isRedesignOnlyPath(pathname) {
   );
 }
 
-export function isLegacyPath(pathname) {
-  return LEGACY_PATHS.has(cleanPathname(pathname));
-}
-
 export function isOldOnlyPath(pathname) {
   const clean = cleanPathname(pathname);
   if (clean.startsWith("/.well-known/")) return true;
@@ -199,6 +191,7 @@ export function chooseVariant({
   }) {
     if (isOldOnlyPath(pathname)) return "A";
     if (isConstructionKnowledgePath(pathname)) return "B";
+    if (cleanPathname(pathname) === "/") return "B";
 
     const forced = normalizeVariant(forcedVariant);
     if (forced) return forced;
@@ -234,8 +227,6 @@ export function chooseVariant({
       ? "B"
       : "A";
   }
-
-  if (isLegacyPath(pathname)) return "A";
 
   return normalizeVariant(originVariant) || "A";
 }
