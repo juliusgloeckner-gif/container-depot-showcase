@@ -67,15 +67,15 @@
   function experimentContext() {
     var path = window.location.pathname.replace(/\/+$/, "") || "/";
     if (path === "/construction") {
-      return { id: "ucd-construction-redesign-2026", cookie: CONSTRUCTION_VARIANT_COOKIE, fallback: "B" };
+      return { id: "ucd-construction-redesign-2026", cookie: CONSTRUCTION_VARIANT_COOKIE, fallback: "B", vertical: "Construction", active: true };
     }
     if (path === "/farm" || path === "/agriculture") {
-      return { id: "ucd-farm-redesign-2026", cookie: FARM_VARIANT_COOKIE, fallback: "B" };
+      return { id: "ucd-farm-redesign-2026", cookie: FARM_VARIANT_COOKIE, fallback: "B", vertical: "Farm", active: true };
     }
     if (path === "/business" || path === "/commercial") {
-      return { id: "ucd-business-redesign-2026", cookie: BUSINESS_VARIANT_COOKIE, fallback: "B" };
+      return { id: "ucd-business-redesign-2026", cookie: BUSINESS_VARIANT_COOKIE, fallback: "B", vertical: "Business Overflow", active: true };
     }
-    return { id: "ucd-redesign-2026", cookie: "", fallback: "redesign" };
+    return { id: "ucd-general-redesign-2026", cookie: "", fallback: "redesign", vertical: "General", active: false };
   }
 
   function experimentVariant() {
@@ -151,11 +151,13 @@
       transaction_id: details.leadId
     });
     var variant = details.variant || experimentVariant();
+    var context = experimentContext();
     var eventParameters = {
       lead_id: details.leadId,
       vertical: details.vertical,
       container_size: details.size,
-      experiment: experimentContext().id,
+      experiment: context.id,
+      experiment_id: context.id,
       experiment_variant: variant,
       variant: variant,
       value: 1,
@@ -167,11 +169,13 @@
 
   function formContext(form) {
     var vertical = form.querySelector('[name="vertical"]');
+    var context = experimentContext();
     return {
       form_id: form.id || "quote-form",
       form_name: "UCD Quote Form",
       vertical: vertical ? String(vertical.value || "General container") : "Construction site storage",
-      experiment: experimentContext().id,
+      experiment: context.id,
+      experiment_id: context.id,
       experiment_variant: experimentVariant(),
       page_path: window.location.pathname
     };
@@ -181,6 +185,20 @@
     if (!form || form.dataset.ucdFormStarted === "true") return;
     form.dataset.ucdFormStarted = "true";
     window.gtag("event", "form_start", formContext(form));
+  }
+
+  function trackExperimentExposure() {
+    var context = experimentContext();
+    if (!context.active) return;
+    var variant = experimentVariant();
+    window.gtag("event", "experiment_exposure", {
+      experiment: context.id,
+      experiment_id: context.id,
+      experiment_variant: variant,
+      variant: variant,
+      vertical: context.vertical,
+      page_path: window.location.pathname
+    });
   }
 
   function quoteFormFromTarget(target) {
@@ -230,4 +248,5 @@
   };
 
   captureAttribution();
+  trackExperimentExposure();
 })();
