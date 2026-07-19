@@ -58,7 +58,7 @@ export type Vertical = {
 };
 
 const construction: Vertical = {
-  key: "construction", nav: "Construction", eyebrow: "Job site storage that works", title: "Protect your tools.", emphasis: "Keep your crew moving.",
+  key: "construction", nav: "Construction", eyebrow: "Construction containers for sale", title: "Protect your tools.", emphasis: "Keep your crew moving.",
   lead: "Secure, weatherproof containers delivered directly to your job site in 5 to 10 days. From $1,950 delivered.", hero: "/authentic/construction-hero-v2.webp", featureImage: "/storage-tools.jpg", context: "Construction site storage",
   inventoryImages: ["/container-20ft.jpg", "/inventory-v3/construction-40.jpg", "/container-40ft-hc.jpg", "/container-custom.jpg"],
   gallery: [
@@ -86,7 +86,7 @@ const construction: Vertical = {
 };
 
 const farm: Vertical = {
-  key: "farm", nav: "Farm", eyebrow: "Storage built for working land", title: "Protect your equipment.", emphasis: "Secure your feed.",
+  key: "farm", nav: "Farm", eyebrow: "Farm & ranch containers for sale", title: "Protect your equipment.", emphasis: "Secure your feed.",
   lead: "Rodent-resistant, weatherproof storage delivered to your farm or ranch in 5 to 10 days. From $1,950 delivered.", hero: "/farm-storage-real.png", featureImage: "/farm-feature-storage-v2.png", context: "Farm and ranch storage",
   inventoryImages: ["/inventory-v4/farm-20-v2.png", "/inventory-v3/farm-40.jpg", "/inventory-v2/farm-3.jpg", "/inventory-v3/farm-custom.jpg"],
   gallery: [
@@ -114,7 +114,7 @@ const farm: Vertical = {
 };
 
 const business: Vertical = {
-  key: "business", nav: "Business Overflow", eyebrow: "Overflow storage on your own lot", title: "Own your storage.", emphasis: "Stop renting units.",
+  key: "business", nav: "Business Overflow", eyebrow: "Business storage containers for sale", title: "Own your storage.", emphasis: "Stop renting units.",
   lead: "Secure inventory, equipment and seasonal stock beside your premises. Delivered in 5 to 10 days. From $1,950 delivered.", hero: "/authentic/business-hero-v2.webp", featureImage: "/business-warehouse-overflow-v2.png", context: "Business overflow storage",
   inventoryImages: ["/inventory-v4/business-20-v3.png", "/inventory-v2/business-2.jpg", "/inventory-v2/business-3.jpg", "/inventory-v2/business-4.jpg"],
   gallery: [
@@ -167,7 +167,7 @@ const business: Vertical = {
 };
 
 const moving: Vertical = {
-  key: "moving", nav: "Moving & Relocation", eyebrow: "For sale. Own it for the entire move.", title: "Buy it once.", emphasis: "Pack without a deadline.",
+  key: "moving", nav: "Moving & Relocation", eyebrow: "Moving containers for sale. Own, do not rent.", title: "Buy it once.", emphasis: "Pack without a deadline.",
   lead: "This is a container purchase, not a rental or lease. Keep it beside your current home while you pack, arrange qualified transport when you are ready, then leave it beside the new property or continue storing for as long as you need.", hero: "/authentic/moving-hero-v2.webp", featureImage: "/moving-feature.png", context: "Residential moving and relocation container purchase",
   seoTitle: "Moving Containers for Sale | Buy, Pack and Keep",
   seoDescription: "Buy a shipping container for moving and relocation. Pack beside your home without a rental deadline, move it with a qualified carrier, and keep it for storage afterward.",
@@ -234,7 +234,7 @@ const moving: Vertical = {
 };
 
 const renovation: Vertical = {
-  key: "renovation", nav: "Renovation", eyebrow: "Clear the rooms without losing the space", title: "Move it out.", emphasis: "Keep the project moving.",
+  key: "renovation", nav: "Renovation", eyebrow: "Renovation storage containers for sale", title: "Move it out.", emphasis: "Keep the project moving.",
   lead: "Protect furniture, fixtures and household contents from dust, traffic and accidental damage while renovation or restoration work happens inside your home.", hero: "/renovation-hero.png", featureImage: "/renovation-feature.png", context: "Home renovation and restoration storage",
   inventoryImages: ["/inventory-v2/home-1.jpg", "/inventory-v2/home-2.jpg", "/inventory-v2/home-3.jpg", "/inventory-v3/home-custom.jpg"],
   gallery: [
@@ -262,7 +262,7 @@ const renovation: Vertical = {
 };
 
 const vehicles: Vertical = {
-  key: "vehicles", nav: "Vehicles & Recreation", eyebrow: "Secure space for the machines you keep", title: "Free your garage.", emphasis: "Protect the good stuff.",
+  key: "vehicles", nav: "Vehicles & Recreation", eyebrow: "Vehicle storage containers for sale", title: "Free your garage.", emphasis: "Protect the good stuff.",
   lead: "Create lockable storage for classic cars, motorcycles, ATVs and recreational equipment beside your home, workshop or acreage.", hero: "/authentic/vehicles-hero-v2.webp", featureImage: "/vehicles-feature.png", context: "Vehicle and recreational equipment storage",
   inventoryImages: ["/gallery-v4/vehicle-car-v2.png", "/inventory-v2/vehicles-40ft-recreation.jpg", "/inventory-v2/vehicles-3.jpg", "/inventory-v3/vehicle-custom-v2.png"],
   gallery: [
@@ -290,7 +290,7 @@ const vehicles: Vertical = {
 };
 
 const events: Vertical = {
-  key: "events", nav: "Events & Production", eyebrow: "Storage ready for the next load-in", title: "Store the show.", emphasis: "Be ready to roll.",
+  key: "events", nav: "Events & Production", eyebrow: "Event & production containers for sale", title: "Store the show.", emphasis: "Be ready to roll.",
   lead: "Keep road cases, staging, tents, barriers and production equipment organized beside the venue, studio or temporary project site.", hero: "/authentic/events-hero-v2.webp", featureImage: "/events-feature.png", context: "Event media and temporary project storage",
   inventoryImages: ["/inventory-v3/events-20.jpg", "/inventory-v3/events-40.jpg", "/inventory-v2/events-3.jpg", "/inventory-v2/events-4.jpg"],
   gallery: [
@@ -318,7 +318,7 @@ const events: Vertical = {
 };
 
 const institutions: Vertical = {
-  key: "institutions", nav: "Government, Schools & Institutions", eyebrow: "Flexible capacity for public operations", title: "Space on site.", emphasis: "Programs stay moving.",
+  key: "institutions", nav: "Government, Schools & Institutions", eyebrow: "Government & school containers for sale", title: "Space on site.", emphasis: "Programs stay moving.",
   lead: "Add secure storage for furniture, athletics, events, facilities and emergency supplies at schools, universities, municipalities and public organizations.", hero: "/institutions-hero.png", featureImage: "/institutions-feature.png", context: "Institutional and public sector storage",
   inventoryImages: ["/inventory-v3/schools-20.jpg", "/inventory-v2/institutions-2.jpg", "/inventory-v2/institutions-3.jpg", "/specialty/institutions-custom-20ft-v1.webp"],
   gallery: [
@@ -348,7 +348,7 @@ const institutions: Vertical = {
 const refrigerated: Vertical = {
   key: "refrigerated-containers",
   nav: "Refrigerated / Reefer",
-  eyebrow: "Every reefer is tested before release",
+  eyebrow: "Refrigerated containers (reefers) for sale",
   title: "Ten days of testing.",
   emphasis: "Report before delivery.",
   lead: "Every refrigerated-container purchase includes a 10-day depot electrical testing period before release. This standard testing extends delivery beyond normal dry-container timelines, and you receive a detailed electrical report to support the warranty.",
@@ -444,7 +444,7 @@ const refrigerated: Vertical = {
 const openSide: Vertical = {
   key: "open-side-containers",
   nav: "Open Side / Roll-Up",
-  eyebrow: "Two access bays on 20FT. Four on 40FT.",
+  eyebrow: "Open-side shipping containers for sale",
   title: "Open the right bay.",
   emphasis: "Reach what you need.",
   lead: "Multi-door open-side containers add two roll-up doors along the long side of a 20FT unit or four along a 40FT unit. Crews can reach the right section without unloading a long center aisle, while framed steel posts reinforce every opening.",
@@ -501,7 +501,7 @@ const openSide: Vertical = {
 const doubleDoor: Vertical = {
   key: "double-door-containers",
   nav: "Double Door / Tunnel",
-  eyebrow: "Full cargo-door access at both short ends",
+  eyebrow: "Double-door (tunnel) containers for sale",
   title: "Load from either end.",
   emphasis: "Nothing gets buried.",
   lead: "Double-door shipping containers, also called tunnel containers, have paired ISO cargo doors at both short ends. The straight through-route makes first-in-first-out inventory, long materials, two-way staging and faster retrieval easier to manage.",
@@ -558,7 +558,7 @@ const doubleDoor: Vertical = {
 const insulated: Vertical = {
   key: "insulated-containers",
   nav: "Insulated Containers",
-  eyebrow: "Lined dry storage for changing conditions",
+  eyebrow: "Insulated shipping containers for sale",
   title: "Slow the temperature swing.",
   emphasis: "Protect sensitive dry goods.",
   lead: "An insulated container reduces heat transfer through the steel shell and can help manage condensation risk. It is not a reefer and does not create or guarantee a fixed temperature.",
@@ -619,7 +619,7 @@ const insulated: Vertical = {
 const officeContainers: Vertical = {
   key: "office-containers",
   nav: "Office Containers",
-  eyebrow: "Purpose-built workspace where the work happens",
+  eyebrow: "Office containers for sale",
   title: "Put the office on site.",
   emphasis: "Keep decisions close.",
   lead: "Buy a modified container office with personnel access, windows, power, lighting and HVAC planned around the people, site and local approval requirements.",
@@ -680,7 +680,7 @@ const officeContainers: Vertical = {
 const hazardousMaterial: Vertical = {
   key: "hazardous-material-storage",
   nav: "Hazardous Material Storage",
-  eyebrow: "The material defines the container",
+  eyebrow: "Hazardous-material containers for sale",
   title: "Design to the hazard.",
   emphasis: "Verify before storage.",
   lead: "An ordinary shipping container is not automatically suitable or compliant for hazardous materials. The exact substance, quantity, containers, incompatibilities, site and governing authority determine the required engineered configuration.",
@@ -750,7 +750,7 @@ const hazardousMaterial: Vertical = {
 const disasterRelief: Vertical = {
   key: "disaster-relief-containers",
   nav: "Disaster Relief & Emergency Response",
-  eyebrow: "Pre-position supplies before the call comes",
+  eyebrow: "Disaster-relief containers for sale",
   title: "Stage it securely.",
   emphasis: "Deploy when every hour matters.",
   lead: "Buy secure container capacity for emergency supply caches, response equipment, recovery tools and field operations. Match the container and interior plan to the agency, nonprofit or facility responsible for the inventory.",
@@ -811,7 +811,7 @@ const disasterRelief: Vertical = {
 const internationalShipping: Vertical = {
   key: "international-shipping-containers",
   nav: "International Shipping",
-  eyebrow: "Buy here. Pack at your pace. Ship with your forwarder.",
+  eyebrow: "International shipping containers for sale",
   title: "Pack without the rush.",
   emphasis: "Ship when you are ready.",
   lead: "Buy your container, have its export-readiness and CSC status checked, then fill it on your schedule. United Container Depot sells the container and arranges the depot inspection. We are not a freight forwarder and do not book ocean freight, customs clearance or international transport.",

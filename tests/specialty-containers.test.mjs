@@ -45,6 +45,37 @@ test("separates ten popular uses from six specialty container types", async () =
   assert.doesNotMatch(html, /juliusgloeckner-gif\.github\.io/i);
 });
 
+test("states that containers are for sale above the fold on every landing page", async () => {
+  const pages = [
+    "/construction",
+    "/farm",
+    "/business",
+    "/moving",
+    "/renovation",
+    "/vehicles",
+    "/events",
+    "/institutions",
+    "/international-shipping-containers",
+    "/disaster-relief-containers",
+    "/refrigerated-containers",
+    "/open-side-containers",
+    "/double-door-containers",
+    "/insulated-containers",
+    "/office-containers",
+    "/hazardous-material-storage",
+  ];
+
+  for (const pathname of pages) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200, pathname);
+    const html = await response.text();
+    const heroStart = html.indexOf('class="hero-copy"');
+    const heroEnd = html.indexOf('class="hero-lead"', heroStart);
+    assert.ok(heroStart >= 0 && heroEnd > heroStart, `${pathname} hero copy`);
+    assert.match(html.slice(heroStart, heroEnd), /containers?[^<]{0,40}for sale/i, pathname);
+  }
+});
+
 test("classifies international shipping as a popular use and keeps freight scope explicit", async () => {
   const source = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const useSection = source.match(/const uses = \[([\s\S]*?)\n\];/)?.[1] ?? "";
