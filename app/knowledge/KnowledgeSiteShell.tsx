@@ -15,15 +15,16 @@ export function KnowledgeHeader({ config }: { config: KnowledgeConfig }) {
         </Link>
         <AutoClosingDetails className="mobile-menu" summary={<><span className="menu-icon" aria-hidden="true"></span><span>Menu</span></>}>
           <div className="mobile-menu-panel">
-            <div className="mobile-menu-main"><Link href={`/${config.key}`}>{config.name} containers</Link><Link href={`/${config.key}/resources`}>Resource center</Link><a href="tel:18555250902">Call (855) 525-0902</a><Link className="mobile-menu-quote" href={quoteHref}>Get a quote</Link></div>
             <span className="mobile-menu-label">Popular uses</span><div className="mobile-menu-links">{popularUses.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</div>
+            <Link className="mobile-menu-feature" href="/tools"><span>Buyer tools</span><strong>Decision tools</strong></Link>
             <span className="mobile-menu-label">{config.shortName} guides</span><div className="mobile-menu-links">{config.categories.map((category) => { const guide = config.guides.find((item) => item.category === category.key); return guide ? <Link href={`/${config.key}/guides/${guide.slug}`} key={category.key}>{category.name}</Link> : null; })}<Link href={`/${config.key}/questions`}>100 questions</Link><Link href={`/${config.key}/planner`}>Size education center</Link></div>
+            <div className="mobile-menu-main mobile-menu-actions"><a href="tel:18555250902">Call (855) 525-0902</a><Link className="mobile-menu-quote" href={quoteHref}>Get a quote</Link></div>
           </div>
         </AutoClosingDetails>
         <nav aria-label="Main navigation">
-          <Link href={`/${config.key}#inventory`}>Container options</Link>
           <AutoClosingDetails className="desktop-use-menu" name={`${config.key}-header-menu`} summary="Popular uses"><div className="desktop-use-dropdown"><span className="desktop-menu-heading">Choose a use</span>{popularUses.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}<span className="desktop-menu-heading desktop-menu-subheading">Specialty containers</span>{specialtyContainers.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</div></AutoClosingDetails>
           <AutoClosingDetails className="desktop-use-menu" name={`${config.key}-header-menu`} summary={`${config.shortName} guides`}><div className="desktop-use-dropdown knowledge-menu-dropdown"><span className="desktop-menu-heading">Plan {config.context}</span>{config.categories.map((category) => { const guide = config.guides.find((item) => item.category === category.key); return guide ? <Link href={`/${config.key}/guides/${guide.slug}`} key={category.key}>{category.name}</Link> : null; })}<Link href={`/${config.key}/resources`}>All 32 guides</Link><Link href={`/${config.key}/questions`}>100 questions</Link><Link href={`/${config.key}/planner`}>Size education center</Link></div></AutoClosingDetails>
+          <Link href="/tools">Decision tools</Link>
         </nav>
         <div className="nav-actions"><a className="phone" href="tel:18555250902">(855) 525-0902</a><Link className="button small primary" href={quoteHref}>Get a quote</Link></div>
       </div>

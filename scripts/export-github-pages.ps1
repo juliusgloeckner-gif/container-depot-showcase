@@ -28,7 +28,9 @@ $productionCss = Get-ChildItem -LiteralPath (Join-Path $project "dist\client\ass
 if (-not $productionCss) {
   throw "Could not find the bundled production stylesheet in dist/client/assets."
 }
-$productionCssHref = "$BasePath/assets/$($productionCss.Name)"
+$productionCssVersion = (Get-FileHash -LiteralPath $productionCss.FullName -Algorithm SHA256).Hash.Substring(0, 12).ToLowerInvariant()
+$productionCssAssetHref = "$BasePath/assets/$($productionCss.Name)"
+$productionCssHref = "${productionCssAssetHref}?v=$productionCssVersion"
 
 $routes = @(
   @{ Route = ""; File = "index.html" },
@@ -110,6 +112,7 @@ foreach ($entry in $routes) {
     $asset = [System.Uri]::UnescapeDataString($match.Groups[1].Value)
     return "$BasePath$asset"
   })
+  $html = $html.Replace($productionCssAssetHref, $productionCssHref)
   $html = $html.Replace('/app/globals.css', $productionCssHref)
   $html = [regex]::Replace($html, '(href|src)="/(?!container-depot-showcase/)', "`$1=`"$BasePath/")
   $html = $html.Replace('url(/', "url($BasePath/")

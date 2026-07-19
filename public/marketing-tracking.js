@@ -6,6 +6,9 @@
   var WEBSITE_CALL_CONVERSION_LABEL = "wVZtCLfD9dIcEP-13-ZD";
   var GA4_ID = "G-LZDDGY8RJR";
   var BUSINESS_PHONE = "8555250902";
+  var CONSTRUCTION_VARIANT_COOKIE = "ucd_construction_variant_public";
+  var FARM_VARIANT_COOKIE = "ucd_farm_variant_public";
+  var BUSINESS_VARIANT_COOKIE = "ucd_business_variant_public";
   var STORAGE_KEY = "ucd_marketing_attribution_v1";
   var STORAGE_TTL_MS = 90 * 24 * 60 * 60 * 1000;
   var TRACKING_KEYS = [
@@ -51,6 +54,41 @@
     return touch;
   }
 
+  function cookieValue(name) {
+    var prefix = name + "=";
+    var parts = String(document.cookie || "").split(";");
+    for (var index = 0; index < parts.length; index += 1) {
+      var part = parts[index].trim();
+      if (part.indexOf(prefix) === 0) return decodeURIComponent(part.slice(prefix.length));
+    }
+    return "";
+  }
+
+  function experimentContext() {
+    var path = window.location.pathname.replace(/\/+$/, "") || "/";
+    if (path === "/construction") {
+      return { id: "ucd-construction-redesign-2026", cookie: CONSTRUCTION_VARIANT_COOKIE, fallback: "B" };
+    }
+    if (path === "/farm" || path === "/agriculture") {
+      return { id: "ucd-farm-redesign-2026", cookie: FARM_VARIANT_COOKIE, fallback: "B" };
+    }
+    if (path === "/business" || path === "/commercial") {
+      return { id: "ucd-business-redesign-2026", cookie: BUSINESS_VARIANT_COOKIE, fallback: "B" };
+    }
+    return { id: "ucd-redesign-2026", cookie: "", fallback: "redesign" };
+  }
+
+  function experimentVariant() {
+    var context = experimentContext();
+    var cookieVariant = context.cookie ? String(cookieValue(context.cookie) || "").toUpperCase() : "";
+    if (cookieVariant === "A" || cookieVariant === "B") return cookieVariant;
+    var hiddenVariant = document.querySelector('input[name="variant"]');
+    var hiddenValue = hiddenVariant ? String(hiddenVariant.value || "").toLowerCase() : "";
+    if (hiddenValue === "a" || hiddenValue === "current_site") return "A";
+    if (hiddenValue === "b" || hiddenValue === "new_site") return "B";
+    return context.fallback;
+  }
+
   function captureAttribution() {
     var now = Date.now();
     var existing = safeParse(window.localStorage.getItem(STORAGE_KEY));
@@ -91,6 +129,9 @@
     data.set("last_landing_page", window.location.href);
     data.set("last_referrer", document.referrer || "direct");
     data.set("page_path", window.location.pathname);
+    data.set("experiment_id", experimentContext().id);
+    data.set("experiment_variant", experimentVariant());
+    data.set("variant", experimentVariant());
     return record;
   }
 
@@ -109,16 +150,50 @@
       currency: "USD",
       transaction_id: details.leadId
     });
-    window.gtag("event", "generate_lead", {
+    var variant = details.variant || experimentVariant();
+    var eventParameters = {
       lead_id: details.leadId,
       vertical: details.vertical,
       container_size: details.size,
-      experiment: "website_redesign_2026",
-      variant: "new_site",
+      experiment: experimentContext().id,
+      experiment_variant: variant,
+      variant: variant,
       value: 1,
       currency: "USD"
-    });
+    };
+    window.gtag("event", "form_submit", eventParameters);
+    window.gtag("event", "generate_lead", eventParameters);
   }
+
+  function formContext(form) {
+    var vertical = form.querySelector('[name="vertical"]');
+    return {
+      form_id: form.id || "quote-form",
+      form_name: "UCD Quote Form",
+      vertical: vertical ? String(vertical.value || "General container") : "Construction site storage",
+      experiment: experimentContext().id,
+      experiment_variant: experimentVariant(),
+      page_path: window.location.pathname
+    };
+  }
+
+  function trackFormStart(form) {
+    if (!form || form.dataset.ucdFormStarted === "true") return;
+    form.dataset.ucdFormStarted = "true";
+    window.gtag("event", "form_start", formContext(form));
+  }
+
+  function quoteFormFromTarget(target) {
+    if (!target || !target.closest) return null;
+    return target.closest("form[data-formspree-quote], #lp-form");
+  }
+
+  document.addEventListener("focusin", function (event) {
+    trackFormStart(quoteFormFromTarget(event.target));
+  }, true);
+  document.addEventListener("change", function (event) {
+    trackFormStart(quoteFormFromTarget(event.target));
+  }, true);
 
   function linkLabel(link) {
     return String(link.getAttribute("aria-label") || link.textContent || "").trim().slice(0, 100);
@@ -149,6 +224,7 @@
   window.UCDMarketing = {
     appendAttribution: appendAttribution,
     captureAttribution: captureAttribution,
+    experimentVariant: experimentVariant,
     newLeadId: function () { return randomId("ucd_lead"); },
     trackLead: trackLead
   };

@@ -21,26 +21,22 @@ export function Header() {
           </Link>
           <AutoClosingDetails className="mobile-menu" summary={<><span className="menu-icon" aria-hidden="true"></span><span>Menu</span></>}>
             <div className="mobile-menu-panel">
-              <div className="mobile-menu-main">
-                <Link href="/#inventory">Containers</Link>
-                <Link href="/#industries">Storage solutions</Link>
-                <Link href="/tools">Decision tools</Link>
-                <a href="tel:18555250902">Call (855) 525-0902</a>
-                <a className="mobile-menu-quote" href="#quote-form">Get a quote</a>
-              </div>
               <span className="mobile-menu-label">Popular uses</span>
               <div className="mobile-menu-links">
                 {popularUses.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
               </div>
+              <Link className="mobile-menu-feature" href="/tools"><span>Buyer tools</span><strong>Decision tools</strong></Link>
               <span className="mobile-menu-label">Specialty containers</span>
               <div className="mobile-menu-links">
                 {specialtyContainers.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
               </div>
+              <div className="mobile-menu-main mobile-menu-actions">
+                <a href="tel:18555250902">Call (855) 525-0902</a>
+                <a className="mobile-menu-quote" href="#quote-form">Get a quote</a>
+              </div>
             </div>
           </AutoClosingDetails>
           <nav aria-label="Main navigation">
-            <Link href="/#inventory">Containers</Link>
-            <Link href="/tools">Decision tools</Link>
             <AutoClosingDetails className="desktop-use-menu" summary="Popular uses">
               <div className="desktop-use-dropdown">
                 <span className="desktop-menu-heading">Choose a use</span>
@@ -49,6 +45,7 @@ export function Header() {
                 {specialtyContainers.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
               </div>
             </AutoClosingDetails>
+            <Link href="/tools">Decision tools</Link>
           </nav>
           <div className="nav-actions">
             <a className="phone" href="tel:18555250902">(855) 525-0902</a>

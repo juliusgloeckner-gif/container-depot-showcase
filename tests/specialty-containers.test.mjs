@@ -235,8 +235,48 @@ test("persists paid-search attribution and deduplicates successful lead conversi
   assert.match(tracking, /var WEBSITE_CALL_CONVERSION_LABEL = "wVZtCLfD9dIcEP-13-ZD"/);
   assert.match(tracking, /phone_conversion_number: "\(855\) 525-0902"/);
   assert.match(tracking, /send_to: ADS_ID \+ "\/" \+ FORM_CONVERSION_LABEL/);
+  assert.match(tracking, /window\.gtag\("event", "form_start"/);
+  assert.match(tracking, /window\.gtag\("event", "form_submit"/);
+  assert.match(tracking, /experiment_variant/);
+  assert.match(tracking, /ucd_construction_variant_public/);
   assert.match(quote, /data\.set\("lead_id", leadId\)/);
   assert.match(staticQuote, /data\.set\("order_id", leadId\)/);
+});
+
+test("repairs the legacy construction form with confirmed unified submissions", async () => {
+  const legacyFix = await readFile(new URL("../public/legacy-form-fix.js", import.meta.url), "utf8");
+  assert.match(legacyFix, /https:\/\/formspree\.io\/f\/mvzepnvd/);
+  assert.match(legacyFix, /if \(!response\.ok\) throw new Error/);
+  assert.ok(legacyFix.indexOf("if (!response.ok)") < legacyFix.indexOf("trackLead({"));
+  assert.match(legacyFix, /variant: "A"/);
+  assert.doesNotMatch(legacyFix, /fbq\(/);
+});
+
+test("attributes farm and business experiment leads independently", async () => {
+  const tracking = await readFile(new URL("../public/marketing-tracking.js", import.meta.url), "utf8");
+  const legacyFix = await readFile(new URL("../public/legacy-form-fix.js", import.meta.url), "utf8");
+  for (const token of [
+    "ucd_farm_variant_public",
+    "ucd_business_variant_public",
+    "ucd-farm-redesign-2026",
+    "ucd-business-redesign-2026",
+  ]) assert.match(tracking, new RegExp(token));
+  assert.match(legacyFix, /ucd_farm_variant_a/);
+  assert.match(legacyFix, /ucd_business_variant_a/);
+  assert.match(legacyFix, /Farm and ranch storage/);
+  assert.match(legacyFix, /Business overflow storage/);
+});
+
+test("keeps mobile heroes image-first and makes decision-tool choices readable", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const navigation = await readFile(new URL("../app/SiteShell.tsx", import.meta.url), "utf8");
+  const decisionTools = await readFile(new URL("../app/tools/DecisionTools.tsx", import.meta.url), "utf8");
+  assert.match(css, /\.vertical-hero>\.optimized-picture[\s\S]{0,240}position:relative/);
+  assert.match(css, /\.vertical-hero \.hero-overlay \{ display:none; \}/);
+  assert.match(css, /\.condition-priority-actions \{ grid-template-columns:1fr;/);
+  assert.match(decisionTools, /className="condition-priority-actions"/);
+  assert.match(navigation, /<nav aria-label="Main navigation">[\s\S]*summary="Popular uses"[\s\S]*href="\/tools">Decision tools/);
+  assert.doesNotMatch(navigation, /<Link href="\/#inventory">Containers<\/Link>/);
 });
 
 test("loads one sitewide Google tag on every rendered landing page", async () => {

@@ -6,8 +6,9 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzepnvd";
 
 type UcdMarketingApi = {
   appendAttribution: (data: FormData) => unknown;
+  experimentVariant: () => string;
   newLeadId: () => string;
-  trackLead: (details: { leadId: string; email: string; phone: string; vertical: string; size: string }) => void;
+  trackLead: (details: { leadId: string; email: string; phone: string; vertical: string; size: string; variant?: string }) => void;
 };
 
 declare global {
@@ -82,15 +83,17 @@ export function QuoteForm({
       });
 
       if (!response.ok) throw new Error("Formspree rejected the submission");
+      const experimentVariant = window.UCDMarketing?.experimentVariant() ?? "B";
       window.UCDMarketing?.trackLead({
         leadId,
         email: String(data.get("email") || ""),
         phone: String(data.get("phone") || ""),
         vertical: context,
         size: String(data.get("size") || ""),
+        variant: experimentVariant,
       });
       setStatus("success");
-      window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { context, variant: "new_site", leadId } }));
+      window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { context, variant: experimentVariant, leadId } }));
     } catch {
       setStatus("error");
     }

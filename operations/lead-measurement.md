@@ -2,6 +2,8 @@
 
 Every successful redesign form now sends a unique `lead_id` and `order_id`, the original and latest landing pages, first-touch and last-touch UTM values, GCLID, GBRAID, WBRAID, DCLID, Google Ads source fields, the vertical, size, ZIP, email, phone and submission time to Formspree.
 
+The public A/B router repairs legacy Construction, Farm and Business forms before they reach a visitor. Variant A and Variant B both submit to `https://formspree.io/f/mvzepnvd`, wait for an accepted Formspree response, and only then show success or fire `form_submit`, `generate_lead`, and the Google Ads conversion. Each lead attaches its matching `experiment_id` and `experiment_variant=A|B`. The browser also records `form_start` once per form and `phone_click` for every telephone CTA.
+
 ## Required CRM stages
 
 - `UCD Qualified Lead`: a salesperson confirmed the buyer, use case, delivery ZIP and realistic purchasing intent.

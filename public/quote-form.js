@@ -50,17 +50,19 @@
 
       if (!response.ok) throw new Error("Formspree rejected the submission");
       if (window.UCDMarketing) {
+        var experimentVariant = window.UCDMarketing.experimentVariant();
         window.UCDMarketing.trackLead({
           leadId: leadId,
           email: String(data.get("email") || ""),
           phone: String(data.get("phone") || ""),
           vertical: String(data.get("vertical") || "General container"),
-          size: String(data.get("size") || "")
+          size: String(data.get("size") || ""),
+          variant: experimentVariant
         });
       }
       form.classList.add("quote-success");
       form.innerHTML = successMarkup();
-      window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { variant: "new_site", leadId: leadId } }));
+      window.dispatchEvent(new CustomEvent("ucd:quote-submitted", { detail: { variant: window.UCDMarketing ? window.UCDMarketing.experimentVariant() : "B", leadId: leadId } }));
     } catch {
       button.disabled = false;
       button.textContent = "Get my delivered price";
