@@ -15,6 +15,27 @@
     "utm_source", "utm_medium", "utm_campaign", "utm_id", "utm_content", "utm_term",
     "gclid", "gbraid", "wbraid", "dclid", "gclsrc", "gad_source", "gad_campaignid"
   ];
+  var LANDING_PAGE_NAMES = {
+    "/": "General Landing Page",
+    "/construction": "Construction Landing Page",
+    "/farm": "Farm Landing Page",
+    "/agriculture": "Farm Landing Page",
+    "/business": "Business Overflow Landing Page",
+    "/commercial": "Business Overflow Landing Page",
+    "/moving": "Moving and Relocation Landing Page",
+    "/renovation": "Home Renovation Landing Page",
+    "/vehicles": "Vehicle Storage Landing Page",
+    "/events": "Event Storage Landing Page",
+    "/institutions": "Schools and Institutions Landing Page",
+    "/international-shipping-containers": "International Shipping Containers Landing Page",
+    "/disaster-relief-containers": "Disaster Relief Containers Landing Page",
+    "/refrigerated-containers": "Refrigerated / Reefer Containers Landing Page",
+    "/open-side-containers": "Open Side Containers Landing Page",
+    "/double-door-containers": "Double Door Containers Landing Page",
+    "/insulated-containers": "Insulated Containers Landing Page",
+    "/office-containers": "Office Containers Landing Page",
+    "/hazardous-material-storage": "Hazardous Material Storage Landing Page"
+  };
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
@@ -89,6 +110,26 @@
     return context.fallback;
   }
 
+  function landingPageName() {
+    var path = window.location.pathname.replace(/\/+$/, "") || "/";
+    if (LANDING_PAGE_NAMES[path]) return LANDING_PAGE_NAMES[path];
+    var rootPath = "/" + path.split("/").filter(Boolean)[0];
+    if (LANDING_PAGE_NAMES[rootPath]) return LANDING_PAGE_NAMES[rootPath];
+    return "United Container Depot Website";
+  }
+
+  function websiteVersionLabel() {
+    var context = experimentContext();
+    if (!context.active) return "Redesigned website";
+    return experimentVariant() === "A"
+      ? "Version A (Original design)"
+      : "Version B (Redesigned design)";
+  }
+
+  function formspreeSourceLabel() {
+    return landingPageName() + " | " + websiteVersionLabel();
+  }
+
   function captureAttribution() {
     var now = Date.now();
     var existing = safeParse(window.localStorage.getItem(STORAGE_KEY));
@@ -129,9 +170,13 @@
     data.set("last_landing_page", window.location.href);
     data.set("last_referrer", document.referrer || "direct");
     data.set("page_path", window.location.pathname);
+    data.set("source", formspreeSourceLabel());
+    data.set("landing_page_name", landingPageName());
+    data.set("website_version", websiteVersionLabel());
     data.set("experiment_id", experimentContext().id);
     data.set("experiment_variant", experimentVariant());
     data.set("variant", experimentVariant());
+    data.set("_subject", "New UCD lead | " + formspreeSourceLabel() + " | ZIP " + String(data.get("zip") || "Not provided"));
     return record;
   }
 
@@ -243,8 +288,11 @@
     appendAttribution: appendAttribution,
     captureAttribution: captureAttribution,
     experimentVariant: experimentVariant,
+    formspreeSourceLabel: formspreeSourceLabel,
+    landingPageName: landingPageName,
     newLeadId: function () { return randomId("ucd_lead"); },
-    trackLead: trackLead
+    trackLead: trackLead,
+    websiteVersionLabel: websiteVersionLabel
   };
 
   captureAttribution();

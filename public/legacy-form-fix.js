@@ -8,7 +8,7 @@
     if (path === "/farm" || path === "/agriculture") {
       return {
         subject: "Farm",
-        source: "ucd_farm_variant_a",
+        source: "Farm Landing Page | Version A (Original design)",
         experiment: "ucd-farm-redesign-2026",
         vertical: "Farm and ranch storage"
       };
@@ -16,14 +16,14 @@
     if (path === "/business" || path === "/commercial") {
       return {
         subject: "Business",
-        source: "ucd_business_variant_a",
+        source: "Business Overflow Landing Page | Version A (Original design)",
         experiment: "ucd-business-redesign-2026",
         vertical: "Business overflow storage"
       };
     }
     return {
       subject: "Construction",
-      source: "ucd_construction_variant_a",
+      source: "Construction Landing Page | Version A (Original design)",
       experiment: "ucd-construction-redesign-2026",
       vertical: "Construction site storage"
     };

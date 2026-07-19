@@ -293,8 +293,8 @@ test("attributes farm and business experiment leads independently", async () => 
     "ucd-farm-redesign-2026",
     "ucd-business-redesign-2026",
   ]) assert.match(tracking, new RegExp(token));
-  assert.match(legacyFix, /ucd_farm_variant_a/);
-  assert.match(legacyFix, /ucd_business_variant_a/);
+  assert.match(legacyFix, /Farm Landing Page \| Version A \(Original design\)/);
+  assert.match(legacyFix, /Business Overflow Landing Page \| Version A \(Original design\)/);
   assert.match(legacyFix, /Farm and ranch storage/);
   assert.match(legacyFix, /Business overflow storage/);
 });
