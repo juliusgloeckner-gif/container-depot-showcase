@@ -1,4 +1,9 @@
 export const CONSTRUCTION_VARIANT_COOKIE = "ucd_construction_variant";
+export const PUBLIC_CONSTRUCTION_VARIANT_COOKIE = "ucd_construction_variant_public";
+export const FARM_VARIANT_COOKIE = "ucd_farm_variant";
+export const PUBLIC_FARM_VARIANT_COOKIE = "ucd_farm_variant_public";
+export const BUSINESS_VARIANT_COOKIE = "ucd_business_variant";
+export const PUBLIC_BUSINESS_VARIANT_COOKIE = "ucd_business_variant_public";
 export const ORIGIN_VARIANT_COOKIE = "ucd_origin_variant";
 export const OLD_ORIGIN = "https://garaged-landing.vercel.app";
 export const NEW_ORIGIN = "https://ucd-redesign-b.vercel.app";
@@ -6,8 +11,6 @@ export const DEFAULT_CONSTRUCTION_B_PERCENT = 50;
 
 const LEGACY_PATHS = new Set([
   "/",
-  "/agriculture",
-  "/commercial",
 ]);
 
 const REDESIGN_ONLY_PREFIXES = [
@@ -15,9 +18,7 @@ const REDESIGN_ONLY_PREFIXES = [
   "/terms",
   "/tools",
   "/delivery-locations",
-  "/farm",
   "/moving",
-  "/business",
   "/renovation",
   "/vehicles",
   "/events",
@@ -62,6 +63,7 @@ const REDESIGN_ASSET_PATHS = new Set([
   "/hero-construction.jpg",
   "/lock-theft.jpg",
   "/marketing-tracking.js",
+  "/legacy-form-fix.js",
   "/quote-form.js",
   "/static-navigation.js",
   "/storage-tools.jpg",
@@ -125,6 +127,23 @@ export function isConstructionPath(pathname) {
   return clean === "/construction" || clean.startsWith("/construction/");
 }
 
+export function isFarmExperimentPath(pathname) {
+  const clean = cleanPathname(pathname);
+  return clean === "/farm" || clean === "/agriculture";
+}
+
+export function isBusinessExperimentPath(pathname) {
+  const clean = cleanPathname(pathname);
+  return clean === "/business" || clean === "/commercial";
+}
+
+export function experimentKey(pathname) {
+  if (isConstructionPath(pathname) && !isConstructionKnowledgePath(pathname)) return "construction";
+  if (isFarmExperimentPath(pathname)) return "farm";
+  if (isBusinessExperimentPath(pathname)) return "business";
+  return null;
+}
+
 export function isConstructionKnowledgePath(pathname) {
   const clean = cleanPathname(pathname);
   return CONSTRUCTION_KNOWLEDGE_PREFIXES.some(
@@ -165,10 +184,17 @@ export function isSeoControlPath(pathname) {
 export function chooseVariant({
   forcedVariant,
   constructionCookieVariant,
+  farmCookieVariant,
+  businessCookieVariant,
+  winnerVariant,
+  farmWinnerVariant,
+  businessWinnerVariant,
   originVariant,
   pathname,
   userAgent,
   constructionBPercent = DEFAULT_CONSTRUCTION_B_PERCENT,
+  farmBPercent = DEFAULT_CONSTRUCTION_B_PERCENT,
+  businessBPercent = DEFAULT_CONSTRUCTION_B_PERCENT,
   randomValue = Math.random(),
   }) {
     if (isOldOnlyPath(pathname)) return "A";
@@ -180,9 +206,31 @@ export function chooseVariant({
     if (isRedesignOnlyPath(pathname)) return "B";
 
   if (isConstructionPath(pathname)) {
+    const winner = normalizeVariant(winnerVariant);
+    if (winner) return winner;
     const existing = normalizeVariant(constructionCookieVariant);
     if (existing) return existing;
     return randomValue * 100 < parseConstructionBPercent(constructionBPercent)
+      ? "B"
+      : "A";
+  }
+
+  if (isFarmExperimentPath(pathname)) {
+    const winner = normalizeVariant(farmWinnerVariant);
+    if (winner) return winner;
+    const existing = normalizeVariant(farmCookieVariant);
+    if (existing) return existing;
+    return randomValue * 100 < parseConstructionBPercent(farmBPercent)
+      ? "B"
+      : "A";
+  }
+
+  if (isBusinessExperimentPath(pathname)) {
+    const winner = normalizeVariant(businessWinnerVariant);
+    if (winner) return winner;
+    const existing = normalizeVariant(businessCookieVariant);
+    if (existing) return existing;
+    return randomValue * 100 < parseConstructionBPercent(businessBPercent)
       ? "B"
       : "A";
   }
@@ -194,6 +242,8 @@ export function chooseVariant({
 
 export function destinationPath(variant, pathname) {
   const clean = cleanPathname(pathname);
+  if (isFarmExperimentPath(clean)) return variant === "B" ? "/farm/" : "/agriculture";
+  if (isBusinessExperimentPath(clean)) return variant === "B" ? "/business/" : "/commercial";
   if (variant === "B" && clean === "/") return "/";
   if (clean === "/") return clean;
 

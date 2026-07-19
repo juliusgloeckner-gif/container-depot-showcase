@@ -4,13 +4,16 @@ import assert from "node:assert/strict";
 import {
   chooseVariant,
   destinationPath,
+  experimentKey,
+  isBusinessExperimentPath,
   isConstructionKnowledgePath,
+  isFarmExperimentPath,
   isOldOnlyPath,
   isSeoControlPath,
   parseConstructionBPercent,
 } from "../experiment.mjs";
 
-test("splits only construction traffic 50/50 by default", () => {
+test("splits construction, farm and business traffic 50/50 by default", () => {
   assert.equal(parseConstructionBPercent(undefined), 50);
   assert.equal(
     chooseVariant({ pathname: "/construction", randomValue: 0.49 }),
@@ -21,6 +24,10 @@ test("splits only construction traffic 50/50 by default", () => {
     "A",
   );
   assert.equal(chooseVariant({ pathname: "/", randomValue: 0.01 }), "A");
+  for (const pathname of ["/farm", "/agriculture", "/business", "/commercial"]) {
+    assert.equal(chooseVariant({ pathname, randomValue: 0.49 }), "B", pathname);
+    assert.equal(chooseVariant({ pathname, randomValue: 0.5 }), "A", pathname);
+  }
 });
 
 test("keeps a construction visitor on their construction assignment", () => {
@@ -38,6 +45,17 @@ test("keeps a construction visitor on their construction assignment", () => {
     }),
     "A",
   );
+});
+
+test("keeps farm and business visitors on their own assignments", () => {
+  assert.equal(chooseVariant({ pathname: "/farm", farmCookieVariant: "A" }), "A");
+  assert.equal(chooseVariant({ pathname: "/farm", farmCookieVariant: "B" }), "B");
+  assert.equal(chooseVariant({ pathname: "/business", businessCookieVariant: "A" }), "A");
+  assert.equal(chooseVariant({ pathname: "/business", businessCookieVariant: "B" }), "B");
+  assert.equal(isFarmExperimentPath("/agriculture"), true);
+  assert.equal(isBusinessExperimentPath("/commercial"), true);
+  assert.equal(experimentKey("/farm"), "farm");
+  assert.equal(experimentKey("/business"), "business");
 });
 
 test("stops the experiment cleanly when a winner is configured", () => {
@@ -82,10 +100,8 @@ test("routes every construction knowledge page to the redesign", () => {
   assert.equal(isConstructionKnowledgePath("/construction"), false);
 });
 
-test("all non-construction use cases and specialty pages use the redesign", () => {
+test("all non-experiment use cases and specialty pages use the redesign", () => {
   for (const pathname of [
-    "/farm",
-    "/business",
     "/moving",
     "/renovation",
     "/vehicles",
@@ -139,8 +155,8 @@ test("serves redesign assets to crawlers without relying on cookies", () => {
   }
 });
 
-test("legacy campaign and homepage routes always use the current site", () => {
-  for (const pathname of ["/", "/agriculture", "/commercial"]) {
+test("the homepage remains on the current site", () => {
+  for (const pathname of ["/"]) {
     assert.equal(
       chooseVariant({
         pathname,
@@ -161,7 +177,7 @@ test("privacy, terms, delivery coverage and decision tools use the redesign", ()
 test("visiting a redesign-only page does not change construction assignment", () => {
   assert.equal(
     chooseVariant({
-      pathname: "/farm",
+      pathname: "/moving",
       constructionCookieVariant: "A",
       originVariant: "A",
     }),
@@ -234,6 +250,10 @@ test("normalizes page slashes for each origin without changing assets", () => {
   assert.equal(destinationPath("A", "/construction/"), "/construction");
   assert.equal(destinationPath("B", "/assets/site.css"), "/assets/site.css");
   assert.equal(destinationPath("A", "/favicon.ico"), "/favicon.ico");
+  assert.equal(destinationPath("A", "/farm"), "/agriculture");
+  assert.equal(destinationPath("B", "/agriculture"), "/farm/");
+  assert.equal(destinationPath("A", "/business"), "/commercial");
+  assert.equal(destinationPath("B", "/commercial"), "/business/");
 });
 
 test("routes unclassified assets with the current page origin", () => {
@@ -248,15 +268,21 @@ test("routes unclassified assets with the current page origin", () => {
   assert.equal(chooseVariant({ pathname: "/unknown.css" }), "A");
 });
 
-test("rewrites redesign pages and repairs the legacy construction form", () => {
+test("rewrites redesign pages and repairs each legacy experiment form", () => {
   const proxySource = fs.readFileSync(new URL("../proxy.js", import.meta.url), "utf8");
   assert.match(
     proxySource,
-    /variant === "A" && isConstructionPath\(requestUrl\.pathname\)[\s\S]{0,220}: NextResponse\.rewrite\(destination\);/,
+    /variant === "A" && experimentKey\(requestUrl\.pathname\)[\s\S]{0,220}: NextResponse\.rewrite\(destination\);/,
   );
-  assert.match(proxySource, /async function serveRepairedLegacyConstruction/);
+  assert.match(proxySource, /async function serveRepairedLegacyLanding/);
   assert.match(proxySource, /legacy-form-fix\.js/);
   assert.match(proxySource, /legacy-form-repair/);
+  assert.match(proxySource, /handleConfirmedUcdQuote/);
+  assert.match(proxySource, /deprecatedHandleLP/);
+  assert.match(proxySource, /mvzepnvd/);
   assert.doesNotMatch(proxySource, /fetchRedesignPage/);
   assert.match(proxySource, /x-ucd-router-mode", "rewrite"/);
+  assert.match(proxySource, /cleanPath === "\/agriculture" \|\| cleanPath === "\/commercial"/);
+  assert.match(proxySource, /UCD_FARM_B_PERCENT/);
+  assert.match(proxySource, /UCD_BUSINESS_B_PERCENT/);
 });
