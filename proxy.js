@@ -21,6 +21,20 @@ import {
 } from "./experiment.mjs";
 
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30;
+const OLD_PHONE_REPLACEMENTS = [
+  ["(855) 525-0902", "(800) 818-9941"],
+  ["+1-855-525-0902", "+1-800-818-9941"],
+  ["855-525-0902", "800-818-9941"],
+  ["18555250902", "18008189941"],
+  ["8555250902", "8008189941"],
+];
+
+function replaceLegacyPhone(value) {
+  return OLD_PHONE_REPLACEMENTS.reduce(
+    (updated, [oldPhone, newPhone]) => updated.replaceAll(oldPhone, newPhone),
+    value,
+  );
+}
 
 function setVariantCookie(response, name, variant, { httpOnly = true } = {}) {
   response.cookies.set(name, variant, {
@@ -41,15 +55,31 @@ async function serveRepairedLegacyLanding(destination, request) {
     cache: "no-store",
   });
   const contentType = upstream.headers.get("content-type") || "";
-  if (!contentType.includes("text/html")) {
+  const isTextResponse = contentType.includes("text/") ||
+    contentType.includes("javascript") ||
+    contentType.includes("json") ||
+    contentType.includes("xml");
+  if (!isTextResponse) {
     return new NextResponse(upstream.body, {
       status: upstream.status,
       headers: { "content-type": contentType || "application/octet-stream" },
     });
   }
 
-  const originalHtml = await upstream.text();
-  const repairedHtml = originalHtml
+  const originalText = await upstream.text();
+  const phoneUpdatedText = replaceLegacyPhone(originalText);
+  if (!contentType.includes("text/html")) {
+    return new NextResponse(phoneUpdatedText, {
+      status: upstream.status,
+      headers: {
+        "content-type": contentType,
+        "cache-control": "private, no-store, max-age=0",
+        "x-ucd-router-mode": "legacy-phone-update",
+      },
+    });
+  }
+
+  const repairedHtml = phoneUpdatedText
     .replaceAll("https://formspree.io/f/xlgvkwoe", "https://formspree.io/f/mvzepnvd")
     .replace('onsubmit="handleLP(event)"', 'onsubmit="return window.handleConfirmedUcdQuote ? window.handleConfirmedUcdQuote(event) : false"')
     .replace("function handleLP(e){", "function deprecatedHandleLP(e){");
@@ -221,7 +251,7 @@ export async function proxy(request) {
     if (key !== "__ucd_variant") destination.searchParams.append(key, value);
   }
 
-  const response = variant === "A" && experimentKey(requestUrl.pathname)
+  const response = variant === "A"
     ? await serveRepairedLegacyLanding(destination, request)
     : NextResponse.rewrite(destination);
   if (!response.headers.has("x-ucd-router-mode")) {

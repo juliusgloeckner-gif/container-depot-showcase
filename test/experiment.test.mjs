@@ -262,13 +262,16 @@ test("routes unclassified assets with the current page origin", () => {
   assert.equal(chooseVariant({ pathname: "/unknown.css" }), "A");
 });
 
-test("rewrites redesign pages and repairs each legacy experiment form", () => {
+test("rewrites redesign pages and updates every legacy response", () => {
   const proxySource = fs.readFileSync(new URL("../proxy.js", import.meta.url), "utf8");
   assert.match(
     proxySource,
-    /variant === "A" && experimentKey\(requestUrl\.pathname\)[\s\S]{0,220}: NextResponse\.rewrite\(destination\);/,
+    /variant === "A"[\s\S]{0,160}: NextResponse\.rewrite\(destination\);/,
   );
   assert.match(proxySource, /async function serveRepairedLegacyLanding/);
+  assert.match(proxySource, /replaceLegacyPhone/);
+  assert.match(proxySource, /\(800\) 818-9941/);
+  assert.match(proxySource, /18008189941/);
   assert.match(proxySource, /legacy-form-fix\.js/);
   assert.match(proxySource, /legacy-form-repair/);
   assert.match(proxySource, /handleConfirmedUcdQuote/);
