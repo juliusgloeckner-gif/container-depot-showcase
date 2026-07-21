@@ -177,6 +177,23 @@ export async function proxy(request) {
     return response;
   }
 
+  // Cached redesign bundles can also request ordinary public images through
+  // vinext's former optimizer endpoint. The current deployment serves those
+  // files directly, so recover the original same-origin path instead of
+  // allowing the path-only request to fall into the legacy A-site routing.
+  const legacyOptimizedImage = requestUrl.searchParams.get("url");
+  if (
+    requestUrl.pathname === "/_vinext/image" &&
+    legacyOptimizedImage?.startsWith("/") &&
+    !legacyOptimizedImage.startsWith("//")
+  ) {
+    const publicAsset = new URL(legacyOptimizedImage, NEW_ORIGIN);
+    const response = NextResponse.rewrite(publicAsset);
+    response.headers.set("cache-control", "public, max-age=3600");
+    response.headers.set("x-ucd-router-mode", "image-asset-repair");
+    return response;
+  }
+
   if (isSeoControlPath(requestUrl.pathname)) {
     return NextResponse.next();
   }

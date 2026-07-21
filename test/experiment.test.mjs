@@ -291,3 +291,12 @@ test("repairs cached redesign flag optimizer requests before variant routing", (
   assert.match(proxySource, /new URL\("\/us-flag\.png", NEW_ORIGIN\)/);
   assert.match(proxySource, /flag-asset-repair/);
 });
+
+test("repairs cached redesign public image optimizer requests", () => {
+  const proxySource = fs.readFileSync(new URL("../proxy.js", import.meta.url), "utf8");
+  assert.match(proxySource, /legacyOptimizedImage/);
+  assert.match(proxySource, /legacyOptimizedImage\?\.startsWith\("\/"\)/);
+  assert.match(proxySource, /!legacyOptimizedImage\.startsWith\("\/\/"\)/);
+  assert.match(proxySource, /new URL\(legacyOptimizedImage, NEW_ORIGIN\)/);
+  assert.match(proxySource, /image-asset-repair/);
+});
