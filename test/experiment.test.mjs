@@ -283,3 +283,11 @@ test("rewrites redesign pages and updates every legacy response", () => {
   assert.match(proxySource, /UCD_FARM_B_PERCENT/);
   assert.match(proxySource, /UCD_BUSINESS_B_PERCENT/);
 });
+
+test("repairs cached redesign flag optimizer requests before variant routing", () => {
+  const proxySource = fs.readFileSync(new URL("../proxy.js", import.meta.url), "utf8");
+  assert.match(proxySource, /LEGACY_FLAG_PNG_PREFIX/);
+  assert.match(proxySource, /requestUrl\.pathname === "\/_vinext\/image"/);
+  assert.match(proxySource, /new URL\("\/us-flag\.png", NEW_ORIGIN\)/);
+  assert.match(proxySource, /flag-asset-repair/);
+});

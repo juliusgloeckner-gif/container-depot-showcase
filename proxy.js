@@ -21,6 +21,7 @@ import {
 } from "./experiment.mjs";
 
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30;
+const LEGACY_FLAG_PNG_PREFIX = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAq";
 const OLD_PHONE_REPLACEMENTS = [
   ["(855) 525-0902", "(800) 818-9941"],
   ["+1-855-525-0902", "+1-800-818-9941"],
@@ -159,6 +160,22 @@ function applyExperimentHeaders(response, {
 
 export async function proxy(request) {
   const requestUrl = request.nextUrl.clone();
+
+  // Older redesign documents used the image optimizer for the embedded 80x42
+  // flag. Those cached documents can outlive a deployment, while the optimizer
+  // request itself has no page path from which to recover the B-site variant.
+  // Serve the stable public asset directly so both cached and current headers
+  // remain valid across every route and experiment assignment.
+  if (
+    requestUrl.pathname === "/_vinext/image" &&
+    requestUrl.searchParams.get("url")?.startsWith(LEGACY_FLAG_PNG_PREFIX)
+  ) {
+    const flagAsset = new URL("/us-flag.png", NEW_ORIGIN);
+    const response = NextResponse.rewrite(flagAsset);
+    response.headers.set("cache-control", "public, max-age=31536000, immutable");
+    response.headers.set("x-ucd-router-mode", "flag-asset-repair");
+    return response;
+  }
 
   if (isSeoControlPath(requestUrl.pathname)) {
     return NextResponse.next();
